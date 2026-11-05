@@ -1,0 +1,58 @@
+{
+  "$schema": "./schema_rede.json#/definitions/catalogo_cabos",
+  "descricao": "Catálogo de condutores e cabos da rede de distribuição em 13,8 kV da SE Aquiraz",
+  "referencia": "TCC Mário Sérgio (2015), Tabelas 4.1 e 4.4; Concessionária COELCE / Enel Ceará",
+  "temperatura_base_c": 50,
+  "frequencia_hz": 60,
+  "cabos": {
+    "CAA266": {
+      "codigo": "CAA266",
+      "nome": "CAA 266,8 MCM (Partridge)",
+      "material": "Alumínio com Alma de Aço (ACSR)",
+      "secao_nominal": "266,8 MCM",
+      "r1_ohm_km": 0.2354,
+      "x1_ohm_km": 0.3850,
+      "r0_ohm_km": 0.4130,
+      "x0_ohm_km": 1.5520,
+      "ampacidade_a": 475,
+      "aplicacao": "Tronco principal dos alimentadores e saídas de subestação"
+    },
+    "SP240": {
+      "codigo": "SP240",
+      "nome": "Spacer Cable 240 mm²",
+      "material": "Rede Compactada Protegida (Alumínio)",
+      "secao_nominal": "240 mm²",
+      "r1_ohm_km": 0.1410,
+      "x1_ohm_km": 0.2762,
+      "r0_ohm_km": 2.1310,
+      "x0_ohm_km": 2.2615,
+      "ampacidade_a": 617,
+      "aplicacao": "Trechos arborizados e áreas com restrição ambiental/faixa de servidão"
+    },
+    "CAA10": {
+      "codigo": "CAA10",
+      "nome": "CAA 1/0 AWG (Poppy)",
+      "material": "Alumínio com Alma de Aço (ACSR)",
+      "secao_nominal": "1/0 AWG",
+      "r1_ohm_km": 0.5877,
+      "x1_ohm_km": 0.4374,
+      "r0_ohm_km": 0.7653,
+      "x0_ohm_km": 1.6043,
+      "ampacidade_a": 242,
+      "aplicacao": "Ramais intermediários e derivações de menor carregamento"
+    },
+    "CU95": {
+      "codigo": "CU95",
+      "nome": "Cobre Nu 95 mm²",
+      "material": "Cobre Eletrolítico",
+      "secao_nominal": "95 mm²",
+      "r1_ohm_km": 0.2213,
+      "x1_ohm_km": 0.4101,
+      "r0_ohm_km": 0.3990,
+      "x0_ohm_km": 1.5771,
+      "ampacidade_a": 438,
+      "aplicacao": "Trechos costeiros / maresia e interligação com SE Água Fria"
+    }
+  }
+}
+

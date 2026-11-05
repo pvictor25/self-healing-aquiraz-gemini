@@ -1,0 +1,106 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "name": "Paleta de Cores Dual-Theme (Claro e Escuro) — Simulador Self-Healing SE Aquiraz",
+  "version": "2.0.0",
+  "guidelines": {
+    "zero_emojis": "Proibido uso de emojis na interface; utilizar apenas identificadores e simbologia técnica de engenharia.",
+    "zero_glow": "Proibido uso de filtros de luz difusa, neon, bloom, drop-shadow ou animações pulsantes. Elementos devem possuir contornos sólidos e planos.",
+    "crisp_borders": "Todas as bordas de caixas e divisórias devem ser ortogonais e de 1px sólido.",
+    "didactic_colors": "As cores das linhas no diagrama unifilar representam estritamente o estado elétrico operacional (Energizado, Sem Tensão, Em Falta, Recomposto), evitando poluição visual.",
+    "typography": "Fontes técnicas sans-serif para rótulos e Consolas/monospace para grandezas numéricas."
+  },
+  "tokens": {
+    "light": {
+      "surfaces": {
+        "app_bg": "#eef1f5",
+        "header_bg": "#ffffff",
+        "toolbar_bg": "#f8f9fb",
+        "viewport_bg": "#ffffff",
+        "grid_dots": "#e2e8f0",
+        "panel_bg": "#ffffff",
+        "panel_header_bg": "#f1f5f9",
+        "card_bg": "#f8fafc",
+        "step_bg": "#ffffff"
+      },
+      "borders": {
+        "subtle": "#e2e8f0",
+        "medium": "#cbd5e1",
+        "strong": "#94a3b8",
+        "focus": "#0284c7"
+      },
+      "typography": {
+        "primary": "#0f172a",
+        "secondary": "#334155",
+        "muted": "#64748b",
+        "accent": "#0284c7",
+        "numeric": "#0f172a"
+      },
+      "diagram": {
+        "busbar": "#0f172a",
+        "line_energized": "#1e293b",
+        "line_deenergized": "#94a3b8",
+        "line_fault": "#dc2626",
+        "line_recomposed": "#0284c7",
+        "transformer": "#0f172a",
+        "label_primary": "#0f172a",
+        "label_muted": "#475569",
+        "switch_closed_fill": "#dc2626",
+        "switch_open_fill": "#16a34a",
+        "switch_stroke": "#0f172a"
+      },
+      "badges": {
+        "normal": { "bg": "#dcfce7", "border": "#86efac", "text": "#15803d" },
+        "fault": { "bg": "#fee2e2", "border": "#fca5a5", "text": "#b91c1c" },
+        "reclose": { "bg": "#fef3c7", "border": "#fde047", "text": "#b45309" },
+        "lockout": { "bg": "#fee2e2", "border": "#f87171", "text": "#991b1b" },
+        "flisr": { "bg": "#e0f2fe", "border": "#7dd3fc", "text": "#0369a1" }
+      }
+    },
+    "dark": {
+      "surfaces": {
+        "app_bg": "#111317",
+        "header_bg": "#1a1d23",
+        "toolbar_bg": "#21252b",
+        "viewport_bg": "#16191e",
+        "grid_dots": "#2a2f37",
+        "panel_bg": "#1a1d23",
+        "panel_header_bg": "#21252b",
+        "card_bg": "#14171c",
+        "step_bg": "#1e2229"
+      },
+      "borders": {
+        "subtle": "#262b33",
+        "medium": "#30363d",
+        "strong": "#484f58",
+        "focus": "#38bdf8"
+      },
+      "typography": {
+        "primary": "#f0f6fc",
+        "secondary": "#c9d1d9",
+        "muted": "#8b949e",
+        "accent": "#38bdf8",
+        "numeric": "#fef08a"
+      },
+      "diagram": {
+        "busbar": "#f0f6fc",
+        "line_energized": "#d0d7de",
+        "line_deenergized": "#484f58",
+        "line_fault": "#f85149",
+        "line_recomposed": "#38bdf8",
+        "transformer": "#58a6ff",
+        "label_primary": "#f0f6fc",
+        "label_muted": "#8b949e",
+        "switch_closed_fill": "#ef4444",
+        "switch_open_fill": "#22c55e",
+        "switch_stroke": "#f0f6fc"
+      },
+      "badges": {
+        "normal": { "bg": "#143521", "border": "#22c55e", "text": "#4ade80" },
+        "fault": { "bg": "#451010", "border": "#ef4444", "text": "#f87171" },
+        "reclose": { "bg": "#45300d", "border": "#eab308", "text": "#facc15" },
+        "lockout": { "bg": "#3b0d0d", "border": "#dc2626", "text": "#fca5a5" },
+        "flisr": { "bg": "#0c3554", "border": "#0284c7", "text": "#38bdf8" }
+      }
+    }
+  }
+}

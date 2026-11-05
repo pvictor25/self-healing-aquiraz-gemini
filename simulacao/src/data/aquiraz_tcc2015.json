@@ -1,0 +1,3336 @@
+{
+  "id": "tcc2015",
+  "name": "Fig. 4.\"2\": rede do TCC (base)",
+  "longName": "Sistema de distribuição Aquiraz, topologia da Fig. 4.2 (Rodrigues, 2015)",
+  "reference": "RODRIGUES (2015), Cap. 4 e 5",
+  "base": {
+    "mva": 100,
+    "kv": 13.8
+  },
+  "ftMinOhms": 100,
+  "viewBox": [
+    0,
+    0,
+    1180,
+    600
+  ],
+  "sources": [
+    {
+      "id": "AQZ",
+      "name": "SE Aquiraz (AQZ)",
+      "bus": "AQZ_SRC",
+      "z1": [
+        0.0138,
+        0.4439
+      ],
+      "z0": [
+        0,
+        0.3453
+      ],
+      "color": "aqz",
+      "ref": "Tab. 4.6 (trecho \"AQZ\") / Anexo A"
+    },
+    {
+      "id": "ESB",
+      "name": "SE Eusébio (ESB)",
+      "bus": "ESB",
+      "z1": [
+        0.03887,
+        0.510545
+      ],
+      "z0": [
+        0,
+        0.3606
+      ],
+      "color": "esb",
+      "ref": "Anexo A (ANAFAS, barra 9731)"
+    },
+    {
+      "id": "AGF",
+      "name": "SE Água Fria (AGF)",
+      "bus": "AGF",
+      "z1": [
+        0.009412,
+        0.695998
+      ],
+      "z0": [
+        0,
+        0.635
+      ],
+      "color": "agf",
+      "ref": "Anexo A (ANAFAS, barra 9032)"
+    }
+  ],
+  "cables": {
+    "CAA266": {
+      "name": "CAA 266,8 MCM (Partridge)",
+      "r1": 0.2354,
+      "x1": 0.385,
+      "r0": 0.413,
+      "x0": 1.552,
+      "amp": 475
+    },
+    "SP240": {
+      "name": "Spacer 240 mm²",
+      "r1": 0.141,
+      "x1": 0.2762,
+      "r0": 2.131,
+      "x0": 2.2615,
+      "amp": 617
+    },
+    "CAA10": {
+      "name": "CAA 1/0 AWG (Poppy)",
+      "r1": 0.5877,
+      "x1": 0.4374,
+      "r0": 0.7653,
+      "x0": 1.6043,
+      "amp": 242
+    },
+    "CU95": {
+      "name": "Cobre nu 95 mm²",
+      "r1": 0.2213,
+      "x1": 0.4101,
+      "r0": 0.399,
+      "x0": 1.5771,
+      "amp": 438
+    }
+  },
+  "nodes": {
+    "AQZ_SRC": {
+      "x": 120,
+      "y": 300,
+      "kind": "source",
+      "label": "Transformadores da SE AQZ"
+    },
+    "AQZ": {
+      "kind": "bus",
+      "label": "SE AQZ 13,8 kV",
+      "bar": {
+        "x": 200,
+        "y1": 60,
+        "y2": 560,
+        "noLabel": true
+      }
+    },
+    "ESB": {
+      "kind": "bus",
+      "label": "SE ESB",
+      "bar": {
+        "x": 1110,
+        "y1": 70,
+        "y2": 390
+      }
+    },
+    "AGF": {
+      "kind": "bus",
+      "label": "SE AGF",
+      "bar": {
+        "x": 1110,
+        "y1": 450,
+        "y2": 560
+      }
+    },
+    "21I7b": {
+      "x": 261,
+      "y": 110
+    },
+    "RS1a": {
+      "x": 409,
+      "y": 110
+    },
+    "RS1b": {
+      "x": 431,
+      "y": 110
+    },
+    "RL1a": {
+      "x": 549,
+      "y": 110
+    },
+    "RL1b": {
+      "x": 571,
+      "y": 110
+    },
+    "RS3a": {
+      "x": 689,
+      "y": 110
+    },
+    "RS3b": {
+      "x": 711,
+      "y": 110
+    },
+    "21S7a": {
+      "x": 1049,
+      "y": 110
+    },
+    "21I6b": {
+      "x": 261,
+      "y": 230
+    },
+    "RS2a": {
+      "x": 409,
+      "y": 230
+    },
+    "RS2b": {
+      "x": 431,
+      "y": 230
+    },
+    "RL2a": {
+      "x": 549,
+      "y": 230
+    },
+    "RL2b": {
+      "x": 571,
+      "y": 230
+    },
+    "J": {
+      "x": 880,
+      "y": 350,
+      "kind": "junction"
+    },
+    "21I5b": {
+      "x": 261,
+      "y": 350
+    },
+    "RS4a": {
+      "x": 409,
+      "y": 350
+    },
+    "RS4b": {
+      "x": 431,
+      "y": 350
+    },
+    "RL3a": {
+      "x": 589,
+      "y": 350
+    },
+    "RL3b": {
+      "x": 611,
+      "y": 350
+    },
+    "21S1a": {
+      "x": 1049,
+      "y": 350
+    },
+    "21I4b": {
+      "x": 261,
+      "y": 490
+    },
+    "RS5a": {
+      "x": 409,
+      "y": 490
+    },
+    "RS5b": {
+      "x": 431,
+      "y": 490
+    },
+    "RS6a": {
+      "x": 589,
+      "y": 490
+    },
+    "RS6b": {
+      "x": 611,
+      "y": 490
+    },
+    "RL4a": {
+      "x": 689,
+      "y": 490
+    },
+    "RL4b": {
+      "x": 711,
+      "y": 490
+    },
+    "RS7a": {
+      "x": 869,
+      "y": 490
+    },
+    "RS7b": {
+      "x": 891,
+      "y": 490
+    },
+    "21I2a": {
+      "x": 1049,
+      "y": 490
+    }
+  },
+  "segments": [
+    {
+      "id": "T1",
+      "a": "21I7b",
+      "b": "RS1a",
+      "z1": [
+        0.623,
+        1.019
+      ],
+      "z0": [
+        1.0931,
+        4.1073
+      ],
+      "cable": [
+        [
+          "CAA266",
+          5040
+        ]
+      ],
+      "load": 23,
+      "amp": 475
+    },
+    {
+      "id": "T2",
+      "a": "RS1b",
+      "b": "RL1a",
+      "z1": [
+        0.1471,
+        0.2406
+      ],
+      "z0": [
+        0.2581,
+        0.9698
+      ],
+      "cable": [
+        [
+          "CAA266",
+          1190
+        ]
+      ],
+      "load": 57,
+      "amp": 475
+    },
+    {
+      "id": "T3",
+      "a": "RL1b",
+      "b": "RS3a",
+      "z1": [
+        0.225,
+        0.368
+      ],
+      "z0": [
+        0.3947,
+        1.4832
+      ],
+      "cable": [
+        [
+          "CAA266",
+          1820
+        ]
+      ],
+      "load": 75,
+      "amp": 475
+    },
+    {
+      "id": "T4",
+      "a": "RS3b",
+      "b": "21S7a",
+      "z1": [
+        0.1094,
+        0.1912
+      ],
+      "z0": [
+        0.6965,
+        1.0783
+      ],
+      "cable": [
+        [
+          "CAA266",
+          580
+        ],
+        [
+          "SP240",
+          510
+        ]
+      ],
+      "load": 105,
+      "amp": 475
+    },
+    {
+      "id": "T5",
+      "a": "21I6b",
+      "b": "RS2a",
+      "z1": [
+        0.6384,
+        1.0442
+      ],
+      "z0": [
+        1.1202,
+        4.2092
+      ],
+      "cable": [
+        [
+          "CAA266",
+          5165
+        ]
+      ],
+      "load": 21,
+      "amp": 475
+    },
+    {
+      "id": "T6",
+      "a": "RS2b",
+      "b": "RL2a",
+      "z1": [
+        0.2079,
+        0.3401
+      ],
+      "z0": [
+        0.3648,
+        1.3707
+      ],
+      "cable": [
+        [
+          "CAA266",
+          1682
+        ]
+      ],
+      "load": 106,
+      "amp": 475
+    },
+    {
+      "id": "T7",
+      "a": "RL2b",
+      "b": "J",
+      "via": [
+        [
+          880,
+          230
+        ]
+      ],
+      "z1": [
+        0.2781,
+        0.4549
+      ],
+      "z0": [
+        0.488,
+        1.8336
+      ],
+      "cable": [
+        [
+          "CAA266",
+          2250
+        ]
+      ],
+      "load": 39.65,
+      "amp": 475,
+      "loadNote": "rateio de 155 A (T7+T10+T11) por comprimento"
+    },
+    {
+      "id": "T8",
+      "a": "21I5b",
+      "b": "RS4a",
+      "z1": [
+        0.2471,
+        0.4041
+      ],
+      "z0": [
+        0.4336,
+        1.6291
+      ],
+      "cable": [
+        [
+          "CAA266",
+          1999
+        ]
+      ],
+      "load": 83,
+      "amp": 475
+    },
+    {
+      "id": "T9",
+      "a": "RS4b",
+      "b": "RL3a",
+      "z1": [
+        0.6826,
+        0.8576
+      ],
+      "z0": [
+        1.0664,
+        3.3786
+      ],
+      "cable": [
+        [
+          "CAA266",
+          3173
+        ],
+        [
+          "CAA10",
+          941
+        ]
+      ],
+      "load": 62,
+      "amp": 242
+    },
+    {
+      "id": "T10",
+      "a": "RL3b",
+      "b": "J",
+      "z1": [
+        1.1207,
+        1.0716
+      ],
+      "z0": [
+        1.58,
+        4.0889
+      ],
+      "cable": [
+        [
+          "CAA266",
+          2156
+        ],
+        [
+          "CAA10",
+          2768
+        ]
+      ],
+      "load": 86.78,
+      "amp": 242,
+      "loadNote": "rateio de 155 A (T7+T10+T11) por comprimento"
+    },
+    {
+      "id": "T11",
+      "a": "J",
+      "b": "21S1a",
+      "z1": [
+        0.1237,
+        0.2396
+      ],
+      "z0": [
+        1.7452,
+        1.8968
+      ],
+      "cable": [
+        [
+          "CAA266",
+          66
+        ],
+        [
+          "SP240",
+          1545
+        ],
+        [
+          "CU95",
+          10
+        ]
+      ],
+      "load": 28.57,
+      "amp": 475,
+      "loadNote": "rateio de 155 A (T7+T10+T11) por comprimento"
+    },
+    {
+      "id": "T12",
+      "a": "21I4b",
+      "b": "RS5a",
+      "z1": [
+        1.092,
+        1.8882
+      ],
+      "z0": [
+        1.9387,
+        7.4497
+      ],
+      "cable": [
+        [
+          "CAA266",
+          5039
+        ],
+        [
+          "CU95",
+          4037
+        ]
+      ],
+      "load": 126,
+      "amp": 438
+    },
+    {
+      "id": "T13",
+      "a": "RS5b",
+      "b": "RS6a",
+      "z1": [
+        0.2197,
+        0.407
+      ],
+      "z0": [
+        0.396,
+        1.5652
+      ],
+      "cable": [
+        [
+          "CU95",
+          1890
+        ]
+      ],
+      "load": 42,
+      "amp": 438
+    },
+    {
+      "id": "T14",
+      "a": "RS6b",
+      "b": "RL4a",
+      "z1": [
+        0.0003,
+        0.0006
+      ],
+      "z0": [
+        0.0006,
+        0.0025
+      ],
+      "cable": [
+        [
+          "CU95",
+          3
+        ]
+      ],
+      "load": 77,
+      "amp": 438
+    },
+    {
+      "id": "T15",
+      "a": "RL4b",
+      "b": "RS7a",
+      "z1": [
+        0.5882,
+        1.0899
+      ],
+      "z0": [
+        1.0604,
+        4.1912
+      ],
+      "cable": [
+        [
+          "CU95",
+          5061
+        ]
+      ],
+      "load": 89,
+      "amp": 438
+    },
+    {
+      "id": "T16",
+      "a": "RS7b",
+      "b": "21I2a",
+      "z1": [
+        0.835,
+        1.5732
+      ],
+      "z0": [
+        4.7614,
+        8.1305
+      ],
+      "cable": [
+        [
+          "SP240",
+          3304
+        ],
+        [
+          "CU95",
+          5080
+        ]
+      ],
+      "load": 246,
+      "amp": 438
+    }
+  ],
+  "switches": [
+    {
+      "id": "01Z2",
+      "label": "AQZ_MT",
+      "a": "AQZ_SRC",
+      "b": "AQZ",
+      "normal": "closed",
+      "kind": "bus",
+      "relay": "01Z2",
+      "draw": [
+        {
+          "x": 160,
+          "y": 170,
+          "label": "01Z2"
+        },
+        {
+          "x": 160,
+          "y": 430,
+          "label": "01Z1"
+        }
+      ],
+      "desc": "Proteção geral de barramento (disjuntores secundários 01Z1/01Z2)"
+    },
+    {
+      "id": "21I7",
+      "a": "AQZ",
+      "b": "21I7b",
+      "x": 250,
+      "y": 110,
+      "normal": "closed",
+      "kind": "feeder",
+      "relay": "21I7"
+    },
+    {
+      "id": "RS1",
+      "a": "RS1a",
+      "b": "RS1b",
+      "x": 420,
+      "y": 110,
+      "normal": "closed",
+      "kind": "recloser",
+      "relay": "RS1"
+    },
+    {
+      "id": "RL1",
+      "a": "RL1a",
+      "b": "RL1b",
+      "x": 560,
+      "y": 110,
+      "normal": "open",
+      "kind": "tie",
+      "relay": "RL1"
+    },
+    {
+      "id": "RS3",
+      "a": "RS3a",
+      "b": "RS3b",
+      "x": 700,
+      "y": 110,
+      "normal": "closed",
+      "kind": "recloser",
+      "relay": "RS3"
+    },
+    {
+      "id": "21S7",
+      "a": "21S7a",
+      "b": "ESB",
+      "x": 1060,
+      "y": 110,
+      "normal": "closed",
+      "kind": "feeder",
+      "relay": "21S7"
+    },
+    {
+      "id": "21I6",
+      "a": "AQZ",
+      "b": "21I6b",
+      "x": 250,
+      "y": 230,
+      "normal": "closed",
+      "kind": "feeder",
+      "relay": "21I6"
+    },
+    {
+      "id": "RS2",
+      "a": "RS2a",
+      "b": "RS2b",
+      "x": 420,
+      "y": 230,
+      "normal": "closed",
+      "kind": "recloser",
+      "relay": "RS2"
+    },
+    {
+      "id": "RL2",
+      "a": "RL2a",
+      "b": "RL2b",
+      "x": 560,
+      "y": 230,
+      "normal": "open",
+      "kind": "tie",
+      "relay": "RL2"
+    },
+    {
+      "id": "21I5",
+      "a": "AQZ",
+      "b": "21I5b",
+      "x": 250,
+      "y": 350,
+      "normal": "closed",
+      "kind": "feeder",
+      "relay": "21I5"
+    },
+    {
+      "id": "RS4",
+      "a": "RS4a",
+      "b": "RS4b",
+      "x": 420,
+      "y": 350,
+      "normal": "closed",
+      "kind": "recloser",
+      "relay": "RS4"
+    },
+    {
+      "id": "RL3",
+      "a": "RL3a",
+      "b": "RL3b",
+      "x": 600,
+      "y": 350,
+      "normal": "open",
+      "kind": "tie",
+      "relay": "RL3"
+    },
+    {
+      "id": "21S1",
+      "a": "21S1a",
+      "b": "ESB",
+      "x": 1060,
+      "y": 350,
+      "normal": "closed",
+      "kind": "feeder",
+      "relay": "21S1"
+    },
+    {
+      "id": "21I4",
+      "a": "AQZ",
+      "b": "21I4b",
+      "x": 250,
+      "y": 490,
+      "normal": "closed",
+      "kind": "feeder",
+      "relay": "21I4"
+    },
+    {
+      "id": "RS5",
+      "a": "RS5a",
+      "b": "RS5b",
+      "x": 420,
+      "y": 490,
+      "normal": "closed",
+      "kind": "recloser",
+      "relay": "RS5"
+    },
+    {
+      "id": "RS6",
+      "a": "RS6a",
+      "b": "RS6b",
+      "x": 600,
+      "y": 490,
+      "normal": "closed",
+      "kind": "recloser",
+      "relay": "RS6"
+    },
+    {
+      "id": "RL4",
+      "a": "RL4a",
+      "b": "RL4b",
+      "x": 700,
+      "y": 490,
+      "normal": "open",
+      "kind": "tie",
+      "relay": "RL4"
+    },
+    {
+      "id": "RS7",
+      "a": "RS7a",
+      "b": "RS7b",
+      "x": 880,
+      "y": 490,
+      "normal": "closed",
+      "kind": "recloser",
+      "relay": "RS7"
+    },
+    {
+      "id": "21I2",
+      "a": "21I2a",
+      "b": "AGF",
+      "x": 1060,
+      "y": 490,
+      "normal": "closed",
+      "kind": "feeder",
+      "relay": "21I2"
+    }
+  ],
+  "relays": {
+    "21I7": {
+      "rtc": 500,
+      "cycle": "1I+2T",
+      "cycleNotation": "religamentos",
+      "deadTime": 10,
+      "groups": [
+        {
+          "id": "G1",
+          "name": "Grupo único (Tab. 4.13)",
+          "phase": {
+            "pickup": 570,
+            "dial": 0.23,
+            "inst": 2850,
+            "instDelay": 0.1,
+            "curve": "MI"
+          },
+          "ground": {
+            "pickup": 26,
+            "dial": 0.43,
+            "inst": 2850,
+            "instDelay": 0.1,
+            "curve": "MI"
+          }
+        }
+      ],
+      "ref": "Tab. 4.13"
+    },
+    "21I6": {
+      "rtc": 500,
+      "cycle": "1I+2T",
+      "cycleNotation": "religamentos",
+      "deadTime": 10,
+      "groups": [
+        {
+          "id": "G1",
+          "name": "Grupo único (Tab. 4.13)",
+          "phase": {
+            "pickup": 570,
+            "dial": 0.23,
+            "inst": 2850,
+            "instDelay": 0.1,
+            "curve": "MI"
+          },
+          "ground": {
+            "pickup": 26,
+            "dial": 0.43,
+            "inst": 2850,
+            "instDelay": 0.1,
+            "curve": "MI"
+          }
+        }
+      ],
+      "ref": "Tab. 4.13"
+    },
+    "21I5": {
+      "rtc": 500,
+      "cycle": "1I+2T",
+      "cycleNotation": "religamentos",
+      "deadTime": 10,
+      "groups": [
+        {
+          "id": "G1",
+          "name": "Grupo único (Tab. 4.13)",
+          "phase": {
+            "pickup": 570,
+            "dial": 0.23,
+            "inst": 2850,
+            "instDelay": 0.1,
+            "curve": "MI"
+          },
+          "ground": {
+            "pickup": 26,
+            "dial": 0.43,
+            "inst": 2850,
+            "instDelay": 0.1,
+            "curve": "MI"
+          }
+        }
+      ],
+      "ref": "Tab. 4.13"
+    },
+    "21I4": {
+      "rtc": 500,
+      "cycle": "1I+2T",
+      "cycleNotation": "religamentos",
+      "deadTime": 10,
+      "groups": [
+        {
+          "id": "G1",
+          "name": "Grupo único (Tab. 4.13)",
+          "phase": {
+            "pickup": 570,
+            "dial": 0.23,
+            "inst": 2850,
+            "instDelay": 0.1,
+            "curve": "MI"
+          },
+          "ground": {
+            "pickup": 26,
+            "dial": 0.43,
+            "inst": 2850,
+            "instDelay": 0.1,
+            "curve": "MI"
+          }
+        }
+      ],
+      "ref": "Tab. 4.13"
+    },
+    "RS1": {
+      "rtc": 300,
+      "cycle": "3I",
+      "deadTime": 11,
+      "groups": [
+        {
+          "id": "G1",
+          "name": "Grupo único (Tab. 4.13)",
+          "phase": {
+            "pickup": 513,
+            "dial": 0.05,
+            "inst": 2309,
+            "instDelay": 0.05,
+            "curve": "MI"
+          },
+          "ground": {
+            "pickup": 24,
+            "dial": 0.21,
+            "inst": 480,
+            "instDelay": 0.05,
+            "curve": "MI"
+          }
+        }
+      ],
+      "ref": "Tab. 4.13"
+    },
+    "RS2": {
+      "rtc": 300,
+      "cycle": "3I",
+      "deadTime": 11,
+      "groups": [
+        {
+          "id": "G1",
+          "name": "Grupo único (Tab. 4.13)",
+          "phase": {
+            "pickup": 513,
+            "dial": 0.05,
+            "inst": 2172,
+            "instDelay": 0.05,
+            "curve": "MI"
+          },
+          "ground": {
+            "pickup": 24,
+            "dial": 0.21,
+            "inst": 480,
+            "instDelay": 0.05,
+            "curve": "MI"
+          }
+        }
+      ],
+      "ref": "Tab. 4.13"
+    },
+    "RS3": {
+      "rtc": 300,
+      "cycle": "1I",
+      "deadTime": 13,
+      "groups": [
+        {
+          "id": "G1",
+          "name": "Grupo único (Tab. 4.13)",
+          "phase": {
+            "pickup": 416,
+            "dial": 0.05,
+            "inst": 1618,
+            "instDelay": 0.01,
+            "curve": "MI"
+          },
+          "ground": {
+            "pickup": 22,
+            "dial": 0.05,
+            "inst": 120,
+            "instDelay": 0.01,
+            "curve": "MI"
+          }
+        }
+      ],
+      "ref": "Tab. 4.13"
+    },
+    "RS4": {
+      "rtc": 300,
+      "cycle": "3I",
+      "deadTime": 11,
+      "groups": [
+        {
+          "id": "G1",
+          "name": "Grupo único (Tab. 4.13)",
+          "phase": {
+            "pickup": 315,
+            "dial": 0.1,
+            "inst": 2660.1,
+            "instDelay": 0.05,
+            "curve": "MI"
+          },
+          "ground": {
+            "pickup": 24,
+            "dial": 0.21,
+            "inst": 480,
+            "instDelay": 0.05,
+            "curve": "MI"
+          }
+        }
+      ],
+      "ref": "Tab. 4.13; E79 = 2 e 79OI = 11 s (Fig. 5.8)"
+    },
+    "RS5": {
+      "rtc": 300,
+      "cycle": "3I",
+      "deadTime": 11,
+      "groups": [
+        {
+          "id": "G1",
+          "name": "Grupo único (Tab. 4.13)",
+          "phase": {
+            "pickup": 513,
+            "dial": 0.05,
+            "inst": 1424.1,
+            "instDelay": 0.05,
+            "curve": "MI"
+          },
+          "ground": {
+            "pickup": 24,
+            "dial": 0.21,
+            "inst": 480,
+            "instDelay": 0.05,
+            "curve": "MI"
+          }
+        }
+      ],
+      "ref": "Tab. 4.13"
+    },
+    "RS6": {
+      "rtc": 300,
+      "cycle": "2I",
+      "deadTime": 12,
+      "groups": [
+        {
+          "id": "G1",
+          "name": "Grupo único (Tab. 4.13)",
+          "phase": {
+            "pickup": 462,
+            "dial": 0.05,
+            "inst": 1374.6,
+            "instDelay": 0.02,
+            "curve": "MI"
+          },
+          "ground": {
+            "pickup": 22,
+            "dial": 0.15,
+            "inst": 240,
+            "instDelay": 0.02,
+            "curve": "MI"
+          }
+        }
+      ],
+      "ref": "Tab. 4.13"
+    },
+    "RL1": {
+      "rtc": 300,
+      "cycle": "2I",
+      "deadTime": 12,
+      "groups": [
+        {
+          "id": "G1",
+          "name": "Grupo único (Tab. 4.13)",
+          "phase": {
+            "pickup": 461.7,
+            "dial": 0.05,
+            "inst": 1899,
+            "instDelay": 0.03,
+            "curve": "MI"
+          },
+          "ground": {
+            "pickup": 22,
+            "dial": 0.15,
+            "inst": 240,
+            "instDelay": 0.03,
+            "curve": "MI"
+          }
+        }
+      ],
+      "ref": "Tab. 4.13"
+    },
+    "RL2": {
+      "rtc": 300,
+      "cycle": "2I",
+      "deadTime": 12,
+      "groups": [
+        {
+          "id": "G1",
+          "name": "Grupo único (Tab. 4.13)",
+          "phase": {
+            "pickup": 315,
+            "dial": 0.05,
+            "inst": 1241.7,
+            "instDelay": 0.03,
+            "curve": "MI"
+          },
+          "ground": {
+            "pickup": 22,
+            "dial": 0.15,
+            "inst": 240,
+            "instDelay": 0.03,
+            "curve": "MI"
+          }
+        }
+      ],
+      "ref": "Tab. 4.13"
+    },
+    "RL3": {
+      "rtc": 300,
+      "cycle": "1I",
+      "deadTime": 13,
+      "ref": "Tab. 4.13 (dois grupos); ciclo do grupo 2 pelo critério da Tab. 4.12 e pelo Apêndice B",
+      "groups": [
+        {
+          "id": "G1",
+          "name": "Grupo 1, alimentado por 21I6 (lado T10)",
+          "when": {
+            "upstreamNode": "RL3b"
+          },
+          "deadTime": 13,
+          "phase": {
+            "pickup": 284,
+            "dial": 0.05,
+            "inst": 858.3,
+            "instDelay": 0.02,
+            "curve": "MI"
+          },
+          "ground": {
+            "pickup": 20,
+            "dial": 0.05,
+            "inst": 120,
+            "instDelay": 0.02,
+            "curve": "MI"
+          }
+        },
+        {
+          "id": "G2",
+          "name": "Grupo 2, alimentado por 21I5 (lado T9)",
+          "when": {
+            "upstreamNode": "RL3a"
+          },
+          "cycle": "2I",
+          "deadTime": 12,
+          "phase": {
+            "pickup": 284,
+            "dial": 0.05,
+            "inst": 1267.8,
+            "instDelay": 0.03,
+            "curve": "MI"
+          },
+          "ground": {
+            "pickup": 22,
+            "dial": 0.05,
+            "inst": 240,
+            "instDelay": 0.03,
+            "curve": "MI"
+          }
+        }
+      ]
+    },
+    "RL4": {
+      "rtc": 300,
+      "cycle": "1I",
+      "deadTime": 13,
+      "groups": [
+        {
+          "id": "G1",
+          "name": "Grupo único (Tab. 4.13)",
+          "phase": {
+            "pickup": 416,
+            "dial": 0.05,
+            "inst": 1057,
+            "instDelay": 0.02,
+            "curve": "MI"
+          },
+          "ground": {
+            "pickup": 20,
+            "dial": 0.05,
+            "inst": 120,
+            "instDelay": 0.02,
+            "curve": "MI"
+          }
+        }
+      ],
+      "ref": "Tab. 4.13"
+    },
+    "01Z2": {
+      "rtc": 800,
+      "cycle": "Bloqueado",
+      "deadTime": 10,
+      "groups": [
+        {
+          "id": "G1",
+          "name": "Grupo único (Tab. 4.13)",
+          "phase": {
+            "pickup": 941,
+            "dial": 0.2,
+            "inst": 4079,
+            "instDelay": 0.1,
+            "curve": "NI"
+          },
+          "ground": {
+            "pickup": 188,
+            "dial": 0.3,
+            "inst": 4079,
+            "instDelay": 0.1,
+            "curve": "NI"
+          }
+        }
+      ],
+      "ref": "Tab. 4.13 (geral de barramento); 50 bloqueado no esquema tradicional (seção 3.3.2)",
+      "inst50Scheme": true
+    },
+    "21S7": {
+      "rtc": 500,
+      "cycle": "1I+2T",
+      "cycleNotation": "religamentos",
+      "deadTime": 10,
+      "groups": [
+        {
+          "id": "G1",
+          "name": "Grupo único (planilha do autor)",
+          "phase": {
+            "pickup": 570,
+            "dial": 0.2,
+            "inst": 2850,
+            "instDelay": 0.1,
+            "curve": "MI"
+          },
+          "ground": {
+            "pickup": 24,
+            "dial": 0.43,
+            "inst": 2850,
+            "instDelay": 0.1,
+            "curve": "MI"
+          }
+        }
+      ],
+      "ref": "Planilha do TCC, abas \"SE ESB\" e \"Dimensionamento TC e TP\"; ciclo pela Tab. 4.11",
+      "origin": "planilha"
+    },
+    "21S1": {
+      "rtc": 500,
+      "cycle": "1I+2T",
+      "cycleNotation": "religamentos",
+      "deadTime": 10,
+      "groups": [
+        {
+          "id": "G1",
+          "name": "Grupo único (planilha do autor)",
+          "phase": {
+            "pickup": 570,
+            "dial": 0.2,
+            "inst": 2850,
+            "instDelay": 0.1,
+            "curve": "MI"
+          },
+          "ground": {
+            "pickup": 24,
+            "dial": 0.43,
+            "inst": 2850,
+            "instDelay": 0.1,
+            "curve": "MI"
+          }
+        }
+      ],
+      "ref": "Planilha do TCC, abas \"SE ESB\" e \"Dimensionamento TC e TP\"; ciclo pela Tab. 4.11",
+      "origin": "planilha"
+    },
+    "21I2": {
+      "rtc": 300,
+      "cycle": "1I+2T",
+      "cycleNotation": "religamentos",
+      "deadTime": 10,
+      "groups": [
+        {
+          "id": "G1",
+          "name": "Grupo único (planilha do autor)",
+          "phase": {
+            "pickup": 570,
+            "dial": 0.14,
+            "inst": 2850,
+            "instDelay": 0.1,
+            "curve": "MI"
+          },
+          "ground": {
+            "pickup": 24,
+            "dial": 0.43,
+            "inst": 2850,
+            "instDelay": 0.1,
+            "curve": "MI"
+          }
+        }
+      ],
+      "ref": "Planilha do TCC, abas \"SE AGF\" e \"Dimensionamento TC e TP\"; ciclo pela Tab. 4.11",
+      "origin": "planilha"
+    },
+    "RS7": {
+      "rtc": 300,
+      "cycle": "3I",
+      "deadTime": 11,
+      "groups": [
+        {
+          "id": "G1",
+          "name": "Grupo único (planilha + Tab. 4.12)",
+          "phase": {
+            "pickup": 513,
+            "dial": 0.05,
+            "inst": 1262.1,
+            "instDelay": 0.05,
+            "curve": "MI"
+          },
+          "ground": {
+            "pickup": 22,
+            "dial": 0.21,
+            "inst": 480,
+            "instDelay": 0.05,
+            "curve": "MI"
+          }
+        }
+      ],
+      "ref": "Planilha do TCC, aba AGF01I2 (fase); critérios da Tab. 4.12 (neutro e 79)",
+      "origin": "planilha"
+    }
+  },
+  "settingsSets": {
+    "anexoB": {
+      "name": "Anexo B (ajustes de campo)",
+      "note": "Ajustes de campo do Anexo B. Atrasos do 50/\"50N\": 0,1 s nos alimentadores da SE AQZ (OAP 165/2013) e os da Tab. 4.13 nos religadores de linha, porque o Anexo B não os informa. 21S7, 21S1, 21I2 e RS7 mantêm os ajustes da base.",
+      "relays": {
+        "21I7": {
+          "rtc": 500,
+          "cycle": "1I+2T",
+          "deadTime": 10,
+          "groups": [
+            {
+              "id": "G1",
+              "name": "Campo (Anexo B)",
+              "phase": {
+                "pickup": 500,
+                "dial": 0.26,
+                "inst": 5000,
+                "instDelay": 0.1,
+                "curve": "MI"
+              },
+              "ground": {
+                "pickup": 26,
+                "dial": 0.64,
+                "inst": 3500,
+                "instDelay": 0.1,
+                "curve": "MI"
+              }
+            }
+          ],
+          "ref": "Anexo B; atraso do 50 pela OAP 165/2013"
+        },
+        "21I6": {
+          "rtc": 500,
+          "cycle": "1I+2T",
+          "deadTime": 10,
+          "groups": [
+            {
+              "id": "G1",
+              "name": "Campo (Anexo B)",
+              "phase": {
+                "pickup": 500,
+                "dial": 0.26,
+                "inst": 5000,
+                "instDelay": 0.1,
+                "curve": "MI"
+              },
+              "ground": {
+                "pickup": 26,
+                "dial": 0.64,
+                "inst": 3500,
+                "instDelay": 0.1,
+                "curve": "MI"
+              }
+            }
+          ],
+          "ref": "Anexo B; atraso do 50 pela OAP 165/2013"
+        },
+        "21I5": {
+          "rtc": 500,
+          "cycle": "1I+2T",
+          "deadTime": 10,
+          "groups": [
+            {
+              "id": "G1",
+              "name": "Campo (Anexo B)",
+              "phase": {
+                "pickup": 500,
+                "dial": 0.26,
+                "inst": 5000,
+                "instDelay": 0.1,
+                "curve": "MI"
+              },
+              "ground": {
+                "pickup": 26,
+                "dial": 0.64,
+                "inst": 3500,
+                "instDelay": 0.1,
+                "curve": "MI"
+              }
+            }
+          ],
+          "ref": "Anexo B; atraso do 50 pela OAP 165/2013"
+        },
+        "21I4": {
+          "rtc": 500,
+          "cycle": "1I+2T",
+          "deadTime": 10,
+          "groups": [
+            {
+              "id": "G1",
+              "name": "Campo (Anexo B)",
+              "phase": {
+                "pickup": 500,
+                "dial": 0.26,
+                "inst": 5000,
+                "instDelay": 0.1,
+                "curve": "MI"
+              },
+              "ground": {
+                "pickup": 26,
+                "dial": 0.64,
+                "inst": 3500,
+                "instDelay": 0.1,
+                "curve": "MI"
+              }
+            }
+          ],
+          "ref": "Anexo B; atraso do 50 pela OAP 165/2013"
+        },
+        "RS1": {
+          "rtc": 300,
+          "cycle": "3I",
+          "deadTime": 11,
+          "groups": [
+            {
+              "id": "G1",
+              "name": "Campo (Anexo B)",
+              "phase": {
+                "pickup": 450,
+                "dial": 0.18,
+                "inst": 2800,
+                "instDelay": 0.05,
+                "curve": "MI"
+              },
+              "ground": {
+                "pickup": 24,
+                "dial": 0.28,
+                "inst": 480,
+                "instDelay": 0.05,
+                "curve": "MI"
+              }
+            }
+          ],
+          "ref": "Anexo B; atraso do 50 adotado da Tab. 4.13"
+        },
+        "RS2": {
+          "rtc": 300,
+          "cycle": "3I",
+          "deadTime": 11,
+          "groups": [
+            {
+              "id": "G1",
+              "name": "Campo (Anexo B)",
+              "phase": {
+                "pickup": 450,
+                "dial": 0.17,
+                "inst": 2900,
+                "instDelay": 0.05,
+                "curve": "MI"
+              },
+              "ground": {
+                "pickup": 24,
+                "dial": 0.3,
+                "inst": 360,
+                "instDelay": 0.05,
+                "curve": "MI"
+              }
+            }
+          ],
+          "ref": "Anexo B; atraso do 50 adotado da Tab. 4.13"
+        },
+        "RS3": {
+          "rtc": 300,
+          "cycle": "1I",
+          "deadTime": 13,
+          "groups": [
+            {
+              "id": "G1",
+              "name": "Campo (Anexo B)",
+              "phase": {
+                "pickup": 360,
+                "dial": 0.05,
+                "inst": 1500,
+                "instDelay": 0.01,
+                "curve": "MI"
+              },
+              "ground": {
+                "pickup": 20,
+                "dial": 0.09,
+                "inst": 90,
+                "instDelay": 0.01,
+                "curve": "MI"
+              }
+            }
+          ],
+          "ref": "Anexo B; atraso do 50 adotado da Tab. 4.13"
+        },
+        "RS4": {
+          "rtc": 300,
+          "cycle": "3I",
+          "deadTime": 11,
+          "groups": [
+            {
+              "id": "G1",
+              "name": "Campo (Anexo B)",
+              "phase": {
+                "pickup": 320,
+                "dial": 0.17,
+                "inst": 2300,
+                "instDelay": 0.05,
+                "curve": "MI"
+              },
+              "ground": {
+                "pickup": 24,
+                "dial": 0.22,
+                "inst": 480,
+                "instDelay": 0.05,
+                "curve": "MI"
+              }
+            }
+          ],
+          "ref": "Anexo B; atraso do 50 adotado da Tab. 4.13"
+        },
+        "RS5": {
+          "rtc": 300,
+          "cycle": "3I",
+          "deadTime": 11,
+          "groups": [
+            {
+              "id": "G1",
+              "name": "Campo (Anexo B)",
+              "phase": {
+                "pickup": 450,
+                "dial": 0.22,
+                "inst": 1700,
+                "instDelay": 0.05,
+                "curve": "MI"
+              },
+              "ground": {
+                "pickup": 24,
+                "dial": 0.21,
+                "inst": 450,
+                "instDelay": 0.05,
+                "curve": "MI"
+              }
+            }
+          ],
+          "ref": "Anexo B; atraso do 50 adotado da Tab. 4.13"
+        },
+        "RS6": {
+          "rtc": 300,
+          "cycle": "2I",
+          "deadTime": 12,
+          "groups": [
+            {
+              "id": "G1",
+              "name": "Campo (Anexo B)",
+              "phase": {
+                "pickup": 400,
+                "dial": 0.12,
+                "inst": 1300,
+                "instDelay": 0.02,
+                "curve": "MI"
+              },
+              "ground": {
+                "pickup": 22,
+                "dial": 0.15,
+                "inst": 190,
+                "instDelay": 0.02,
+                "curve": "MI"
+              }
+            }
+          ],
+          "ref": "Anexo B; atraso do 50 adotado da Tab. 4.13"
+        },
+        "RL1": {
+          "rtc": 300,
+          "cycle": "2I",
+          "deadTime": 12,
+          "groups": [
+            {
+              "id": "G1",
+              "name": "Campo (Anexo B)",
+              "phase": {
+                "pickup": 400,
+                "dial": 0.1,
+                "inst": 1900,
+                "instDelay": 0.03,
+                "curve": "MI"
+              },
+              "ground": {
+                "pickup": 22,
+                "dial": 0.15,
+                "inst": 170,
+                "instDelay": 0.03,
+                "curve": "MI"
+              }
+            }
+          ],
+          "ref": "Anexo B; atraso do 50 adotado da Tab. 4.13"
+        },
+        "RL2": {
+          "rtc": 300,
+          "cycle": "2I",
+          "deadTime": 12,
+          "groups": [
+            {
+              "id": "G1",
+              "name": "Campo (Anexo B)",
+              "phase": {
+                "pickup": 320,
+                "dial": 0.13,
+                "inst": 1800,
+                "instDelay": 0.03,
+                "curve": "MI"
+              },
+              "ground": {
+                "pickup": 22,
+                "dial": 0.05,
+                "inst": 200,
+                "instDelay": 0.03,
+                "curve": "MI"
+              }
+            }
+          ],
+          "ref": "Anexo B; atraso do 50 adotado da Tab. 4.13"
+        },
+        "RL3": {
+          "rtc": 300,
+          "cycle": "1I",
+          "deadTime": 13,
+          "ref": "Anexo B (dois grupos, com ciclos diferentes); atrasos da Tab. 4.13",
+          "groups": [
+            {
+              "id": "G1",
+              "name": "Grupo 1, alimentado por AQ6 (Anexo B)",
+              "when": {
+                "upstreamNode": "RL3b"
+              },
+              "cycle": "1I",
+              "deadTime": 13,
+              "phase": {
+                "pickup": 360,
+                "dial": 0.06,
+                "inst": 1260,
+                "instDelay": 0.02,
+                "curve": "MI"
+              },
+              "ground": {
+                "pickup": 20,
+                "dial": 0.09,
+                "inst": 90,
+                "instDelay": 0.02,
+                "curve": "MI"
+              }
+            },
+            {
+              "id": "G2",
+              "name": "Grupo 2, alimentado por AQ5 (Anexo B)",
+              "when": {
+                "upstreamNode": "RL3a"
+              },
+              "cycle": "2I",
+              "deadTime": 12,
+              "phase": {
+                "pickup": 240,
+                "dial": 0.05,
+                "inst": 1900,
+                "instDelay": 0.03,
+                "curve": "MI"
+              },
+              "ground": {
+                "pickup": 22,
+                "dial": 0.05,
+                "inst": 200,
+                "instDelay": 0.03,
+                "curve": "MI"
+              }
+            }
+          ]
+        },
+        "RL4": {
+          "rtc": 300,
+          "cycle": "1I",
+          "deadTime": 13,
+          "groups": [
+            {
+              "id": "G1",
+              "name": "Campo (Anexo B)",
+              "phase": {
+                "pickup": 400,
+                "dial": 0.12,
+                "inst": 1300,
+                "instDelay": 0.02,
+                "curve": "MI"
+              },
+              "ground": {
+                "pickup": 22,
+                "dial": 0.15,
+                "inst": 190,
+                "instDelay": 0.02,
+                "curve": "MI"
+              }
+            }
+          ],
+          "ref": "Anexo B; atraso do 50 adotado da Tab. 4.13"
+        },
+        "01Z2": {
+          "rtc": 800,
+          "cycle": "Bloqueado",
+          "deadTime": 10,
+          "groups": [
+            {
+              "id": "G1",
+              "name": "Campo (Anexo B)",
+              "phase": {
+                "pickup": 864,
+                "dial": 0.24,
+                "inst": 0,
+                "instDelay": 0,
+                "curve": "NI"
+              },
+              "ground": {
+                "pickup": 148,
+                "dial": 0.44,
+                "inst": 0,
+                "instDelay": 0,
+                "curve": "NI"
+              }
+            }
+          ],
+          "ref": "Anexo B (50/50N bloqueados)"
+        }
+      }
+    }
+  },
+  "decor": [
+    {
+      "type": "bar",
+      "x": 40,
+      "y1": 60,
+      "y2": 560,
+      "energizedBy": "AQZ_SRC",
+      "label": "REGIONAL AQUIRAZ II (CHESF) 69 kV",
+      "labelRotate": true
+    },
+    {
+      "type": "line",
+      "pts": [
+        [
+          40,
+          170
+        ],
+        [
+          84,
+          170
+        ]
+      ],
+      "energizedBy": "AQZ_SRC"
+    },
+    {
+      "type": "trafo",
+      "x": 100,
+      "y": 170,
+      "label": "T1",
+      "sub": "15 MVA · 6,84%",
+      "energizedBy": "AQZ_SRC"
+    },
+    {
+      "type": "line",
+      "pts": [
+        [
+          116,
+          170
+        ],
+        [
+          149,
+          170
+        ]
+      ],
+      "energizedBy": "AQZ_SRC"
+    },
+    {
+      "type": "line",
+      "pts": [
+        [
+          171,
+          170
+        ],
+        [
+          200,
+          170
+        ]
+      ],
+      "energizedBy": "AQZ"
+    },
+    {
+      "type": "line",
+      "pts": [
+        [
+          40,
+          430
+        ],
+        [
+          84,
+          430
+        ]
+      ],
+      "energizedBy": "AQZ_SRC"
+    },
+    {
+      "type": "trafo",
+      "x": 100,
+      "y": 430,
+      "label": "T2",
+      "sub": "15 MVA · 6,84%",
+      "energizedBy": "AQZ_SRC"
+    },
+    {
+      "type": "line",
+      "pts": [
+        [
+          116,
+          430
+        ],
+        [
+          149,
+          430
+        ]
+      ],
+      "energizedBy": "AQZ_SRC"
+    },
+    {
+      "type": "line",
+      "pts": [
+        [
+          171,
+          430
+        ],
+        [
+          200,
+          430
+        ]
+      ],
+      "energizedBy": "AQZ"
+    },
+    {
+      "type": "text",
+      "x": 205,
+      "y": 44,
+      "text": "SE AQZ 69/13,8 kV",
+      "cls": "title"
+    }
+  ],
+  "validation": {
+    "tab47": [
+      {
+        "feeder": "21I7",
+        "bus": "AQZ",
+        "path": [],
+        "tcc": [
+          0.0138,
+          0.4439,
+          0.0,
+          0.3453,
+          9419.4,
+          8157.4,
+          10175.6,
+          79.7
+        ]
+      },
+      {
+        "feeder": "21I7",
+        "bus": "RS1",
+        "path": [
+          "T1"
+        ],
+        "tcc": [
+          0.6368,
+          1.4629,
+          1.0931,
+          4.4526,
+          2622.2,
+          2270.9,
+          1619.8,
+          78.4
+        ]
+      },
+      {
+        "feeder": "21I7",
+        "bus": "RL1",
+        "path": [
+          "T1",
+          "T2"
+        ],
+        "tcc": [
+          0.7838,
+          1.7035,
+          1.3512,
+          5.4224,
+          2231.1,
+          1932.2,
+          1349.7,
+          78.1
+        ]
+      },
+      {
+        "feeder": "21I7",
+        "bus": "RS3",
+        "path": [
+          "T1",
+          "T2",
+          "T3"
+        ],
+        "tcc": [
+          1.0088,
+          2.0714,
+          1.746,
+          6.9056,
+          1815.8,
+          1572.5,
+          1075.3,
+          77.6
+        ]
+      },
+      {
+        "feeder": "21I7",
+        "bus": "ESB",
+        "path": [
+          "T1",
+          "T2",
+          "T3",
+          "T4"
+        ],
+        "tcc": [
+          1.1182,
+          2.2627,
+          2.4425,
+          7.9839,
+          1657.6,
+          1435.6,
+          939.8,
+          77.1
+        ]
+      },
+      {
+        "feeder": "21I6",
+        "bus": "RS2",
+        "path": [
+          "T5"
+        ],
+        "tcc": [
+          0.6522,
+          1.4882,
+          1.1202,
+          4.5544,
+          2574.9,
+          2229.9,
+          1586.4,
+          78.4
+        ]
+      },
+      {
+        "feeder": "21I6",
+        "bus": "RL2",
+        "path": [
+          "T5",
+          "T6"
+        ],
+        "tcc": [
+          0.8601,
+          1.8282,
+          1.4851,
+          5.9252,
+          2070.7,
+          1793.3,
+          1242.2,
+          77.9
+        ]
+      },
+      {
+        "feeder": "21I6",
+        "bus": "ESB",
+        "path": [
+          "T5",
+          "T6",
+          "T7",
+          "T11"
+        ],
+        "tcc": [
+          1.2619,
+          2.5227,
+          3.7183,
+          9.6556,
+          1483.2,
+          1284.5,
+          785.9,
+          76.3
+        ]
+      },
+      {
+        "feeder": "21I6",
+        "bus": "RL3",
+        "path": [
+          "T5",
+          "T6",
+          "T7",
+          "T10"
+        ],
+        "tcc": [
+          2.2589,
+          3.3547,
+          3.5531,
+          11.8477,
+          1034.5,
+          895.9,
+          620.2,
+          75.3
+        ]
+      },
+      {
+        "feeder": "21I6",
+        "bus": "RS4",
+        "path": [
+          "T5",
+          "T6",
+          "T7",
+          "T10",
+          "T9"
+        ],
+        "tcc": [
+          2.9415,
+          4.2123,
+          4.6195,
+          15.2262,
+          814.3,
+          705.2,
+          485.0,
+          74.0
+        ]
+      },
+      {
+        "feeder": "21I5",
+        "bus": "RS4",
+        "path": [
+          "T8"
+        ],
+        "tcc": [
+          0.2609,
+          0.8481,
+          0.4336,
+          1.9743,
+          4715.1,
+          4083.4,
+          3309.2,
+          79.2
+        ]
+      },
+      {
+        "feeder": "21I5",
+        "bus": "RL3",
+        "path": [
+          "T8",
+          "T9"
+        ],
+        "tcc": [
+          0.9435,
+          1.7057,
+          1.4999,
+          5.3529,
+          2146.3,
+          1858.8,
+          1335.8,
+          77.9
+        ]
+      },
+      {
+        "feeder": "21I5",
+        "bus": "ESB",
+        "path": [
+          "T8",
+          "T9",
+          "T10",
+          "T11"
+        ],
+        "tcc": [
+          2.1878,
+          3.0168,
+          4.8252,
+          11.3385,
+          1122.6,
+          972.2,
+          638.5,
+          74.9
+        ]
+      },
+      {
+        "feeder": "21I5",
+        "bus": "RL2",
+        "path": [
+          "T8",
+          "T9",
+          "T10",
+          "T7"
+        ],
+        "tcc": [
+          2.3422,
+          3.2321,
+          3.568,
+          11.2754,
+          1048.1,
+          907.7,
+          641.5,
+          75.3
+        ]
+      },
+      {
+        "feeder": "21I4",
+        "bus": "RS5",
+        "path": [
+          "T12"
+        ],
+        "tcc": [
+          1.1058,
+          2.3321,
+          1.9387,
+          7.7949,
+          1621.0,
+          1403.8,
+          955.7,
+          77.4
+        ]
+      },
+      {
+        "feeder": "21I4",
+        "bus": "RS6",
+        "path": [
+          "T12",
+          "T13"
+        ],
+        "tcc": [
+          1.3255,
+          2.7391,
+          2.3347,
+          9.3601,
+          1374.9,
+          1190.7,
+          801.8,
+          76.9
+        ]
+      },
+      {
+        "feeder": "21I4",
+        "bus": "RL4",
+        "path": [
+          "T12",
+          "T13",
+          "T14"
+        ],
+        "tcc": [
+          1.3259,
+          2.7398,
+          2.3354,
+          9.3626,
+          1374.5,
+          1190.4,
+          801.6,
+          76.9
+        ]
+      },
+      {
+        "feeder": "21I4",
+        "bus": "RS7",
+        "path": [
+          "T12",
+          "T13",
+          "T14",
+          "T15"
+        ],
+        "tcc": [
+          1.9141,
+          3.8297,
+          3.3957,
+          13.5538,
+          977.2,
+          846.3,
+          560.1,
+          75.6
+        ]
+      }
+    ],
+    "sourceForPath": "AQZ",
+    "reach": {
+      "21I7": {
+        "RL1": true,
+        "21S7": false
+      },
+      "21I6": {
+        "RL2": true,
+        "21S1": false,
+        "RL3": true,
+        "RS4": false
+      },
+      "21I5": {
+        "RL3": true,
+        "21S1": false
+      },
+      "21I4": {
+        "RL4": true,
+        "RS7": false
+      },
+      "21S7": {
+        "RL1": true,
+        "21I7": false
+      },
+      "21S1": {
+        "RL2": true,
+        "RL3": true,
+        "RS4": false,
+        "21I6": false
+      },
+      "21I2": {
+        "RL4": true,
+        "RS6": false
+      }
+    },
+    "tab48": [
+      [
+        "21I7",
+        10175.6,
+        260,
+        570,
+        500
+      ],
+      [
+        "21I6",
+        10175.6,
+        344,
+        570,
+        500
+      ],
+      [
+        "21I5",
+        10175.6,
+        300,
+        570,
+        500
+      ],
+      [
+        "21I4",
+        10175.6,
+        334,
+        570,
+        500
+      ],
+      [
+        "RS1",
+        2967.474,
+        237,
+        513,
+        300
+      ],
+      [
+        "RS2",
+        2574.884,
+        323,
+        513,
+        300
+      ],
+      [
+        "RS3",
+        5832.799,
+        155,
+        513,
+        300
+      ],
+      [
+        "RS4",
+        4715.065,
+        217,
+        315,
+        300
+      ],
+      [
+        "RS5",
+        1620.953,
+        208,
+        513,
+        300
+      ],
+      [
+        "RS6",
+        1374.857,
+        166,
+        462,
+        300
+      ],
+      [
+        "RL1",
+        3692.656,
+        180,
+        462,
+        300
+      ],
+      [
+        "RL2",
+        3260.754,
+        217,
+        513,
+        300
+      ],
+      [
+        "RL3",
+        2146.338,
+        155,
+        315,
+        300
+      ],
+      [
+        "RL4",
+        1374.526,
+        89,
+        462,
+        300
+      ],
+      [
+        "21S7",
+        9069.5,
+        260,
+        570,
+        500
+      ],
+      [
+        "21S1",
+        9069.5,
+        344,
+        570,
+        500
+      ],
+      [
+        "21I2",
+        6191.7,
+        412,
+        570,
+        300
+      ],
+      [
+        "RS7",
+        1727.921,
+        166,
+        513,
+        300
+      ]
+    ],
+    "planilhaZ": {
+      "T1": [
+        0.622958,
+        1.018951,
+        1.093135,
+        4.107329
+      ],
+      "T2": [
+        0.147087,
+        0.240586,
+        0.258101,
+        0.969786
+      ],
+      "T3": [
+        0.224957,
+        0.367954,
+        0.394743,
+        1.483202
+      ],
+      "T4": [
+        0.109439,
+        0.191226,
+        0.69647,
+        1.078308
+      ],
+      "T5": [
+        0.638408,
+        1.044222,
+        1.120247,
+        4.209197
+      ],
+      "T6": [
+        0.2079,
+        0.340055,
+        0.364812,
+        1.37074
+      ],
+      "T7": [
+        0.278106,
+        0.454889,
+        0.488007,
+        1.833629
+      ],
+      "T8": [
+        0.247082,
+        0.404143,
+        0.433567,
+        1.629078
+      ],
+      "T9": [
+        0.682579,
+        0.857601,
+        1.066371,
+        3.378551
+      ],
+      "T10": [
+        1.120678,
+        1.071573,
+        1.580034,
+        4.088869
+      ],
+      "T11": [
+        0.123677,
+        0.239569,
+        1.745213,
+        1.896798
+      ],
+      "T12": [
+        1.092046,
+        1.888165,
+        1.938739,
+        7.449697
+      ],
+      "T13": [
+        0.219671,
+        0.407034,
+        0.395987,
+        1.565176
+      ],
+      "T14": [
+        0.000349,
+        0.000646,
+        0.000629,
+        0.002484
+      ],
+      "T15": [
+        0.588229,
+        1.089947,
+        1.060366,
+        4.191193
+      ],
+      "T16": [
+        0.834992,
+        1.573219,
+        4.761411,
+        8.130519
+      ]
+    },
+    "planilha": [
+      [
+        "AQZ",
+        "21I7",
+        "AQZ",
+        [],
+        9419.39,
+        8157.431,
+        10175.632,
+        79.658
+      ],
+      [
+        "AQZ",
+        "21I7",
+        "RS1",
+        [
+          "T1"
+        ],
+        2622.24,
+        2270.926,
+        1619.782,
+        78.412
+      ],
+      [
+        "AQZ",
+        "21I7",
+        "RL1",
+        [
+          "T1",
+          "T2"
+        ],
+        2231.107,
+        1932.195,
+        1349.681,
+        78.107
+      ],
+      [
+        "AQZ",
+        "21I7",
+        "RS3",
+        [
+          "T1",
+          "T2",
+          "T3"
+        ],
+        1815.824,
+        1572.55,
+        1075.329,
+        77.633
+      ],
+      [
+        "AQZ",
+        "21I7",
+        "ESB",
+        [
+          "T1",
+          "T2",
+          "T3",
+          "T4"
+        ],
+        1657.63,
+        1435.55,
+        939.762,
+        77.147
+      ],
+      [
+        "AQZ",
+        "21I6",
+        "RS2",
+        [
+          "T5"
+        ],
+        2574.884,
+        2229.915,
+        1586.44,
+        78.38
+      ],
+      [
+        "AQZ",
+        "21I6",
+        "RL2",
+        [
+          "T5",
+          "T6"
+        ],
+        2070.689,
+        1793.269,
+        1242.248,
+        77.947
+      ],
+      [
+        "AQZ",
+        "21I6",
+        "T7",
+        [
+          "T5",
+          "T6",
+          "T7"
+        ],
+        1639.958,
+        1420.246,
+        962.725,
+        77.357
+      ],
+      [
+        "AQZ",
+        "21I6",
+        "21S1",
+        [
+          "T5",
+          "T6",
+          "T7",
+          "T11"
+        ],
+        1483.22,
+        1284.506,
+        785.854,
+        76.331
+      ],
+      [
+        "AQZ",
+        "21I6",
+        "RL3",
+        [
+          "T5",
+          "T6",
+          "T7",
+          "T10"
+        ],
+        1034.464,
+        895.872,
+        620.23,
+        75.32
+      ],
+      [
+        "AQZ",
+        "21I6",
+        "RS4",
+        [
+          "T5",
+          "T6",
+          "T7",
+          "T10",
+          "T9"
+        ],
+        814.32,
+        705.222,
+        485.014,
+        73.965
+      ],
+      [
+        "AQZ",
+        "21I6",
+        "21I5",
+        [
+          "T5",
+          "T6",
+          "T7",
+          "T10",
+          "T9",
+          "T8"
+        ],
+        745.685,
+        645.782,
+        440.663,
+        73.414
+      ],
+      [
+        "AQZ",
+        "21I5",
+        "RS4",
+        [
+          "T8"
+        ],
+        4715.065,
+        4083.366,
+        3309.202,
+        79.173
+      ],
+      [
+        "AQZ",
+        "21I5",
+        "RL3",
+        [
+          "T8",
+          "T9"
+        ],
+        2146.338,
+        1858.783,
+        1335.805,
+        77.882
+      ],
+      [
+        "AQZ",
+        "21I5",
+        "T10",
+        [
+          "T8",
+          "T9",
+          "T10"
+        ],
+        1209.049,
+        1047.067,
+        754.331,
+        75.874
+      ],
+      [
+        "AQZ",
+        "21I5",
+        "21S1",
+        [
+          "T8",
+          "T9",
+          "T10",
+          "T11"
+        ],
+        1122.649,
+        972.242,
+        638.463,
+        74.872
+      ],
+      [
+        "AQZ",
+        "21I5",
+        "RL2",
+        [
+          "T8",
+          "T9",
+          "T10",
+          "T7"
+        ],
+        1048.125,
+        907.703,
+        641.499,
+        75.278
+      ],
+      [
+        "AQZ",
+        "21I5",
+        "RS2",
+        [
+          "T8",
+          "T9",
+          "T10",
+          "T7",
+          "T6"
+        ],
+        953.21,
+        825.504,
+        576.941,
+        74.827
+      ],
+      [
+        "AQZ",
+        "21I5",
+        "21I6",
+        [
+          "T8",
+          "T9",
+          "T10",
+          "T7",
+          "T6",
+          "T5"
+        ],
+        745.685,
+        645.782,
+        440.663,
+        73.414
+      ],
+      [
+        "AQZ",
+        "21I4",
+        "RS5",
+        [
+          "T12"
+        ],
+        1620.953,
+        1403.787,
+        955.744,
+        77.4
+      ],
+      [
+        "AQZ",
+        "21I4",
+        "RS6",
+        [
+          "T12",
+          "T13"
+        ],
+        1374.857,
+        1190.661,
+        801.801,
+        76.91
+      ],
+      [
+        "AQZ",
+        "21I4",
+        "RL4",
+        [
+          "T12",
+          "T13",
+          "T14"
+        ],
+        1374.526,
+        1190.374,
+        801.596,
+        76.909
+      ],
+      [
+        "AQZ",
+        "21I4",
+        "RS7",
+        [
+          "T12",
+          "T13",
+          "T14",
+          "T15"
+        ],
+        977.174,
+        846.257,
+        560.078,
+        75.557
+      ],
+      [
+        "AQZ",
+        "21I4",
+        "AGF",
+        [
+          "T12",
+          "T13",
+          "T14",
+          "T15",
+          "T16"
+        ],
+        690.137,
+        597.676,
+        356.128,
+        72.033
+      ],
+      [
+        "ESB",
+        "21S7",
+        "ESB",
+        [],
+        8170.925,
+        7076.228,
+        9069.526,
+        79.632
+      ],
+      [
+        "ESB",
+        "21S7",
+        "RS3",
+        [
+          "T4"
+        ],
+        5832.799,
+        5051.352,
+        4168.501,
+        79.162
+      ],
+      [
+        "ESB",
+        "21S7",
+        "RL1",
+        [
+          "T4",
+          "T3"
+        ],
+        3692.656,
+        3197.934,
+        2330.812,
+        78.716
+      ],
+      [
+        "ESB",
+        "21S7",
+        "RS1",
+        [
+          "T4",
+          "T3",
+          "T2"
+        ],
+        2967.474,
+        2569.908,
+        1809.238,
+        78.419
+      ],
+      [
+        "ESB",
+        "21S7",
+        "AQZ",
+        [
+          "T4",
+          "T3",
+          "T2",
+          "T1"
+        ],
+        1612.383,
+        1396.365,
+        928.863,
+        77.118
+      ],
+      [
+        "ESB",
+        "21S1",
+        "T11",
+        [
+          "T11"
+        ],
+        5450.902,
+        4720.62,
+        2925.517,
+        78.619
+      ],
+      [
+        "ESB",
+        "21S1",
+        "RL3",
+        [
+          "T11",
+          "T10"
+        ],
+        1877.55,
+        1626.006,
+        1082.212,
+        76.659
+      ],
+      [
+        "ESB",
+        "21S1",
+        "RS4",
+        [
+          "T11",
+          "T10",
+          "T9"
+        ],
+        1258.976,
+        1090.305,
+        728.552,
+        75.365
+      ],
+      [
+        "ESB",
+        "21S1",
+        "21I5",
+        [
+          "T11",
+          "T10",
+          "T9",
+          "T8"
+        ],
+        1102.332,
+        954.648,
+        633.476,
+        74.843
+      ],
+      [
+        "ESB",
+        "21S1",
+        "RL2",
+        [
+          "T11",
+          "T7"
+        ],
+        3260.754,
+        2823.896,
+        1741.131,
+        78.066
+      ],
+      [
+        "ESB",
+        "21S1",
+        "RS2",
+        [
+          "T11",
+          "T7",
+          "T6"
+        ],
+        2496.752,
+        2162.25,
+        1335.625,
+        77.643
+      ],
+      [
+        "ESB",
+        "21S1",
+        "21I6",
+        [
+          "T11",
+          "T7",
+          "T6",
+          "T5"
+        ],
+        1446.907,
+        1253.058,
+        778.236,
+        76.301
+      ],
+      [
+        "AGF",
+        "21I2",
+        "AGF",
+        [],
+        6010.527,
+        5205.269,
+        6191.7,
+        79.658
+      ],
+      [
+        "AGF",
+        "21I2",
+        "RS7",
+        [
+          "T16"
+        ],
+        1727.921,
+        1496.423,
+        848.899,
+        76.29
+      ],
+      [
+        "AGF",
+        "21I2",
+        "RL4",
+        [
+          "T16",
+          "T15"
+        ],
+        1145.62,
+        992.136,
+        583.569,
+        74.987
+      ],
+      [
+        "AGF",
+        "21I2",
+        "RS6",
+        [
+          "T16",
+          "T15",
+          "T14"
+        ],
+        1145.391,
+        991.938,
+        583.46,
+        74.986
+      ],
+      [
+        "AGF",
+        "21I2",
+        "RS5",
+        [
+          "T16",
+          "T15",
+          "T14",
+          "T13"
+        ],
+        1017.081,
+        880.818,
+        522.392,
+        74.486
+      ],
+      [
+        "AGF",
+        "21I2",
+        "AQZ",
+        [
+          "T16",
+          "T15",
+          "T14",
+          "T13",
+          "T12"
+        ],
+        665.569,
+        576.4,
+        348.903,
+        71.975
+      ]
+    ]
+  },
+  "coordination": [
+    {
+      "id": "21I7",
+      "source": "AQZ",
+      "state": {
+        "RL1": true,
+        "21S7": false
+      },
+      "bus": {
+        "dev": "01Z2"
+      },
+      "devices": [
+        {
+          "dev": "21I7",
+          "at": []
+        },
+        {
+          "dev": "RS1",
+          "at": [
+            "T1"
+          ]
+        },
+        {
+          "dev": "RL1",
+          "at": [
+            "T1",
+            "T2"
+          ]
+        },
+        {
+          "dev": "RS3",
+          "at": [
+            "T1",
+            "T2",
+            "T3"
+          ]
+        }
+      ],
+      "end": [
+        "T1",
+        "T2",
+        "T3",
+        "T4"
+      ],
+      "endLabel": "barra ESB"
+    },
+    {
+      "id": "21I6",
+      "source": "AQZ",
+      "state": {
+        "RL2": true,
+        "21S1": false,
+        "RL3": true,
+        "RS4": false
+      },
+      "bus": {
+        "dev": "01Z2"
+      },
+      "devices": [
+        {
+          "dev": "21I6",
+          "at": []
+        },
+        {
+          "dev": "RS2",
+          "at": [
+            "T5"
+          ]
+        },
+        {
+          "dev": "RL2",
+          "at": [
+            "T5",
+            "T6"
+          ]
+        },
+        {
+          "dev": "RL3",
+          "at": [
+            "T5",
+            "T6",
+            "T7",
+            "T10"
+          ]
+        }
+      ],
+      "end": [
+        "T5",
+        "T6",
+        "T7",
+        "T10",
+        "T9"
+      ],
+      "endLabel": "barra RS4"
+    },
+    {
+      "id": "21I5",
+      "source": "AQZ",
+      "state": {
+        "RL3": true,
+        "21S1": false
+      },
+      "bus": {
+        "dev": "01Z2"
+      },
+      "devices": [
+        {
+          "dev": "21I5",
+          "at": []
+        },
+        {
+          "dev": "RS4",
+          "at": [
+            "T8"
+          ]
+        },
+        {
+          "dev": "RL3",
+          "at": [
+            "T8",
+            "T9"
+          ]
+        }
+      ],
+      "end": [
+        "T8",
+        "T9",
+        "T10",
+        "T7"
+      ],
+      "endLabel": "barra RL2"
+    },
+    {
+      "id": "21I4",
+      "source": "AQZ",
+      "state": {
+        "RL4": true,
+        "RS7": false
+      },
+      "bus": {
+        "dev": "01Z2"
+      },
+      "devices": [
+        {
+          "dev": "21I4",
+          "at": []
+        },
+        {
+          "dev": "RS5",
+          "at": [
+            "T12"
+          ]
+        },
+        {
+          "dev": "RS6",
+          "at": [
+            "T12",
+            "T13"
+          ]
+        },
+        {
+          "dev": "RL4",
+          "at": [
+            "T12",
+            "T13",
+            "T14"
+          ]
+        }
+      ],
+      "end": [
+        "T12",
+        "T13",
+        "T14",
+        "T15"
+      ],
+      "endLabel": "barra RS7"
+    }
+  ],
+  "notes": [
+    {
+      "kind": "premissa",
+      "text": "Carga de T7, T10 e \"T11\": a Tab. 4.2 informa apenas o total (155 A); o rateio foi feito proporcionalmente ao comprimento."
+    },
+    {
+      "kind": "premissa",
+      "text": "Base do \"simulador\": topologia da Fig. 4.2 e ajustes da Tab. 4.13. Relés fora da Tab. 4.13 (21S7 e 21S1 da SE ESB, 21I2 da SE AGF e RS7) usam os cálculos do autor na planilha do \"TCC\": abas \"SE ESB\" e \"SE AGF\" (51, 50, 51N, 50N e ciclo 1I+2T com tempo morto de 10 s, o mesmo critério da Tab. 4.11 para religadores de SE) e \"Dimensionamento TC e TP\" (RTC). O neutro e o religamento de RS7 seguem a Tab. 4.12."
+    },
+    {
+      "kind": "premissa",
+      "text": "Os arquivos do ProteCAD da pasta do TCC (fev/2015) trazem uma iteração anterior do estudo, com ajustes de linha diferentes da Tab. 4.13 (por exemplo RS4 com 513 A e RL3 com 462 A). O simulador usa a Tab. 4.13 e a planilha, que concordam entre si."
+    },
+    {
+      "kind": "premissa",
+      "text": "Impedâncias equivalentes das SEs ESB e AGF retiradas do relatório ANAFAS (Anexo A) para os cálculos com recomposição."
+    },
+    {
+      "kind": "premissa",
+      "text": "Proteção geral de barramento (01Z1/01Z2) modelada como um único equivalente que enxerga toda a corrente de falta da SE AQZ, como nos cálculos do TCC."
+    },
+    {
+      "kind": "divergencia",
+      "text": "Fig. 4.2 indica T9 = 3.664 m, mas a Tab. 4.5 soma 4.114 m (3.173 + 941), valor coerente com a impedância da Tab. 4.6. O simulador usa a Tab. 4.5."
+    },
+    {
+      "kind": "divergencia",
+      "text": "Fig. 4.6(c) indica Icc2F = 972,7 A na barra RL2 (21I5); a Tab. 4.7 e a relação √3/2·Icc3F dão 907,7 A."
+    },
+    {
+      "kind": "divergencia",
+      "text": "Fig. 4.6(d) indica IccFTm = 75,3 A na barra RS7; a Tab. 4.7 dá 75,6 A, valor que o simulador reproduz."
+    },
+    {
+      "kind": "divergencia",
+      "text": "RL3 alimentado por 21I5 (grupo 2): a Tab. 4.13 imprime \"1I\" (sem religamento), igual ao grupo 1. O critério do autor (Tab. 4.\"12\": uma abertura a menos que RS4, que tem 3I), o relé ensaiado (E79 = 1; Apêndice \"B\": duas aberturas, tempo morto de 12 s) e o Anexo B dão \"2I\". Nenhum resultado do TCC usa \"1I\" para esse grupo; o simulador usa \"2I\"."
+    },
+    {
+      "kind": "divergencia",
+      "text": "Planilha de cálculos, aba \"SE AQZ\": 50/50N da proteção geral de barra em 4.707 A e 5.090 A e dial do 51N em 0,356; a Tab. 4.13 e o relé ensaiado usam 4.079 A (50% do curto bifásico) e dial 0,30. O simulador usa a Tab. 4.13."
+    },
+    {
+      "kind": "divergencia",
+      "text": "Anexo \"B\": a coluna \"Ajuste 50/50N (s)\" traz correntes em ampères (por exemplo 5000 e 3500), e não tempos. Os atrasos do 50/50N não são informados."
+    },
+    {
+      "kind": "divergencia",
+      "text": "Tab. 4.\"8\": nos alimentadores da SE AQZ, Icc/FS = 509 A supera o primário do TC escolhido (500 A) em 1,8%."
+    },
+    {
+      "kind": "premissa",
+      "text": "Ciclo de religamento pelo critério do autor. Nos religadores da SE o TCC conta \"religamentos\": \"1I+2T\" é \"um religamento instantâneo e dois temporizados\" (Tab. 4.11), com o 50 bloqueado a partir do segundo religamento (seções 4.7.1 e 5.3.2), isto é, aberturas 50, 50, 51 e 51 (E79 = 3). É a configuração do relé ensaiado (Apêndice \"B\": três religamentos). Nos religadores de linha a notação conta aberturas (\"3I\" = três aberturas, E79 = 2 no ensaio de RL1). Assim cada nível tem um religamento a menos que o anterior, como pedem a Tab. 4.12 e a seção 5.8. A OAP 165/2013 de campo usa a mesma grafia \"1I-2T\" para três aberturas (tempos mortos 10-10 s); o Anexo B foi lido dessa forma."
+    },
+    {
+      "kind": "divergencia",
+      "text": "RL2 do laboratório (RL3 no campo, grupo 2) foi ensaiado com 50P1D = 0,02 s, contra 0,03 s na Tab. 4.13. Os presets dos ensaios 5.7.3 usam o valor do laboratório."
+    },
+    {
+      "kind": "divergencia",
+      "text": "Planilha de cálculos: os pickups de neutro dos religadores de linha (65,1 A, 71,1 A, 54 A) seguem um critério anterior; a Tab. 4.13 e os relés ensaiados usam 20 a 24 A. Os dials de neutro da planilha coincidem com a Tab. 4.13."
+    },
+    {
+      "kind": "divergencia",
+      "text": "Os ajustes de RL3 (Tab. 4.13) e a maioria das tabelas referem-se à topologia de alcance máximo (Fig. 4.6), em que os religadores de linha são alimentados pela SE AQZ."
+    }
+  ]
+}

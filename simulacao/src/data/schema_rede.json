@@ -1,0 +1,163 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "SmartGridDistributionNetworkSchema",
+  "description": "Esquema formal de validação para redes elétricas de distribuição com suporte a proteção numérica e automação FLISR / Self-Healing",
+  "type": "object",
+  "required": [
+    "id",
+    "name",
+    "base",
+    "sources",
+    "cables",
+    "nodes",
+    "segments",
+    "switches",
+    "relays"
+  ],
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "Identificador único da topologia/cenário"
+    },
+    "name": {
+      "type": "string",
+      "description": "Nome descritivo curto do cenário"
+    },
+    "longName": {
+      "type": "string",
+      "description": "Título acadêmico completo do sistema de distribuição"
+    },
+    "reference": {
+      "type": "string",
+      "description": "Referência bibliográfica ou fonte dos dados de campo"
+    },
+    "base": {
+      "type": "object",
+      "required": ["mva", "kv"],
+      "properties": {
+        "mva": { "type": "number", "description": "Potência base trifásica (MVA)" },
+        "kv": { "type": "number", "description": "Tensão base entre fases (kV)" }
+      }
+    },
+    "ftMinOhms": {
+      "type": "number",
+      "description": "Resistência de contato padrão para simulação de falta fase-terra mínima (Ω)"
+    },
+    "viewBox": {
+      "type": "array",
+      "items": { "type": "number" },
+      "minItems": 4,
+      "maxItems": 4,
+      "description": "Dimensões do diagrama vetorial [minX, minY, width, height]"
+    },
+    "sources": {
+      "type": "array",
+      "description": "Lista de subestações de suprimento ou equivalentes de montante",
+      "items": {
+        "type": "object",
+        "required": ["id", "name", "bus", "z1", "z0"],
+        "properties": {
+          "id": { "type": "string" },
+          "name": { "type": "string" },
+          "bus": { "type": "string" },
+          "z1": {
+            "type": "array",
+            "items": { "type": "number" },
+            "minItems": 2,
+            "maxItems": 2,
+            "description": "[R1, X1] equivalente em pu"
+          },
+          "z0": {
+            "type": "array",
+            "items": { "type": "number" },
+            "minItems": 2,
+            "maxItems": 2,
+            "description": "[R0, X0] equivalente em pu"
+          },
+          "color": { "type": "string" }
+        }
+      }
+    },
+    "cables": {
+      "type": "object",
+      "description": "Catálogo de tipos de condutores empregados na rede",
+      "additionalProperties": {
+        "type": "object",
+        "required": ["name", "r1", "x1", "r0", "x0", "amp"],
+        "properties": {
+          "name": { "type": "string" },
+          "r1": { "type": "number", "description": "Resistência de seq. positiva (Ω/km)" },
+          "x1": { "type": "number", "description": "Reatância de seq. positiva (Ω/km)" },
+          "r0": { "type": "number", "description": "Resistência de seq. zero (Ω/km)" },
+          "x0": { "type": "number", "description": "Reatância de seq. zero (Ω/km)" },
+          "amp": { "type": "number", "description": "Capacidade térmica de corrente (A)" }
+        }
+      }
+    },
+    "nodes": {
+      "type": "object",
+      "description": "Barramentos e nós topológicos da rede",
+      "additionalProperties": {
+        "type": "object",
+        "properties": {
+          "x": { "type": "number" },
+          "y": { "type": "number" },
+          "kind": { "type": "string", "enum": ["bus", "source", "junction", "terminal"] },
+          "label": { "type": "string" },
+          "bar": { "type": "object" }
+        }
+      }
+    },
+    "segments": {
+      "type": "array",
+      "description": "Trechos de linha de distribuição interligando nós",
+      "items": {
+        "type": "object",
+        "required": ["id", "a", "b", "z1", "z0", "load", "amp"],
+        "properties": {
+          "id": { "type": "string" },
+          "label": { "type": "string" },
+          "a": { "type": "string", "description": "Nó de origem" },
+          "b": { "type": "string", "description": "Nó de destino" },
+          "z1": { "type": "array", "items": { "type": "number" }, "minItems": 2, "maxItems": 2 },
+          "z0": { "type": "array", "items": { "type": "number" }, "minItems": 2, "maxItems": 2 },
+          "cable": { "type": "array" },
+          "load": { "type": "number", "description": "Corrente nominal de carga (A)" },
+          "amp": { "type": "number", "description": "Ampacidade limite do trecho (A)" }
+        }
+      }
+    },
+    "switches": {
+      "type": "array",
+      "description": "Equipamentos de manobra e corte (disjuntores e religadores)",
+      "items": {
+        "type": "object",
+        "required": ["id", "a", "b", "normal", "kind"],
+        "properties": {
+          "id": { "type": "string" },
+          "label": { "type": "string" },
+          "a": { "type": "string" },
+          "b": { "type": "string" },
+          "normal": { "type": "string", "enum": ["closed", "open"] },
+          "kind": { "type": "string", "enum": ["bus", "feeder", "recloser", "tie"] },
+          "relay": { "type": "string" }
+        }
+      }
+    },
+    "relays": {
+      "type": "object",
+      "description": "Configurações e parâmetros de proteção associados a cada equipamento",
+      "additionalProperties": {
+        "type": "object",
+        "required": ["rtc", "cycle", "groups"],
+        "properties": {
+          "rtc": { "type": "number", "description": "Relação de Transformação de Corrente (ex: 500/5 -> 100 ou 500)" },
+          "cycle": { "type": "string", "description": "Ciclo de religamento 79 (ex: 1I+2T, 3I, Bloqueado)" },
+          "deadTime": { "type": ["number", "array"], "description": "Tempo morto de religamento (s)" },
+          "groups": { "type": "array" }
+        }
+      }
+    }
+  }
+}
+

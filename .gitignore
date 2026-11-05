@@ -1,0 +1,22 @@
+# Dependências e caches
+node_modules/
+dist/
+__pycache__/
+*.pyc
+
+# Arquivos pesados locais e dados brutos (não versionados)
+fontes/TCC Mario Sergio/
+fontes/TCC Mario Sergio/*
+*.xlsm
+*.rdb
+
+# Arquivos temporários de sistema e SO
+.DS_Store
+Thumbs.db
+*.tmp
+*.log
+
+tools/validar_json_rede.py
+tools/build_single_file.py
+tools/build_simulator.py
+tools/build_enhanced_simulator.py
