@@ -90,7 +90,7 @@ Com a **Seletividade Lógica via mensagens GOOSE**:
 
 ## 5. Arquitetura do Simulador Web (Equipe Gemini)
 
-O simulador web encontra-se em [`simulacao/diagrama_unifilar_se_aqz.html`](file:///c:/Users/pvict/OneDrive/self-healing-aquiraz-gemini/simulacao/diagrama_unifilar_se_aqz.html). Ele é estruturado como uma Single-Page Application (SPA) autossuficiente e de execução instantânea diretamente no navegador ou via VS Code Live Preview, com desenvolvimento modular na pasta `simulacao/src/`.
+O simulador web encontra-se na raiz do projeto em [`diagrama_unifilar_se_aqz.html`](file:///c:/Users/pvict/OneDrive/self-healing-aquiraz-gemini/diagrama_unifilar_se_aqz.html). Ele é estruturado como uma Single-Page Application (SPA) autossuficiente e de execução instantânea diretamente no navegador ou via VS Code Live Preview, com desenvolvimento modular na pasta `simulacao/src/`.
 
 ### 5.1. Funcionalidades Atuais Implementadas
 1. **Diagrama Unifilar Vetorial (SVG Nativo):**

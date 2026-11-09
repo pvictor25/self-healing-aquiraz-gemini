@@ -12,7 +12,7 @@
 
 ## 1. Objetivo do Documento
 
-Este documento estabelece o **plano técnico detalhado e roteiro de implementação** para incorporar no simulador web da **Equipe Gemini** (`simulacao/diagrama_unifilar_se_aqz.html`) o conjunto completo de recursos físicos, computacionais, didáticos e de automação identificados no simulador de referência desenvolvido pela Equipe Claude ([Web-based-Self-Healing-Simulator](https://github.com/douglas-fdbs/Web-based-Self-Healing-Simulator)).
+Este documento estabelece o **plano técnico detalhado e roteiro de implementação** para incorporar no simulador web da **Equipe Gemini** (`diagrama_unifilar_se_aqz.html`) o conjunto completo de recursos físicos, computacionais, didáticos e de automação identificados no simulador de referência desenvolvido pela Equipe Claude ([Web-based-Self-Healing-Simulator](https://github.com/douglas-fdbs/Web-based-Self-Healing-Simulator)).
 
 O objetivo central é atingir **paridade técnica absoluta e diferenciais de qualidade**, garantindo que o simulador assistido pelo Google Gemini disponha de:
 1. Máxima exatidão numérica frente ao TCC de base (**Rodrigues, 2015**) e aos dados de campo (**Nobre, 2013**; relatórios da mala **CONPROVE CE-6006**);
