@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Simulador Didático de Self-Healing — SE Aquiraz 69/13,8 kV</title>
+  <title>Simulador Didático de Self-Healing: SE Aquiraz 69/13,8 kV</title>
   <script>
     // Define o tema inicial pelo tema do sistema operacional antes da renderização para evitar flash visual
     (function () {
@@ -17,47 +17,47 @@
        ========================================================================== */
     :root,
     [data-theme="light"] {
-      --bg-app: #eef1f5;
+      --bg-app: #f1f5f9;
       --bg-header: #ffffff;
-      --bg-toolbar: #f8f9fb;
-      --bg-viewport: #ffffff;
+      --bg-toolbar: #f8fafc;
+      --bg-viewport: #f8fafc;
       --grid-dots: #e2e8f0;
       --bg-panel: #ffffff;
-      --bg-panel-header: #f1f5f9;
+      --bg-panel-header: #f8fafc;
       --bg-card: #f8fafc;
       --bg-step: #ffffff;
-      --bg-btn: #ffffff;
-      --bg-btn-hover: #f1f5f9;
+      --bg-btn: transparent;
+      --bg-btn-hover: #e2e8f0;
 
-      --border-subtle: #e2e8f0;
-      --border-medium: #cbd5e1;
-      --border-strong: #94a3b8;
+      --border-subtle: #f1f5f9;
+      --border-medium: #e2e8f0;
+      --border-strong: #cbd5e1;
       --border-focus: #0284c7;
 
-      --text-primary: #0f172a;
-      --text-secondary: #334155;
+      --text-primary: #1e293b;
+      --text-secondary: #475569;
       --text-muted: #64748b;
       --text-accent: #0284c7;
-      --text-numeric: #0f172a;
+      --text-numeric: #1e293b;
 
-      --badge-normal-bg: #dcfce7;
-      --badge-normal-border: #86efac;
-      --badge-normal-text: #15803d;
+      --badge-normal-bg: #ecfdf5;
+      --badge-normal-border: #a7f3d0;
+      --badge-normal-text: #065f46;
 
-      --badge-fault-bg: #fee2e2;
-      --badge-fault-border: #fca5a5;
-      --badge-fault-text: #b91c1c;
+      --badge-fault-bg: #fef2f2;
+      --badge-fault-border: #fecaca;
+      --badge-fault-text: #991b1b;
 
-      --badge-reclose-bg: #fef3c7;
-      --badge-reclose-border: #fde047;
-      --badge-reclose-text: #b45309;
+      --badge-reclose-bg: #fffbeb;
+      --badge-reclose-border: #fde68a;
+      --badge-reclose-text: #92400e;
 
-      --badge-lockout-bg: #fee2e2;
-      --badge-lockout-border: #f87171;
+      --badge-lockout-bg: #fef2f2;
+      --badge-lockout-border: #fca5a5;
       --badge-lockout-text: #991b1b;
 
-      --badge-flisr-bg: #e0f2fe;
-      --badge-flisr-border: #7dd3fc;
+      --badge-flisr-bg: #f0f9ff;
+      --badge-flisr-border: #bae6fd;
       --badge-flisr-text: #0369a1;
     }
 
@@ -71,8 +71,8 @@
       --bg-panel-header: #21252b;
       --bg-card: #14171c;
       --bg-step: #1e2229;
-      --bg-btn: #282c34;
-      --bg-btn-hover: #323842;
+      --bg-btn: transparent;
+      --bg-btn-hover: #14171c;
 
       --border-subtle: #262b33;
       --border-medium: #30363d;
@@ -128,72 +128,375 @@
        1. CABECALHO COMPACTO E BARRA DE FERRAMENTAS UNICA
        ========================================================================== */
     .top-header {
-      height: 32px;
+      height: 38px;
       flex-shrink: 0;
       background-color: var(--bg-header);
       border-bottom: 1px solid var(--border-medium);
       padding: 0 14px;
       display: flex;
       align-items: center;
-      justify-content: space-between;
-      gap: 10px;
+      gap: 12px;
+      overflow-x: auto;
     }
 
-    .brand-group {
+    .project-title {
+      font-size: 12.5px;
+      font-weight: 600;
+      color: var(--text-primary);
+      letter-spacing: 0.2px;
+      white-space: nowrap;
+      flex-shrink: 0;
+      user-select: none;
+    }
+
+    .header-general-actions {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      flex-shrink: 0;
+    }
+
+    .header-divider {
+      width: 1px;
+      height: 18px;
+      background-color: var(--border-medium);
+      margin: 0 3px;
+      flex-shrink: 0;
+    }
+
+    .tool-btn.icon-btn {
+      padding: 4px 6px;
+      min-width: 28px;
+      height: 26px;
+      justify-content: center;
+    }
+
+    .tool-btn.icon-btn svg {
+      flex-shrink: 0;
+    }
+
+
+    /* ==========================================================================
+       WORKSPACE DE TUTORIAIS (DOCUMENTACAO E GUIAS COMPLETOS)
+       ========================================================================== */
+    .tutorial-workspace {
+      display: none;
+      flex: 1 1 0;
+      min-height: 0;
+      width: 100%;
+      height: 100%;
+      overflow-y: auto;
+      background-color: var(--bg-viewport);
+      padding: 16px 20px 40px 20px;
+      box-sizing: border-box;
+      flex-direction: column;
+    }
+
+    .tutorial-article-container {
+      max-width: 860px;
+      width: 100%;
+      margin: 0 auto;
+      background-color: var(--bg-card);
+      border: 1px solid var(--border-medium);
+      border-radius: 6px;
+      padding: 24px 30px;
+      box-sizing: border-box;
+    }
+
+    .tutorial-header {
+      border-bottom: 1px solid var(--border-medium);
+      padding-bottom: 12px;
+      margin-bottom: 18px;
+    }
+
+    .tutorial-topic-tag {
+      display: inline-block;
+      font-size: 11px;
+      font-weight: 600;
+      color: #0284c7;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      margin-bottom: 4px;
+    }
+
+    .tutorial-title {
+      font-size: 18px;
+      font-weight: 700;
+      color: var(--text-primary);
+      margin: 0 0 6px 0;
+    }
+
+    .tutorial-subtitle {
+      font-size: 12px;
+      color: var(--text-secondary);
+      margin: 0;
+      line-height: 1.5;
+    }
+
+    .tutorial-body {
+      font-size: 12.5px;
+      line-height: 1.65;
+      color: var(--text-primary);
+    }
+
+    .tutorial-body h3 {
+      font-size: 13.5px;
+      font-weight: 600;
+      color: var(--text-primary);
+      margin: 18px 0 8px 0;
+      border-left: 3px solid #0284c7;
+      padding-left: 8px;
+    }
+
+    .tutorial-body p {
+      margin: 0 0 12px 0;
+      color: var(--text-secondary);
+    }
+
+    .tutorial-body ul, .tutorial-body ol {
+      margin: 0 0 14px 0;
+      padding-left: 20px;
+      color: var(--text-secondary);
+    }
+
+    .tutorial-body li {
+      margin-bottom: 6px;
+    }
+
+    .tutorial-body b, .tutorial-body strong {
+      color: var(--text-primary);
+      font-weight: 600;
+    }
+
+    .tutorial-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 12px 0 16px 0;
+      font-size: 11.5px;
+    }
+
+    .tutorial-table th, .tutorial-table td {
+      padding: 6px 10px;
+      border: 1px solid var(--border-medium);
+      text-align: left;
+    }
+
+    .tutorial-table th {
+      background-color: var(--bg-header);
+      color: var(--text-primary);
+      font-weight: 600;
+    }
+
+    .tutorial-table td {
+      color: var(--text-secondary);
+    }
+
+    .tutorial-callout {
+      background-color: var(--bg-app);
+      border: 1px solid var(--border-subtle);
+      border-left: 3px solid #0d9488;
+      border-radius: 4px;
+      padding: 10px 14px;
+      margin: 14px 0;
+      font-size: 11.5px;
+      color: var(--text-secondary);
+    }
+
+    .tutorial-callout-title {
+      font-weight: 600;
+      color: var(--text-primary);
+      margin-bottom: 4px;
+    }
+
+    .tutorial-footer-nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: 24px;
+      padding-top: 14px;
+      border-top: 1px solid var(--border-medium);
+    }
+
+    /* Menu Dropdown de Tutoriais no Ribbon */
+    .tutorial-menu-container {
+      position: relative;
+      display: inline-flex;
+      align-items: center;
+    }
+
+    .tutorial-dropdown-menu {
+      position: absolute;
+      top: calc(100% + 4px);
+      left: 0;
+      z-index: 100;
+      background-color: var(--bg-card);
+      border: 1px solid var(--border-medium);
+      border-radius: 5px;
+      min-width: 320px;
+      padding: 4px;
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+
+    .tutorial-dropdown-item {
+      background: transparent;
+      border: none;
+      color: var(--text-primary);
+      font-family: inherit;
+      font-size: 11.5px;
+      font-weight: 400;
+      text-align: left;
+      padding: 6px 10px;
+      border-radius: 4px;
+      cursor: pointer;
+      transition: background-color 0.15s ease, color 0.15s ease;
+      white-space: nowrap;
+    }
+
+    .tutorial-dropdown-item:hover {
+      background-color: var(--bg-btn-hover);
+      color: var(--text-primary);
+    }
+
+    .tutorial-dropdown-item.active {
+      background-color: var(--bg-btn-hover);
+      color: #0284c7;
+      font-weight: 500;
+    }
+
+    .tutorial-nav-btns {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    /* Barra de Ferramentas com Abas Estilo Ribbon */
+    .ribbon-bar {
+      flex-shrink: 0;
+      background-color: var(--bg-toolbar);
+      border-bottom: 1px solid var(--border-medium);
+      display: flex;
+      flex-direction: column;
+    }
+
+    .ribbon-tabs-header {
+      display: flex;
+      align-items: flex-end;
+      gap: 3px;
+      padding: 3px 14px 0 14px;
+      background-color: var(--bg-header);
+      border-bottom: 1px solid var(--border-medium);
+    }
+
+    .ribbon-tab-btn {
+      background-color: transparent;
+      border: 1px solid transparent;
+      border-bottom: none;
+      font-family: inherit;
+      font-size: 11.5px;
+      font-weight: 400;
+      color: var(--text-secondary);
+      padding: 5px 13px 4px 13px;
+      cursor: pointer;
+      border-radius: 5px 5px 0 0;
+      user-select: none;
+      white-space: nowrap;
+      transition: background-color 0.15s ease, color 0.15s ease;
+      position: relative;
+      margin-bottom: -1px;
+      z-index: 1;
+    }
+
+    .ribbon-tab-btn:hover:not(.active) {
+      background-color: var(--bg-btn-hover);
+      color: var(--text-primary);
+    }
+
+    .ribbon-tab-btn.active {
+      color: var(--text-primary);
+      background-color: var(--bg-toolbar);
+      border-color: var(--border-medium);
+      border-bottom: 1px solid var(--bg-toolbar);
+      font-weight: 500;
+      z-index: 2;
+    }
+
+    .ribbon-tutorial-row {
       display: flex;
       align-items: center;
       gap: 8px;
-      min-width: 0;
+      flex-wrap: nowrap;
+      overflow-x: auto;
+      width: 100%;
     }
 
-    .brand-tag {
-      background-color: #0284c7;
-      color: #ffffff;
-      font-weight: 700;
-      font-size: 10.5px;
-      padding: 1px 6px;
-      border-radius: 2px;
-      letter-spacing: 0.5px;
-    }
-
-    .brand-title {
-      font-size: 13px;
-      font-weight: 700;
+    .ribbon-tutorial-step {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 11px;
       color: var(--text-primary);
       white-space: nowrap;
     }
 
-    .brand-subtitle {
-      font-size: 11.5px;
-      color: var(--text-muted);
-      white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis;
-    }
-
-    .header-meta {
-      font-size: 11px;
-      color: var(--text-muted);
-      font-family: Consolas, monospace;
-      white-space: nowrap;
-    }
-
-    .toolbar-bar {
-      height: 36px;
+    .ribbon-tutorial-badge {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 17px;
+      height: 17px;
+      border-radius: 50%;
+      background-color: var(--bg-btn-hover);
+      color: var(--text-primary);
+      font-size: 10.5px;
+      font-weight: 600;
       flex-shrink: 0;
-      background-color: var(--bg-toolbar);
-      border-bottom: 1px solid var(--border-medium);
+      border: 1px solid var(--border-medium);
+    }
+
+    .ribbon-tutorial-text {
+      color: var(--text-secondary);
+    }
+
+    .ribbon-tutorial-text b {
+      color: var(--text-primary);
+      font-weight: 500;
+    }
+
+    .ribbon-content-body {
+      height: 36px;
       padding: 0 14px;
       display: flex;
       align-items: center;
-      justify-content: space-between;
-      gap: 8px;
+      background-color: var(--bg-toolbar);
     }
 
-    .toolbar-group {
+    .ribbon-pane {
+      display: none;
+      align-items: center;
+      gap: 8px;
+      width: 100%;
+    }
+
+    .ribbon-pane.active {
+      display: flex;
+    }
+
+    .ribbon-section-label {
+      font-size: 11px;
+      color: var(--text-secondary);
+      user-select: none;
+      margin-right: 4px;
+      white-space: nowrap;
+    }
+
+    .ribbon-btn-group {
       display: flex;
       align-items: center;
       gap: 5px;
+      flex-wrap: nowrap;
+      overflow-x: auto;
     }
 
     .toolbar-divider {
@@ -206,42 +509,136 @@
     .tool-btn {
       font-family: inherit;
       font-size: 11.5px;
-      font-weight: 500;
+      font-weight: 400;
       color: var(--text-primary);
-      background-color: var(--bg-btn);
-      border: 1px solid var(--border-strong);
-      border-radius: 2px;
-      padding: 3px 9px;
+      background-color: transparent;
+      border: none;
+      border-radius: 4px;
+      padding: 4px 10px;
       cursor: pointer;
       display: inline-flex;
       align-items: center;
       gap: 5px;
       user-select: none;
       white-space: nowrap;
+      transition: background-color 0.15s ease, color 0.15s ease;
     }
 
     .tool-btn:hover:not(:disabled) {
       background-color: var(--bg-btn-hover);
-      border-color: var(--text-accent);
+      color: var(--text-primary);
     }
 
     .tool-btn.active {
       background-color: #0284c7;
-      border-color: #0369a1;
       color: #ffffff;
-      font-weight: 600;
+      font-weight: 400;
     }
 
     .tool-btn.active-danger {
       background-color: #dc2626;
-      border-color: #b91c1c;
       color: #ffffff;
-      font-weight: 600;
+      font-weight: 400;
     }
 
     .tool-btn:disabled {
       opacity: 0.45;
       cursor: not-allowed;
+    }
+
+    /* Switch Deslizante de Tema (Sol / Lua) */
+    .theme-toggle-switch {
+      background: none;
+      border: none;
+      padding: 0;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      user-select: none;
+      line-height: 0;
+    }
+
+    .theme-toggle-switch:focus-visible {
+      outline: 2px solid var(--border-focus);
+      outline-offset: 2px;
+      border-radius: 12px;
+    }
+
+    .toggle-track {
+      position: relative;
+      width: 44px;
+      height: 22px;
+      border-radius: 11px;
+      background-color: var(--border-strong);
+      border: 1px solid var(--border-strong);
+      display: inline-flex;
+      align-items: center;
+      transition: background-color 0.25s ease, border-color 0.25s ease;
+      overflow: hidden;
+      box-sizing: border-box;
+    }
+
+    [data-theme="dark"] .toggle-track {
+      background-color: var(--bg-card);
+      border-color: var(--border-strong);
+    }
+
+    .toggle-icon-sun {
+      position: absolute;
+      right: 5px;
+      top: 4px;
+      width: 12px;
+      height: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 1;
+      transform: scale(1);
+      transition: opacity 0.2s ease, transform 0.25s ease;
+      pointer-events: none;
+    }
+
+    .toggle-icon-moon {
+      position: absolute;
+      left: 5px;
+      top: 4px;
+      width: 12px;
+      height: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      transform: scale(0.5);
+      transition: opacity 0.2s ease, transform 0.25s ease;
+      pointer-events: none;
+    }
+
+    [data-theme="dark"] .toggle-icon-sun {
+      opacity: 0;
+      transform: scale(0.5);
+    }
+
+    [data-theme="dark"] .toggle-icon-moon {
+      opacity: 1;
+      transform: scale(1);
+    }
+
+    .toggle-knob {
+      position: absolute;
+      left: 2px;
+      top: 2px;
+      width: 16px;
+      height: 16px;
+      border-radius: 50%;
+      background-color: #ffffff;
+      transition: transform 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+      pointer-events: none;
+    }
+
+    [data-theme="dark"] .toggle-knob {
+      transform: translateX(22px);
+      background-color: #ffffff;
     }
 
     .tool-checkbox {
@@ -293,7 +690,7 @@
       min-height: 0;
       background-color: var(--bg-viewport);
       border: 1px solid var(--border-medium);
-      border-radius: 2px;
+      border-radius: 6px;
       display: flex;
       flex-direction: column;
       overflow: hidden;
@@ -376,7 +773,7 @@
     }
 
     /* ==========================================================================
-       3. PAINEL LATERAL DIDATICO (DIREITA — AJUSTADO PARA CABER SEM ROLAGEM)
+       3. PAINEL LATERAL DIDATICO (DIREITA: AJUSTADO PARA CABER SEM ROLAGEM)
        ========================================================================== */
     .side-panel {
       width: 410px;
@@ -385,7 +782,7 @@
       min-height: 0;
       background-color: var(--bg-panel);
       border: 1px solid var(--border-medium);
-      border-radius: 2px;
+      border-radius: 6px;
       display: flex;
       flex-direction: column;
       overflow: hidden;
@@ -413,7 +810,7 @@
       font-size: 10px;
       font-weight: 700;
       padding: 2px 7px;
-      border-radius: 2px;
+      border-radius: 4px;
       text-transform: uppercase;
       letter-spacing: 0.4px;
     }
@@ -463,7 +860,7 @@
       background-color: var(--bg-card);
       border: 1px solid var(--border-subtle);
       padding: 10px 12px;
-      border-radius: 2px;
+      border-radius: 6px;
     }
 
     .didactic-guide-title {
@@ -499,21 +896,21 @@
     }
 
     .preset-btn {
-      background-color: var(--bg-btn);
-      border: 1px solid var(--border-medium);
+      background-color: transparent;
+      border: none;
       color: var(--text-primary);
       padding: 6px 8px;
       font-size: 11px;
-      font-weight: 500;
-      border-radius: 2px;
+      font-weight: 400;
+      border-radius: 4px;
       cursor: pointer;
       text-align: left;
+      transition: background-color 0.15s ease, color 0.15s ease;
     }
 
     .preset-btn:hover {
       background-color: var(--bg-btn-hover);
-      border-color: var(--border-focus);
-      color: var(--text-accent);
+      color: var(--text-primary);
     }
 
     /* Conteúdo Ativo (Com Falta) */
@@ -563,24 +960,27 @@
 
     .fault-type-btn {
       flex: 1;
-      padding: 3px 0;
+      padding: 4px 0;
       font-size: 10.5px;
-      font-weight: 600;
-      background-color: var(--bg-btn);
-      border: 1px solid var(--border-medium);
+      font-weight: 400;
+      background-color: transparent;
+      border: none;
       color: var(--text-secondary);
-      border-radius: 2px;
+      border-radius: 4px;
       cursor: pointer;
+      transition: background-color 0.15s ease, color 0.15s ease;
     }
 
-    .fault-type-btn:hover {
+    .fault-type-btn:hover:not(.active) {
       background-color: var(--bg-btn-hover);
+      color: var(--text-primary);
     }
 
     .fault-type-btn.active {
       background-color: #0284c7;
-      border-color: #0369a1;
       color: #ffffff;
+      font-weight: 400;
+      border: none;
     }
 
     /* Barra de Tempo Real + Botão Pular para o Fim */
@@ -608,15 +1008,16 @@
     .skip-end-btn {
       flex-shrink: 0;
       background-color: #0284c7;
-      border: 1px solid #0369a1;
+      border: none;
       color: #ffffff;
       font-family: inherit;
       font-size: 11px;
-      font-weight: 700;
-      padding: 3px 9px;
-      border-radius: 2px;
+      font-weight: 400;
+      padding: 4px 10px;
+      border-radius: 4px;
       cursor: pointer;
       white-space: nowrap;
+      transition: background-color 0.15s ease;
     }
 
     .skip-end-btn:hover:not(:disabled) {
@@ -640,17 +1041,20 @@
       flex: 1;
       padding: 6px 8px;
       font-size: 11px;
-      font-weight: 700;
+      font-weight: 400;
       text-align: center;
       background: none;
       border: none;
       border-bottom: 2px solid transparent;
       color: var(--text-muted);
       cursor: pointer;
+      transition: background-color 0.15s ease, color 0.15s ease;
     }
 
-    .panel-tab-btn:hover {
+    .panel-tab-btn:hover:not(.active) {
+      background-color: var(--bg-btn-hover);
       color: var(--text-primary);
+    }
     }
 
     .panel-tab-btn.active {
@@ -685,7 +1089,7 @@
       background-color: var(--bg-card);
       border: 1px solid var(--border-subtle);
       padding: 5px 6px;
-      border-radius: 2px;
+      border-radius: 5px;
       text-align: center;
     }
 
@@ -708,7 +1112,7 @@
       background-color: var(--bg-step);
       border: 1px solid var(--border-medium);
       border-left: 3px solid var(--border-strong);
-      border-radius: 2px;
+      border-radius: 5px;
       padding: 6px 9px;
       display: flex;
       flex-direction: column;
@@ -767,7 +1171,7 @@
       border: 1px solid var(--border-medium);
       background-color: var(--bg-card);
       color: var(--text-muted);
-      border-radius: 2px;
+      border-radius: 4px;
       line-height: 1.15;
     }
 
@@ -796,7 +1200,7 @@
     .tech-section {
       background-color: var(--bg-card);
       border: 1px solid var(--border-subtle);
-      border-radius: 2px;
+      border-radius: 5px;
       padding: 6px 8px;
       display: flex;
       flex-direction: column;
@@ -866,62 +1270,168 @@
 </head>
 <body>
 
-  <!-- 1. CABECALHO SUPERIOR -->
+  <!-- 1. CABECALHO SUPERIOR COM CONTROLES GERAIS -->
   <header class="top-header">
-    <div class="brand-group">
-      <span class="brand-tag">FLISR</span>
-      <span class="brand-title">Simulador de Self-Healing — SE Aquiraz 69/13,8 kV</span>
-      <span class="brand-subtitle">&bull; Recomposição Automática (Modelo TCC 2015)</span>
-    </div>
-    <div class="header-meta">
-      UFC &bull; Equipe Gemini (Paulo Victor &amp; Lucas Sales)
+    <span class="project-title">Simulador de Self-Healing: SE Aquiraz 69/13,8 kV</span>
+
+    <div class="header-divider"></div>
+
+    <!-- Controles Gerais da Simulacao -->
+    <div class="header-general-actions">
+      <button id="btnUndo" class="tool-btn icon-btn" disabled title="Desfazer ultima acao (Ctrl+Z)" aria-label="Desfazer">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M9 14L4 9l5-5"/>
+          <path d="M4 9h10.5a5.5 5.5 0 0 1 5.5 5.5v0a5.5 5.5 0 0 1-5.5 5.5H11"/>
+        </svg>
+      </button>
+      <button id="btnRedo" class="tool-btn icon-btn" disabled title="Refazer acao (Ctrl+Y)" aria-label="Refazer">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M15 14l5-5-5-5"/>
+          <path d="M20 9H9.5A5.5 5.5 0 0 0 4 14.5v0A5.5 5.5 0 0 0 9.5 20H13"/>
+        </svg>
+      </button>
+      <button id="btnReset" class="tool-btn icon-btn" title="Restaurar rede ao estado normal de operacao" aria-label="Restaurar Rede">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M21 12a9 9 0 1 1-2.64-6.36L21 8"/>
+          <polyline points="21 3 21 8 16 8"/>
+        </svg>
+      </button>
+
+      <div class="header-divider"></div>
+
+      <button id="btnDownloadPng" class="tool-btn" title="Baixar imagem PNG do diagrama unifilar">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+          <polyline points="7 10 12 15 17 10"/>
+          <line x1="12" y1="15" x2="12" y2="3"/>
+        </svg>
+        <span>Exportar PNG</span>
+      </button>
+
+      <div class="header-divider"></div>
+
+      <button id="btnThemeToggle" class="theme-toggle-switch" role="switch" aria-checked="false" title="Alternar entre Tema Claro e Tema Escuro" aria-label="Alternar entre Tema Claro e Tema Escuro">
+        <span class="toggle-track">
+          <span class="toggle-icon-moon" aria-hidden="true">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="#FFFFFF">
+              <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+            </svg>
+          </span>
+          <span class="toggle-icon-sun" aria-hidden="true">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="12" r="4" fill="#FFFFFF"/>
+              <line x1="12" y1="2" x2="12" y2="4"/>
+              <line x1="12" y1="20" x2="12" y2="22"/>
+              <line x1="4.93" y1="4.93" x2="6.34" y2="6.34"/>
+              <line x1="17.66" y1="17.66" x2="19.07" y2="19.07"/>
+              <line x1="2" y1="12" x2="4" y2="12"/>
+              <line x1="20" y1="12" x2="22" y2="12"/>
+              <line x1="4.93" y1="19.07" x2="6.34" y2="17.66"/>
+              <line x1="17.66" y1="6.34" x2="19.07" y2="4.93"/>
+            </svg>
+          </span>
+          <span class="toggle-knob"></span>
+        </span>
+      </button>
     </div>
   </header>
 
-  <!-- 2. BARRA DE FERRAMENTAS SIMPLIFICADA -->
-  <div class="toolbar-bar">
-    <div class="toolbar-group">
-      <button id="btnFaultMode" class="tool-btn" title="Clique em um trecho da rede para simular um curto-circuito">
-        Inserir Falta
+  <!-- 2. BARRA DE FERRAMENTAS COM ABAS ESTILO RIBBON -->
+  <div class="ribbon-bar">
+    <div class="ribbon-tabs-header">
+      <button id="ribbonTabTcc" class="ribbon-tab-btn active" onclick="switchRibbonTab('tcc')">
+        Faltas do TCC
       </button>
-      <button id="btnRemoveFaultMode" class="tool-btn" disabled title="Clique sobre o simbolo de falta para remove-la">
-        Remover Falta
+      <button id="ribbonTabManual" class="ribbon-tab-btn" onclick="switchRibbonTab('manual')">
+        Inserção Manual
       </button>
-      <button id="btnSwitchMode" class="tool-btn" title="Abrir ou fechar manualmente disjuntores e religadores">
-        Manobrar Chaves
+      <button id="ribbonTabConfig" class="ribbon-tab-btn" onclick="switchRibbonTab('config')">
+        Configurações
       </button>
-
-      <div class="toolbar-divider"></div>
-
-      <button id="btnUndo" class="tool-btn" disabled title="Desfazer ultima acao (Ctrl+Z)">
-        Desfazer
+      <button id="ribbonTabTutorial" class="ribbon-tab-btn" onclick="switchRibbonTab('tutorial')">
+        Tutoriais
       </button>
-      <button id="btnRedo" class="tool-btn" disabled title="Refazer acao (Ctrl+Y)">
-        Refazer
-      </button>
-      <button id="btnReset" class="tool-btn" title="Restaurar rede ao estado normal de operacao">
-        Restaurar Rede
-      </button>
-
-      <div class="toolbar-divider"></div>
-
-      <label class="tool-checkbox" title="Mostrar ou ocultar o comprimento de cada trecho em metros">
-        <input type="checkbox" id="chkShowLengths" checked />
-        Comprimentos (m)
-      </label>
-      <label class="tool-checkbox" title="Mostrar ou ocultar grade pontilhada de fundo">
-        <input type="checkbox" id="chkShowGrid" checked />
-        Grade
-      </label>
     </div>
 
-    <div class="toolbar-group">
-      <button id="btnDownloadPng" class="tool-btn" title="Baixar imagem PNG do diagrama unifilar">
-        Exportar PNG
-      </button>
-      <button id="btnThemeToggle" class="tool-btn" title="Alternar entre Tema Claro e Tema Escuro">
-        Tema: Sistema
-      </button>
+    <div class="ribbon-content-body">
+      <!-- Painel 1: Faltas do TCC -->
+      <div id="ribbonPaneTcc" class="ribbon-pane active">
+        <span class="ribbon-section-label">Ensaios do TCC:</span>
+        <div class="ribbon-btn-group">
+          <button class="tool-btn" onclick="applyPresetFault('T1')" title="Simular falta no Trecho T1 (Alimentador 1)">Falta em T1 (Alim. 1)</button>
+          <button class="tool-btn" onclick="applyPresetFault('T2')" title="Simular falta no Trecho T2 (Alimentador 1)">Falta em T2 (Alim. 1)</button>
+          <button class="tool-btn" onclick="applyPresetFault('T5')" title="Simular falta no Trecho T5 (Alimentador 2)">Falta em T5 (Alim. 2)</button>
+          <button class="tool-btn" onclick="applyPresetFault('T8')" title="Simular falta no Trecho T8 (Alimentador 3)">Falta em T8 (Alim. 3)</button>
+          <button class="tool-btn" onclick="applyPresetFault('T12')" title="Simular falta no Trecho T12 (Alimentador 4)">Falta em T12 (Alim. 4)</button>
+          <button class="tool-btn" onclick="applyPresetFault('T16')" title="Simular falta no Trecho T16 (Alimentador 4)">Falta em T16 (Alim. 4)</button>
+        </div>
+      </div>
+
+      <!-- Painel 2: Inserção Manual no Diagrama -->
+      <div id="ribbonPaneManual" class="ribbon-pane">
+        <div class="ribbon-btn-group">
+          <button id="btnFaultMode" class="tool-btn" title="Clique em um trecho da rede para simular um curto-circuito">
+            Inserir Falta
+          </button>
+          <button id="btnRemoveFaultMode" class="tool-btn" disabled title="Clique sobre o simbolo de falta para remove-la">
+            Remover Falta
+          </button>
+          <div class="toolbar-divider"></div>
+          <button id="btnSwitchMode" class="tool-btn" title="Abrir ou fechar manualmente disjuntores e religadores">
+            Manobrar Chaves
+          </button>
+        </div>
+      </div>
+
+      <!-- Painel 3: Configurações -->
+      <div id="ribbonPaneConfig" class="ribbon-pane">
+        <div class="ribbon-btn-group">
+          <label class="tool-checkbox" title="Mostrar ou ocultar o comprimento de cada trecho em metros">
+            <input type="checkbox" id="chkShowLengths" checked />
+            Comprimentos (m)
+          </label>
+          <div class="toolbar-divider"></div>
+          <label class="tool-checkbox" title="Mostrar ou ocultar grade pontilhada de fundo">
+            <input type="checkbox" id="chkShowGrid" checked />
+            Grade
+          </label>
+        </div>
+      </div>
+
+      <!-- Painel 4: Tutoriais -->
+      <div id="ribbonPaneTutorial" class="ribbon-pane">
+        <div class="tutorial-menu-container">
+          <button id="btnTutorialDropdown" class="tool-btn" onclick="toggleTutorialDropdown(event)" title="Abrir lista de tutoriais">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <line x1="3" y1="12" x2="21" y2="12"></line>
+              <line x1="3" y1="6" x2="21" y2="6"></line>
+              <line x1="3" y1="18" x2="21" y2="18"></line>
+            </svg>
+            <span id="currentTutorialTitle">1. Visão Geral da SE Aquiraz e Self-Healing</span>
+            <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"></polyline></svg>
+          </button>
+
+          <div id="tutorialDropdownMenu" class="tutorial-dropdown-menu" style="display: none;">
+            <button class="tutorial-dropdown-item active" onclick="selectTutorialTopic(1)">1. Visão Geral da SE Aquiraz e Self-Healing</button>
+            <button class="tutorial-dropdown-item" onclick="selectTutorialTopic(2)">2. Como Funciona a Recomposição Automática (FLISR)</button>
+            <button class="tutorial-dropdown-item" onclick="selectTutorialTopic(3)">3. Ensaios do TCC e Proteção ANSI 79</button>
+            <button class="tutorial-dropdown-item" onclick="selectTutorialTopic(4)">4. Modo Inserção Manual de Faltas</button>
+            <button class="tutorial-dropdown-item" onclick="selectTutorialTopic(5)">5. Modo Manobra Manual de Chaves</button>
+            <button class="tutorial-dropdown-item" onclick="selectTutorialTopic(6)">6. Configurações e Parâmetros Técnicos</button>
+          </div>
+        </div>
+
+        <div class="toolbar-divider"></div>
+
+        <div class="tutorial-nav-btns">
+          <button id="btnNavPrev" class="tool-btn" onclick="navigateTutorial(-1)" title="Tópico anterior">
+            Anterior
+          </button>
+          <button id="btnNavNext" class="tool-btn" onclick="navigateTutorial(1)" title="Próximo tópico">
+            Próximo
+          </button>
+        </div>
+      </div>
     </div>
   </div>
 
@@ -929,7 +1439,7 @@
   <div id="modeBanner" class="mode-instruction-banner"></div>
 
   <!-- 3. WORKSPACE PRINCIPAL (100% VISIVEL SEM ROLAGEM) -->
-  <main class="main-workspace">
+  <main id="mainWorkspace" class="main-workspace">
 
     <!-- DIAGRAMA UNIFILAR INTERATIVO -->
     <div class="diagram-card">
@@ -942,16 +1452,16 @@
         >
           <defs>
             <pattern id="gridPattern" width="25" height="25" patternUnits="userSpaceOnUse">
-              <circle id="gridDotCircle" cx="12.5" cy="12.5" r="0.8" fill="#cbd5e1" />
+              <circle id="gridDotCircle" cx="12.5" cy="12.5" r="0.8" fill="#e2e8f0" />
             </pattern>
           </defs>
 
           <!-- Fundo do Diagrama -->
-          <rect id="svgBgRect" width="1000" height="765" fill="#ffffff" />
+          <rect id="svgBgRect" width="1000" height="765" fill="#f8fafc" />
           <rect id="svgGridLayer" width="1000" height="765" fill="url(#gridPattern)" />
 
           <!-- Título do Diagrama -->
-          <text id="svgTitleMain" x="67" y="36" font-size="18.5" font-weight="700" fill="#0f172a">SE AQZ 69/13,8 kV</text>
+          <text id="svgTitleMain" x="67" y="36" font-size="18.5" font-weight="700" fill="#1e293b">SE AQZ 69/13,8 kV</text>
           <text id="svgTitleSub" x="67" y="52" font-size="11" fill="#64748b" font-family="Consolas, monospace">DIAGRAMA UNIFILAR DIDATICO &bull; 4 ALIMENTADORES E 16 TRECHOS</text>
 
           <!-- Identificação Barramento 69 kV -->
@@ -1009,13 +1519,13 @@
 
           <!-- Legenda Didática Semântica -->
           <g id="legendLayer" transform="translate(0, -10)">
-            <rect id="legendBox" x="60" y="700" width="880" height="58" rx="2" fill="#f8fafc" stroke="#cbd5e1" stroke-width="1" />
+            <rect id="legendBox" x="60" y="700" width="880" height="58" rx="6" fill="#ffffff" stroke="#e2e8f0" stroke-width="1" />
             <text id="legendTitle" x="75" y="716" font-size="10" font-weight="700" fill="#475569">LEGENDA DIDATICA DE ESTADOS ELETRICOS:</text>
 
-            <rect id="legOpenRect" x="75" y="725" width="16" height="16" rx="2" fill="#16a34a" stroke="#0f172a" stroke-width="1" />
+            <rect id="legOpenRect" x="75" y="725" width="16" height="16" rx="4" fill="#16a34a" stroke="#0f172a" stroke-width="1" />
             <text id="legOpenTxt" x="98" y="737" font-size="11" fill="#0f172a">Chave Aberta (NA)</text>
 
-            <rect id="legClosedRect" x="215" y="725" width="16" height="16" rx="2" fill="#dc2626" stroke="#0f172a" stroke-width="1" />
+            <rect id="legClosedRect" x="215" y="725" width="16" height="16" rx="4" fill="#dc2626" stroke="#0f172a" stroke-width="1" />
             <text id="legClosedTxt" x="238" y="737" font-size="11" fill="#0f172a">Chave Fechada (NF)</text>
 
             <line id="legLineNorm" x1="365" y1="733" x2="405" y2="733" stroke="#1e293b" stroke-width="2.6" />
@@ -1043,14 +1553,6 @@
 
       <!-- VISAO INICIAL (SEM FALTA) -->
       <div id="emptyPanelState" class="idle-panel-body">
-        <div class="didactic-guide-box">
-          <div class="didactic-guide-title">Como funciona a recomposição automática (Self-Healing):</div>
-          <ol class="didactic-guide-list">
-            <li><b>1. Inserção da Falta:</b> Clique em <b>"Inserir Falta"</b> na barra superior e selecione um trecho (T1 a T16), ou escolha um ensaio rápido abaixo.</li>
-            <li><b>2. Proteção e Religamento em Tempo Real (ANSI 79):</b> O relé SEL-751 atua no tempo exato da curva (funções 50/51) e aguarda o tempo morto parametrizado no TCC (10 s a 13 s por tentativa). Use o botão <b>"Pular para o Fim"</b> se quiser avançar imediatamente.</li>
-            <li><b>3. Isolamento e Recomposição:</b> Após o bloqueio (<i>Lockout</i>), as chaves adjacentes isolam o trecho em falta e a chave de socorro (<i>tie-switch</i> RL1 a RL4) restaura os trechos sãos.</li>
-          </ol>
-        </div>
 
         <div>
           <div class="preset-section-title">Cenários Didáticos Prontos (Ensaios do TCC):</div>
@@ -1119,7 +1621,7 @@
           <!-- Etapa 1 -->
           <div id="stepCard1" class="didactic-step-card">
             <div class="step-card-header">
-              <span class="step-card-title">Etapa 1 — Detecção e Pickup</span>
+              <span class="step-card-title">Etapa 1: Detecção e Pickup</span>
               <span id="stepTag1" class="step-card-tag">AGUARDANDO</span>
             </div>
             <div id="stepDesc1" class="step-card-desc">
@@ -1130,7 +1632,7 @@
           <!-- Etapa 2 -->
           <div id="stepCard2" class="didactic-step-card">
             <div class="step-card-header">
-              <span class="step-card-title">Etapa 2 — Ciclo de Religamento ANSI 79</span>
+              <span class="step-card-title">Etapa 2: Ciclo de Religamento ANSI 79</span>
               <span id="stepTag2" class="step-card-tag">AGUARDANDO</span>
             </div>
             <div id="stepDesc2" class="step-card-desc">
@@ -1142,7 +1644,7 @@
           <!-- Etapa 3 -->
           <div id="stepCard3" class="didactic-step-card">
             <div class="step-card-header">
-              <span class="step-card-title">Etapa 3 — Isolamento Automático</span>
+              <span class="step-card-title">Etapa 3: Isolamento Automático</span>
               <span id="stepTag3" class="step-card-tag">AGUARDANDO</span>
             </div>
             <div id="stepDesc3" class="step-card-desc">
@@ -1153,7 +1655,7 @@
           <!-- Etapa 4 -->
           <div id="stepCard4" class="didactic-step-card">
             <div class="step-card-header">
-              <span class="step-card-title">Etapa 4 — Recomposição (Self-Healing)</span>
+              <span class="step-card-title">Etapa 4: Recomposição (Self-Healing)</span>
               <span id="stepTag4" class="step-card-tag">AGUARDANDO</span>
             </div>
             <div id="stepDesc4" class="step-card-desc">
@@ -1237,7 +1739,7 @@
             <div class="tech-section-title">Dados Físicos do Trecho e Carregamento</div>
             <div class="prop-row">
               <span class="prop-name">Comprimento / Condutor:</span>
-              <span id="txtCableSpec" class="prop-val">5.040 m — CAA 266,8 MCM</span>
+              <span id="txtCableSpec" class="prop-val">5.040 m - CAA 266,8 MCM</span>
             </div>
             <div class="prop-row">
               <span class="prop-name">Carga do Trecho / Ampacidade:</span>
@@ -1250,27 +1752,51 @@
 
   </main>
 
+  <!-- 4. WORKSPACE DE TUTORIAIS (EXIBIDO SOMENTE NA ABA TUTORIAIS) -->
+  <section id="tutorialWorkspace" class="tutorial-workspace">
+    <div class="tutorial-article-container">
+      <header class="tutorial-header">
+        <span id="tutorialTopicTag" class="tutorial-topic-tag">Fundamentos do Projeto</span>
+        <h2 id="tutorialTitle" class="tutorial-title">1. Visão Geral da SE Aquiraz e Self-Healing</h2>
+        <p id="tutorialSubtitle" class="tutorial-subtitle">Topologia da subestação, barramentos de 69 kV e 13,8 kV, alimentadores radiais e socorros interligados.</p>
+      </header>
+
+      <div id="tutorialBody" class="tutorial-body"></div>
+
+      <footer class="tutorial-footer-nav">
+        <button id="btnPrevTopic" class="tool-btn" onclick="navigateTutorial(-1)">
+          &larr; Tópico Anterior
+        </button>
+        <span id="tutorialNavIndicator" class="tutorial-nav-indicator" style="font-size: 11.5px; color: var(--text-muted);">Tópico 1 de 6</span>
+        <button id="btnNextTopic" class="tool-btn" onclick="navigateTutorial(1)">
+          Próximo Tópico &rarr;
+        </button>
+      </footer>
+    </div>
+  </section>
+
+
   <script>
     /* ==========================================================================
        1. TOKENS DE TEMA (TEMA DO SISTEMA POR PADRAO + ALTERNANCIA MANUAL)
        ========================================================================== */
     const THEME_TOKENS = {
       light: {
-        viewportBg: '#ffffff',
-        gridDots: '#cbd5e1',
-        busbar: '#0f172a',
-        lineEnergized: '#1e293b',
+        viewportBg: '#f8fafc',
+        gridDots: '#e2e8f0',
+        busbar: '#334155',
+        lineEnergized: '#334155',
         lineDeenergized: '#94a3b8',
         lineFault: '#dc2626',
         lineRecomposed: '#0284c7',
         transformer: '#0284c7',
-        labelPrimary: '#0f172a',
-        labelMuted: '#475569',
+        labelPrimary: '#1e293b',
+        labelMuted: '#64748b',
         switchClosed: '#dc2626',
         switchOpen: '#16a34a',
-        switchStroke: '#0f172a',
-        legendBg: '#f8fafc',
-        legendBorder: '#cbd5e1'
+        switchStroke: '#334155',
+        legendBg: '#ffffff',
+        legendBorder: '#e2e8f0'
       },
       dark: {
         viewportBg: '#16191e',
@@ -1295,7 +1821,7 @@
     let userOverrodeTheme = false;
 
     /* ==========================================================================
-       2. PARAMETROS ELETRICOS E DE PROTECAO REAIS (RODRIGUES, 2015 — TAB. 4.13)
+       2. PARAMETROS ELETRICOS E DE PROTECAO REAIS (RODRIGUES, 2015: TAB. 4.13)
        ========================================================================== */
     const S_BASE = 100;
     const V_BASE = 13.8;
@@ -1643,6 +2169,398 @@
     /* ==========================================================================
        5. ATUALIZACAO DO PAINEL DIDATICO LATERAL
        ========================================================================== */
+
+    /* ==========================================================================
+       CONTEUDO E GERENCIAMENTO DA ABA DE TUTORIAIS
+       ========================================================================== */
+    const tutorialTopics = [
+      {
+        id: 1,
+        tag: "Fundamentos do Projeto",
+        title: "1. Visão Geral da SE Aquiraz e Self-Healing",
+        subtitle: "Topologia da subestação, barramentos de 69 kV e 13,8 kV, alimentadores radiais e socorros interligados.",
+        content: `
+          <h3>1.1 Contexto e Localização do Estudo</h3>
+          <p>A Subestação Aquiraz (SE AQZ 69/13,8 kV) constitui um ponto nodal estratégico para o fornecimento de energia elétrica à região metropolitana e litorânea de Aquiraz no estado do Ceará. O sistema é suprido pela concessionária de transmissão (CHESF) através da Regional Aquiraz II em nível de tensão de 69 kV, sendo rebaixado para 13,8 kV para atendimento à distribuição primária urbana, comercial e rural.</p>
+
+          <h3>1.2 Transformação e Barramentos</h3>
+          <p>O setor de transformação de potência é composto por dois transformadores principais (TR1 e TR2) de 15 MVA cada, totalizando 30 MVA de capacidade instalada nominal. Os transformadores contam com comutação de tape sob carga (LTC) e aterramento de neutro com resistor de limitação, garantindo coordenação segura contra defeitos fase-terra sem elevações excessivas de potencial nas fases sãs.</p>
+
+          <table class="tutorial-table">
+            <thead>
+              <tr>
+                <th>Equipamento</th>
+                <th>Tensão Primária / Secundária</th>
+                <th>Potência Nominal</th>
+                <th>Alimentadores Atendidos</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Transformador TR1</td>
+                <td>69 kV / 13,8 kV</td>
+                <td>15 MVA</td>
+                <td>AQZ-01 e AQZ-02</td>
+              </tr>
+              <tr>
+                <td>Transformador TR2</td>
+                <td>69 kV / 13,8 kV</td>
+                <td>15 MVA</td>
+                <td>AQZ-03 e AQZ-04</td>
+              </tr>
+            </tbody>
+          </table>
+
+          <h3>1.3 Topologia dos 4 Alimentadores e 16 Trechos</h3>
+          <p>A rede de distribuição é estruturada em 4 alimentadores aéreos radiais com pontos de interligação normalmente abertos (NA), totalizando 16 trechos seccionados:</p>
+          <ul>
+            <li><b>Alimentador 1 (AQZ-01):</b> Condutor CAA 266,8 MCM no tronco (trechos T1 a T4). Atende cargas residenciais e comerciais centrais. Interliga-se com a SE Eusébio através do religador de socorro RL1.</li>
+            <li><b>Alimentador 2 (AQZ-02):</b> Condutor CAA 266,8 MCM no tronco (trechos T5 a T7). Atende cargas industriais e serviços. Interliga-se com a SE Eusébio via chave RL2.</li>
+            <li><b>Alimentador 3 (AQZ-03):</b> Condutor CAA 4/0 AWG (trechos T8 a T11). Atende regiões periurbanas de expansão. Conecta-se à Subestação Água Fria (SE AGF) via tie-switch RL3.</li>
+            <li><b>Alimentador 4 (AQZ-04):</b> Condutor CAA 266,8 MCM (trechos T12 a T16). Maior extensão e densidade de carga. Conecta-se à Subestação Água Fria via tie-switch RL4.</li>
+          </ul>
+
+          <div class="tutorial-callout">
+            <div class="tutorial-callout-title">Objetivo do Sistema Self-Healing (FLISR):</div>
+            Isolar qualquer trecho defeituoso em menos de 3 minutos e restabelecer o fornecimento para o maior número possível de consumidores a montante e a jusante da falta, reduzindo drasticamente os índices de continuidade DEC e FEC sem necessidade de envio preliminar de equipe de campo.
+          </div>
+        `
+      },
+      {
+        id: 2,
+        tag: "Automação da Distribuição",
+        title: "2. Como Funciona a Recomposição Automática (FLISR)",
+        subtitle: "Ciclo sequencial de detecção, localização, isolamento e restauração automática por chaveamento inteligente.",
+        content: `
+          <h3>2.1 O que é a tecnologia FLISR?</h3>
+          <p>FLISR é a sigla consagrada no setor elétrico para <i>Fault Location, Isolation, and Service Restoration</i> (Localização da Falta, Isolamento e Recomposição do Serviço). O sistema combina inteligência nos relés de proteção de subestação com sensores nos religadores de rede e algoritmos centralizados de reconfiguração de malha.</p>
+
+          <h3>2.2 Passo a Passo da Recomposição:</h3>
+          <ol>
+            <li><b>1. Localização da Falta (Fault Location):</b> Os religadores monitoram continuamente as grandezas elétricas. Quando a sobrecorrente cessa além de determinado ponto seccionável, o sistema identifica com precisão o trecho exato que originou o distúrbio.</li>
+            <li><b>2. Isolamento da Falta (Fault Isolation):</b> O algoritmo envia comandos de abertura telecomandada às chaves seccionadoras imediatamente a montante e a jusante do trecho defeituoso, isolando fisicamente o curto-circuito.</li>
+            <li><b>3. Restauração do Bloco a Montante:</b> O disjuntor principal da subestação é religado, restaurando instantaneamente todos os trechos sãos compreendidos entre a barra da SE AQZ e a chave de montante isolada.</li>
+            <li><b>4. Restauração do Bloco a Jusante (Transferência de Carga):</b> O sistema comanda o fechamento da chave normalmente aberta de socorro (RL1, RL2, RL3 ou RL4), alimentando os trechos sãos finais a partir da subestação vizinha (SE ESB ou SE AGF).</li>
+          </ol>
+
+          <table class="tutorial-table">
+            <thead>
+              <tr>
+                <th>Alimentador</th>
+                <th>Chaves de Seccionamento</th>
+                <th>Subestação de Socorro</th>
+                <th>Chave NA de Transferência</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Alim. 1 (AQZ-01)</td>
+                <td>DJ 21I7, CH1, CH2, CH3</td>
+                <td>SE ESB (Eusébio)</td>
+                <td>RL1</td>
+              </tr>
+              <tr>
+                <td>Alim. 2 (AQZ-02)</td>
+                <td>DJ 21I8, CH4, CH5</td>
+                <td>SE ESB (Eusébio)</td>
+                <td>RL2</td>
+              </tr>
+              <tr>
+                <td>Alim. 3 (AQZ-03)</td>
+                <td>DJ 21I9, CH6, CH7, CH8</td>
+                <td>SE AGF (Água Fria)</td>
+                <td>RL3</td>
+              </tr>
+              <tr>
+                <td>Alim. 4 (AQZ-04)</td>
+                <td>DJ 21J1, CH9, CH10, CH11, CH12</td>
+                <td>SE AGF (Água Fria)</td>
+                <td>RL4</td>
+              </tr>
+            </tbody>
+          </table>
+        `
+      },
+      {
+        id: 3,
+        tag: "Estudos de Curto-Circuito",
+        title: "3. Ensaios do TCC e Proteção ANSI 79",
+        subtitle: "Curvas de sobrecorrente temporizada 50/51, parametrização do relé SEL-751 e ciclo de religamento em tempo real.",
+        content: `
+          <h3>3.1 Parametrização Real do Relé SEL-751</h3>
+          <p>No Trabalho de Conclusão de Curso (TCC) que deu origem a este simulador, a proteção dos alimentadores foi modelada com base nos parâmetros oficiais da concessionária parametrizados em relés microprocessados SEL-751:</p>
+          <ul>
+            <li><b>Função 50 (Instantâneo de Fase):</b> Atuação em aproximadamente 40 ms para correntes acima do limiar de falta franca na saída da subestação.</li>
+            <li><b>Função 51 (Temporizado de Fase):</b> Curva Muito Inversa (U3) parametrizada conforme a coordenação montante-jusante, calculando o tempo exato de atuação de acordo com a magnitude calculada da corrente de curto no ponto.</li>
+            <li><b>Função 51N (Temporizado de Neutro):</b> Sensibilidade elevada para detecção de faltas à terra de baixa e média corrente.</li>
+          </ul>
+
+          <h3>3.2 Ciclo de Religamento Automático (Função ANSI 79)</h3>
+          <p>Para evitar desligamentos desnecessários diante de faltas transitórias (como descargas atmosféricas ou toques momentâneos de galhos), o relé executa tentativas sucessivas de religamento com tempos mortos parametrizados:</p>
+          <ul>
+            <li><b>1º Disparo e Tempo Morto:</b> Abertura em 40 a 925 ms, com espera de tempo morto de 10 segundos (79OI1).</li>
+            <li><b>2º Disparo e Tempo Morto:</b> Caso o defeito persista, nova abertura com tempo morto de 11 segundos (79OI2).</li>
+            <li><b>3º Disparo e Tempo Morto:</b> Terceira tentativa com tempo morto de 12 segundos (79OI3).</li>
+            <li><b>4º Disparo e Lockout:</b> Quarta abertura com tempo morto de 13 segundos (79OI4), seguida do bloqueio definitivo na posição aberta (<i>Lockout</i>).</li>
+          </ul>
+
+          <div class="tutorial-callout">
+            <div class="tutorial-callout-title">Botão "Pular para o Fim":</div>
+            Como os tempos mortos reais do relé somam mais de 45 segundos por ensaio completo, o botão <b>"Pular para o Fim"</b> permite ao usuário acelerar o tempo instantaneamente, concluindo a sequência e exibindo a rede com o isolamento e recomposição finais aplicados.
+          </div>
+        `
+      },
+      {
+        id: 4,
+        tag: "Simulação Interativa",
+        title: "4. Modo Inserção Manual de Faltas",
+        subtitle: "Como aplicar curtos-circuitos em qualquer trecho e comparar os tipos de defeito (3F, 2F, FT e FTm).",
+        content: `
+          <h3>4.1 Operando a Inserção Manual</h3>
+          <ol>
+            <li>No menu superior com abas, clique na aba <b>"Inserção Manual"</b>.</li>
+            <li>Clique no botão <b>"Inserir Falta"</b>. O botão ficará destacado em azul e o cursor sobre o diagrama mudará para formato de mira cruzada (<i>crosshair</i>).</li>
+            <li>Posicione o cursor sobre o trecho desejado (T1 a T16) e clique uma vez.</li>
+            <li>O símbolo elétrico de curto-circuito será inserido no ponto exato e o sistema iniciará a simulação física em tempo real.</li>
+            <li>Para desativar o modo de inserção a qualquer momento, pressione <b>Esc</b> ou clique novamente no botão "Inserir Falta".</li>
+          </ol>
+
+          <h3>4.2 Tipos de Curto-Circuito Disponíveis</h3>
+          <table class="tutorial-table">
+            <thead>
+              <tr>
+                <th>Tipo de Falta</th>
+                <th>Denominação</th>
+                <th>Característica e Comportamento</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>3F</td>
+                <td>Trifásico Simétrico</td>
+                <td>Falta mais severa em termos de magnitude de corrente. Envolve as três fases simultaneamente.</td>
+              </tr>
+              <tr>
+                <td>2F</td>
+                <td>Bifásico sem Terra</td>
+                <td>Curto entre duas fases (A-B, B-C ou C-A). A corrente atinge aproximadamente 86,6% do valor trifásico correspondente.</td>
+              </tr>
+              <tr>
+                <td>FT</td>
+                <td>Fase-Terra Franco</td>
+                <td>Tipo de falta mais recorrente em redes aéreas de distribuição. O valor da corrente depende da impedância de sequência zero do cabo e do resistor de neutro da subestação.</td>
+              </tr>
+              <tr>
+                <td>FTm</td>
+                <td>Fase-Terra de Alta Resistência (100 &Omega;)</td>
+                <td>Simula contato através de árvore ou condutor rompido caído sobre terreno de alta resistividade, desafiando a sensibilidade das funções 51N.</td>
+              </tr>
+            </tbody>
+          </table>
+
+          <h3>4.3 Remoção de Faltas</h3>
+          <p>Para retirar um curto-circuito previamente aplicado, você pode clicar no botão <b>"Remover Falta"</b> na aba Inserção Manual e clicar sobre o símbolo de falta, ou utilizar os botões <b>Desfazer (Ctrl+Z)</b> ou <b>Restaurar Rede (seta circular)</b> na barra superior.</p>
+        `
+      },
+      {
+        id: 5,
+        tag: "Operação do Sistema",
+        title: "5. Modo Manobra Manual de Chaves",
+        subtitle: "Controle direto dos disjuntores e religadores para simulação de contingências e manobras programadas.",
+        content: `
+          <h3>5.1 Como Manobrar Equipamentos Manualmente</h3>
+          <ol>
+            <li>Na barra de abas, selecione <b>"Inserção Manual"</b>.</li>
+            <li>Clique no botão <b>"Manobrar Chaves"</b>. O botão ficará destacado e o cursor se transformará em ponteiro de clique (<i>pointer</i>).</li>
+            <li>Clique diretamente sobre o quadrado representativo de qualquer equipamento na rede:
+              <ul>
+                <li>Disjuntores de Saída da Subestação (DJ 21I7, 21I8, 21I9, 21J1).</li>
+                <li>Chaves e Religadores de Linha (CH1 a CH12).</li>
+                <li>Religadores de Transferência / Socorro (RL1 a RL4).</li>
+              </ul>
+            </li>
+            <li>O equipamento alternará de estado imediatamente entre <b>Fechado (NF)</b> e <b>Aberto (NA)</b>.</li>
+          </ol>
+
+          <h3>5.2 Código de Cores dos Equipamentos e Linhas</h3>
+          <table class="tutorial-table">
+            <thead>
+              <tr>
+                <th>Elemento / Cor</th>
+                <th>Significado Operacional</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Quadrado Vermelho</td>
+                <td>Chave / Disjuntor Fechado (NF - Conduzindo corrente).</td>
+              </tr>
+              <tr>
+                <td>Quadrado Verde</td>
+                <td>Chave / Disjuntor Aberto (NA - Circuito seccionado).</td>
+              </tr>
+              <tr>
+                <td>Linha Escura Contínua</td>
+                <td>Trecho energizado em condição normal de operação suprido pela SE AQZ.</td>
+              </tr>
+              <tr>
+                <td>Linha Cinza Tracejada</td>
+                <td>Trecho desenergizado (sem tensão / clientes interrompidos).</td>
+              </tr>
+              <tr>
+                <td>Linha Vermelha Espessa</td>
+                <td>Trecho com presença de corrente de curto-circuito ativa.</td>
+              </tr>
+              <tr>
+                <td>Linha Azul Contínua</td>
+                <td>Trecho recomposto com sucesso através de uma das subestações de socorro (SE ESB ou SE AGF).</td>
+              </tr>
+            </tbody>
+          </table>
+        `
+      },
+      {
+        id: 6,
+        tag: "Interface e Parâmetros",
+        title: "6. Configurações e Parâmetros Técnicos",
+        subtitle: "Ajuste de visibilidade de comprimentos e grade, exportação em alta resolução e preferências de contraste.",
+        content: `
+          <h3>6.1 Opções de Visualização da Rede</h3>
+          <p>Na aba <b>"Configurações"</b>, você tem acesso rápido a opções visuais que auxiliam na análise dos dados da rede:</p>
+          <ul>
+            <li><b>Comprimentos (m):</b> Ativa ou desativa a exibição dos comprimentos exatos em metros sobre cada segmento de linha. Essas distâncias foram extraídas do cadastro georreferenciado da distribuidora e determinam diretamente as impedâncias de curto-circuito de cada trecho.</li>
+            <li><b>Grade:</b> Alterna a visualização da malha pontilhada técnica no fundo do diagrama unifilar.</li>
+          </ul>
+
+          <h3>6.2 Ferramentas Gerais na Barra Superior</h3>
+          <ul>
+            <li><b>Desfazer e Refazer (Setas Curvas):</b> Permitem navegar historicamente por cada passo de manobra ou inserção de falta executado, compatíveis também com os atalhos de teclado <b>Ctrl+Z</b> e <b>Ctrl+Y</b>.</li>
+            <li><b>Restaurar Rede (Seta Circular):</b> Reseta completamente o simulador, cancelando qualquer ensaio ativo, temporizadores de religamento e retornando todas as chaves e disjuntores ao estado normal de operação.</li>
+            <li><b>Exportar PNG:</b> Gera instantaneamente uma imagem nítida em alta definição com fundo branco do diagrama unifilar, ideal para ilustrar trabalhos acadêmicos, laudos e apresentações técnicas.</li>
+            <li><b>Alternância de Tema (Sol / Lua):</b> O interruptor deslizante no topo direito permite alternar suavemente entre o Tema Claro e o Tema Escuro, adaptando o contraste para qualquer condição de iluminação ambiente.</li>
+          </ul>
+        `
+      }
+    ];
+
+    let currentTutorialId = 1;
+
+    function toggleTutorialDropdown(e) {
+      if (e) e.stopPropagation();
+      const menu = document.getElementById('tutorialDropdownMenu');
+      if (menu) {
+        menu.style.display = (menu.style.display === 'none' || menu.style.display === '') ? 'flex' : 'none';
+      }
+    }
+
+    function selectTutorialTopic(id) {
+      currentTutorialId = id;
+      renderTutorialTopic(id);
+      const menu = document.getElementById('tutorialDropdownMenu');
+      if (menu) menu.style.display = 'none';
+    }
+
+    function navigateTutorial(direction) {
+      let newId = currentTutorialId + direction;
+      if (newId < 1) newId = 1;
+      if (newId > tutorialTopics.length) newId = tutorialTopics.length;
+      if (newId !== currentTutorialId) {
+        selectTutorialTopic(newId);
+      }
+    }
+
+    function renderTutorialTopic(id) {
+      const topic = tutorialTopics.find(t => t.id === id);
+      if (!topic) return;
+
+      const tagEl = document.getElementById('tutorialTopicTag');
+      const titleEl = document.getElementById('tutorialTitle');
+      const subtitleEl = document.getElementById('tutorialSubtitle');
+      const bodyEl = document.getElementById('tutorialBody');
+      const currentTitleEl = document.getElementById('currentTutorialTitle');
+      const navIndicatorEl = document.getElementById('tutorialNavIndicator');
+      const btnPrev = document.getElementById('btnPrevTopic');
+      const btnNext = document.getElementById('btnNextTopic');
+      const btnNavPrev = document.getElementById('btnNavPrev');
+      const btnNavNext = document.getElementById('btnNavNext');
+
+      if (tagEl) tagEl.textContent = topic.tag;
+      if (titleEl) titleEl.textContent = topic.title;
+      if (subtitleEl) subtitleEl.textContent = topic.subtitle;
+      if (bodyEl) bodyEl.innerHTML = topic.content;
+      if (currentTitleEl) currentTitleEl.textContent = topic.title;
+      if (navIndicatorEl) navIndicatorEl.textContent = 'Tópico ' + topic.id + ' de ' + tutorialTopics.length;
+
+      if (btnPrev) btnPrev.disabled = (topic.id === 1);
+      if (btnNext) btnNext.disabled = (topic.id === tutorialTopics.length);
+      if (btnNavPrev) btnNavPrev.disabled = (topic.id === 1);
+      if (btnNavNext) btnNavNext.disabled = (topic.id === tutorialTopics.length);
+
+      const items = document.querySelectorAll('.tutorial-dropdown-item');
+      items.forEach((item, idx) => {
+        if (idx + 1 === topic.id) {
+          item.classList.add('active');
+        } else {
+          item.classList.remove('active');
+        }
+      });
+
+      const ws = document.getElementById('tutorialWorkspace');
+      if (ws) ws.scrollTop = 0;
+    }
+
+    document.addEventListener('click', (e) => {
+      const menu = document.getElementById('tutorialDropdownMenu');
+      const btn = document.getElementById('btnTutorialDropdown');
+      if (menu && menu.style.display !== 'none') {
+        if (btn && !btn.contains(e.target) && !menu.contains(e.target)) {
+          menu.style.display = 'none';
+        }
+      }
+    });
+
+    function switchRibbonTab(tabName) {
+      const tabs = {
+        'tcc': { btn: 'ribbonTabTcc', pane: 'ribbonPaneTcc' },
+        'manual': { btn: 'ribbonTabManual', pane: 'ribbonPaneManual' },
+        'config': { btn: 'ribbonTabConfig', pane: 'ribbonPaneConfig' },
+        'tutorial': { btn: 'ribbonTabTutorial', pane: 'ribbonPaneTutorial' }
+      };
+
+      Object.keys(tabs).forEach(k => {
+        const isTarget = (k === tabName);
+        const tabEl = document.getElementById(tabs[k].btn);
+        const paneEl = document.getElementById(tabs[k].pane);
+        if (tabEl) {
+          if (isTarget) {
+            tabEl.classList.add('active');
+          } else {
+            tabEl.classList.remove('active');
+          }
+        }
+        if (paneEl) {
+          if (isTarget) {
+            paneEl.classList.add('active');
+          } else {
+            paneEl.classList.remove('active');
+          }
+        }
+      });
+
+      const mainWs = document.getElementById('mainWorkspace');
+      const tutWs = document.getElementById('tutorialWorkspace');
+      if (tabName === 'tutorial') {
+        if (mainWs) mainWs.style.display = 'none';
+        if (tutWs) {
+          tutWs.style.display = 'flex';
+          renderTutorialTopic(currentTutorialId);
+        }
+      } else {
+        if (mainWs) mainWs.style.display = 'flex';
+        if (tutWs) tutWs.style.display = 'none';
+      }
+    }
+
     function switchPanelTab(tabName) {
       const btnSteps = document.getElementById('tabBtnSteps');
       const btnTech = document.getElementById('tabBtnTech');
@@ -1740,7 +2658,7 @@
       document.getElementById('txtCurveDial').textContent = `IEC Muito Inversa (TD = ${isGround ? relay.ground.dial : relay.phase.dial})`;
       document.getElementById('txtCurrentPickup').textContent = `${formattedCurrent} / ${shotT.pickup} A (M = ${shotT.multiple.toFixed(2)})`;
       document.getElementById('txtTotalTripTime').textContent = `1º (${shot1.shortCode}): ${shot1.totalTimeMs.toFixed(1).replace('.', ',')} ms | Curva 51: ${shotT.totalTimeMs.toFixed(1).replace('.', ',')} ms`;
-      document.getElementById('txtCableSpec').textContent = `${seg.length.toLocaleString('pt-BR')} m — ${seg.cable}`;
+      document.getElementById('txtCableSpec').textContent = `${seg.length.toLocaleString('pt-BR')} m - ${seg.cable}`;
       document.getElementById('txtThermalMargin').textContent = `${seg.load} A / ${seg.amp} A (Margem Segura)`;
     }
 
@@ -2067,6 +2985,7 @@
 
       renderAll();
       updateToolbarState();
+      renderTutorialTopic(1);
       updateDidacticPanel();
       runSimulationSequence(segKey);
     }
@@ -2077,7 +2996,12 @@
     function updateThemeButtonLabel() {
       const btn = document.getElementById('btnThemeToggle');
       if (btn) {
-        btn.textContent = currentTheme === 'dark' ? 'Tema: Escuro' : 'Tema: Claro';
+        const isDark = currentTheme === 'dark';
+        btn.setAttribute('aria-checked', isDark ? 'true' : 'false');
+        btn.title = isDark
+          ? 'Tema Escuro ativo (clique para alternar para Claro)'
+          : 'Tema Claro ativo (clique para alternar para Escuro)';
+        btn.setAttribute('aria-label', btn.title);
       }
     }
 
@@ -2189,6 +3113,7 @@
         rectLeft.setAttribute('fill', tr.leftSwitchState === 'closed' ? t.switchClosed : t.switchOpen);
         rectLeft.setAttribute('stroke', t.switchStroke);
         rectLeft.setAttribute('stroke-width', '1.2');
+        rectLeft.setAttribute('rx', '4');
         leftBoxG.appendChild(rectLeft);
         g.appendChild(leftBoxG);
 
@@ -2204,6 +3129,7 @@
         rectRight.setAttribute('fill', tr.rightSwitchState === 'closed' ? t.switchClosed : t.switchOpen);
         rectRight.setAttribute('stroke', t.switchStroke);
         rectRight.setAttribute('stroke-width', '1.2');
+        rectRight.setAttribute('rx', '4');
         rightBoxG.appendChild(rectRight);
         g.appendChild(rightBoxG);
 
@@ -2352,7 +3278,7 @@
         rect.setAttribute('y', String(eq.y - half));
         rect.setAttribute('width', String(boxSize));
         rect.setAttribute('height', String(boxSize));
-        rect.setAttribute('rx', '2');
+        rect.setAttribute('rx', '4');
         rect.setAttribute('ry', '2');
         rect.setAttribute('fill', eq.state === 'closed' ? t.switchClosed : t.switchOpen);
         rect.setAttribute('stroke', t.switchStroke);
