@@ -35,7 +35,7 @@ self-healing-aquiraz-gemini/
 │   └── TCC_MarioSergio_2015_pós defesa (revisão 3).pdf # Monografia de base (SE Aquiraz)
 │   *(Nota: a pasta de ensaios e dados brutos locais 'TCC Mario Sergio' é mantida apenas localmente e excluída do Git por limite de tamanho)*
 │
-├── diagrama_unifilar_se_aqz.html       # Simulador Web Principal (Single Page Application autossuficiente na raiz)
+├── index.html                          # Simulador Web Principal (SPA autossuficiente, GitHub Pages e Live Preview)
 │
 ├── simulacao/
 │   ├── src/                            # Módulos em desenvolvimento do simulador
@@ -62,7 +62,7 @@ self-healing-aquiraz-gemini/
 ## Como Executar o Simulador no VS Code
 
 1. Instale a extensão oficial **Live Preview** (Microsoft) no VS Code (`Ctrl + Shift + X` -> busque por `Live Preview`).
-2. Abra o arquivo [`diagrama_unifilar_se_aqz.html`](file:///c:/Users/pvict/OneDrive/self-healing-aquiraz-gemini/diagrama_unifilar_se_aqz.html).
+2. Abra o arquivo [`index.html`](file:///c:/Users/pvict/OneDrive/self-healing-aquiraz-gemini/index.html).
 3. Clique com o botão direito no editor e selecione **"Live Preview: Show Preview"** (ou use o atalho no canto superior direito).
 4. O diagrama unifilar interativo abrirá diretamente em uma aba ao lado do seu código.
 
