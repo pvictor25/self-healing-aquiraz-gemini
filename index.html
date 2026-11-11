@@ -128,19 +128,19 @@
        1. CABECALHO COMPACTO E BARRA DE FERRAMENTAS UNICA
        ========================================================================== */
     .top-header {
-      height: 38px;
+      height: 32px;
       flex-shrink: 0;
       background-color: var(--bg-header);
       border-bottom: 1px solid var(--border-medium);
-      padding: 0 14px;
+      padding: 0 12px;
       display: flex;
       align-items: center;
-      gap: 12px;
+      gap: 10px;
       overflow-x: auto;
     }
 
     .project-title {
-      font-size: 12.5px;
+      font-size: 12px;
       font-weight: 600;
       color: var(--text-primary);
       letter-spacing: 0.2px;
@@ -149,25 +149,45 @@
       user-select: none;
     }
 
+    [data-theme="dark"] .project-title {
+      color: #cbd5e1;
+    }
+
     .header-general-actions {
       display: flex;
       align-items: center;
-      gap: 5px;
+      gap: 4px;
       flex-shrink: 0;
+    }
+
+    .header-general-actions .tool-btn {
+      color: var(--text-secondary);
+      padding: 2px 6px;
+      height: 22px;
+      font-size: 11px;
+    }
+
+    [data-theme="dark"] .header-general-actions .tool-btn {
+      color: #94a3b8;
+    }
+
+    [data-theme="dark"] .header-general-actions .tool-btn:hover:not(:disabled) {
+      color: #cbd5e1;
+      background-color: #14171c;
     }
 
     .header-divider {
       width: 1px;
-      height: 18px;
+      height: 15px;
       background-color: var(--border-medium);
-      margin: 0 3px;
+      margin: 0 2px;
       flex-shrink: 0;
     }
 
     .tool-btn.icon-btn {
-      padding: 4px 6px;
-      min-width: 28px;
-      height: 26px;
+      padding: 2px 5px;
+      min-width: 24px;
+      height: 22px;
       justify-content: center;
     }
 
@@ -371,6 +391,331 @@
       gap: 4px;
     }
 
+    /* Menu Flutuante de Seleção de Tipo de Falta */
+    .fault-dropdown-menu {
+      position: fixed;
+      z-index: 9999;
+      background-color: var(--bg-header);
+      border: 1px solid var(--border-medium);
+      border-radius: 5px;
+      min-width: 150px;
+      padding: 4px;
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+      animation: faultMenuFadeIn 0.1s ease-out;
+    }
+
+    @keyframes faultMenuFadeIn {
+      from { opacity: 0; transform: translateY(-3px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .fault-dropdown-item {
+      background: transparent;
+      border: none;
+      color: var(--text-secondary);
+      font-family: inherit;
+      font-size: 11.5px;
+      font-weight: 400; /* Sem negrito */
+      text-align: left;
+      padding: 6px 12px;
+      border-radius: 4px;
+      cursor: pointer;
+      transition: background-color 0.15s ease, color 0.15s ease;
+      white-space: nowrap;
+      user-select: none;
+      width: 100%;
+    }
+
+    .fault-dropdown-item:hover {
+      background-color: var(--bg-btn-hover);
+      color: var(--text-primary);
+    }
+
+    [data-theme="light"] .fault-dropdown-item:hover {
+      background-color: #e2e8f0;
+      color: var(--text-primary);
+    }
+
+    [data-theme="dark"] .fault-dropdown-item:hover {
+      background-color: #12151a;
+      color: var(--text-primary);
+    }
+
+    .fault-dropdown-item.active {
+      color: var(--text-primary);
+      background-color: var(--bg-btn-hover);
+    }
+
+    [data-theme="light"] .fault-dropdown-item.active {
+      background-color: #e2e8f0;
+      color: var(--text-primary);
+    }
+
+    [data-theme="dark"] .fault-dropdown-item.active {
+      background-color: #12151a;
+      color: #cbd5e1;
+    }
+
+    /* Botão de Controle de Velocidade da Simulação */
+    .btn-sim-speed {
+      font-family: Consolas, monospace;
+      font-size: 11.5px;
+      font-weight: 700;
+      color: var(--text-primary);
+      min-width: 38px;
+      height: 30px;
+      padding: 0 6px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border: 1px solid var(--border-medium);
+      background-color: var(--bg-card);
+      border-radius: 4px;
+      cursor: pointer;
+      user-select: none;
+      transition: background-color 0.15s ease, border-color 0.15s ease, color 0.15s ease;
+    }
+
+    .btn-sim-speed:hover {
+      background-color: var(--bg-btn-hover);
+      border-color: var(--border-strong);
+    }
+
+    .btn-sim-speed.active {
+      border-color: var(--border-focus);
+      background-color: var(--bg-btn-hover);
+      color: var(--text-accent);
+    }
+
+    /* Menu Flutuante de Velocidade */
+    .speed-dropdown-menu {
+      position: fixed;
+      z-index: 9999;
+      background-color: var(--bg-header);
+      border: 1px solid var(--border-medium);
+      border-radius: 6px;
+      width: 260px;
+      padding: 10px 14px 12px 14px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      animation: speedMenuFadeIn 0.1s ease-out;
+      user-select: none;
+    }
+
+    @keyframes speedMenuFadeIn {
+      from { opacity: 0; transform: translateY(-3px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .speed-menu-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-bottom: 1px solid var(--border-subtle);
+      padding-bottom: 5px;
+    }
+
+    .speed-menu-title {
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      color: var(--text-muted);
+    }
+
+    .speed-menu-val {
+      font-family: Consolas, monospace;
+      font-size: 12px;
+      font-weight: 700;
+      color: var(--text-accent);
+    }
+
+    .speed-slider-wrap {
+      display: flex;
+      flex-direction: column;
+      gap: 3px;
+      position: relative;
+      padding-top: 4px;
+    }
+
+    .speed-slider-track-box {
+      position: relative;
+      width: 100%;
+      height: 22px;
+      display: flex;
+      align-items: center;
+    }
+
+    /* Linha base do trilho onde a bolinha desliza */
+    .speed-track-line {
+      position: absolute;
+      left: 7px;
+      right: 7px;
+      top: 50%;
+      transform: translateY(-50%);
+      height: 3px;
+      background-color: var(--border-strong);
+      border-radius: 2px;
+      z-index: 1;
+    }
+
+    /* Container dos pontinhos sobre a linha */
+    .speed-track-dots {
+      position: absolute;
+      left: 0;
+      right: 0;
+      top: 0;
+      bottom: 0;
+      pointer-events: none;
+      z-index: 2;
+    }
+
+    /* Pontinho mais claro sobre a linha, alinhado exatamente acima dos números */
+    .speed-dot {
+      position: absolute;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background-color: #ffffff;
+      border: 1.2px solid #94a3b8;
+      box-sizing: border-box;
+      transition: background-color 0.15s ease, border-color 0.15s ease, transform 0.15s ease;
+      cursor: pointer;
+      pointer-events: auto;
+    }
+
+    [data-theme="dark"] .speed-dot {
+      background-color: #cbd5e1;
+      border-color: #64748b;
+    }
+
+    .speed-dot.active {
+      background-color: var(--text-accent);
+      border-color: var(--text-accent);
+      transform: translate(-50%, -50%) scale(1.3);
+    }
+
+    /* Input Range transparente posicionado sobre a linha e os pontinhos */
+    .speed-slider-track-box input[type="range"] {
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      -webkit-appearance: none;
+      appearance: none;
+      background: transparent;
+      outline: none;
+      cursor: pointer;
+      margin: 0;
+      padding: 0;
+      z-index: 3;
+    }
+
+    .speed-slider-track-box input[type="range"]::-webkit-slider-runnable-track {
+      background: transparent;
+      border: none;
+      height: 4px;
+    }
+
+    .speed-slider-track-box input[type="range"]::-moz-range-track {
+      background: transparent;
+      border: none;
+      height: 4px;
+    }
+
+    /* A bolinha deslizante (thumb) com 14px de largura (raio 7px) */
+    .speed-slider-track-box input[type="range"]::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      appearance: none;
+      width: 14px;
+      height: 14px;
+      border-radius: 50%;
+      background: var(--text-accent);
+      border: 2px solid var(--bg-header);
+      cursor: pointer;
+      margin-top: -5px;
+      transition: transform 0.1s ease;
+    }
+
+    .speed-slider-track-box input[type="range"]::-webkit-slider-thumb:hover {
+      transform: scale(1.15);
+    }
+
+    .speed-slider-track-box input[type="range"]::-moz-range-thumb {
+      width: 14px;
+      height: 14px;
+      border-radius: 50%;
+      background: var(--text-accent);
+      border: 2px solid var(--bg-header);
+      cursor: pointer;
+    }
+
+    /* Números de destaque abaixo da linha */
+    .speed-ticks {
+      position: relative;
+      width: 100%;
+      height: 18px;
+    }
+
+    .speed-tick-mark {
+      position: absolute;
+      top: 0;
+      transform: translateX(-50%);
+      font-family: Consolas, monospace;
+      font-size: 9.5px;
+      color: var(--text-muted);
+      cursor: pointer;
+      padding: 1px 2px;
+      border-radius: 3px;
+      transition: color 0.15s ease, background-color 0.15s ease, font-weight 0.15s ease;
+      white-space: nowrap;
+      text-align: center;
+    }
+
+    .speed-tick-mark:hover {
+      color: var(--text-primary);
+      background-color: var(--bg-btn-hover);
+    }
+
+    .speed-tick-mark.active {
+      color: var(--text-accent);
+      font-weight: 700;
+    }
+
+    /* Botão disparador na barra superior com o mesmo estilo das abas */
+    .fault-dropdown-trigger {
+      color: var(--text-secondary);
+      transition: background-color 0.15s ease, color 0.15s ease;
+    }
+
+    .fault-dropdown-trigger:hover {
+      background-color: var(--bg-btn-hover);
+      color: var(--text-primary);
+    }
+
+    .fault-dropdown-trigger.active {
+      background-color: var(--bg-btn-hover);
+      color: var(--text-primary);
+    }
+
+    [data-theme="light"] .fault-dropdown-trigger:hover,
+    [data-theme="light"] .fault-dropdown-trigger.active {
+      background-color: #e2e8f0;
+      color: var(--text-primary);
+    }
+
+    [data-theme="dark"] .fault-dropdown-trigger:hover,
+    [data-theme="dark"] .fault-dropdown-trigger.active {
+      background-color: #16191e;
+      color: var(--text-primary);
+    }
+
     /* Barra de Ferramentas com Abas Estilo Ribbon */
     .ribbon-bar {
       flex-shrink: 0;
@@ -384,7 +729,7 @@
       display: flex;
       align-items: flex-end;
       gap: 3px;
-      padding: 3px 14px 0 14px;
+      padding: 4px 14px 0 14px;
       background-color: var(--bg-header);
       border-bottom: 1px solid var(--border-medium);
     }
@@ -394,10 +739,10 @@
       border: 1px solid transparent;
       border-bottom: none;
       font-family: inherit;
-      font-size: 11.5px;
+      font-size: 12px;
       font-weight: 400;
       color: var(--text-secondary);
-      padding: 5px 13px 4px 13px;
+      padding: 6px 14px 5px 14px;
       cursor: pointer;
       border-radius: 5px 5px 0 0;
       user-select: none;
@@ -465,7 +810,7 @@
     }
 
     .ribbon-content-body {
-      height: 36px;
+      height: 44px;
       padding: 0 14px;
       display: flex;
       align-items: center;
@@ -494,27 +839,27 @@
     .ribbon-btn-group {
       display: flex;
       align-items: center;
-      gap: 5px;
+      gap: 6px;
       flex-wrap: nowrap;
       overflow-x: auto;
     }
 
     .toolbar-divider {
       width: 1px;
-      height: 18px;
+      height: 24px;
       background-color: var(--border-medium);
-      margin: 0 3px;
+      margin: 0 4px;
     }
 
     .tool-btn {
       font-family: inherit;
-      font-size: 11.5px;
+      font-size: 12px;
       font-weight: 400;
       color: var(--text-primary);
       background-color: transparent;
       border: none;
       border-radius: 4px;
-      padding: 4px 10px;
+      padding: 5px 10px;
       cursor: pointer;
       display: inline-flex;
       align-items: center;
@@ -546,6 +891,139 @@
       cursor: not-allowed;
     }
 
+    /* Controles de Reproducao da Simulacao (Apenas icones coloridos, sem fundo colorido) */
+    .btn-sim-play {
+      background-color: transparent !important;
+      color: #16a34a !important;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 4px;
+      min-width: 32px;
+      height: 32px;
+      transition: background-color 0.15s ease, color 0.15s ease, opacity 0.15s ease;
+      user-select: none;
+      flex-shrink: 0;
+    }
+
+    .btn-sim-play:hover:not(:disabled) {
+      background-color: var(--bg-btn-hover) !important;
+      color: #15803d !important;
+    }
+
+    .btn-sim-pause {
+      background-color: transparent !important;
+      color: #d97706 !important;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 4px;
+      min-width: 32px;
+      height: 32px;
+      transition: background-color 0.15s ease, color 0.15s ease, opacity 0.15s ease;
+      user-select: none;
+      flex-shrink: 0;
+    }
+
+    .btn-sim-pause:hover:not(:disabled) {
+      background-color: var(--bg-btn-hover) !important;
+      color: #b45309 !important;
+    }
+
+    .btn-sim-stop {
+      background-color: transparent !important;
+      color: #dc2626 !important;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 4px;
+      min-width: 32px;
+      height: 32px;
+      transition: background-color 0.15s ease, color 0.15s ease, opacity 0.15s ease;
+      user-select: none;
+      flex-shrink: 0;
+    }
+
+    .btn-sim-stop:hover:not(:disabled) {
+      background-color: var(--bg-btn-hover) !important;
+      color: #b91c1c !important;
+    }
+
+    .btn-sim-reset {
+      background-color: transparent !important;
+      color: #0284c7 !important;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 2px;
+      min-width: 26px;
+      height: 26px;
+      transition: background-color 0.15s ease, color 0.15s ease, opacity 0.15s ease;
+      user-select: none;
+      flex-shrink: 0;
+    }
+
+    .btn-sim-reset:hover:not(:disabled) {
+      background-color: var(--bg-btn-hover) !important;
+      color: #0369a1 !important;
+    }
+
+    .btn-sim-play:disabled,
+    .btn-sim-pause:disabled,
+    .btn-sim-stop:disabled,
+    .btn-sim-reset:disabled {
+      opacity: 0.35 !important;
+      cursor: not-allowed;
+    }
+
+    [data-theme="dark"] .btn-sim-play {
+      color: #22c55e !important;
+    }
+
+    [data-theme="dark"] .btn-sim-play:hover:not(:disabled) {
+      background-color: #14171c !important;
+      color: #4ade80 !important;
+    }
+
+    [data-theme="dark"] .btn-sim-pause {
+      color: #f59e0b !important;
+    }
+
+    [data-theme="dark"] .btn-sim-pause:hover:not(:disabled) {
+      background-color: #14171c !important;
+      color: #fbbf24 !important;
+    }
+
+    [data-theme="dark"] .btn-sim-stop {
+      color: #ef4444 !important;
+    }
+
+    [data-theme="dark"] .btn-sim-stop:hover:not(:disabled) {
+      background-color: #14171c !important;
+      color: #f87171 !important;
+    }
+
+    [data-theme="dark"] .btn-sim-reset {
+      color: #38bdf8 !important;
+    }
+
+    [data-theme="dark"] .btn-sim-reset:hover:not(:disabled) {
+      background-color: #14171c !important;
+      color: #7dd3fc !important;
+    }
+
     /* Switch Deslizante de Tema (Sol / Lua) */
     .theme-toggle-switch {
       background: none;
@@ -567,27 +1045,33 @@
 
     .toggle-track {
       position: relative;
-      width: 44px;
-      height: 22px;
-      border-radius: 11px;
-      background-color: var(--border-strong);
-      border: 1px solid var(--border-strong);
+      width: 40px;
+      height: 20px;
+      border-radius: 10px;
+      background-color: var(--border-medium);
+      border: 1px solid var(--border-medium);
       display: inline-flex;
       align-items: center;
-      transition: background-color 0.25s ease, border-color 0.25s ease;
+      transition: background-color 0.25s ease, border-color 0.25s ease, opacity 0.2s ease;
       overflow: hidden;
       box-sizing: border-box;
+      opacity: 0.82;
+    }
+
+    .theme-toggle-switch:hover .toggle-track {
+      opacity: 1;
+      border-color: var(--border-strong);
     }
 
     [data-theme="dark"] .toggle-track {
-      background-color: var(--bg-card);
-      border-color: var(--border-strong);
+      background-color: #16191f;
+      border-color: var(--border-medium);
     }
 
     .toggle-icon-sun {
       position: absolute;
-      right: 5px;
-      top: 4px;
+      right: 4px;
+      top: 3px;
       width: 12px;
       height: 12px;
       display: flex;
@@ -597,12 +1081,13 @@
       transform: scale(1);
       transition: opacity 0.2s ease, transform 0.25s ease;
       pointer-events: none;
+      color: #94a3b8;
     }
 
     .toggle-icon-moon {
       position: absolute;
-      left: 5px;
-      top: 4px;
+      left: 4px;
+      top: 3px;
       width: 12px;
       height: 12px;
       display: flex;
@@ -612,6 +1097,7 @@
       transform: scale(0.5);
       transition: opacity 0.2s ease, transform 0.25s ease;
       pointer-events: none;
+      color: #94a3b8;
     }
 
     [data-theme="dark"] .toggle-icon-sun {
@@ -622,23 +1108,32 @@
     [data-theme="dark"] .toggle-icon-moon {
       opacity: 1;
       transform: scale(1);
+      color: #94a3b8;
     }
 
     .toggle-knob {
       position: absolute;
       left: 2px;
       top: 2px;
-      width: 16px;
-      height: 16px;
+      width: 14px;
+      height: 14px;
       border-radius: 50%;
-      background-color: #ffffff;
-      transition: transform 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+      background-color: #cbd5e1;
+      transition: transform 0.25s cubic-bezier(0.4, 0, 0.2, 1), background-color 0.25s ease;
       pointer-events: none;
     }
 
     [data-theme="dark"] .toggle-knob {
-      transform: translateX(22px);
-      background-color: #ffffff;
+      transform: translateX(20px);
+      background-color: #94a3b8;
+    }
+
+    .theme-toggle-switch:hover .toggle-knob {
+      background-color: #e2e8f0;
+    }
+
+    [data-theme="dark"] .theme-toggle-switch:hover .toggle-knob {
+      background-color: #cbd5e1;
     }
 
     .tool-checkbox {
@@ -677,8 +1172,8 @@
       display: flex;
       flex: 1 1 0;
       min-height: 0;
-      gap: 10px;
-      padding: 8px 12px;
+      gap: 8px;
+      padding: 6px 8px;
       width: 100%;
       align-items: stretch;
       overflow: hidden;
@@ -705,7 +1200,7 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      padding: 4px;
+      padding: 0;
       cursor: default;
       user-select: none;
       overflow: hidden;
@@ -773,10 +1268,12 @@
     }
 
     /* ==========================================================================
-       3. PAINEL LATERAL DIDATICO (DIREITA: AJUSTADO PARA CABER SEM ROLAGEM)
+       3. PAINEL LATERAL DIDATICO (RETRÁTIL / AJUSTADO PARA CABER SEM ROLAGEM)
        ========================================================================== */
     .side-panel {
       width: 410px;
+      min-width: 410px;
+      max-width: 410px;
       flex-shrink: 0;
       height: 100%;
       min-height: 0;
@@ -786,131 +1283,190 @@
       display: flex;
       flex-direction: column;
       overflow: hidden;
+      transition: width 0.22s cubic-bezier(0.4, 0, 0.2, 1), min-width 0.22s cubic-bezier(0.4, 0, 0.2, 1), max-width 0.22s cubic-bezier(0.4, 0, 0.2, 1);
+      position: relative;
+    }
+
+    .side-panel.collapsed {
+      width: 38px;
+      min-width: 38px;
+      max-width: 38px;
+      cursor: pointer;
+      background-color: var(--bg-panel-header);
+    }
+
+    .side-panel.collapsed:hover {
+      background-color: var(--bg-card);
     }
 
     .panel-header {
       flex-shrink: 0;
       background-color: var(--bg-panel-header);
       border-bottom: 1px solid var(--border-medium);
-      padding: 7px 12px;
+      padding: 6px 8px 6px 12px;
       display: flex;
       align-items: center;
       justify-content: space-between;
+      white-space: nowrap;
+      cursor: pointer;
+      user-select: none;
+      transition: background-color 0.15s ease;
+    }
+
+    .panel-header:hover {
+      background-color: var(--bg-card);
+    }
+
+    .panel-header-title-wrap {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      min-width: 0;
     }
 
     .panel-title {
-      font-size: 12px;
+      font-size: 11.5px;
       font-weight: 700;
       text-transform: uppercase;
-      letter-spacing: 0.4px;
+      letter-spacing: 0.5px;
+      color: var(--text-muted);
+      white-space: nowrap;
+    }
+
+    .panel-toggle-btn {
+      background: transparent;
+      border: none;
+      color: var(--text-muted);
+      width: 22px;
+      height: 22px;
+      border-radius: 4px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      padding: 0;
+      transition: background-color 0.15s ease, color 0.15s ease;
+      flex-shrink: 0;
+    }
+
+    .panel-toggle-btn:hover {
+      background-color: var(--bg-btn-hover);
       color: var(--text-primary);
     }
 
-    .status-badge {
-      font-size: 10px;
-      font-weight: 700;
-      padding: 2px 7px;
-      border-radius: 4px;
+    /* Barra vertical quando o painel está retraído */
+    .panel-collapsed-bar {
+      display: none;
+    }
+
+    .side-panel.collapsed .panel-header,
+    .side-panel.collapsed #emptyPanelState,
+    .side-panel.collapsed #activePanelContent {
+      display: none !important;
+    }
+
+    .side-panel.collapsed .panel-collapsed-bar {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      width: 100%;
+      height: 100%;
+      padding: 8px 0;
+      gap: 12px;
+      user-select: none;
+    }
+
+    .panel-title-vertical {
+      -webkit-writing-mode: vertical-rl;
+      writing-mode: vertical-rl;
+      transform: rotate(180deg);
+      text-orientation: mixed;
       text-transform: uppercase;
-      letter-spacing: 0.4px;
+      font-size: 10.5px;
+      font-weight: 700;
+      letter-spacing: 0.8px;
+      color: var(--text-muted);
+      white-space: nowrap;
+      margin-top: 2px;
+    }
+
+    /* Luz indicadora de status no painel (LED / Bolinha colorida) */
+    .status-badge {
+      display: inline-block;
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      cursor: help;
+      flex-shrink: 0;
+      transition: background-color 0.25s ease, transform 0.15s ease;
+      position: relative;
+    }
+
+    .status-badge:hover {
+      transform: scale(1.3);
     }
 
     .badge-normal {
-      background-color: var(--badge-normal-bg);
-      border: 1px solid var(--badge-normal-border);
-      color: var(--badge-normal-text);
+      background-color: #22c55e;
+      border: 1px solid rgba(22, 163, 74, 0.9);
     }
 
     .badge-fault {
-      background-color: var(--badge-fault-bg);
-      border: 1px solid var(--badge-fault-border);
-      color: var(--badge-fault-text);
+      background-color: #ef4444;
+      border: 1px solid rgba(220, 38, 38, 0.9);
     }
 
     .badge-reclose {
-      background-color: var(--badge-reclose-bg);
-      border: 1px solid var(--badge-reclose-border);
-      color: var(--badge-reclose-text);
+      background-color: #f59e0b;
+      border: 1px solid rgba(217, 119, 6, 0.9);
     }
 
     .badge-lockout {
-      background-color: var(--badge-lockout-bg);
-      border: 1px solid var(--badge-lockout-border);
-      color: var(--badge-lockout-text);
+      background-color: #dc2626;
+      border: 1px solid rgba(185, 28, 28, 0.9);
     }
 
     .badge-flisr {
-      background-color: var(--badge-flisr-bg);
-      border: 1px solid var(--badge-flisr-border);
-      color: var(--badge-flisr-text);
+      background-color: #0284c7;
+      border: 1px solid rgba(3, 105, 161, 0.9);
     }
 
-    /* Estado Inicial (Sem Falta) */
+    /* Estado Inicial (Sem Falta) - Vazio com mensagem de instrução */
     .idle-panel-body {
-      padding: 12px;
+      padding: 16px;
       display: flex;
       flex-direction: column;
-      gap: 12px;
+      align-items: center;
+      justify-content: center;
       flex: 1;
       min-height: 0;
       overflow-y: auto;
     }
 
-    .didactic-guide-box {
-      background-color: var(--bg-card);
-      border: 1px solid var(--border-subtle);
-      padding: 10px 12px;
-      border-radius: 6px;
-    }
-
-    .didactic-guide-title {
-      font-size: 11.5px;
-      font-weight: 700;
-      color: var(--text-primary);
-      margin-bottom: 6px;
-    }
-
-    .didactic-guide-list {
-      font-size: 11.5px;
-      color: var(--text-secondary);
-      line-height: 1.45;
-      padding-left: 15px;
+    .empty-state-wrap {
       display: flex;
       flex-direction: column;
-      gap: 5px;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      margin: auto;
+      padding: 24px 16px;
+      max-width: 260px;
     }
 
-    .preset-section-title {
-      font-size: 10.5px;
-      font-weight: 700;
-      text-transform: uppercase;
+    .empty-state-icon {
       color: var(--text-muted);
-      letter-spacing: 0.4px;
-      margin-bottom: 5px;
+      opacity: 0.55;
+      margin-bottom: 12px;
+      flex-shrink: 0;
     }
 
-    .preset-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 5px;
-    }
-
-    .preset-btn {
-      background-color: transparent;
-      border: none;
-      color: var(--text-primary);
-      padding: 6px 8px;
-      font-size: 11px;
-      font-weight: 400;
-      border-radius: 4px;
-      cursor: pointer;
-      text-align: left;
-      transition: background-color 0.15s ease, color 0.15s ease;
-    }
-
-    .preset-btn:hover {
-      background-color: var(--bg-btn-hover);
-      color: var(--text-primary);
+    .empty-state-text {
+      font-size: 12px;
+      line-height: 1.55;
+      color: var(--text-muted);
+      font-weight: 500;
+      margin: 0;
     }
 
     /* Conteúdo Ativo (Com Falta) */
@@ -922,76 +1478,15 @@
       overflow: hidden;
     }
 
-    .fault-header-bar {
-      flex-shrink: 0;
-      padding: 7px 12px;
-      background-color: var(--bg-card);
-      border-bottom: 1px solid var(--border-subtle);
-      display: flex;
-      flex-direction: column;
-      gap: 6px;
-    }
-
-    .fault-location-row {
-      display: flex;
-      align-items: baseline;
-      justify-content: space-between;
-      gap: 6px;
-    }
-
-    .fault-loc-title {
-      font-size: 12.5px;
-      font-weight: 700;
-      color: var(--text-primary);
-    }
-
-    .fault-loc-sub {
-      font-size: 11px;
-      color: var(--text-muted);
-      white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis;
-    }
-
-    .fault-type-selector {
-      display: flex;
-      gap: 4px;
-    }
-
-    .fault-type-btn {
-      flex: 1;
-      padding: 4px 0;
-      font-size: 10.5px;
-      font-weight: 400;
-      background-color: transparent;
-      border: none;
-      color: var(--text-secondary);
-      border-radius: 4px;
-      cursor: pointer;
-      transition: background-color 0.15s ease, color 0.15s ease;
-    }
-
-    .fault-type-btn:hover:not(.active) {
-      background-color: var(--bg-btn-hover);
-      color: var(--text-primary);
-    }
-
-    .fault-type-btn.active {
-      background-color: #0284c7;
-      color: #ffffff;
-      font-weight: 400;
-      border: none;
-    }
-
-    /* Barra de Tempo Real + Botão Pular para o Fim */
+    /* Barra de Tempo Real */
     .realtime-control-bar {
       flex-shrink: 0;
       background-color: var(--bg-panel-header);
       border-bottom: 1px solid var(--border-medium);
-      padding: 6px 12px;
+      padding: 7px 12px;
       display: flex;
       align-items: center;
-      justify-content: space-between;
+      justify-content: flex-start;
       gap: 8px;
     }
 
@@ -1003,30 +1498,6 @@
       white-space: nowrap;
       overflow: hidden;
       text-overflow: ellipsis;
-    }
-
-    .skip-end-btn {
-      flex-shrink: 0;
-      background-color: #0284c7;
-      border: none;
-      color: #ffffff;
-      font-family: inherit;
-      font-size: 11px;
-      font-weight: 400;
-      padding: 4px 10px;
-      border-radius: 4px;
-      cursor: pointer;
-      white-space: nowrap;
-      transition: background-color 0.15s ease;
-    }
-
-    .skip-end-btn:hover:not(:disabled) {
-      background-color: #0369a1;
-    }
-
-    .skip-end-btn:disabled {
-      opacity: 0.4;
-      cursor: default;
     }
 
     /* Abas do Painel Lateral */
@@ -1054,7 +1525,6 @@
     .panel-tab-btn:hover:not(.active) {
       background-color: var(--bg-btn-hover);
       color: var(--text-primary);
-    }
     }
 
     .panel-tab-btn.active {
@@ -1129,6 +1599,15 @@
       border-left-color: #16a34a;
     }
 
+    .didactic-step-card:not(.step-active):not(.step-done) {
+      opacity: 0.65;
+      border-left-color: var(--border-medium);
+    }
+
+    .didactic-step-card:not(.step-active):not(.step-done) .step-card-title {
+      color: var(--text-muted);
+    }
+
     .step-card-header {
       display: flex;
       align-items: center;
@@ -1156,44 +1635,272 @@
       line-height: 1.32;
     }
 
-    /* Mini-stepper do Religador ANSI 79 dentro da Etapa 2 */
+    /* Linha do Tempo do Religador ANSI 79 dentro da Etapa 2 */
     .reclose-mini-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(58px, 1fr));
-      gap: 4px;
-      margin-top: 2px;
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+      margin-top: 5px;
+      padding-top: 2px;
+      position: relative;
+    }
+
+    .timeline-row {
+      display: flex;
+      align-items: stretch;
+      justify-content: space-between;
+      gap: 0;
+      width: 100%;
+      position: relative;
+    }
+
+    .timeline-connector-wrap {
+      width: 100%;
+      height: 16px;
+      position: relative;
+      display: flex;
+      align-items: center;
+      margin: 1px 0;
+      z-index: 1;
+    }
+
+    .timeline-connector-svg {
+      width: 100%;
+      height: 16px;
+      display: block;
+      overflow: visible;
+    }
+
+    .timeline-connector-track {
+      fill: none;
+      stroke: var(--border-medium);
+      stroke-width: 2px;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+      transition: stroke 0.25s ease;
+    }
+
+    .timeline-connector-track.conn-deadtime {
+      stroke: #d97706;
+    }
+
+    .timeline-connector-track.conn-done {
+      stroke: #16a34a;
+    }
+
+    [data-theme="dark"] .timeline-connector-track:not(.conn-deadtime):not(.conn-done) {
+      stroke: #334155;
     }
 
     .reclose-pill {
-      padding: 3px 2px;
-      text-align: center;
-      font-size: 9.5px;
-      border: 1px solid var(--border-medium);
+      flex: 1 1 0;
+      min-width: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      position: relative;
+      opacity: 0.45;
+      transition: opacity 0.2s ease, transform 0.2s ease;
+    }
+
+    .timeline-track-wrap {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+      height: 20px;
+      position: relative;
+    }
+
+    .timeline-line {
+      flex: 1;
+      height: 2px;
+      background-color: var(--border-medium);
+      transition: background-color 0.2s ease;
+    }
+
+    .timeline-node {
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      border: 1.5px solid var(--border-medium);
       background-color: var(--bg-card);
-      color: var(--text-muted);
+      color: #94a3b8;
+      font-size: 9.5px;
+      font-weight: 700;
+      font-family: Consolas, monospace;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 2;
+      flex-shrink: 0;
+      transition: all 0.2s ease;
+    }
+
+    .timeline-step-badge {
+      margin-top: 3px;
+      padding: 3px 2px;
+      width: calc(100% - 4px);
       border-radius: 4px;
-      line-height: 1.15;
+      border: 1px solid var(--border-subtle);
+      background-color: var(--bg-card);
+      text-align: center;
+      line-height: 1.2;
+      box-sizing: border-box;
+      transition: all 0.2s ease;
     }
 
-    .reclose-pill.done {
-      background-color: var(--badge-normal-bg);
-      border-color: var(--badge-normal-border);
-      color: var(--badge-normal-text);
+    .timeline-step-title {
+      font-size: 9px;
       font-weight: 600;
+      color: #94a3b8;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
     }
 
+    .timeline-step-time {
+      font-size: 8.5px;
+      font-family: Consolas, monospace;
+      color: #94a3b8;
+      margin-top: 1px;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    /* Estados da Linha do Tempo */
+    /* 1. Ativo (Abertura ocorrendo sob defeito) */
     .reclose-pill.active {
+      opacity: 1;
+    }
+
+    .reclose-pill.active .timeline-node {
+      background-color: #dc2626;
+      border-color: #b91c1c;
+      color: #ffffff;
+      font-weight: 800;
+    }
+
+    .reclose-pill.active .timeline-line-right {
+      background-color: #dc2626;
+    }
+
+    .reclose-pill.active .timeline-step-badge {
+      border: 1px solid #dc2626;
       background-color: var(--badge-fault-bg);
-      border-color: var(--badge-fault-border);
+    }
+
+    .reclose-pill.active .timeline-step-title,
+    .reclose-pill.active .timeline-step-time {
       color: var(--badge-fault-text);
       font-weight: 700;
     }
 
+    /* 2. Tempo Morto (Aguardando Religamento) */
     .reclose-pill.deadtime {
+      opacity: 1;
+    }
+
+    .reclose-pill.deadtime .timeline-node {
+      background-color: #d97706;
+      border-color: #b45309;
+      color: #ffffff;
+      font-weight: 800;
+    }
+
+    .reclose-pill.deadtime .timeline-line-left {
+      background-color: #d97706;
+    }
+
+    .reclose-pill.deadtime .timeline-step-badge {
+      border: 1px solid #d97706;
       background-color: var(--badge-reclose-bg);
-      border-color: var(--badge-reclose-border);
+    }
+
+    .reclose-pill.deadtime .timeline-step-title,
+    .reclose-pill.deadtime .timeline-step-time {
       color: var(--badge-reclose-text);
       font-weight: 700;
+    }
+
+    /* 3. Concluído (Abertura ou Tempo Morto concluído com sucesso) */
+    .reclose-pill.done {
+      opacity: 1;
+    }
+
+    .reclose-pill.done .timeline-node {
+      background-color: #16a34a;
+      border-color: #15803d;
+      color: #ffffff;
+      font-weight: 700;
+    }
+
+    .reclose-pill.done .timeline-line {
+      background-color: #16a34a;
+    }
+
+    .reclose-pill.done .timeline-step-badge {
+      border: 1px solid #16a34a;
+      background-color: var(--badge-normal-bg);
+    }
+
+    .reclose-pill.done .timeline-step-title {
+      color: var(--badge-normal-text);
+      font-weight: 700;
+    }
+
+    .reclose-pill.done .timeline-step-time {
+      color: var(--badge-normal-text);
+      font-weight: 600;
+    }
+
+    /* 4. Bloqueio (Lockout definitivo ANSI 79) */
+    .reclose-pill.lockout {
+      opacity: 1;
+    }
+
+    .reclose-pill.lockout .timeline-node {
+      background-color: #dc2626;
+      border-color: #b91c1c;
+      color: #ffffff;
+      font-weight: 800;
+    }
+
+    .reclose-pill.lockout .timeline-line-left {
+      background-color: #16a34a;
+    }
+
+    .reclose-pill.lockout .timeline-step-badge {
+      border: 1px solid #dc2626;
+      background-color: var(--badge-fault-bg);
+    }
+
+    .reclose-pill.lockout .timeline-step-title,
+    .reclose-pill.lockout .timeline-step-time {
+      color: var(--badge-fault-text);
+      font-weight: 700;
+    }
+
+    /* Suporte a Tema Escuro para Linha do Tempo Inativa */
+    [data-theme="dark"] .reclose-pill:not(.active):not(.deadtime):not(.done):not(.lockout) .timeline-node {
+      background-color: #0f172a;
+      border-color: #334155;
+      color: #64748b;
+    }
+
+    [data-theme="dark"] .reclose-pill:not(.active):not(.deadtime):not(.done):not(.lockout) .timeline-line {
+      background-color: #334155;
+    }
+
+    [data-theme="dark"] .reclose-pill:not(.active):not(.deadtime):not(.done):not(.lockout) .timeline-step-badge {
+      border-color: #334155;
+      background-color: #0f172a;
+    }
+
+    [data-theme="dark"] .reclose-pill:not(.active):not(.deadtime):not(.done):not(.lockout) .timeline-step-title,
+    [data-theme="dark"] .reclose-pill:not(.active):not(.deadtime):not(.done):not(.lockout) .timeline-step-time {
+      color: #64748b;
     }
 
     /* Tabelas e Propriedades na Aba 2 (Dados Técnicos TCC) */
@@ -1290,12 +1997,6 @@
           <path d="M20 9H9.5A5.5 5.5 0 0 0 4 14.5v0A5.5 5.5 0 0 0 9.5 20H13"/>
         </svg>
       </button>
-      <button id="btnReset" class="tool-btn icon-btn" title="Restaurar rede ao estado normal de operacao" aria-label="Restaurar Rede">
-        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
-          <path d="M21 12a9 9 0 1 1-2.64-6.36L21 8"/>
-          <polyline points="21 3 21 8 16 8"/>
-        </svg>
-      </button>
 
       <div class="header-divider"></div>
 
@@ -1313,13 +2014,13 @@
       <button id="btnThemeToggle" class="theme-toggle-switch" role="switch" aria-checked="false" title="Alternar entre Tema Claro e Tema Escuro" aria-label="Alternar entre Tema Claro e Tema Escuro">
         <span class="toggle-track">
           <span class="toggle-icon-moon" aria-hidden="true">
-            <svg width="12" height="12" viewBox="0 0 24 24" fill="#FFFFFF">
+            <svg width="11" height="11" viewBox="0 0 24 24" fill="currentColor">
               <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
             </svg>
           </span>
           <span class="toggle-icon-sun" aria-hidden="true">
-            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-              <circle cx="12" cy="12" r="4" fill="#FFFFFF"/>
+            <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="12" r="4" fill="currentColor"/>
               <line x1="12" y1="2" x2="12" y2="4"/>
               <line x1="12" y1="20" x2="12" y2="22"/>
               <line x1="4.93" y1="4.93" x2="6.34" y2="6.34"/>
@@ -1356,20 +2057,92 @@
     <div class="ribbon-content-body">
       <!-- Painel 1: Faltas do TCC -->
       <div id="ribbonPaneTcc" class="ribbon-pane active">
-        <span class="ribbon-section-label">Ensaios do TCC:</span>
         <div class="ribbon-btn-group">
-          <button class="tool-btn" onclick="applyPresetFault('T1')" title="Simular falta no Trecho T1 (Alimentador 1)">Falta em T1 (Alim. 1)</button>
-          <button class="tool-btn" onclick="applyPresetFault('T2')" title="Simular falta no Trecho T2 (Alimentador 1)">Falta em T2 (Alim. 1)</button>
-          <button class="tool-btn" onclick="applyPresetFault('T5')" title="Simular falta no Trecho T5 (Alimentador 2)">Falta em T5 (Alim. 2)</button>
-          <button class="tool-btn" onclick="applyPresetFault('T8')" title="Simular falta no Trecho T8 (Alimentador 3)">Falta em T8 (Alim. 3)</button>
-          <button class="tool-btn" onclick="applyPresetFault('T12')" title="Simular falta no Trecho T12 (Alimentador 4)">Falta em T12 (Alim. 4)</button>
-          <button class="tool-btn" onclick="applyPresetFault('T16')" title="Simular falta no Trecho T16 (Alimentador 4)">Falta em T16 (Alim. 4)</button>
+          <button id="btnPlayTcc" class="tool-btn icon-btn btn-sim-play" onclick="togglePlayPauseSimulation()" disabled title="Selecione ou insira uma falta para habilitar o Play">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><polygon points="6 4 20 12 6 20 6 4"></polygon></svg>
+          </button>
+          <button id="btnStopTcc" class="tool-btn icon-btn btn-sim-stop" onclick="stopSimulation()" disabled title="Parar simulação e voltar ao estado inicial (Stop)">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><rect x="5" y="5" width="14" height="14" rx="2"></rect></svg>
+          </button>
+          <button id="btnReset" class="tool-btn icon-btn btn-sim-reset" onclick="resetSimulationNetwork()" title="Restaurar rede ao estado normal de operação (Reset)" aria-label="Restaurar Rede">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M21 12a9 9 0 1 1-2.64-6.36L21 8"/>
+              <polyline points="21 3 21 8 16 8"/>
+            </svg>
+          </button>
+          <button id="btnSpeedTcc" class="tool-btn btn-sim-speed" onclick="toggleSpeedMenu(event, 'tcc')" title="Velocidade da simulação (clique para alterar)" aria-label="Velocidade da simulação">1x</button>
+          <div class="toolbar-divider"></div>
+          <button id="btnFaultT1" class="tool-btn fault-dropdown-trigger" onclick="toggleFaultTypeMenu(event, 'T1')" title="Selecionar tipo de falta no Trecho T1">
+            <span>Falta em T1</span>
+          </button>
+          <button id="btnFaultT2" class="tool-btn fault-dropdown-trigger" onclick="toggleFaultTypeMenu(event, 'T2')" title="Selecionar tipo de falta no Trecho T2">
+            <span>Falta em T2</span>
+          </button>
+          <button id="btnFaultT5" class="tool-btn fault-dropdown-trigger" onclick="toggleFaultTypeMenu(event, 'T5')" title="Selecionar tipo de falta no Trecho T5">
+            <span>Falta em T5</span>
+          </button>
+          <button id="btnFaultT8" class="tool-btn fault-dropdown-trigger" onclick="toggleFaultTypeMenu(event, 'T8')" title="Selecionar tipo de falta no Trecho T8">
+            <span>Falta em T8</span>
+          </button>
+          <button id="btnFaultT12" class="tool-btn fault-dropdown-trigger" onclick="toggleFaultTypeMenu(event, 'T12')" title="Selecionar tipo de falta no Trecho T12">
+            <span>Falta em T12</span>
+          </button>
+          <button id="btnFaultT16" class="tool-btn fault-dropdown-trigger" onclick="toggleFaultTypeMenu(event, 'T16')" title="Selecionar tipo de falta no Trecho T16">
+            <span>Falta em T16</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- Menu Flutuante de Seleção de Tipo de Falta -->
+      <div id="faultTypeDropdownMenu" class="fault-dropdown-menu" style="display: none;"></div>
+
+      <!-- Menu Flutuante de Controle de Velocidade da Simulação -->
+      <div id="speedDropdownMenu" class="speed-dropdown-menu" style="display: none;">
+        <div class="speed-menu-header">
+          <span class="speed-menu-title">Velocidade da Simulação</span>
+          <span id="speedMenuValue" class="speed-menu-val">1x</span>
+        </div>
+        <div class="speed-slider-wrap">
+          <div class="speed-slider-track-box">
+            <div class="speed-track-line"></div>
+            <div class="speed-track-dots">
+              <span class="speed-dot" data-speed="0.25" style="left: calc(7px + 0 * (100% - 14px));" onclick="setSpeedDirect(0.25)" title="0.25x"></span>
+              <span class="speed-dot" data-speed="0.5" style="left: calc(7px + 0.2 * (100% - 14px));" onclick="setSpeedDirect(0.5)" title="0.5x"></span>
+              <span class="speed-dot active" data-speed="1.0" style="left: calc(7px + 0.4 * (100% - 14px));" onclick="setSpeedDirect(1.0)" title="1x"></span>
+              <span class="speed-dot" data-speed="2.0" style="left: calc(7px + 0.6 * (100% - 14px));" onclick="setSpeedDirect(2.0)" title="2x"></span>
+              <span class="speed-dot" data-speed="3.0" style="left: calc(7px + 0.8 * (100% - 14px));" onclick="setSpeedDirect(3.0)" title="3x"></span>
+              <span class="speed-dot" data-speed="5.0" style="left: calc(7px + 1 * (100% - 14px));" onclick="setSpeedDirect(5.0)" title="5x"></span>
+            </div>
+            <input type="range" id="simSpeedSlider" min="0" max="500" step="1" value="200" oninput="onSpeedSliderInput(this.value)" aria-label="Velocidade da simulação" />
+          </div>
+          <div class="speed-ticks">
+            <span class="speed-tick-mark" data-speed="0.25" style="left: calc(7px + 0 * (100% - 14px));" onclick="setSpeedDirect(0.25)">0.25x</span>
+            <span class="speed-tick-mark" data-speed="0.5" style="left: calc(7px + 0.2 * (100% - 14px));" onclick="setSpeedDirect(0.5)">0.5x</span>
+            <span class="speed-tick-mark active" data-speed="1.0" style="left: calc(7px + 0.4 * (100% - 14px));" onclick="setSpeedDirect(1.0)">1x</span>
+            <span class="speed-tick-mark" data-speed="2.0" style="left: calc(7px + 0.6 * (100% - 14px));" onclick="setSpeedDirect(2.0)">2x</span>
+            <span class="speed-tick-mark" data-speed="3.0" style="left: calc(7px + 0.8 * (100% - 14px));" onclick="setSpeedDirect(3.0)">3x</span>
+            <span class="speed-tick-mark" data-speed="5.0" style="left: calc(7px + 1 * (100% - 14px));" onclick="setSpeedDirect(5.0)">5x</span>
+          </div>
         </div>
       </div>
 
       <!-- Painel 2: Inserção Manual no Diagrama -->
       <div id="ribbonPaneManual" class="ribbon-pane">
         <div class="ribbon-btn-group">
+          <button id="btnPlayManual" class="tool-btn icon-btn btn-sim-play" onclick="togglePlayPauseSimulation()" disabled title="Selecione ou insira uma falta para habilitar o Play">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><polygon points="6 4 20 12 6 20 6 4"></polygon></svg>
+          </button>
+          <button id="btnStopManual" class="tool-btn icon-btn btn-sim-stop" onclick="stopSimulation()" disabled title="Parar simulação e voltar ao estado inicial (Stop)">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><rect x="5" y="5" width="14" height="14" rx="2"></rect></svg>
+          </button>
+          <button id="btnResetManual" class="tool-btn icon-btn btn-sim-reset" onclick="resetSimulationNetwork()" title="Restaurar rede ao estado normal de operação (Reset)" aria-label="Restaurar Rede">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M21 12a9 9 0 1 1-2.64-6.36L21 8"/>
+              <polyline points="21 3 21 8 16 8"/>
+            </svg>
+          </button>
+          <button id="btnSpeedManual" class="tool-btn btn-sim-speed" onclick="toggleSpeedMenu(event, 'manual')" title="Velocidade da simulação (clique para alterar)" aria-label="Velocidade da simulação">1x</button>
+          <div class="toolbar-divider"></div>
           <button id="btnFaultMode" class="tool-btn" title="Clique em um trecho da rede para simular um curto-circuito">
             Inserir Falta
           </button>
@@ -1544,60 +2317,56 @@
       </div>
     </div>
 
-    <!-- PAINEL LATERAL DIDATICO -->
-    <aside class="side-panel">
-      <div class="panel-header">
-        <span class="panel-title">Painel Didático FLISR</span>
-        <span id="statusBadge" class="status-badge badge-normal">REDE NORMAL</span>
+    <!-- PAINEL LATERAL DIDATICO (RETRÁTIL) -->
+    <aside id="sidePanel" class="side-panel">
+      <!-- CABEÇALHO EXPANDIDO -->
+      <div class="panel-header" onclick="toggleSidePanel(event)" title="Clique para recolher o painel" tabindex="0" onkeydown="if(event.key==='Enter'||event.key===' '){toggleSidePanel(event);}">
+        <div class="panel-header-title-wrap">
+          <span class="panel-title">Informações Técnicas</span>
+          <span id="statusBadge" class="status-badge badge-normal" title="Rede Normal: Operando em regime permanente"></span>
+        </div>
+        <button id="btnCollapsePanel" class="panel-toggle-btn" title="Recolher painel" aria-label="Recolher painel" onclick="toggleSidePanel(event)">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="9 18 15 12 9 6"></polyline>
+          </svg>
+        </button>
+      </div>
+
+      <!-- BARRA VERTICAL RETRAÍDA -->
+      <div id="panelCollapsedBar" class="panel-collapsed-bar" onclick="toggleSidePanel(event)" title="Clique para expandir o painel" tabindex="0" onkeydown="if(event.key==='Enter'||event.key===' '){toggleSidePanel(event);}">
+        <button id="btnExpandPanel" class="panel-toggle-btn" title="Expandir painel" aria-label="Expandir painel" onclick="toggleSidePanel(event)">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="15 18 9 12 15 6"></polyline>
+          </svg>
+        </button>
+        <span id="statusBadgeCollapsed" class="status-badge badge-normal" title="Rede Normal: Operando em regime permanente"></span>
+        <span class="panel-title-vertical">Informações Técnicas</span>
       </div>
 
       <!-- VISAO INICIAL (SEM FALTA) -->
       <div id="emptyPanelState" class="idle-panel-body">
-
-        <div>
-          <div class="preset-section-title">Cenários Didáticos Prontos (Ensaios do TCC):</div>
-          <div class="preset-grid">
-            <button class="preset-btn" onclick="applyPresetFault('T1')">Falta em T1 (Alim. 1)</button>
-            <button class="preset-btn" onclick="applyPresetFault('T2')">Falta em T2 (Alim. 1)</button>
-            <button class="preset-btn" onclick="applyPresetFault('T5')">Falta em T5 (Alim. 2)</button>
-            <button class="preset-btn" onclick="applyPresetFault('T8')">Falta em T8 (Alim. 3)</button>
-            <button class="preset-btn" onclick="applyPresetFault('T12')">Falta em T12 (Alim. 4)</button>
-            <button class="preset-btn" onclick="applyPresetFault('T16')">Falta em T16 (Alim. 4)</button>
-          </div>
+        <div class="empty-state-wrap">
+          <svg class="empty-state-icon" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon>
+          </svg>
+          <p class="empty-state-text">Insira uma falta para visualizar as informações técnicas.</p>
         </div>
       </div>
 
       <!-- VISAO ATIVA (QUANDO UM CURTO E INSERIDO) -->
       <div id="activePanelContent">
-        <div class="fault-header-bar">
-          <div class="fault-location-row">
-            <span id="txtFaultTitle" class="fault-loc-title">Curto-Circuito no Trecho T1</span>
-            <span id="txtFaultSub" class="fault-loc-sub">Alim. 1 &bull; CAA 266,8 MCM</span>
-          </div>
-
-          <div class="fault-type-selector">
-            <button id="btnFault3F" class="fault-type-btn active" onclick="selectFaultType('3F')">Trifásico (3F)</button>
-            <button id="btnFault2F" class="fault-type-btn" onclick="selectFaultType('2F')">Bifásico (2F)</button>
-            <button id="btnFaultFT" class="fault-type-btn" onclick="selectFaultType('FT')">Fase-Terra (FT)</button>
-            <button id="btnFaultFTm" class="fault-type-btn" onclick="selectFaultType('FTm')">FTm (100 &Omega;)</button>
-          </div>
-        </div>
-
-        <!-- Barra de Controle do Tempo Real + Botão Pular para o Fim -->
+        <!-- Barra de Controle do Tempo Real -->
         <div class="realtime-control-bar">
           <span id="txtRealtimeStatus" class="realtime-status-text">Simulação em tempo real...</span>
-          <button id="btnSkipToEnd" class="skip-end-btn" onclick="skipToSimulationEnd()">
-            Pular para o Fim
-          </button>
         </div>
 
         <!-- Abas de Navegação Didática -->
         <div class="panel-tabs">
           <button id="tabBtnSteps" class="panel-tab-btn active" onclick="switchPanelTab('steps')">
-            1. Passo a Passo
+            Passo a Passo
           </button>
           <button id="tabBtnTech" class="panel-tab-btn" onclick="switchPanelTab('tech')">
-            2. Dados Técnicos (TCC)
+            Dados Técnicos
           </button>
         </div>
 
@@ -1605,15 +2374,15 @@
         <div id="tabPaneSteps" class="tab-pane active">
           <div class="summary-kpi-grid">
             <div class="kpi-card">
-              <div class="kpi-label">Corrente Icc</div>
+              <div id="kpiCurrentLabel" class="kpi-label">Corrente Icc</div>
               <div id="kpiCurrent" class="kpi-value">2.622 A</div>
             </div>
             <div class="kpi-card">
-              <div class="kpi-label">Relé / Ciclo 79</div>
+              <div class="kpi-label">Relé / Ciclo</div>
               <div id="kpiRelay" class="kpi-value">21I7 (1I+2T)</div>
             </div>
             <div class="kpi-card">
-              <div class="kpi-label">1º Corte / Morto</div>
+              <div class="kpi-label">1ª Abertura / Morto</div>
               <div id="kpiTime" class="kpi-value">925 ms / 10 s</div>
             </div>
           </div>
@@ -1621,22 +2390,16 @@
           <!-- Etapa 1 -->
           <div id="stepCard1" class="didactic-step-card">
             <div class="step-card-header">
-              <span class="step-card-title">Etapa 1: Detecção e Pickup</span>
+              <span class="step-card-title">1. Detecção (50/51)</span>
               <span id="stepTag1" class="step-card-tag">AGUARDANDO</span>
-            </div>
-            <div id="stepDesc1" class="step-card-desc">
-              O relé à montante detecta a sobrecorrente e inicia a temporização da curva.
             </div>
           </div>
 
           <!-- Etapa 2 -->
           <div id="stepCard2" class="didactic-step-card">
             <div class="step-card-header">
-              <span class="step-card-title">Etapa 2: Ciclo de Religamento ANSI 79</span>
+              <span class="step-card-title">2. Religamento (79)</span>
               <span id="stepTag2" class="step-card-tag">AGUARDANDO</span>
-            </div>
-            <div id="stepDesc2" class="step-card-desc">
-              Aberturas e tempos mortos parametrizados no relé SEL-751:
             </div>
             <div id="recloseGridContainer" class="reclose-mini-grid"></div>
           </div>
@@ -1644,106 +2407,93 @@
           <!-- Etapa 3 -->
           <div id="stepCard3" class="didactic-step-card">
             <div class="step-card-header">
-              <span class="step-card-title">Etapa 3: Isolamento Automático</span>
+              <span class="step-card-title">3. Isolamento</span>
               <span id="stepTag3" class="step-card-tag">AGUARDANDO</span>
             </div>
-            <div id="stepDesc3" class="step-card-desc">
-              Abertura das chaves adjacentes após confirmação de falta permanente (Lockout).
-            </div>
+            <div id="stepDesc3" class="step-card-desc"></div>
           </div>
 
           <!-- Etapa 4 -->
           <div id="stepCard4" class="didactic-step-card">
             <div class="step-card-header">
-              <span class="step-card-title">Etapa 4: Recomposição (Self-Healing)</span>
+              <span class="step-card-title">4. Recomposição (FLISR)</span>
               <span id="stepTag4" class="step-card-tag">AGUARDANDO</span>
             </div>
-            <div id="stepDesc4" class="step-card-desc">
-              Fechamento da chave de interconexão (tie-switch) para restabelecer os trechos sãos.
-            </div>
+            <div id="stepDesc4" class="step-card-desc"></div>
           </div>
         </div>
 
         <!-- ABA 2: DADOS TECNICOS DO TCC -->
         <div id="tabPaneTech" class="tab-pane">
           <div class="tech-section">
-            <div class="tech-section-title">Comparativo de Curto-Circuito (Tabela 4.7 TCC)</div>
+            <div class="tech-section-title">Curto-Circuito (Icc)</div>
             <div class="prop-row">
-              <span class="prop-name">Impedância Z1 (Seq. Positiva):</span>
+              <span class="prop-name">Impedância Z1:</span>
               <span id="txtTheveninZ1" class="prop-val">0.637 + j1.463 pu</span>
             </div>
             <div class="prop-row">
-              <span class="prop-name">Impedância Z0 (Seq. Zero):</span>
+              <span class="prop-name">Impedância Z0:</span>
               <span id="txtTheveninZ0" class="prop-val">1.093 + j4.453 pu</span>
             </div>
 
             <table class="tech-table">
               <thead>
                 <tr>
-                  <th>Modalidade</th>
-                  <th>Simulador</th>
-                  <th>TCC (Tab. 4.7)</th>
-                  <th>Desvio</th>
+                  <th>Tipo</th>
+                  <th>Calculado</th>
+                  <th>TCC Tab 4.7</th>
                 </tr>
               </thead>
               <tbody>
                 <tr id="row3F">
-                  <td>Trifásico (3F)</td>
+                  <td>3F</td>
                   <td id="calcI3F">2.622 A</td>
                   <td id="tccI3F">2.622 A</td>
-                  <td>0,0%</td>
                 </tr>
                 <tr id="row2F">
-                  <td>Bifásico (2F)</td>
+                  <td>2F</td>
                   <td id="calcI2F">2.271 A</td>
                   <td id="tccI2F">2.271 A</td>
-                  <td>0,0%</td>
                 </tr>
                 <tr id="rowFT">
-                  <td>Fase-Terra (FT)</td>
+                  <td>FT</td>
                   <td id="calcIFT">1.620 A</td>
                   <td id="tccIFT">1.620 A</td>
-                  <td>0,0%</td>
                 </tr>
                 <tr id="rowFTm">
-                  <td>FTm (Rc=100 &Omega;)</td>
+                  <td>FTm</td>
                   <td id="calcIFTm">78,4 A</td>
                   <td id="tccIFTm">78,4 A</td>
-                  <td>0,0%</td>
                 </tr>
               </tbody>
             </table>
           </div>
 
           <div class="tech-section">
-            <div class="tech-section-title">Parâmetros do Relé SEL-751 (Tab. 4.13 TCC)</div>
+            <div class="tech-section-title">Ajustes da Proteção</div>
             <div class="prop-row">
-              <span class="prop-name">IED / Ciclo ANSI 79 / Tempo Morto:</span>
-              <span id="txtRelayFunc" class="prop-val">21I7 / Ciclo 1I+2T / 79OI = 10 s</span>
-            </div>
-            <div class="prop-row">
-              <span class="prop-name">Curva e Dial de Tempo:</span>
+              <span class="prop-name">Curva / Dial:</span>
               <span id="txtCurveDial" class="prop-val">IEC Muito Inversa (TD = 0.23)</span>
             </div>
             <div class="prop-row">
-              <span class="prop-name">Múltiplo de Pickup (M = Icc / Ip):</span>
-              <span id="txtCurrentPickup" class="prop-val">2.622 A / 570 A (M = 4.60)</span>
+              <span class="prop-name">Pickup (Ip):</span>
+              <span id="txtCurrentPickup" class="prop-val">570 A (M = 4.60)</span>
             </div>
             <div class="prop-row">
-              <span class="prop-name">Tempo Abertura Instantânea / Temporizada:</span>
-              <span id="txtTotalTripTime" class="prop-val">50: 163,0 ms | 51: 925,5 ms</span>
+              <span class="prop-name">Temporização (51):</span>
+              <span id="txtTotalTripTime" class="prop-val">925,5 ms</span>
             </div>
           </div>
 
           <div class="tech-section">
-            <div class="tech-section-title">Dados Físicos do Trecho e Carregamento</div>
+            <div class="tech-section-title">Trecho e Condutor</div>
             <div class="prop-row">
-              <span class="prop-name">Comprimento / Condutor:</span>
-              <span id="txtCableSpec" class="prop-val">5.040 m - CAA 266,8 MCM</span>
+              <span class="prop-name">Extensão / Cabo:</span>
+              <span id="txtCableSpec" class="prop-val">5.040 m | CAA 266,8 MCM</span>
             </div>
             <div class="prop-row">
-              <span class="prop-name">Carga do Trecho / Ampacidade:</span>
-              <span id="txtThermalMargin" class="prop-val">23 A / 475 A (Folga OK)</span>
+              <span class="prop-name">Carga / Limite:</span>
+              <span id="txtThermalMargin" class="prop-val">23 A / 475 A (OK)</span>
             </div>
           </div>
         </div>
@@ -1879,7 +2629,10 @@
       { id: 'TR2', label: 'TR2 (25 MVA)', y: 492, leftSwitchState: 'closed', rightSwitchState: 'closed' }
     ];
 
-    const initialEquipmentData = [
+    const BASE_DIAGRAM_WIDTH = 1000;
+    const BASE_DIAGRAM_HEIGHT = 765;
+
+    const BASE_EQUIPMENT_DATA = [
       { id: '21I7', x: 274, y: 150, state: 'closed' },
       { id: 'RS1',  x: 390, y: 150, state: 'closed' },
       { id: 'RL1',  x: 515, y: 150, state: 'open'   },
@@ -1903,7 +2656,7 @@
       { id: '21I2', x: 893, y: 615, state: 'closed' }
     ];
 
-    const SEGMENT_LINES_GEOMETRY = [
+    const BASE_SEGMENT_LINES_GEOMETRY = [
       { zone: 'SRC_AQZ', x1: 220, y1: 150, x2: 274, y2: 150 },
       { zone: 'T1',      x1: 274, y1: 150, x2: 390, y2: 150 },
       { zone: 'T2',      x1: 390, y1: 150, x2: 515, y2: 150 },
@@ -1933,7 +2686,7 @@
       { zone: 'SRC_AGF', x1: 893, y1: 615, x2: 930, y2: 615 }
     ];
 
-    const allTargetLines = [
+    const BASE_TARGET_LINES = [
       { targetId: 'FEEDER_1',  x1: 225, y1: 150, x2: 925, y2: 150, orientation: 'horizontal' },
       { targetId: 'FEEDER_2',  x1: 225, y1: 310, x2: 712, y2: 310, orientation: 'horizontal' },
       { targetId: 'BRANCH_T7', x1: 712, y1: 310, x2: 712, y2: 460, orientation: 'vertical'   },
@@ -1941,7 +2694,7 @@
       { targetId: 'FEEDER_4',  x1: 225, y1: 615, x2: 925, y2: 615, orientation: 'horizontal' }
     ];
 
-    const segmentLabels = [
+    const BASE_SEGMENT_LABELS = [
       { code: 'T1',  length: '5.040 m', x: 334, y: 150 },
       { code: 'T2',  length: '1.190 m', x: 453, y: 150 },
       { code: 'T3',  length: '1.820 m', x: 585, y: 150 },
@@ -1959,6 +2712,31 @@
       { code: 'T15', length: '5.061 m', x: 707, y: 615 },
       { code: 'T16', length: '8.384 m', x: 834, y: 615 }
     ];
+
+    let initialEquipmentData = JSON.parse(JSON.stringify(BASE_EQUIPMENT_DATA));
+    let SEGMENT_LINES_GEOMETRY = JSON.parse(JSON.stringify(BASE_SEGMENT_LINES_GEOMETRY));
+    let allTargetLines = JSON.parse(JSON.stringify(BASE_TARGET_LINES));
+    let segmentLabels = JSON.parse(JSON.stringify(BASE_SEGMENT_LABELS));
+
+    function mapDiagramX(origX, vWidth) {
+      if (origX <= 220) return origX;
+      const rightBusBase = 930;
+      const rightBusNew = vWidth - 70;
+      if (origX >= rightBusBase) {
+        return rightBusNew + (origX - rightBusBase);
+      }
+      return 220 + (origX - 220) * ((rightBusNew - 220) / (rightBusBase - 220));
+    }
+
+    function unmapDiagramX(x, vWidth) {
+      if (x <= 220) return x;
+      const rightBusBase = 930;
+      const rightBusNew = vWidth - 70;
+      if (x >= rightBusNew) {
+        return rightBusBase + (x - rightBusNew);
+      }
+      return 220 + (x - 220) * ((rightBusBase - 220) / (rightBusNew - 220));
+    }
 
     const SWITCH_GRAPH_EDGES = [
       { sw: '21I7', a: 'SRC_AQZ', b: 'T1' },
@@ -1998,6 +2776,15 @@
     let activeIntervalTimer = null;
     let undoStack = [];
     let redoStack = [];
+
+    // Gerenciador de Reproducao da Simulacao (Play / Pause / Stop)
+    let simTimelineEvents = [];
+    let simCurrentTimeMs = 0;
+    let simNextEventIndex = 0;
+    let simLastTickTime = 0;
+    let simAnimationId = null;
+    let simState = 'idle'; // 'idle' | 'running' | 'paused' | 'completed'
+    let simPrePlayEquipmentSnapshot = null;
 
     /* ==========================================================================
        3. SOLVER TOPOLOGICO DE ESTADO ELETRICO DOS TRECHOS
@@ -2125,7 +2912,7 @@
       return { seg, r1, x1, r0, x0, z1Mag, i3f, i2f, ift, iftm };
     }
 
-    // Calcula o tempo real de atuação (ms) de um disparo específico ('I' ou 'T') do relé SEL-751
+    // Calcula o tempo real de atuação (ms) de uma abertura específica ('I' ou 'T') do relé SEL-751
     function calculateRelayShotTime(relayId, faultCurrent, isGround, shotMode) {
       const rdata = RELAYS_DATA[relayId] || RELAYS_DATA['21I7'];
       const elem = isGround ? rdata.ground : rdata.phase;
@@ -2133,7 +2920,7 @@
       const td = elem.dial;
       const inst = elem.inst;
 
-      // Se o disparo permite função 50 ('I') e a corrente supera o pickup instantâneo
+      // Se a operação permite função 50 ('I') e a corrente supera o pickup instantâneo
       if (shotMode === 'I' && inst && faultCurrent >= inst) {
         const tInstMs = (elem.instDelay || 0.05) * 1000;
         return {
@@ -2298,15 +3085,15 @@
           <h3>3.2 Ciclo de Religamento Automático (Função ANSI 79)</h3>
           <p>Para evitar desligamentos desnecessários diante de faltas transitórias (como descargas atmosféricas ou toques momentâneos de galhos), o relé executa tentativas sucessivas de religamento com tempos mortos parametrizados:</p>
           <ul>
-            <li><b>1º Disparo e Tempo Morto:</b> Abertura em 40 a 925 ms, com espera de tempo morto de 10 segundos (79OI1).</li>
-            <li><b>2º Disparo e Tempo Morto:</b> Caso o defeito persista, nova abertura com tempo morto de 11 segundos (79OI2).</li>
-            <li><b>3º Disparo e Tempo Morto:</b> Terceira tentativa com tempo morto de 12 segundos (79OI3).</li>
-            <li><b>4º Disparo e Lockout:</b> Quarta abertura com tempo morto de 13 segundos (79OI4), seguida do bloqueio definitivo na posição aberta (<i>Lockout</i>).</li>
+            <li><b>1ª Abertura e Tempo Morto:</b> Abertura em 40 a 925 ms, com espera de tempo morto de 10 segundos (79OI1).</li>
+            <li><b>2ª Abertura e Tempo Morto:</b> Caso o defeito persista, nova abertura com tempo morto de 11 segundos (79OI2).</li>
+            <li><b>3ª Abertura e Tempo Morto:</b> Terceira tentativa com tempo morto de 12 segundos (79OI3).</li>
+            <li><b>4ª Abertura e Lockout:</b> Quarta abertura com tempo morto de 13 segundos (79OI4), seguida do bloqueio definitivo na posição aberta (<i>Lockout</i>).</li>
           </ul>
 
           <div class="tutorial-callout">
-            <div class="tutorial-callout-title">Botão "Pular para o Fim":</div>
-            Como os tempos mortos reais do relé somam mais de 45 segundos por ensaio completo, o botão <b>"Pular para o Fim"</b> permite ao usuário acelerar o tempo instantaneamente, concluindo a sequência e exibindo a rede com o isolamento e recomposição finais aplicados.
+            <div class="tutorial-callout-title">Controle de Velocidade da Simulação:</div>
+            Como os tempos mortos reais do relé somam mais de 45 segundos por ensaio completo, o controle de velocidade (0.25x até 5x) permite acelerar a reprodução da sequência didática até a atuação do FLISR e recomposição da rede.
           </div>
         `
       },
@@ -2359,7 +3146,7 @@
           </table>
 
           <h3>4.3 Remoção de Faltas</h3>
-          <p>Para retirar um curto-circuito previamente aplicado, você pode clicar no botão <b>"Remover Falta"</b> na aba Inserção Manual e clicar sobre o símbolo de falta, ou utilizar os botões <b>Desfazer (Ctrl+Z)</b> ou <b>Restaurar Rede (seta circular)</b> na barra superior.</p>
+          <p>Para retirar um curto-circuito previamente aplicado, você pode clicar no botão <b>"Remover Falta"</b> na aba Inserção Manual e clicar sobre o símbolo de falta, utilizar o botão <b>Desfazer (Ctrl+Z)</b> na barra superior, ou clicar no botão <b>Restaurar Rede (seta circular)</b> ao lado do botão Stop.</p>
         `
       },
       {
@@ -2432,10 +3219,10 @@
             <li><b>Grade:</b> Alterna a visualização da malha pontilhada técnica no fundo do diagrama unifilar.</li>
           </ul>
 
-          <h3>6.2 Ferramentas Gerais na Barra Superior</h3>
+          <h3>6.2 Ferramentas Gerais e Controles da Simulação</h3>
           <ul>
             <li><b>Desfazer e Refazer (Setas Curvas):</b> Permitem navegar historicamente por cada passo de manobra ou inserção de falta executado, compatíveis também com os atalhos de teclado <b>Ctrl+Z</b> e <b>Ctrl+Y</b>.</li>
-            <li><b>Restaurar Rede (Seta Circular):</b> Reseta completamente o simulador, cancelando qualquer ensaio ativo, temporizadores de religamento e retornando todas as chaves e disjuntores ao estado normal de operação.</li>
+            <li><b>Controles de Simulação (Play, Stop e Restaurar):</b> O botão verde de <b>Play/Pause</b> inicia e pausa a reprodução dos disparos e religamentos; o botão vermelho de <b>Stop</b> interrompe o ensaio e retorna ao instante pré-disparo mantendo a falta posicionada; e o botão azul de <b>Restaurar Rede (Seta Circular)</b> reseta completamente o simulador, cancelando qualquer ensaio e retornando todas as chaves e disjuntores ao estado normal de operação.</li>
             <li><b>Exportar PNG:</b> Gera instantaneamente uma imagem nítida em alta definição com fundo branco do diagrama unifilar, ideal para ilustrar trabalhos acadêmicos, laudos e apresentações técnicas.</li>
             <li><b>Alternância de Tema (Sol / Lua):</b> O interruptor deslizante no topo direito permite alternar suavemente entre o Tema Claro e o Tema Escuro, adaptando o contraste para qualquer condição de iluminação ambiente.</li>
           </ul>
@@ -2509,6 +3296,191 @@
       if (ws) ws.scrollTop = 0;
     }
 
+    let activeFaultMenuSeg = null;
+
+    function closeFaultTypeMenu() {
+      const menu = document.getElementById('faultTypeDropdownMenu');
+      if (menu) menu.style.display = 'none';
+      document.querySelectorAll('.fault-dropdown-trigger').forEach((b) => b.classList.remove('active'));
+      activeFaultMenuSeg = null;
+    }
+
+    function toggleFaultTypeMenu(event, segKey) {
+      if (event) event.stopPropagation();
+      const menu = document.getElementById('faultTypeDropdownMenu');
+      const triggerBtn = event ? event.currentTarget : document.getElementById(`btnFault${segKey}`);
+      if (!menu || !triggerBtn) return;
+
+      if (activeFaultMenuSeg === segKey && menu.style.display !== 'none') {
+        closeFaultTypeMenu();
+        return;
+      }
+
+      closeFaultTypeMenu();
+      activeFaultMenuSeg = segKey;
+
+      menu.innerHTML = `
+        <button class="fault-dropdown-item"
+          title="Falta trifásica simétrica franca - Atuação da proteção de fase 50/51"
+          onclick="selectFaultTypeAndApply('${segKey}', '3F')">Trifásica</button>
+        <button class="fault-dropdown-item"
+          title="Falta bifásica entre fases sem terra - Atuação da proteção de fase 50/51"
+          onclick="selectFaultTypeAndApply('${segKey}', '2F')">Bifásica</button>
+        <button class="fault-dropdown-item"
+          title="Falta fase-terra franca - Atuação da proteção de neutro 50/51N"
+          onclick="selectFaultTypeAndApply('${segKey}', 'FT')">Fase-Terra</button>
+        <button class="fault-dropdown-item"
+          title="Falta fase-terra de alta impedância com R = 100 Ω - Sensibilidade 50/51N"
+          onclick="selectFaultTypeAndApply('${segKey}', 'FTm')">Fase-Terra Mínima</button>
+      `;
+
+      menu.style.display = 'flex';
+      const rect = triggerBtn.getBoundingClientRect();
+      menu.style.top = (rect.bottom + 4) + 'px';
+      let left = rect.left;
+      const menuWidth = 150;
+      if (left + menuWidth > window.innerWidth - 10) {
+        left = window.innerWidth - menuWidth - 10;
+      }
+      menu.style.left = Math.max(10, left) + 'px';
+    }
+
+    function selectFaultTypeAndApply(segKey, faultType) {
+      closeFaultTypeMenu();
+      applyPresetFault(segKey, faultType);
+    }
+
+    let currentSimSpeed = 1.0;
+    let activeSpeedMenuMode = null;
+
+    function sliderValToSpeed(val) {
+      val = Number(val);
+      let spd = 1.0;
+      if (val <= 100) {
+        spd = 0.25 + (val / 100) * 0.25;
+      } else if (val <= 200) {
+        spd = 0.5 + ((val - 100) / 100) * 0.5;
+      } else if (val <= 300) {
+        spd = 1.0 + ((val - 200) / 100) * 1.0;
+      } else if (val <= 400) {
+        spd = 2.0 + ((val - 300) / 100) * 1.0;
+      } else {
+        spd = 3.0 + ((val - 400) / 100) * 2.0;
+      }
+      return Math.round(spd * 20) / 20;
+    }
+
+    function speedToSliderVal(spd) {
+      spd = Math.max(0.25, Math.min(5.0, Number(spd)));
+      if (spd <= 0.5) {
+        return Math.round(((spd - 0.25) / 0.25) * 100);
+      } else if (spd <= 1.0) {
+        return Math.round(100 + ((spd - 0.5) / 0.5) * 100);
+      } else if (spd <= 2.0) {
+        return Math.round(200 + ((spd - 1.0) / 1.0) * 100);
+      } else if (spd <= 3.0) {
+        return Math.round(300 + ((spd - 2.0) / 1.0) * 100);
+      } else {
+        return Math.round(400 + ((spd - 3.0) / 2.0) * 100);
+      }
+    }
+
+    function formatSpeed(spd) {
+      spd = Math.round(spd * 20) / 20;
+      if (Number.isInteger(spd)) {
+        return `${spd}x`;
+      }
+      const s = spd.toFixed(2);
+      if (s.endsWith('0')) {
+        return `${spd.toFixed(1)}x`;
+      }
+      return `${s}x`;
+    }
+
+    function setSimulationSpeed(spd) {
+      currentSimSpeed = Math.max(0.25, Math.min(5.0, spd));
+      const formatted = formatSpeed(currentSimSpeed);
+
+      const btnTcc = document.getElementById('btnSpeedTcc');
+      const btnManual = document.getElementById('btnSpeedManual');
+      if (btnTcc) btnTcc.textContent = formatted;
+      if (btnManual) btnManual.textContent = formatted;
+
+      const menuVal = document.getElementById('speedMenuValue');
+      if (menuVal) menuVal.textContent = formatted;
+
+      document.querySelectorAll('.speed-tick-mark').forEach((mark) => {
+        const markSpeed = parseFloat(mark.getAttribute('data-speed'));
+        if (Math.abs(markSpeed - currentSimSpeed) < 0.02) {
+          mark.classList.add('active');
+        } else {
+          mark.classList.remove('active');
+        }
+      });
+
+      document.querySelectorAll('.speed-dot').forEach((dot) => {
+        const dotSpeed = parseFloat(dot.getAttribute('data-speed'));
+        if (Math.abs(dotSpeed - currentSimSpeed) < 0.02) {
+          dot.classList.add('active');
+        } else {
+          dot.classList.remove('active');
+        }
+      });
+    }
+
+    function onSpeedSliderInput(val) {
+      const spd = sliderValToSpeed(val);
+      setSimulationSpeed(spd);
+    }
+
+    function setSpeedDirect(spd) {
+      setSimulationSpeed(spd);
+      const slider = document.getElementById('simSpeedSlider');
+      if (slider) {
+        slider.value = speedToSliderVal(spd);
+      }
+    }
+
+    function closeSpeedMenu() {
+      const menu = document.getElementById('speedDropdownMenu');
+      if (menu) menu.style.display = 'none';
+      document.querySelectorAll('.btn-sim-speed').forEach((b) => b.classList.remove('active'));
+      activeSpeedMenuMode = null;
+    }
+
+    function toggleSpeedMenu(event, mode) {
+      if (event) event.stopPropagation();
+      const menu = document.getElementById('speedDropdownMenu');
+      const triggerBtn = event ? event.currentTarget : document.getElementById(mode === 'manual' ? 'btnSpeedManual' : 'btnSpeedTcc');
+      if (!menu || !triggerBtn) return;
+
+      if (activeSpeedMenuMode === mode && menu.style.display !== 'none') {
+        closeSpeedMenu();
+        return;
+      }
+
+      closeSpeedMenu();
+      closeFaultTypeMenu();
+      activeSpeedMenuMode = mode;
+      triggerBtn.classList.add('active');
+
+      const slider = document.getElementById('simSpeedSlider');
+      if (slider) {
+        slider.value = speedToSliderVal(currentSimSpeed);
+      }
+      setSimulationSpeed(currentSimSpeed);
+
+      menu.style.display = 'flex';
+      const rect = triggerBtn.getBoundingClientRect();
+      menu.style.top = (rect.bottom + 4) + 'px';
+      let left = rect.left;
+      const menuWidth = 260;
+      if (left + menuWidth > window.innerWidth - 10) {
+        left = window.innerWidth - menuWidth - 10;
+      }
+      menu.style.left = Math.max(10, left) + 'px';
+    }
+
     document.addEventListener('click', (e) => {
       const menu = document.getElementById('tutorialDropdownMenu');
       const btn = document.getElementById('btnTutorialDropdown');
@@ -2517,9 +3489,30 @@
           menu.style.display = 'none';
         }
       }
+
+      const faultMenu = document.getElementById('faultTypeDropdownMenu');
+      if (faultMenu && faultMenu.style.display !== 'none') {
+        if (!faultMenu.contains(e.target) && !e.target.closest('.fault-dropdown-trigger')) {
+          closeFaultTypeMenu();
+        }
+      }
+
+      const speedMenu = document.getElementById('speedDropdownMenu');
+      if (speedMenu && speedMenu.style.display !== 'none') {
+        if (!speedMenu.contains(e.target) && !e.target.closest('.btn-sim-speed')) {
+          closeSpeedMenu();
+        }
+      }
+    });
+
+    window.addEventListener('resize', () => {
+      closeFaultTypeMenu();
+      closeSpeedMenu();
     });
 
     function switchRibbonTab(tabName) {
+      closeFaultTypeMenu();
+      closeSpeedMenu();
       const tabs = {
         'tcc': { btn: 'ribbonTabTcc', pane: 'ribbonPaneTcc' },
         'manual': { btn: 'ribbonTabManual', pane: 'ribbonPaneManual' },
@@ -2591,17 +3584,66 @@
       return { sc, activeCurrent, isGround };
     }
 
+    function toggleSidePanel(event) {
+      if (event) {
+        event.stopPropagation();
+      }
+      const panel = document.getElementById('sidePanel');
+      if (!panel) return;
+      panel.classList.toggle('collapsed');
+      const isCollapsed = panel.classList.contains('collapsed');
+      const collapseBtn = document.getElementById('btnCollapsePanel');
+      const expandBtn = document.getElementById('btnExpandPanel');
+      if (collapseBtn) collapseBtn.setAttribute('aria-expanded', String(!isCollapsed));
+      if (expandBtn) expandBtn.setAttribute('aria-expanded', String(!isCollapsed));
+
+      if (typeof scheduleDiagramAdaptation === 'function') {
+        scheduleDiagramAdaptation();
+        setTimeout(scheduleDiagramAdaptation, 230);
+      }
+    }
+
+    function expandSidePanel() {
+      const panel = document.getElementById('sidePanel');
+      if (!panel) return;
+      if (panel.classList.contains('collapsed')) {
+        panel.classList.remove('collapsed');
+        const collapseBtn = document.getElementById('btnCollapsePanel');
+        const expandBtn = document.getElementById('btnExpandPanel');
+        if (collapseBtn) collapseBtn.setAttribute('aria-expanded', 'true');
+        if (expandBtn) expandBtn.setAttribute('aria-expanded', 'true');
+
+        if (typeof scheduleDiagramAdaptation === 'function') {
+          scheduleDiagramAdaptation();
+          setTimeout(scheduleDiagramAdaptation, 230);
+        }
+      }
+    }
+
+    function setStatusIndicator(statusType, description) {
+      ['statusBadge', 'statusBadgeCollapsed'].forEach((id) => {
+        const badge = document.getElementById(id);
+        if (!badge) return;
+        badge.className = `status-badge badge-${statusType}`;
+        badge.title = description;
+        badge.setAttribute('aria-label', description);
+        badge.textContent = '';
+      });
+    }
+
     function updateDidacticPanel() {
       const emptyState = document.getElementById('emptyPanelState');
       const activeContent = document.getElementById('activePanelContent');
-      const statusBadge = document.getElementById('statusBadge');
 
       if (!currentFaultSegment || faultsState.length === 0) {
         emptyState.style.display = 'flex';
         activeContent.style.display = 'none';
-        statusBadge.className = 'status-badge badge-normal';
-        statusBadge.textContent = 'REDE NORMAL';
+        setStatusIndicator('normal', 'Rede Normal: Operando em regime permanente');
         return;
+      }
+
+      if (flisrCompleted) {
+        setStatusIndicator('flisr', 'Rede Recomposta: Self-Healing concluído com sucesso');
       }
 
       emptyState.style.display = 'none';
@@ -2614,18 +3656,14 @@
       const seg = sc.seg;
       const relay = RELAYS_DATA[seg.upstreamRelay] || RELAYS_DATA['21I7'];
 
-      document.getElementById('txtFaultTitle').textContent = `Falta no Trecho ${seg.id}`;
-      document.getElementById('txtFaultSub').textContent = `${seg.feeder} • ${seg.cable} (${seg.length.toLocaleString('pt-BR')} m)`;
-
       ['3F', '2F', 'FT', 'FTm'].forEach((type) => {
         const row = document.getElementById(`row${type}`);
-        const btn = document.getElementById(`btnFault${type}`);
-        if (type === selectedFaultType) {
-          row.classList.add('active-row');
-          btn.classList.add('active');
-        } else {
-          row.classList.remove('active-row');
-          btn.classList.remove('active');
+        if (row) {
+          if (type === selectedFaultType) {
+            row.classList.add('active-row');
+          } else {
+            row.classList.remove('active-row');
+          }
         }
       });
 
@@ -2637,6 +3675,8 @@
         : `${Math.round(activeCurrent).toLocaleString('pt-BR')} A`;
 
       // KPIs Superiores da Aba 1
+      const kpiLabelEl = document.getElementById('kpiCurrentLabel');
+      if (kpiLabelEl) kpiLabelEl.textContent = `Icc (${selectedFaultType})`;
       document.getElementById('kpiCurrent').textContent = formattedCurrent;
       document.getElementById('kpiRelay').textContent = `${seg.upstreamRelay} (${relay.cycle})`;
       document.getElementById('kpiTime').textContent = `${Math.round(shot1.totalTimeMs)} ms / ${relay.deadTime} s`;
@@ -2654,19 +3694,22 @@
       document.getElementById('calcIFTm').textContent = `${sc.iftm.toFixed(1).replace('.', ',')} A`;
       document.getElementById('tccIFTm').textContent = `${seg.bench.iftm.toFixed(1).replace('.', ',')} A`;
 
-      document.getElementById('txtRelayFunc').textContent = `${seg.upstreamRelay} / Ciclo ${relay.cycle} / 79OI = ${relay.deadTime} s`;
       document.getElementById('txtCurveDial').textContent = `IEC Muito Inversa (TD = ${isGround ? relay.ground.dial : relay.phase.dial})`;
-      document.getElementById('txtCurrentPickup').textContent = `${formattedCurrent} / ${shotT.pickup} A (M = ${shotT.multiple.toFixed(2)})`;
-      document.getElementById('txtTotalTripTime').textContent = `1º (${shot1.shortCode}): ${shot1.totalTimeMs.toFixed(1).replace('.', ',')} ms | Curva 51: ${shotT.totalTimeMs.toFixed(1).replace('.', ',')} ms`;
-      document.getElementById('txtCableSpec').textContent = `${seg.length.toLocaleString('pt-BR')} m - ${seg.cable}`;
-      document.getElementById('txtThermalMargin').textContent = `${seg.load} A / ${seg.amp} A (Margem Segura)`;
+      document.getElementById('txtCurrentPickup').textContent = `${shotT.pickup} A (M = ${shotT.multiple.toFixed(2)})`;
+      document.getElementById('txtTotalTripTime').textContent = `${shotT.totalTimeMs.toFixed(1).replace('.', ',')} ms`;
+      document.getElementById('txtCableSpec').textContent = `${seg.length.toLocaleString('pt-BR')} m | ${seg.cable}`;
+      document.getElementById('txtThermalMargin').textContent = `${seg.load} A / ${seg.amp} A (OK)`;
     }
 
     function selectFaultType(type) {
       selectedFaultType = type;
       updateDidacticPanel();
-      if (currentFaultSegment && !flisrCompleted) {
-        runSimulationSequence(currentFaultSegment);
+      if (currentFaultSegment) {
+        if (simState === 'running' || simState === 'paused') {
+          stopSimulation();
+        }
+        setupReadyDidacticPanel(currentFaultSegment);
+        updateSimulationButtonsUI();
       }
     }
 
@@ -2683,52 +3726,195 @@
       const card = document.getElementById(`stepCard${stepNum}`);
       const tag = document.getElementById(`stepTag${stepNum}`);
       const desc = document.getElementById(`stepDesc${stepNum}`);
-      card.className = 'didactic-step-card';
-      if (state === 'active') card.classList.add('step-active');
-      if (state === 'done') card.classList.add('step-done');
-      tag.textContent = tagText;
-      if (descText) desc.innerHTML = descText;
+      if (card) {
+        card.className = 'didactic-step-card';
+        if (state === 'active') card.classList.add('step-active');
+        if (state === 'done') card.classList.add('step-done');
+      }
+      if (tag) tag.textContent = tagText;
+      if (desc) {
+        if (descText) {
+          desc.innerHTML = descText;
+          desc.style.display = 'block';
+        } else {
+          desc.innerHTML = '';
+          desc.style.display = 'none';
+        }
+      }
     }
 
     /* ==========================================================================
-       6. SEQUENCIA EM TEMPO REAL PARAMETRIZADO (ANSI 79 + FLISR) & PULAR PARA O FIM
+       6. SEQUENCIA EM TEMPO REAL PARAMETRIZADO (ANSI 79 + FLISR) & REPRODUCAO
        ========================================================================== */
+    function createTimelinePointElement(pDef) {
+      const pill = document.createElement('div');
+      pill.id = `timelinePoint${pDef.num}`;
+      pill.className = 'reclose-pill';
+      pill.innerHTML = `
+        <div class="timeline-track-wrap">
+          <div class="timeline-line timeline-line-left" style="visibility:${pDef.leftVis};"></div>
+          <div class="timeline-node">${pDef.num}</div>
+          <div class="timeline-line timeline-line-right" style="visibility:${pDef.rightVis};"></div>
+        </div>
+        <div class="timeline-step-badge">
+          <div class="timeline-step-title">${pDef.title}</div>
+          <div id="pointSub${pDef.num}" class="timeline-step-time">${pDef.sub}</div>
+        </div>
+      `;
+      return pill;
+    }
+
     function buildReclosePills(segKey, shotsDetails) {
       const container = document.getElementById('recloseGridContainer');
+      if (!container) return;
       container.innerHTML = '';
-      shotsDetails.forEach((sh, idx) => {
-        const pill = document.createElement('div');
-        pill.id = `cycleStep${idx + 1}`;
-        pill.className = 'reclose-pill';
-        const isLast = idx === shotsDetails.length - 1;
-        pill.innerHTML = `${idx + 1}º Trip (${sh.shortCode})<br>${Math.round(sh.totalTimeMs)} ms${isLast ? ' • Lock' : ''}`;
-        container.appendChild(pill);
-      });
+
+      const relay = (SEGMENTS_DATA[segKey] && RELAYS_DATA[SEGMENTS_DATA[segKey].upstreamRelay])
+        ? RELAYS_DATA[SEGMENTS_DATA[segKey].upstreamRelay]
+        : RELAYS_DATA['21I7'];
+      const deadSec = relay.deadTime || 10.0;
+      const numShots = shotsDetails ? shotsDetails.length : 4;
+
+      // 8 marcos sequenciais da proteção ANSI 79 divididos em 2 linhas de 4 pontos (1 a 8)
+      const pointsDef = [
+        // Linha 1: Pontos 1 a 4
+        {
+          num: 1,
+          title: '1ª Abertura',
+          sub: `Curva (${shotsDetails?.[0]?.shortCode || 'I'})`,
+          leftVis: 'hidden',
+          rightVis: 'visible'
+        },
+        {
+          num: 2,
+          title: '1º T. Morto',
+          sub: `${deadSec} s (79OI)`,
+          leftVis: 'visible',
+          rightVis: 'visible'
+        },
+        {
+          num: 3,
+          title: '2ª Abertura',
+          sub: numShots >= 2 ? `Curva (${shotsDetails?.[1]?.shortCode || 'I'})` : '-',
+          leftVis: 'visible',
+          rightVis: 'visible'
+        },
+        {
+          num: 4,
+          title: '2º T. Morto',
+          sub: numShots >= 3 ? `${deadSec} s (79OI)` : '-',
+          leftVis: 'visible',
+          rightVis: 'hidden'
+        },
+        // Linha 2: Pontos 5 a 8
+        {
+          num: 5,
+          title: '3ª Abertura',
+          sub: numShots >= 3 ? `Curva (${shotsDetails?.[2]?.shortCode || 'T'})` : '-',
+          leftVis: 'hidden',
+          rightVis: 'visible'
+        },
+        {
+          num: 6,
+          title: '3º T. Morto',
+          sub: numShots >= 4 ? `${deadSec} s (79OI)` : '-',
+          leftVis: 'visible',
+          rightVis: 'visible'
+        },
+        {
+          num: 7,
+          title: '4ª Abertura',
+          sub: numShots >= 4 ? `Curva (${shotsDetails?.[3]?.shortCode || 'T'})` : '-',
+          leftVis: 'visible',
+          rightVis: 'visible'
+        },
+        {
+          num: 8,
+          title: 'Bloqueio',
+          sub: 'Lockout (79)',
+          leftVis: 'visible',
+          rightVis: 'hidden'
+        }
+      ];
+
+      // Linha 1 (Pontos 1 a 4)
+      const row1 = document.createElement('div');
+      row1.className = 'timeline-row';
+      for (let i = 0; i < 4; i++) {
+        row1.appendChild(createTimelinePointElement(pointsDef[i]));
+      }
+      container.appendChild(row1);
+
+      // Conector ligando o final da Linha 1 (Ponto 4, X=87.5%) ao início da Linha 2 (Ponto 5, X=12.5%)
+      const connWrap = document.createElement('div');
+      connWrap.className = 'timeline-connector-wrap';
+      connWrap.innerHTML = `
+        <svg class="timeline-connector-svg" viewBox="0 0 100 16" preserveAspectRatio="none">
+          <path id="timelineConn1to2" class="timeline-connector-track" d="M 87.5 0 V 4 Q 87.5 8 82.5 8 H 17.5 Q 12.5 8 12.5 12 V 16" vector-effect="non-scaling-stroke"></path>
+        </svg>
+      `;
+      container.appendChild(connWrap);
+
+      // Linha 2 (Pontos 5 a 8)
+      const row2 = document.createElement('div');
+      row2.className = 'timeline-row';
+      for (let i = 4; i < 8; i++) {
+        row2.appendChild(createTimelinePointElement(pointsDef[i]));
+      }
+      container.appendChild(row2);
     }
 
-    function startLiveCountdown(labelPrefix, durationMs) {
-      if (activeIntervalTimer) clearInterval(activeIntervalTimer);
-      const statusEl = document.getElementById('txtRealtimeStatus');
-      const startTime = performance.now();
-      const totalSec = (durationMs / 1000).toFixed(1).replace('.', ',');
-
-      const updateTick = () => {
-        const elapsedMs = performance.now() - startTime;
-        const remainMs = Math.max(0, durationMs - elapsedMs);
-        const remainSec = (remainMs / 1000).toFixed(1).replace('.', ',');
-        statusEl.textContent = `${labelPrefix}: resta ${remainSec} s (de ${totalSec} s)`;
-      };
-      updateTick();
-      activeIntervalTimer = setInterval(updateTick, 100);
-    }
-
-    function runSimulationSequence(segKey) {
-      clearSimulationTimers();
-      flisrCompleted = false;
-
-      equipmentState = JSON.parse(JSON.stringify(initialEquipmentData));
+    function setupReadyDidacticPanel(segKey) {
       const info = getActiveFaultCurrentInfo(segKey);
       if (!info) return;
+      const { sc, activeCurrent, isGround } = info;
+      const seg = sc.seg;
+      const relay = RELAYS_DATA[seg.upstreamRelay] || RELAYS_DATA['21I7'];
+      const shotsModes = relay.shots || ['I', 'I', 'T', 'T'];
+      const shotsDetails = shotsModes.map((mode) =>
+        calculateRelayShotTime(seg.upstreamRelay, activeCurrent, isGround, mode)
+      );
+
+      buildReclosePills(segKey, shotsDetails);
+
+      const firstShot = shotsDetails[0];
+      setStepCardState(
+        1,
+        'idle',
+        `PRONTO (${Math.round(firstShot.totalTimeMs)} ms)`
+      );
+      setStepCardState(
+        2,
+        'idle',
+        `CICLO ${relay.cycle}`
+      );
+      setStepCardState(
+        3,
+        'idle',
+        'AGUARDANDO',
+        `Chaves: <b>${seg.isolateSwitches.join(', ')}</b>`
+      );
+      setStepCardState(
+        4,
+        'idle',
+        'AGUARDANDO',
+        seg.tieSwitch
+          ? `Socorro: <b>${seg.tieSwitch}</b> (SE ${seg.supportSource})`
+          : `Alimentador recomposto`
+      );
+
+      const statusEl = document.getElementById('txtRealtimeStatus');
+      if (statusEl) {
+        statusEl.textContent = 'Falta posicionada. Pressione Play para iniciar a simulação.';
+      }
+      setStatusIndicator('fault', 'Falta Detectada: Pronto para simular (Pressione Play)');
+      const skipBtn = document.getElementById('btnSkipToEnd');
+      if (skipBtn) skipBtn.disabled = true;
+    }
+
+    function prepareSimulationTimeline(segKey) {
+      const info = getActiveFaultCurrentInfo(segKey);
+      if (!info) return [];
 
       const { sc, activeCurrent, isGround } = info;
       const seg = sc.seg;
@@ -2736,164 +3922,412 @@
       const shotsModes = relay.shots || ['I', 'I', 'T', 'T'];
       const deadTimeMs = (relay.deadTime || 10.0) * 1000;
 
-      // Calcula o tempo real parametrizado de cada disparo do ciclo do relé
       const shotsDetails = shotsModes.map((mode) =>
         calculateRelayShotTime(seg.upstreamRelay, activeCurrent, isGround, mode)
       );
 
-      buildReclosePills(segKey, shotsDetails);
+      const events = [];
+      let t = 0;
 
-      const statusBadge = document.getElementById('statusBadge');
-      const skipBtn = document.getElementById('btnSkipToEnd');
-      const realtimeText = document.getElementById('txtRealtimeStatus');
-      skipBtn.disabled = false;
+      shotsDetails.forEach((shot, idx) => {
+        const shotNum = idx + 1;
+        const isLastShot = idx === shotsDetails.length - 1;
 
-      statusBadge.className = 'status-badge badge-fault';
-      statusBadge.textContent = 'FALTA DETECTADA';
+        if (idx > 0) {
+          const recloseTime = t;
+          events.push({
+            timeMs: recloseTime,
+            type: 'reclose',
+            shotNum,
+            run: () => {
+              setSwitchState(seg.upstreamRelay, 'closed');
+              const deadPointIdx = (shotNum - 1) * 2;
+              const nextTripPointIdx = (shotNum - 1) * 2 + 1;
+
+              for (let p = 1; p <= deadPointIdx; p++) {
+                const prev = document.getElementById(`timelinePoint${p}`);
+                if (prev) prev.className = 'reclose-pill done';
+              }
+              if (shotNum >= 3) {
+                const conn = document.getElementById('timelineConn1to2');
+                if (conn) conn.className = 'timeline-connector-track conn-done';
+              }
+
+              const pill = document.getElementById(`timelinePoint${nextTripPointIdx}`);
+              if (pill) pill.className = 'reclose-pill active';
+
+              setStepCardState(2, 'active', `${shotNum}ª ABERTURA`);
+              document.getElementById('txtRealtimeStatus').textContent = `${shotNum}ª Abertura em ${shot.totalTimeMs.toFixed(0)} ms...`;
+              setStatusIndicator('fault', `${shotNum}ª Abertura (${shot.shortCode}): Religador em contagem para extinção de defeito`);
+              renderAll();
+            }
+          });
+        }
+
+        t += shot.totalTimeMs;
+        const tripTime = t;
+
+        events.push({
+          timeMs: tripTime,
+          type: 'trip',
+          shotNum,
+          isLastShot,
+          deadTimeMs,
+          upstreamRelay: seg.upstreamRelay,
+          relayDeadTime: relay.deadTime,
+          run: () => {
+            setSwitchState(seg.upstreamRelay, 'open');
+            if (idx === 0) {
+              setStepCardState(
+                1,
+                'done',
+                `ATUOU (${shot.totalTimeMs.toFixed(0)} ms)`
+              );
+            }
+
+            const tripPointIdx = (shotNum - 1) * 2 + 1;
+            const deadPointIdx = (shotNum - 1) * 2 + 2;
+
+            const tripPill = document.getElementById(`timelinePoint${tripPointIdx}`);
+            if (tripPill) tripPill.className = 'reclose-pill done';
+
+            if (!isLastShot) {
+              const deadPill = document.getElementById(`timelinePoint${deadPointIdx}`);
+              if (deadPill) deadPill.className = 'reclose-pill deadtime';
+
+              if (deadPointIdx >= 4) {
+                const conn = document.getElementById('timelineConn1to2');
+                if (conn) conn.className = 'timeline-connector-track conn-deadtime';
+              }
+
+              setStepCardState(2, 'active', `MORTO (${relay.deadTime} s)`);
+              setStatusIndicator('reclose', `79OI: Tempo morto (${relay.deadTime}s) aguardando o ${shotNum}º religamento`);
+            } else {
+              const lockPill = document.getElementById('timelinePoint8');
+              if (lockPill) lockPill.className = 'reclose-pill lockout';
+
+              for (let k = 1; k < 8; k++) {
+                const p = document.getElementById(`timelinePoint${k}`);
+                if (p && !p.className.includes('done')) p.className = 'reclose-pill done';
+              }
+              const conn = document.getElementById('timelineConn1to2');
+              if (conn) conn.className = 'timeline-connector-track conn-done';
+
+              setStepCardState(2, 'done', 'LOCKOUT');
+              setStepCardState(3, 'active', 'ISOLANDO', `Chaves: <b>${seg.isolateSwitches.join(', ')}</b>`);
+              document.getElementById('txtRealtimeStatus').textContent = 'Bloqueio (Lockout). Isolando trecho...';
+              setStatusIndicator('lockout', 'Bloqueio (Lockout): Falta permanente confirmada após tentativas de religamento');
+            }
+            renderAll();
+          }
+        });
+
+        if (!isLastShot) {
+          t += deadTimeMs;
+        }
+      });
+
+      t += 500;
+      events.push({
+        timeMs: t,
+        type: 'isolate',
+        run: () => {
+          seg.isolateSwitches.forEach((sw) => setSwitchState(sw, 'open'));
+          setStepCardState(
+            3,
+            'done',
+            'ISOLADO',
+            `Chaves: <b>${seg.isolateSwitches.join(', ')}</b>`
+          );
+          setStepCardState(4, 'active', 'RECOMPONDO', seg.tieSwitch ? `Socorro: <b>${seg.tieSwitch}</b> (SE ${seg.supportSource})` : `Alimentador recomposto`);
+          document.getElementById('txtRealtimeStatus').textContent = 'Trecho isolado. Executando Self-Healing...';
+          setStatusIndicator('flisr', 'FLISR: Comandando isolamento do trecho em falta');
+          renderAll();
+        }
+      });
+
+      t += 500;
+      events.push({
+        timeMs: t,
+        type: 'restore',
+        run: () => {
+          finalizeSelfHealingState(segKey);
+          simState = 'completed';
+          updateSimulationButtonsUI();
+        }
+      });
+
+      return events;
+    }
+
+    function updateLiveSimCountdown(currentTimeMs) {
+      const statusEl = document.getElementById('txtRealtimeStatus');
+      if (!statusEl) return;
+
+      if (simNextEventIndex >= simTimelineEvents.length) return;
+
+      const nextEv = simTimelineEvents[simNextEventIndex];
+      if (!nextEv) return;
+
+      if (nextEv.type === 'reclose') {
+        const prevEv = simTimelineEvents[simNextEventIndex - 1];
+        const prevTime = prevEv ? prevEv.timeMs : 0;
+        const remainMs = Math.max(0, nextEv.timeMs - currentTimeMs);
+        const remainSec = (remainMs / 1000).toFixed(1).replace('.', ',');
+        const totalSec = ((nextEv.timeMs - prevTime) / 1000).toFixed(1).replace('.', ',');
+        statusEl.textContent = `${nextEv.shotNum - 1}º Religamento: resta ${remainSec} s (de ${totalSec} s)`;
+
+        const deadPointIdx = (nextEv.shotNum - 1) * 2;
+        const deadSub = document.getElementById(`pointSub${deadPointIdx}`);
+        if (deadSub) {
+          deadSub.textContent = `${remainSec} s rest.`;
+        }
+      } else if (nextEv.type === 'trip' && nextEv.shotNum === 1) {
+        const remainMs = Math.max(0, nextEv.timeMs - currentTimeMs);
+        statusEl.textContent = `Atuação 1ª Abertura: resta ${remainMs.toFixed(0)} ms...`;
+      }
+    }
+
+    function simTick() {
+      if (simState !== 'running') return;
+      const now = performance.now();
+      const delta = now - simLastTickTime;
+      simLastTickTime = now;
+      simCurrentTimeMs += delta * currentSimSpeed;
+
+      while (simNextEventIndex < simTimelineEvents.length && simTimelineEvents[simNextEventIndex].timeMs <= simCurrentTimeMs) {
+        simTimelineEvents[simNextEventIndex].run();
+        simNextEventIndex++;
+      }
+
+      updateLiveSimCountdown(simCurrentTimeMs);
+
+      if (simNextEventIndex < simTimelineEvents.length && simState === 'running') {
+        simAnimationId = requestAnimationFrame(simTick);
+      } else if (simNextEventIndex >= simTimelineEvents.length) {
+        simState = 'completed';
+        updateSimulationButtonsUI();
+      }
+    }
+
+    function startSimulation() {
+      if (!currentFaultSegment) return;
+      if (simState === 'running') return;
+
+      if (simState === 'paused') {
+        simState = 'running';
+        simLastTickTime = performance.now();
+        updateSimulationButtonsUI();
+        const skipBtn = document.getElementById('btnSkipToEnd');
+        if (skipBtn) skipBtn.disabled = false;
+        simAnimationId = requestAnimationFrame(simTick);
+        return;
+      }
+
+      if (simAnimationId) {
+        cancelAnimationFrame(simAnimationId);
+        simAnimationId = null;
+      }
+      clearSimulationTimers();
+      simPrePlayEquipmentSnapshot = JSON.parse(JSON.stringify(initialEquipmentData));
+      equipmentState = JSON.parse(JSON.stringify(initialEquipmentData));
+      flisrCompleted = false;
+
+      const info = getActiveFaultCurrentInfo(currentFaultSegment);
+      if (!info) return;
+      const { sc, activeCurrent, isGround } = info;
+      const seg = sc.seg;
+      const relay = RELAYS_DATA[seg.upstreamRelay] || RELAYS_DATA['21I7'];
+      const shotsModes = relay.shots || ['I', 'I', 'T', 'T'];
+      const shotsDetails = shotsModes.map((mode) =>
+        calculateRelayShotTime(seg.upstreamRelay, activeCurrent, isGround, mode)
+      );
+
+      buildReclosePills(currentFaultSegment, shotsDetails);
+      const pill1 = document.getElementById('timelinePoint1');
+      if (pill1) pill1.className = 'reclose-pill active';
 
       const firstShot = shotsDetails[0];
       setStepCardState(
         1,
         'active',
-        `PICKUP (${Math.round(firstShot.totalTimeMs)} ms)`,
-        `Falta em <b>${seg.id}</b>. O relé <b>${seg.upstreamRelay}</b> partiu (${firstShot.shortCode}) e atua em <b>${firstShot.totalTimeMs.toFixed(1).replace('.', ',')} ms</b>.`
+        `PICKUP (${Math.round(firstShot.totalTimeMs)} ms)`
       );
       setStepCardState(
         2,
-        'idle',
-        `CICLO ${relay.cycle}`,
-        `Ciclo parametrizado: <b>${shotsDetails.length} abertura(s)</b> e tempo morto 79OI de <b>${relay.deadTime} s</b> entre religamentos.`
+        'active',
+        '1ª ABERTURA'
       );
       setStepCardState(
         3,
         'idle',
         'AGUARDANDO',
-        `Abertura das chaves <b>${seg.isolateSwitches.join(' e ')}</b> após o Lockout.`
+        `Chaves: <b>${seg.isolateSwitches.join(', ')}</b>`
       );
       setStepCardState(
         4,
         'idle',
         'AGUARDANDO',
         seg.tieSwitch
-          ? `Fechamento de <b>${seg.tieSwitch}</b> para socorro via <b>SE ${seg.supportSource}</b>.`
-          : `Restabelecimento dos trechos sãos mantendo <b>${seg.id}</b> isolado.`
+          ? `Socorro: <b>${seg.tieSwitch}</b> (SE ${seg.supportSource})`
+          : `Alimentador recomposto`
       );
 
-      realtimeText.textContent = `Atuação 1º Disparo (${firstShot.shortCode}): ${firstShot.totalTimeMs.toFixed(0)} ms...`;
+      const skipBtn = document.getElementById('btnSkipToEnd');
+      if (skipBtn) skipBtn.disabled = false;
+      setStatusIndicator('fault', 'Falta Detectada: Curto-circuito em análise pela proteção');
+
+      simTimelineEvents = prepareSimulationTimeline(currentFaultSegment);
+      simCurrentTimeMs = 0;
+      simNextEventIndex = 0;
+      simState = 'running';
+      simLastTickTime = performance.now();
+      updateSimulationButtonsUI();
       renderAll();
 
-      let timelineCursorMs = 0;
+      simAnimationId = requestAnimationFrame(simTick);
+    }
 
-      shotsDetails.forEach((shot, idx) => {
-        const shotNum = idx + 1;
-        const isLastShot = idx === shotsDetails.length - 1;
+    function pauseSimulation() {
+      if (simState !== 'running') return;
+      simState = 'paused';
+      if (simAnimationId) {
+        cancelAnimationFrame(simAnimationId);
+        simAnimationId = null;
+      }
+      const statusEl = document.getElementById('txtRealtimeStatus');
+      if (statusEl && !statusEl.textContent.includes('(Pausado)')) {
+        statusEl.textContent += ' (Pausado)';
+      }
+      updateSimulationButtonsUI();
+    }
 
-        // Se não é o 1º disparo, no início do disparo o religador fecha tentando restabelecer a linha
-        if (idx > 0) {
-          const recloseMoment = timelineCursorMs;
-          activeSimulationTimers.push(setTimeout(() => {
-            if (activeIntervalTimer) { clearInterval(activeIntervalTimer); activeIntervalTimer = null; }
-            setSwitchState(seg.upstreamRelay, 'closed');
-            const pill = document.getElementById(`cycleStep${shotNum}`);
-            if (pill) pill.className = 'reclose-pill active';
-            setStepCardState(
-              2,
-              'active',
-              `RELIGOU -> ${shotNum}º TRIP`,
-              `Religador <b>${seg.upstreamRelay}</b> fechou após ${relay.deadTime} s; falta persiste e provoca o ${shotNum}º disparo (${shot.shortCode} em ${shot.totalTimeMs.toFixed(1).replace('.', ',')} ms).`
-            );
-            realtimeText.textContent = `${shotNum}ª Abertura (${shot.shortCode}) em ${shot.totalTimeMs.toFixed(0)} ms...`;
-            statusBadge.className = 'status-badge badge-fault';
-            statusBadge.textContent = `${shotNum}º DISPARO (${shot.shortCode})`;
-            renderAll();
-          }, recloseMoment));
+    function togglePlayPauseSimulation() {
+      if (simState === 'running') {
+        pauseSimulation();
+      } else {
+        startSimulation();
+      }
+    }
+
+    function stopSimulation() {
+      if (simAnimationId) {
+        cancelAnimationFrame(simAnimationId);
+        simAnimationId = null;
+      }
+      clearSimulationTimers();
+      simState = 'idle';
+      simCurrentTimeMs = 0;
+      simNextEventIndex = 0;
+      flisrCompleted = false;
+
+      if (simPrePlayEquipmentSnapshot) {
+        equipmentState = JSON.parse(JSON.stringify(simPrePlayEquipmentSnapshot));
+      } else {
+        equipmentState = JSON.parse(JSON.stringify(initialEquipmentData));
+      }
+
+      if (currentFaultSegment) {
+        setupReadyDidacticPanel(currentFaultSegment);
+      }
+
+      const skipBtn = document.getElementById('btnSkipToEnd');
+      if (skipBtn) skipBtn.disabled = true;
+
+      const statusEl = document.getElementById('txtRealtimeStatus');
+      if (statusEl && currentFaultSegment) {
+        statusEl.textContent = 'Simulação reiniciada. Pressione Play para iniciar novamente.';
+      }
+
+      updateSimulationButtonsUI();
+      renderAll();
+    }
+
+    function updateSimulationButtonsUI() {
+      const playBtns = [document.getElementById('btnPlayTcc'), document.getElementById('btnPlayManual')];
+      const stopBtns = [document.getElementById('btnStopTcc'), document.getElementById('btnStopManual')];
+
+      const playSvg = '<svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><polygon points="6 4 20 12 6 20 6 4"></polygon></svg>';
+      const pauseSvg = '<svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><rect x="6" y="4" width="4" height="16" rx="1"></rect><rect x="14" y="4" width="4" height="16" rx="1"></rect></svg>';
+      const stopSvg = '<svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><rect x="5" y="5" width="14" height="14" rx="2"></rect></svg>';
+
+      playBtns.forEach((btn) => {
+        if (!btn) return;
+        if (!currentFaultSegment) {
+          btn.disabled = true;
+          btn.className = 'tool-btn icon-btn btn-sim-play';
+          btn.innerHTML = playSvg;
+          btn.title = 'Selecione ou insira uma falta para habilitar o Play';
+        } else if (simState === 'running') {
+          btn.disabled = false;
+          btn.className = 'tool-btn icon-btn btn-sim-pause';
+          btn.innerHTML = pauseSvg;
+          btn.title = 'Pausar simulação (Pause)';
+        } else if (simState === 'paused') {
+          btn.disabled = false;
+          btn.className = 'tool-btn icon-btn btn-sim-play';
+          btn.innerHTML = playSvg;
+          btn.title = 'Continuar simulação (Play)';
         } else {
-          const pill1 = document.getElementById('cycleStep1');
-          if (pill1) pill1.className = 'reclose-pill active';
-        }
-
-        // Avança o tempo real de atuação do relé + disjuntor (tripTimeMs)
-        timelineCursorMs += shot.totalTimeMs;
-        const tripOpenMoment = timelineCursorMs;
-
-        activeSimulationTimers.push(setTimeout(() => {
-          setSwitchState(seg.upstreamRelay, 'open');
-          if (idx === 0) {
-            setStepCardState(
-              1,
-              'done',
-              `ATUOU (${shot.totalTimeMs.toFixed(0)} ms)`,
-              `Relé <b>${seg.upstreamRelay}</b> abriu no 1º disparo (${shot.shortCode}) em <b>${shot.totalTimeMs.toFixed(1).replace('.', ',')} ms</b>.`
-            );
-          }
-
-          const pill = document.getElementById(`cycleStep${shotNum}`);
-
-          if (!isLastShot) {
-            if (pill) pill.className = 'reclose-pill deadtime';
-            setStepCardState(
-              2,
-              'active',
-              `TEMPO MORTO (${relay.deadTime} s)`,
-              `Chave <b>${seg.upstreamRelay}</b> aberta no ${shotNum}º disparo. Contando tempo morto 79OI de <b>${relay.deadTime} s</b> para o ${shotNum}º religamento.`
-            );
-            statusBadge.className = 'status-badge badge-reclose';
-            statusBadge.textContent = `79OI: TEMPO MORTO (${relay.deadTime}s)`;
-            startLiveCountdown(`${shotNum}º Religamento (${seg.upstreamRelay})`, deadTimeMs);
-          } else {
-            if (activeIntervalTimer) { clearInterval(activeIntervalTimer); activeIntervalTimer = null; }
-            if (pill) pill.className = 'reclose-pill done';
-            // Marca todas as anteriores como concluídas
-            for (let k = 1; k <= shotsDetails.length; k++) {
-              const p = document.getElementById(`cycleStep${k}`);
-              if (p) p.className = 'reclose-pill done';
-            }
-            setStepCardState(
-              2,
-              'done',
-              'LOCKOUT (79)',
-              `Falta permanente confirmada após ${shotsDetails.length} abertura(s). Relé <b>${seg.upstreamRelay}</b> em bloqueio (Lockout).`
-            );
-            setStepCardState(3, 'active', 'ISOLANDO...', `Comandando abertura das chaves de fronteira do trecho ${seg.id}...`);
-            realtimeText.textContent = 'Lockout confirmado. Isolando trecho sob falta...';
-            statusBadge.className = 'status-badge badge-lockout';
-            statusBadge.textContent = 'BLOQUEIO (LOCKOUT)';
-          }
-          renderAll();
-        }, tripOpenMoment));
-
-        if (!isLastShot) {
-          timelineCursorMs += deadTimeMs;
+          btn.disabled = false;
+          btn.className = 'tool-btn icon-btn btn-sim-play';
+          btn.innerHTML = playSvg;
+          btn.title = simState === 'completed'
+            ? 'Reiniciar simulação (Play)'
+            : 'Iniciar simulação (Play)';
         }
       });
 
-      // Etapa 3: Isolamento Automático (500 ms após Lockout)
-      timelineCursorMs += 500;
-      const isolateMoment = timelineCursorMs;
-      activeSimulationTimers.push(setTimeout(() => {
-        seg.isolateSwitches.forEach((sw) => setSwitchState(sw, 'open'));
-        setStepCardState(
-          3,
-          'done',
-          'ISOLADO',
-          `Chaves <b>${seg.isolateSwitches.join(' e ')}</b> abertas. O trecho <b>${seg.id}</b> está isolado.`
-        );
-        setStepCardState(4, 'active', 'RECOMPONDO...', 'Acionando manobra de recomposição automática (Self-Healing)...');
-        realtimeText.textContent = 'Isolamento concluído. Executando Self-Healing...';
-        statusBadge.className = 'status-badge badge-flisr';
-        statusBadge.textContent = 'FLISR: ISOLAMENTO';
-        renderAll();
-      }, isolateMoment));
+      stopBtns.forEach((btn) => {
+        if (!btn) return;
+        btn.innerHTML = stopSvg;
+        btn.className = 'tool-btn icon-btn btn-sim-stop';
+        if (simState === 'running' || simState === 'paused' || simState === 'completed') {
+          btn.disabled = false;
+          btn.title = 'Parar simulação e voltar ao estado inicial (Stop)';
+        } else {
+          btn.disabled = true;
+          btn.title = 'Parar simulação e voltar ao estado inicial (Stop)';
+        }
+      });
 
-      // Etapa 4: Recomposição Self-Healing (500 ms após Isolamento)
-      timelineCursorMs += 500;
-      const restoreMoment = timelineCursorMs;
-      activeSimulationTimers.push(setTimeout(() => {
-        finalizeSelfHealingState(segKey);
-      }, restoreMoment));
+      const resetBtns = [document.getElementById('btnReset'), document.getElementById('btnResetManual')];
+      const resetSvg = '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12a9 9 0 1 1-2.64-6.36L21 8"/><polyline points="21 3 21 8 16 8"/></svg>';
+      resetBtns.forEach((btn) => {
+        if (!btn) return;
+        btn.innerHTML = resetSvg;
+        btn.className = 'tool-btn icon-btn btn-sim-reset';
+        btn.title = 'Restaurar rede ao estado normal de operação (Reset)';
+      });
+    }
+
+    function resetSimulationNetwork() {
+      closeFaultTypeMenu();
+      closeSpeedMenu();
+      stopSimulation();
+      recordHistory();
+      equipmentState = JSON.parse(JSON.stringify(initialEquipmentData));
+      transformerState = JSON.parse(JSON.stringify(transformersData));
+      faultsState = [];
+      currentFaultSegment = null;
+      flisrCompleted = false;
+      setInteractionMode('none');
+      renderAll();
+      updateToolbarState();
+      updateDidacticPanel();
+      updateSimulationButtonsUI();
+    }
+
+    function runSimulationSequence(segKey) {
+      if (segKey) currentFaultSegment = segKey;
+      startSimulation();
     }
 
     function finalizeSelfHealingState(segKey) {
+      if (simAnimationId) {
+        cancelAnimationFrame(simAnimationId);
+        simAnimationId = null;
+      }
       clearSimulationTimers();
       const info = getActiveFaultCurrentInfo(segKey);
       if (!info) return;
@@ -2907,10 +4341,14 @@
       );
 
       buildReclosePills(segKey, shotsDetails);
-      for (let k = 1; k <= shotsDetails.length; k++) {
-        const p = document.getElementById(`cycleStep${k}`);
+      for (let k = 1; k < 8; k++) {
+        const p = document.getElementById(`timelinePoint${k}`);
         if (p) p.className = 'reclose-pill done';
       }
+      const conn = document.getElementById('timelineConn1to2');
+      if (conn) conn.className = 'timeline-connector-track conn-done';
+      const lockPill = document.getElementById('timelinePoint8');
+      if (lockPill) lockPill.className = 'reclose-pill lockout done';
 
       // Aplica estado final das chaves após isolamento e recomposição
       equipmentState = JSON.parse(JSON.stringify(initialEquipmentData));
@@ -2931,63 +4369,79 @@
       setStepCardState(
         1,
         'done',
-        `ATUOU (${firstShot.totalTimeMs.toFixed(0)} ms)`,
-        `Relé <b>${seg.upstreamRelay}</b> detectou sobrecorrente e atuou em <b>${firstShot.totalTimeMs.toFixed(1).replace('.', ',')} ms</b>.`
+        `ATUOU (${firstShot.totalTimeMs.toFixed(0)} ms)`
       );
       setStepCardState(
         2,
         'done',
-        'LOCKOUT (79)',
-        `Ciclo ${relay.cycle} concluído (${shotsDetails.length} abertura(s), 79OI = ${relay.deadTime} s) -> Bloqueio (Lockout).`
+        'LOCKOUT'
       );
       setStepCardState(
         3,
         'done',
         'ISOLADO',
-        `Chaves <b>${seg.isolateSwitches.join(' e ')}</b> abertas para confinar o defeito no trecho <b>${seg.id}</b>.`
+        `Chaves: <b>${seg.isolateSwitches.join(', ')}</b>`
       );
       setStepCardState(
         4,
         'done',
         'RESTAURADO',
         seg.tieSwitch
-          ? `Chave <b>${seg.tieSwitch}</b> fechada! Trechos sãos transferidos para <b>SE ${seg.supportSource}</b> (em azul no diagrama).`
-          : `Disjuntor <b>${seg.feederBreaker}</b> fechado! Todos os trechos sãos estão energizados.`
+          ? `Socorro: <b>${seg.tieSwitch}</b> (SE ${seg.supportSource})`
+          : `Alimentador recomposto`
       );
 
-      document.getElementById('txtRealtimeStatus').textContent = 'Self-Healing concluído (100% dos trechos sãos energizados).';
-      document.getElementById('btnSkipToEnd').disabled = true;
+      document.getElementById('txtRealtimeStatus').textContent = 'Self-Healing concluído com sucesso.';
+      const skipBtn = document.getElementById('btnSkipToEnd');
+      if (skipBtn) skipBtn.disabled = true;
 
-      const statusBadge = document.getElementById('statusBadge');
-      statusBadge.className = 'status-badge badge-flisr';
-      statusBadge.textContent = 'REDE RECOMPOSTA';
+      setStatusIndicator('flisr', 'Rede Recomposta: Self-Healing concluído com sucesso (100% dos trechos sãos restabelecidos)');
 
       renderAll();
     }
 
     function skipToSimulationEnd() {
       if (!currentFaultSegment) return;
+      if (simAnimationId) {
+        cancelAnimationFrame(simAnimationId);
+        simAnimationId = null;
+      }
+      clearSimulationTimers();
+      simNextEventIndex = simTimelineEvents.length;
+      simCurrentTimeMs = 9999999;
       finalizeSelfHealingState(currentFaultSegment);
+      simState = 'completed';
+      updateSimulationButtonsUI();
     }
 
-    function applyPresetFault(segKey) {
-      clearSimulationTimers();
+    function applyPresetFault(segKey, faultType) {
+      if (faultType) {
+        selectedFaultType = faultType;
+      }
+      stopSimulation();
       const seg = SEGMENTS_DATA[segKey];
       if (!seg) return;
 
       const segCoord = segmentLabels.find((s) => s.code === segKey);
+      const baseSegCoord = BASE_SEGMENT_LABELS.find((s) => s.code === segKey);
       const x = segCoord ? segCoord.x : 350;
       const y = segCoord ? segCoord.y : 150;
+      const baseX = baseSegCoord ? baseSegCoord.x : 350;
 
       recordHistory();
-      faultsState = [{ id: 'fault_' + Date.now(), x, y, zone: segKey }];
+      faultsState = [{ id: 'fault_' + Date.now(), x, y, baseX, zone: segKey }];
       currentFaultSegment = segKey;
+      flisrCompleted = false;
+      simPrePlayEquipmentSnapshot = JSON.parse(JSON.stringify(initialEquipmentData));
+      equipmentState = JSON.parse(JSON.stringify(initialEquipmentData));
 
+      expandSidePanel();
       renderAll();
       updateToolbarState();
       renderTutorialTopic(1);
       updateDidacticPanel();
-      runSimulationSequence(segKey);
+      setupReadyDidacticPanel(segKey);
+      updateSimulationButtonsUI();
     }
 
     /* ==========================================================================
@@ -3310,6 +4764,137 @@
       renderEquipment();
     }
 
+    function setSvgAttrs(id, attrs) {
+      const el = document.getElementById(id);
+      if (!el) return;
+      for (const k in attrs) {
+        el.setAttribute(k, String(attrs[k]));
+      }
+    }
+
+    function adaptDiagramToContainer() {
+      const container = document.getElementById('viewportCanvas');
+      const svg = document.getElementById('unifilarSvg');
+      if (!container || !svg) return;
+
+      const cw = container.clientWidth;
+      const ch = container.clientHeight;
+      if (cw <= 0 || ch <= 0) return;
+
+      const aspect = cw / ch;
+      let vWidth = BASE_DIAGRAM_WIDTH;
+      let vHeight = BASE_DIAGRAM_HEIGHT;
+
+      if (aspect >= BASE_DIAGRAM_WIDTH / BASE_DIAGRAM_HEIGHT) {
+        vHeight = BASE_DIAGRAM_HEIGHT;
+        vWidth = Math.max(BASE_DIAGRAM_WIDTH, Math.round(vHeight * aspect));
+      } else {
+        vWidth = BASE_DIAGRAM_WIDTH;
+        vHeight = Math.max(BASE_DIAGRAM_HEIGHT, Math.round(vWidth / aspect));
+      }
+
+      svg.setAttribute('viewBox', `0 0 ${vWidth} ${vHeight}`);
+
+      // Atualiza fundo e grade para cobrir toda a área dinâmica
+      setSvgAttrs('svgBgRect', { width: vWidth, height: vHeight });
+      setSvgAttrs('svgGridLayer', { width: vWidth, height: vHeight });
+
+      // Atualiza barramentos da SE ESB e SE AGF no extremo direito
+      const rightBusX = vWidth - 70;
+      const textX = rightBusX + 22;
+      setSvgAttrs('busESB', { x1: rightBusX, x2: rightBusX });
+      setSvgAttrs('svgTextESB', { x: textX, transform: `rotate(90, ${textX}, 285)` });
+      setSvgAttrs('busAGF', { x1: rightBusX, x2: rightBusX });
+      setSvgAttrs('svgTextAGF', { x: textX, transform: `rotate(90, ${textX}, 608)` });
+
+      // Atualiza caixa da legenda no rodapé e distribui os itens proporcionalmente
+      const boxWidth = Math.max(880, vWidth - 120);
+      setSvgAttrs('legendBox', { width: boxWidth });
+
+      const itemStep = (boxWidth - 30) / 6;
+      const startX = 75;
+      setSvgAttrs('legOpenRect', { x: startX });
+      setSvgAttrs('legOpenTxt', { x: startX + 23 });
+
+      const x1 = Math.round(startX + itemStep);
+      setSvgAttrs('legClosedRect', { x: x1 });
+      setSvgAttrs('legClosedTxt', { x: x1 + 23 });
+
+      const x2 = Math.round(startX + 2 * itemStep);
+      setSvgAttrs('legLineNorm', { x1: x2, x2: x2 + 40 });
+      setSvgAttrs('legTxtNorm', { x: x2 + 47 });
+
+      const x3 = Math.round(startX + 3 * itemStep);
+      setSvgAttrs('legLineDe', { x1: x3, x2: x3 + 40 });
+      setSvgAttrs('legTxtDe', { x: x3 + 47 });
+
+      const x4 = Math.round(startX + 4 * itemStep);
+      setSvgAttrs('legLineFault', { x1: x4, x2: x4 + 40 });
+      setSvgAttrs('legTxtFault', { x: x4 + 47 });
+
+      const x5 = Math.round(startX + 5 * itemStep);
+      setSvgAttrs('legLineRec', { x1: x5, x2: x5 + 40 });
+      setSvgAttrs('legTxtRec', { x: x5 + 47 });
+
+      // Atualiza coordenadas dos equipamentos (chaves e disjuntores)
+      equipmentState.forEach((eq) => {
+        const base = BASE_EQUIPMENT_DATA.find((b) => b.id === eq.id);
+        if (base) {
+          eq.x = Math.round(mapDiagramX(base.x, vWidth));
+        }
+      });
+      initialEquipmentData.forEach((eq) => {
+        const base = BASE_EQUIPMENT_DATA.find((b) => b.id === eq.id);
+        if (base) {
+          eq.x = Math.round(mapDiagramX(base.x, vWidth));
+        }
+      });
+
+      // Atualiza geometria dos trechos dos alimentadores
+      SEGMENT_LINES_GEOMETRY.forEach((seg, i) => {
+        const base = BASE_SEGMENT_LINES_GEOMETRY[i];
+        if (base) {
+          seg.x1 = Math.round(mapDiagramX(base.x1, vWidth));
+          seg.x2 = Math.round(mapDiagramX(base.x2, vWidth));
+        }
+      });
+
+      // Atualiza linhas de alvo de clique para faltas
+      allTargetLines.forEach((target, i) => {
+        const base = BASE_TARGET_LINES[i];
+        if (base) {
+          target.x1 = Math.round(mapDiagramX(base.x1, vWidth));
+          target.x2 = Math.round(mapDiagramX(base.x2, vWidth));
+        }
+      });
+
+      // Atualiza posições dos rótulos de trecho e comprimento
+      segmentLabels.forEach((label, i) => {
+        const base = BASE_SEGMENT_LABELS[i];
+        if (base) {
+          label.x = Math.round(mapDiagramX(base.x, vWidth));
+        }
+      });
+
+      // Atualiza posições de faltas ativas, se houver
+      faultsState.forEach((fault) => {
+        if (fault.baseX) {
+          fault.x = Math.round(mapDiagramX(fault.baseX, vWidth));
+        }
+      });
+
+      renderAll();
+    }
+
+    let resizeRaf = null;
+    function scheduleDiagramAdaptation() {
+      if (resizeRaf) cancelAnimationFrame(resizeRaf);
+      resizeRaf = requestAnimationFrame(() => {
+        adaptDiagramToContainer();
+        resizeRaf = null;
+      });
+    }
+
     /* ==========================================================================
        8. INTERACOES DO USUARIO E ALTERNANCIA DE TEMA
        ========================================================================== */
@@ -3322,29 +4907,34 @@
     }
 
     function resolveElectricalZone(targetId, x, y) {
+      const svg = document.getElementById('unifilarSvg');
+      const vb = svg && svg.viewBox ? svg.viewBox.baseVal : null;
+      const curWidth = vb && vb.width ? vb.width : BASE_DIAGRAM_WIDTH;
+      const baseX = unmapDiagramX(x, curWidth);
+
       if (targetId === 'FEEDER_1') {
-        if (x < 390) return 'T1';
-        if (x < 515) return 'T2';
-        if (x < 650) return 'T3';
+        if (baseX < 390) return 'T1';
+        if (baseX < 515) return 'T2';
+        if (baseX < 650) return 'T3';
         return 'T4';
       }
       if (targetId === 'FEEDER_2') {
-        if (x < 395) return 'T5';
-        if (x < 515) return 'T6';
+        if (baseX < 395) return 'T5';
+        if (baseX < 515) return 'T6';
         return 'T7';
       }
       if (targetId === 'BRANCH_T7') return 'T7';
       if (targetId === 'FEEDER_3') {
-        if (x < 400) return 'T8';
-        if (x < 535) return 'T9';
-        if (x < 712) return 'T10';
+        if (baseX < 400) return 'T8';
+        if (baseX < 535) return 'T9';
+        if (baseX < 712) return 'T10';
         return 'T11';
       }
       if (targetId === 'FEEDER_4') {
-        if (x < 395) return 'T12';
-        if (x < 530) return 'T13';
-        if (x < 641) return 'T14';
-        if (x < 768) return 'T15';
+        if (baseX < 395) return 'T12';
+        if (baseX < 530) return 'T13';
+        if (baseX < 641) return 'T14';
+        if (baseX < 768) return 'T15';
         return 'T16';
       }
       return 'T1';
@@ -3374,22 +4964,33 @@
         }
       }
 
+      const svg = document.getElementById('unifilarSvg');
+      const vb = svg && svg.viewBox ? svg.viewBox.baseVal : null;
+      const curWidth = vb && vb.width ? vb.width : BASE_DIAGRAM_WIDTH;
+      const baseX = unmapDiagramX(faultX, curWidth);
+
       const zone = resolveElectricalZone(segId, faultX, faultY);
       recordHistory();
-      faultsState = [{ id: 'fault_' + Date.now(), x: Math.round(faultX), y: Math.round(faultY), zone }];
+      stopSimulation();
+      faultsState = [{ id: 'fault_' + Date.now(), x: Math.round(faultX), y: Math.round(faultY), baseX, zone }];
       currentFaultSegment = zone;
+      flisrCompleted = false;
+      simPrePlayEquipmentSnapshot = JSON.parse(JSON.stringify(initialEquipmentData));
+      equipmentState = JSON.parse(JSON.stringify(initialEquipmentData));
       setInteractionMode('none');
 
+      expandSidePanel();
       renderAll();
       updateToolbarState();
       updateDidacticPanel();
-      runSimulationSequence(zone);
+      setupReadyDidacticPanel(zone);
+      updateSimulationButtonsUI();
     }
 
     function removeFaultByIndex(index) {
       if (interactionMode !== 'remove_fault') return;
       recordHistory();
-      clearSimulationTimers();
+      stopSimulation();
       faultsState.splice(index, 1);
       currentFaultSegment = null;
       flisrCompleted = false;
@@ -3399,10 +5000,12 @@
       renderAll();
       updateToolbarState();
       updateDidacticPanel();
+      updateSimulationButtonsUI();
     }
 
     function handleManualSwitchClick(swId) {
       if (interactionMode !== 'manual_switch') return;
+      stopSimulation();
       const currentState = getSwitchState(swId);
       const newState = currentState === 'closed' ? 'open' : 'closed';
 
@@ -3410,6 +5013,7 @@
       setSwitchState(swId, newState);
       renderAll();
       updateToolbarState();
+      updateSimulationButtonsUI();
     }
 
     function setInteractionMode(mode) {
@@ -3455,7 +5059,7 @@
 
     function undo() {
       if (undoStack.length === 0) return;
-      clearSimulationTimers();
+      stopSimulation();
       redoStack.push(JSON.stringify({ equipmentState, transformerState, faultsState, currentFaultSegment, flisrCompleted }));
       const state = JSON.parse(undoStack.pop());
       equipmentState = state.equipmentState;
@@ -3466,11 +5070,15 @@
       renderAll();
       updateToolbarState();
       updateDidacticPanel();
+      if (currentFaultSegment && !flisrCompleted) {
+        setupReadyDidacticPanel(currentFaultSegment);
+      }
+      updateSimulationButtonsUI();
     }
 
     function redo() {
       if (redoStack.length === 0) return;
-      clearSimulationTimers();
+      stopSimulation();
       undoStack.push(JSON.stringify({ equipmentState, transformerState, faultsState, currentFaultSegment, flisrCompleted }));
       const state = JSON.parse(redoStack.pop());
       equipmentState = state.equipmentState;
@@ -3481,12 +5089,17 @@
       renderAll();
       updateToolbarState();
       updateDidacticPanel();
+      if (currentFaultSegment && !flisrCompleted) {
+        setupReadyDidacticPanel(currentFaultSegment);
+      }
+      updateSimulationButtonsUI();
     }
 
     function updateToolbarState() {
       document.getElementById('btnUndo').disabled = undoStack.length === 0;
       document.getElementById('btnRedo').disabled = redoStack.length === 0;
       document.getElementById('btnRemoveFaultMode').disabled = faultsState.length === 0;
+      updateSimulationButtonsUI();
     }
 
     function downloadDiagramAsPng() {
@@ -3501,8 +5114,11 @@
       img.onload = function () {
         const canvas = document.createElement('canvas');
         const scale = 2;
-        canvas.width = 1000 * scale;
-        canvas.height = 765 * scale;
+        const vb = svgElement.viewBox ? svgElement.viewBox.baseVal : null;
+        const curW = vb && vb.width ? vb.width : BASE_DIAGRAM_WIDTH;
+        const curH = vb && vb.height ? vb.height : BASE_DIAGRAM_HEIGHT;
+        canvas.width = curW * scale;
+        canvas.height = curH * scale;
         const ctx = canvas.getContext('2d');
         ctx.fillStyle = bgFill;
         ctx.fillRect(0, 0, canvas.width, canvas.height);
@@ -3522,9 +5138,20 @@
 
     window.addEventListener('DOMContentLoaded', function () {
       updateThemeButtonLabel();
-      renderAll();
+      adaptDiagramToContainer();
       updateToolbarState();
+      updateSimulationButtonsUI();
       updateDidacticPanel();
+
+      if (window.ResizeObserver) {
+        const resizeObserver = new ResizeObserver(() => {
+          scheduleDiagramAdaptation();
+        });
+        const canvasEl = document.getElementById('viewportCanvas');
+        if (canvasEl) resizeObserver.observe(canvasEl);
+      } else {
+        window.addEventListener('resize', scheduleDiagramAdaptation);
+      }
 
       // Escuta mudanças no tema do sistema operacional caso o usuário não tenha fixado manualmente
       if (window.matchMedia) {
@@ -3565,27 +5192,22 @@
         if (gridLayer) gridLayer.style.display = showGrid ? 'block' : 'none';
       });
 
-      document.getElementById('btnReset').addEventListener('click', () => {
-        clearSimulationTimers();
-        recordHistory();
-        equipmentState = JSON.parse(JSON.stringify(initialEquipmentData));
-        transformerState = JSON.parse(JSON.stringify(transformersData));
-        faultsState = [];
-        currentFaultSegment = null;
-        flisrCompleted = false;
-        setInteractionMode('none');
-        renderAll();
-        updateToolbarState();
-        updateDidacticPanel();
-      });
+      const btnResetEl = document.getElementById('btnReset');
+      if (btnResetEl) btnResetEl.addEventListener('click', resetSimulationNetwork);
+      const btnResetManualEl = document.getElementById('btnResetManual');
+      if (btnResetManualEl) btnResetManualEl.addEventListener('click', resetSimulationNetwork);
 
       document.getElementById('btnDownloadPng').addEventListener('click', downloadDiagramAsPng);
       document.getElementById('btnThemeToggle').addEventListener('click', toggleTheme);
 
       window.addEventListener('keydown', (e) => {
-        if (e.key === 'Escape' && interactionMode !== 'none') {
-          setInteractionMode('none');
-          return;
+        if (e.key === 'Escape') {
+          closeFaultTypeMenu();
+          closeSpeedMenu();
+          if (interactionMode !== 'none') {
+            setInteractionMode('none');
+            return;
+          }
         }
         if (e.ctrlKey || e.metaKey) {
           const key = e.key.toLowerCase();
