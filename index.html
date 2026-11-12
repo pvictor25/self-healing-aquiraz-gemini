@@ -197,6 +197,360 @@
 
 
     /* ==========================================================================
+       WORKSPACE DE CONFIGURACOES (EXCLUSIVO, SEM CIRCUITO E SEM ABA LATERAL)
+       ========================================================================== */
+    .config-workspace {
+      display: none;
+      flex: 1 1 0;
+      min-height: 0;
+      width: 100%;
+      height: 100%;
+      overflow-y: auto;
+      background-color: var(--bg-viewport);
+      padding: 20px 20px 48px 20px;
+      box-sizing: border-box;
+      flex-direction: column;
+    }
+
+    .config-container {
+      max-width: 820px;
+      width: 100%;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .config-header {
+      background-color: var(--bg-card);
+      border: 1px solid var(--border-medium);
+      border-radius: 6px;
+      padding: 18px 24px;
+      box-sizing: border-box;
+    }
+
+    .config-header-tag {
+      display: inline-block;
+      font-size: 11px;
+      font-weight: 600;
+      color: var(--text-accent);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      margin-bottom: 4px;
+    }
+
+    .config-header-title {
+      font-size: 18px;
+      font-weight: 700;
+      color: var(--text-primary);
+      margin: 0 0 6px 0;
+    }
+
+    .config-header-desc {
+      font-size: 12px;
+      color: var(--text-secondary);
+      margin: 0;
+      line-height: 1.5;
+    }
+
+    .config-card {
+      background-color: var(--bg-card);
+      border: 1px solid var(--border-medium);
+      border-radius: 6px;
+      padding: 18px 22px;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      box-sizing: border-box;
+    }
+
+    .config-card-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      border-bottom: 1px solid var(--border-subtle);
+      padding-bottom: 10px;
+    }
+
+    .config-card-title-wrap {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+
+    .config-card-title {
+      font-size: 13.5px;
+      font-weight: 700;
+      color: var(--text-primary);
+      margin: 0;
+    }
+
+    .config-card-subtitle {
+      font-size: 11.5px;
+      color: var(--text-muted);
+      margin: 0;
+    }
+
+    /* Controles do Delay */
+    .config-delay-control-block {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .config-toggle-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 10px 14px;
+      background-color: var(--bg-step);
+      border: 1px solid var(--border-subtle);
+      border-radius: 5px;
+      cursor: pointer;
+      user-select: none;
+    }
+
+    .config-toggle-info {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+
+    .config-toggle-label {
+      font-size: 12.5px;
+      font-weight: 600;
+      color: var(--text-primary);
+    }
+
+    .config-toggle-hint {
+      font-size: 11px;
+      color: var(--text-muted);
+    }
+
+    /* Toggle Switch UI */
+    .switch-ui {
+      position: relative;
+      display: inline-block;
+      width: 40px;
+      height: 22px;
+      flex-shrink: 0;
+    }
+
+    .switch-ui input {
+      opacity: 0;
+      width: 0;
+      height: 0;
+    }
+
+    .switch-slider {
+      position: absolute;
+      cursor: pointer;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background-color: var(--border-strong);
+      transition: .2s;
+      border-radius: 22px;
+    }
+
+    .switch-slider:before {
+      position: absolute;
+      content: "";
+      height: 16px;
+      width: 16px;
+      left: 3px;
+      bottom: 3px;
+      background-color: white;
+      transition: .2s;
+      border-radius: 50%;
+    }
+
+    .switch-ui input:checked + .switch-slider {
+      background-color: var(--border-focus);
+    }
+
+    .switch-ui input:checked + .switch-slider:before {
+      transform: translateX(18px);
+    }
+
+    /* Slider de Range e Pills */
+    .delay-slider-wrap {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      padding: 12px 14px;
+      background-color: var(--bg-step);
+      border: 1px solid var(--border-subtle);
+      border-radius: 5px;
+      transition: opacity 0.2s ease;
+    }
+
+    .delay-slider-wrap.disabled {
+      opacity: 0.45;
+      pointer-events: none;
+    }
+
+    .delay-slider-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .delay-slider-label {
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--text-secondary);
+    }
+
+    .delay-slider-val {
+      font-family: Consolas, monospace;
+      font-size: 13.5px;
+      font-weight: 700;
+      color: var(--text-accent);
+      background-color: var(--bg-card);
+      border: 1px solid var(--border-medium);
+      padding: 2px 8px;
+      border-radius: 4px;
+    }
+
+    .delay-range-input {
+      width: 100%;
+      height: 6px;
+      border-radius: 3px;
+      outline: none;
+      cursor: pointer;
+      accent-color: var(--text-accent);
+      margin: 4px 0;
+    }
+
+    .delay-pills-row {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 6px;
+      margin-top: 2px;
+    }
+
+    .delay-pill-btn {
+      padding: 7px 4px;
+      font-size: 11px;
+      font-weight: 500;
+      font-family: inherit;
+      border-radius: 4px;
+      border: 1px solid var(--border-medium);
+      background-color: var(--bg-card);
+      color: var(--text-secondary);
+      cursor: pointer;
+      text-align: center;
+      transition: all 0.15s ease;
+    }
+
+    .delay-pill-btn:hover {
+      background-color: var(--bg-btn-hover);
+      color: var(--text-primary);
+    }
+
+    .delay-pill-btn.active {
+      background-color: var(--border-focus);
+      color: #ffffff;
+      border-color: var(--border-focus);
+      font-weight: 600;
+    }
+
+    .delay-info-note {
+      font-size: 11.5px;
+      line-height: 1.5;
+      color: var(--text-secondary);
+      padding: 8px 12px;
+      background-color: var(--badge-flisr-bg);
+      border: 1px solid var(--badge-flisr-border);
+      border-radius: 5px;
+    }
+
+    /* Grid de Opções Gerais */
+    .config-options-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 10px;
+    }
+
+    .config-option-card {
+      padding: 12px 14px;
+      background-color: var(--bg-step);
+      border: 1px solid var(--border-subtle);
+      border-radius: 5px;
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      cursor: pointer;
+      transition: border-color 0.15s ease;
+    }
+
+    .config-option-card:hover {
+      border-color: var(--border-medium);
+    }
+
+    .config-option-card input[type="checkbox"] {
+      margin-top: 2px;
+      cursor: pointer;
+      accent-color: var(--border-focus);
+    }
+
+    .config-option-text {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+
+    .config-option-title {
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--text-primary);
+    }
+
+    .config-option-desc {
+      font-size: 11px;
+      color: var(--text-muted);
+      line-height: 1.35;
+    }
+
+    /* Tabela de Parâmetros da SE */
+    .config-params-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 11.5px;
+    }
+
+    .config-params-table th {
+      text-align: left;
+      padding: 6px 8px;
+      background-color: var(--bg-panel-header);
+      color: var(--text-primary);
+      border-bottom: 1px solid var(--border-medium);
+      font-size: 11px;
+    }
+
+    .config-params-table td {
+      padding: 6px 8px;
+      border-bottom: 1px solid var(--border-subtle);
+      color: var(--text-secondary);
+    }
+
+    .config-params-table td.val-col {
+      font-family: Consolas, monospace;
+      font-weight: 600;
+      color: var(--text-primary);
+    }
+
+    /* Barra de Ações Inferior */
+    .config-actions-bar {
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      gap: 10px;
+      margin-top: 4px;
+    }
+
+
+    /* ==========================================================================
        WORKSPACE DE TUTORIAIS (DOCUMENTACAO E GUIAS COMPLETOS)
        ========================================================================== */
     .tutorial-workspace {
@@ -765,6 +1119,17 @@
       border-bottom: 1px solid var(--bg-toolbar);
       font-weight: 500;
       z-index: 2;
+    }
+
+    .ribbon-tab-btn.active::after {
+      content: '';
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: -1px;
+      height: 2px;
+      background-color: var(--bg-toolbar);
+      z-index: 3;
     }
 
     .ribbon-tutorial-row {
@@ -1476,71 +1841,78 @@
       display: none;
       flex-direction: column;
       overflow: hidden;
+      background-color: var(--bg-panel);
     }
 
-    /* Barra de Tempo Real */
-    .realtime-control-bar {
-      flex-shrink: 0;
-      background-color: var(--bg-panel-header);
-      border-bottom: 1px solid var(--border-medium);
-      padding: 7px 12px;
-      display: flex;
-      align-items: center;
-      justify-content: flex-start;
-      gap: 8px;
-    }
-
-    .realtime-status-text {
-      font-family: Consolas, monospace;
-      font-size: 11px;
-      font-weight: 600;
-      color: var(--text-primary);
-      white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis;
-    }
-
-    /* Abas do Painel Lateral */
+    /* Abas do Painel Lateral - Fusão perfeita com o bloco de conteúdo (Estilo Ribbon) */
     .panel-tabs {
       flex-shrink: 0;
       display: flex;
+      align-items: flex-end;
+      gap: 3px;
+      padding: 5px 8px 0 8px;
       background-color: var(--bg-panel-header);
       border-bottom: 1px solid var(--border-medium);
+      position: relative;
     }
 
     .panel-tab-btn {
-      flex: 1;
-      padding: 6px 8px;
+      flex: 1 1 0;
+      background-color: transparent;
+      border: 1px solid transparent;
+      border-bottom: none;
+      font-family: inherit;
       font-size: 11px;
-      font-weight: 400;
-      text-align: center;
-      background: none;
-      border: none;
-      border-bottom: 2px solid transparent;
-      color: var(--text-muted);
+      font-weight: 500;
+      color: var(--text-secondary);
+      padding: 6px 6px 5px 6px;
       cursor: pointer;
-      transition: background-color 0.15s ease, color 0.15s ease;
+      border-radius: 6px 6px 0 0;
+      user-select: none;
+      white-space: nowrap;
+      text-align: center;
+      transition: background-color 0.15s ease, color 0.15s ease, border-color 0.15s ease;
+      position: relative;
+      margin-bottom: -1px;
+      z-index: 1;
     }
 
     .panel-tab-btn:hover:not(.active) {
       background-color: var(--bg-btn-hover);
       color: var(--text-primary);
+      border-radius: 6px 6px 0 0;
     }
 
     .panel-tab-btn.active {
-      color: var(--text-accent);
-      border-bottom-color: var(--border-focus);
+      color: var(--text-primary);
       background-color: var(--bg-panel);
+      border: 1px solid var(--border-medium);
+      border-bottom: 1px solid var(--bg-panel);
+      font-weight: 600;
+      border-radius: 6px 6px 0 0;
+      z-index: 2;
+    }
+
+    .panel-tab-btn.active::after {
+      content: '';
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: -1px;
+      height: 2px;
+      background-color: var(--bg-panel);
+      z-index: 3;
     }
 
     .tab-pane {
       display: none;
       flex: 1 1 0;
       min-height: 0;
-      padding: 8px 12px;
+      padding: 10px 12px;
       flex-direction: column;
       gap: 6px;
       overflow-y: auto;
+      background-color: var(--bg-panel);
     }
 
     .tab-pane.active {
@@ -1581,27 +1953,37 @@
     .didactic-step-card {
       background-color: var(--bg-step);
       border: 1px solid var(--border-medium);
-      border-left: 3px solid var(--border-strong);
       border-radius: 5px;
       padding: 6px 9px;
       display: flex;
       flex-direction: column;
       gap: 3px;
+      transition: border-color 0.2s ease, background-color 0.2s ease, opacity 0.2s ease;
     }
 
     .didactic-step-card.step-active {
       border-color: var(--border-focus);
-      border-left-width: 4px;
       background-color: var(--bg-card);
     }
 
+    .didactic-step-card.step-active .step-card-tag {
+      color: var(--text-accent);
+    }
+
     .didactic-step-card.step-done {
-      border-left-color: #16a34a;
+      border-color: var(--border-medium);
+    }
+
+    .didactic-step-card.step-done .step-card-tag {
+      color: #16a34a;
+    }
+
+    [data-theme="dark"] .didactic-step-card.step-done .step-card-tag {
+      color: #4ade80;
     }
 
     .didactic-step-card:not(.step-active):not(.step-done) {
       opacity: 0.65;
-      border-left-color: var(--border-medium);
     }
 
     .didactic-step-card:not(.step-active):not(.step-done) .step-card-title {
@@ -1656,17 +2038,17 @@
 
     .timeline-connector-wrap {
       width: 100%;
-      height: 16px;
+      height: 14px;
       position: relative;
       display: flex;
       align-items: center;
-      margin: 1px 0;
+      margin: 0;
       z-index: 1;
     }
 
     .timeline-connector-svg {
       width: 100%;
-      height: 16px;
+      height: 14px;
       display: block;
       overflow: visible;
     }
@@ -1680,16 +2062,32 @@
       transition: stroke 0.25s ease;
     }
 
+    .timeline-connector-track.conn-active {
+      stroke: #dc2626 !important;
+    }
+
     .timeline-connector-track.conn-deadtime {
-      stroke: #d97706;
+      stroke: #d97706 !important;
     }
 
     .timeline-connector-track.conn-done {
-      stroke: #16a34a;
+      stroke: #16a34a !important;
     }
 
-    [data-theme="dark"] .timeline-connector-track:not(.conn-deadtime):not(.conn-done) {
+    [data-theme="dark"] .timeline-connector-track:not(.conn-active):not(.conn-deadtime):not(.conn-done) {
       stroke: #334155;
+    }
+
+    [data-theme="dark"] .timeline-connector-track.conn-active {
+      stroke: #f87171 !important;
+    }
+
+    [data-theme="dark"] .timeline-connector-track.conn-deadtime {
+      stroke: #fbbf24 !important;
+    }
+
+    [data-theme="dark"] .timeline-connector-track.conn-done {
+      stroke: #4ade80 !important;
     }
 
     .reclose-pill {
@@ -1699,8 +2097,13 @@
       flex-direction: column;
       align-items: center;
       position: relative;
-      opacity: 0.45;
-      transition: opacity 0.2s ease, transform 0.2s ease;
+      transition: transform 0.2s ease;
+    }
+
+    /* Itens inativos ficam com opacidade reduzida nos nós e textos sem seccionar a linha */
+    .reclose-pill:not(.active):not(.deadtime):not(.done):not(.lockout) .timeline-step-badge,
+    .reclose-pill:not(.active):not(.deadtime):not(.done):not(.lockout) .timeline-node {
+      opacity: 0.55;
     }
 
     .timeline-track-wrap {
@@ -1716,7 +2119,7 @@
       flex: 1;
       height: 2px;
       background-color: var(--border-medium);
-      transition: background-color 0.2s ease;
+      transition: background-color 0.25s ease;
     }
 
     .timeline-node {
@@ -1738,25 +2141,35 @@
     }
 
     .timeline-step-badge {
-      margin-top: 3px;
-      padding: 3px 2px;
-      width: calc(100% - 4px);
-      border-radius: 4px;
-      border: 1px solid var(--border-subtle);
-      background-color: var(--bg-card);
+      padding: 0 1px;
+      width: 100%;
+      background: transparent;
+      border: none;
       text-align: center;
-      line-height: 1.2;
+      line-height: 1.25;
       box-sizing: border-box;
       transition: all 0.2s ease;
     }
 
+    .timeline-step-badge:first-child {
+      margin-bottom: 3px;
+      margin-top: 0;
+    }
+
+    .timeline-step-badge:last-child {
+      margin-top: 3px;
+      margin-bottom: 0;
+    }
+
     .timeline-step-title {
-      font-size: 9px;
+      font-size: 8.5px;
       font-weight: 600;
+      letter-spacing: -0.15px;
       color: #94a3b8;
       white-space: nowrap;
       overflow: hidden;
       text-overflow: ellipsis;
+      transition: color 0.2s ease, font-weight 0.2s ease;
     }
 
     .timeline-step-time {
@@ -1767,14 +2180,11 @@
       white-space: nowrap;
       overflow: hidden;
       text-overflow: ellipsis;
+      transition: color 0.2s ease, font-weight 0.2s ease;
     }
 
     /* Estados da Linha do Tempo */
     /* 1. Ativo (Abertura ocorrendo sob defeito) */
-    .reclose-pill.active {
-      opacity: 1;
-    }
-
     .reclose-pill.active .timeline-node {
       background-color: #dc2626;
       border-color: #b91c1c;
@@ -1782,26 +2192,13 @@
       font-weight: 800;
     }
 
-    .reclose-pill.active .timeline-line-right {
-      background-color: #dc2626;
-    }
-
-    .reclose-pill.active .timeline-step-badge {
-      border: 1px solid #dc2626;
-      background-color: var(--badge-fault-bg);
-    }
-
     .reclose-pill.active .timeline-step-title,
     .reclose-pill.active .timeline-step-time {
-      color: var(--badge-fault-text);
+      color: #dc2626;
       font-weight: 700;
     }
 
     /* 2. Tempo Morto (Aguardando Religamento) */
-    .reclose-pill.deadtime {
-      opacity: 1;
-    }
-
     .reclose-pill.deadtime .timeline-node {
       background-color: #d97706;
       border-color: #b45309;
@@ -1809,26 +2206,13 @@
       font-weight: 800;
     }
 
-    .reclose-pill.deadtime .timeline-line-left {
-      background-color: #d97706;
-    }
-
-    .reclose-pill.deadtime .timeline-step-badge {
-      border: 1px solid #d97706;
-      background-color: var(--badge-reclose-bg);
-    }
-
     .reclose-pill.deadtime .timeline-step-title,
     .reclose-pill.deadtime .timeline-step-time {
-      color: var(--badge-reclose-text);
+      color: #d97706;
       font-weight: 700;
     }
 
     /* 3. Concluído (Abertura ou Tempo Morto concluído com sucesso) */
-    .reclose-pill.done {
-      opacity: 1;
-    }
-
     .reclose-pill.done .timeline-node {
       background-color: #16a34a;
       border-color: #15803d;
@@ -1836,30 +2220,17 @@
       font-weight: 700;
     }
 
-    .reclose-pill.done .timeline-line {
-      background-color: #16a34a;
-    }
-
-    .reclose-pill.done .timeline-step-badge {
-      border: 1px solid #16a34a;
-      background-color: var(--badge-normal-bg);
-    }
-
     .reclose-pill.done .timeline-step-title {
-      color: var(--badge-normal-text);
+      color: #16a34a;
       font-weight: 700;
     }
 
     .reclose-pill.done .timeline-step-time {
-      color: var(--badge-normal-text);
+      color: #15803d;
       font-weight: 600;
     }
 
     /* 4. Bloqueio (Lockout definitivo ANSI 79) */
-    .reclose-pill.lockout {
-      opacity: 1;
-    }
-
     .reclose-pill.lockout .timeline-node {
       background-color: #dc2626;
       border-color: #b91c1c;
@@ -1867,40 +2238,83 @@
       font-weight: 800;
     }
 
-    .reclose-pill.lockout .timeline-line-left {
-      background-color: #16a34a;
-    }
-
-    .reclose-pill.lockout .timeline-step-badge {
-      border: 1px solid #dc2626;
-      background-color: var(--badge-fault-bg);
-    }
-
     .reclose-pill.lockout .timeline-step-title,
     .reclose-pill.lockout .timeline-step-time {
-      color: var(--badge-fault-text);
+      color: #dc2626;
       font-weight: 700;
     }
 
-    /* Suporte a Tema Escuro para Linha do Tempo Inativa */
+    /* Unificação contínua das linhas horizontais entre pontos consecutivos */
+    /* Quando um ponto conclui (done), todo o segmento até o próximo ponto fica 100% verde contínuo */
+    .reclose-pill.done .timeline-line-right,
+    .reclose-pill.done + .reclose-pill .timeline-line-left {
+      background-color: #16a34a !important;
+    }
+
+    /* Durante tempo morto, todo o segmento saindo dele até a próxima tentativa fica 100% laranja contínuo */
+    .reclose-pill.deadtime .timeline-line-right,
+    .reclose-pill.deadtime + .reclose-pill .timeline-line-left {
+      background-color: #d97706 !important;
+    }
+
+    /* Ponto não aplicável (em relés com menos tentativas, ex: RS1 com 3 tiros) */
+    .reclose-pill.pill-disabled {
+      opacity: 0.28;
+      pointer-events: none;
+    }
+
+    .reclose-pill.pill-disabled .timeline-node {
+      background-color: transparent !important;
+      border-style: dashed !important;
+    }
+
+    /* Suporte a Tema Escuro */
     [data-theme="dark"] .reclose-pill:not(.active):not(.deadtime):not(.done):not(.lockout) .timeline-node {
       background-color: #0f172a;
       border-color: #334155;
       color: #64748b;
     }
 
-    [data-theme="dark"] .reclose-pill:not(.active):not(.deadtime):not(.done):not(.lockout) .timeline-line {
+    [data-theme="dark"] .timeline-line {
       background-color: #334155;
-    }
-
-    [data-theme="dark"] .reclose-pill:not(.active):not(.deadtime):not(.done):not(.lockout) .timeline-step-badge {
-      border-color: #334155;
-      background-color: #0f172a;
     }
 
     [data-theme="dark"] .reclose-pill:not(.active):not(.deadtime):not(.done):not(.lockout) .timeline-step-title,
     [data-theme="dark"] .reclose-pill:not(.active):not(.deadtime):not(.done):not(.lockout) .timeline-step-time {
       color: #64748b;
+    }
+
+    [data-theme="dark"] .reclose-pill.active .timeline-step-title,
+    [data-theme="dark"] .reclose-pill.active .timeline-step-time {
+      color: #f87171;
+    }
+
+    [data-theme="dark"] .reclose-pill.deadtime .timeline-step-title,
+    [data-theme="dark"] .reclose-pill.deadtime .timeline-step-time {
+      color: #fbbf24;
+    }
+
+    [data-theme="dark"] .reclose-pill.done .timeline-step-title {
+      color: #4ade80;
+    }
+
+    [data-theme="dark"] .reclose-pill.done .timeline-step-time {
+      color: #86efac;
+    }
+
+    [data-theme="dark"] .reclose-pill.lockout .timeline-step-title,
+    [data-theme="dark"] .reclose-pill.lockout .timeline-step-time {
+      color: #f87171;
+    }
+
+    [data-theme="dark"] .reclose-pill.done .timeline-line-right,
+    [data-theme="dark"] .reclose-pill.done + .reclose-pill .timeline-line-left {
+      background-color: #4ade80 !important;
+    }
+
+    [data-theme="dark"] .reclose-pill.deadtime .timeline-line-right,
+    [data-theme="dark"] .reclose-pill.deadtime + .reclose-pill .timeline-line-left {
+      background-color: #fbbf24 !important;
     }
 
     /* Tabelas e Propriedades na Aba 2 (Dados Técnicos TCC) */
@@ -1918,7 +2332,7 @@
       font-size: 10.5px;
       font-weight: 700;
       text-transform: uppercase;
-      color: var(--text-accent);
+      color: var(--text-primary);
       border-bottom: 1px solid var(--border-subtle);
       padding-bottom: 2px;
       margin-bottom: 1px;
@@ -1929,16 +2343,18 @@
       justify-content: space-between;
       font-size: 11px;
       padding: 1px 0;
+      font-weight: 400;
     }
 
     .prop-name {
       color: var(--text-muted);
+      font-weight: 400;
     }
 
     .prop-val {
       font-family: Consolas, monospace;
       color: var(--text-numeric);
-      font-weight: 600;
+      font-weight: 400;
     }
 
     .tech-table {
@@ -1946,6 +2362,7 @@
       border-collapse: collapse;
       font-size: 10.5px;
       margin-top: 2px;
+      font-weight: 400;
     }
 
     .tech-table th {
@@ -1954,6 +2371,7 @@
       background-color: var(--bg-panel-header);
       color: var(--text-primary);
       border-bottom: 1px solid var(--border-medium);
+      font-weight: 400;
     }
 
     .tech-table th:first-child,
@@ -1966,12 +2384,144 @@
       padding: 3px 5px;
       font-family: Consolas, monospace;
       border-bottom: 1px solid var(--border-subtle);
+      font-weight: 400;
     }
 
     .tech-table tr.active-row td {
       background-color: var(--badge-flisr-bg);
       color: var(--badge-flisr-text);
+      font-weight: 400;
+    }
+
+    /* Bloco da Curva Parametrizada TCC na Aba de Falta */
+    .tcc-curve-section {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .tcc-curve-section * {
+      font-weight: 400;
+    }
+
+    .tcc-curve-section .tech-section-title {
       font-weight: 700;
+      color: var(--text-primary);
+    }
+
+    .tcc-meta-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 4px;
+      margin-top: 1px;
+    }
+
+    .tcc-badge {
+      display: inline-flex;
+      align-items: center;
+      padding: 2px 6px;
+      border-radius: 4px;
+      font-size: 10px;
+      font-weight: 400;
+      background-color: var(--bg-panel-header);
+      color: var(--text-secondary);
+      border: 1px solid var(--border-subtle);
+    }
+
+    .tcc-svg-wrap {
+      width: 100%;
+      background-color: var(--bg-panel-header);
+      border: 1px solid var(--border-subtle);
+      border-radius: 4px;
+      padding: 4px 2px;
+      box-sizing: border-box;
+      overflow: hidden;
+    }
+
+    .tcc-svg-wrap svg {
+      display: block;
+      width: 100%;
+      height: auto;
+    }
+
+    .tcc-point-summary {
+      display: flex;
+      flex-direction: column;
+      gap: 3px;
+      padding: 6px 8px;
+      border-radius: 4px;
+      background-color: var(--bg-panel-header);
+      border: 1px solid var(--border-subtle);
+      font-size: 10.5px;
+      font-weight: 400;
+    }
+
+    .tcc-summary-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-weight: 400;
+    }
+
+    .tcc-summary-label {
+      color: var(--text-muted);
+      font-weight: 400;
+    }
+
+    .tcc-summary-val {
+      font-family: Consolas, monospace;
+      color: var(--text-numeric);
+      font-weight: 400;
+    }
+
+    /* Bloco da Geometria da Rede na Aba do Trecho */
+    .geo-curve-section {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .geo-curve-section * {
+      font-weight: 400;
+    }
+
+    .geo-curve-section .tech-section-title {
+      font-weight: 700;
+      color: var(--text-primary);
+    }
+
+    .geo-tab-btn {
+      display: inline-flex;
+      align-items: center;
+      padding: 2px 7px;
+      border-radius: 4px;
+      font-size: 10px;
+      font-weight: 400;
+      cursor: pointer;
+      background-color: var(--bg-panel-header);
+      color: var(--text-muted);
+      border: 1px solid var(--border-subtle);
+      transition: background-color 0.15s, color 0.15s, border-color 0.15s;
+    }
+
+    .geo-tab-btn:hover {
+      background-color: var(--bg-card);
+      color: var(--text-primary);
+      border-color: var(--border-medium);
+    }
+
+    .geo-tab-btn.active {
+      background-color: var(--badge-flisr-bg);
+      color: var(--badge-flisr-text);
+      border-color: var(--badge-flisr-border);
+      font-weight: 400;
+    }
+
+    .geo-curve-section .tcc-svg-wrap {
+      background-color: #ffffff !important;
+      border: 1px solid #cbd5e1 !important;
+      padding: 3px !important;
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
     }
   </style>
 </head>
@@ -2158,16 +2708,24 @@
 
       <!-- Painel 3: Configurações -->
       <div id="ribbonPaneConfig" class="ribbon-pane">
-        <div class="ribbon-btn-group">
-          <label class="tool-checkbox" title="Mostrar ou ocultar o comprimento de cada trecho em metros">
-            <input type="checkbox" id="chkShowLengths" checked />
-            Comprimentos (m)
-          </label>
+        <div class="ribbon-btn-group" style="align-items: center; gap: 8px;">
+          <span style="font-size: 11.5px; font-weight: 600; color: var(--text-primary);">
+            Painel Exclusivo de Configurações
+          </span>
+          <span style="font-size: 11px; color: var(--text-muted); display: inline-block;">
+            (Circuito e aba lateral ocultos)
+          </span>
           <div class="toolbar-divider"></div>
-          <label class="tool-checkbox" title="Mostrar ou ocultar grade pontilhada de fundo">
+          <button type="button" class="tool-btn" onclick="switchRibbonTab('tcc')" title="Retornar à simulação com o diagrama elétrico e aba lateral">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" style="margin-right: 4px;">
+              <polyline points="15 18 9 12 15 6"></polyline>
+            </svg>
+            Voltar ao Diagrama
+          </button>
+          <div style="display: none;">
+            <input type="checkbox" id="chkShowLengths" checked />
             <input type="checkbox" id="chkShowGrid" checked />
-            Grade
-          </label>
+          </div>
         </div>
       </div>
 
@@ -2355,18 +2913,16 @@
 
       <!-- VISAO ATIVA (QUANDO UM CURTO E INSERIDO) -->
       <div id="activePanelContent">
-        <!-- Barra de Controle do Tempo Real -->
-        <div class="realtime-control-bar">
-          <span id="txtRealtimeStatus" class="realtime-status-text">Simulação em tempo real...</span>
-        </div>
-
-        <!-- Abas de Navegação Didática -->
+        <!-- Abas de Navegação Didática (3 Abas) -->
         <div class="panel-tabs">
-          <button id="tabBtnSteps" class="panel-tab-btn active" onclick="switchPanelTab('steps')">
+          <button id="tabBtnSteps" class="panel-tab-btn active" onclick="switchPanelTab('steps')" title="Passo a passo didático do Self-Healing">
             Passo a Passo
           </button>
-          <button id="tabBtnTech" class="panel-tab-btn" onclick="switchPanelTab('tech')">
-            Dados Técnicos
+          <button id="tabBtnFault" class="panel-tab-btn" onclick="switchPanelTab('fault')" title="Informações e cálculos elétricos da falta">
+            Informações da Falta
+          </button>
+          <button id="tabBtnSection" class="panel-tab-btn" onclick="switchPanelTab('section')" title="Informações sobre o trecho da rede sob falta">
+            Trecho da Rede
           </button>
         </div>
 
@@ -2382,7 +2938,7 @@
               <div id="kpiRelay" class="kpi-value">21I7 (1I+2T)</div>
             </div>
             <div class="kpi-card">
-              <div class="kpi-label">1ª Abertura / Morto</div>
+              <div id="kpiTimeLabel" class="kpi-label">1ª Abertura / Morto</div>
               <div id="kpiTime" class="kpi-value">925 ms / 10 s</div>
             </div>
           </div>
@@ -2390,24 +2946,26 @@
           <!-- Etapa 1 -->
           <div id="stepCard1" class="didactic-step-card">
             <div class="step-card-header">
-              <span class="step-card-title">1. Detecção (50/51)</span>
+              <span id="stepTitle1" class="step-card-title">1. Detecção (50/51)</span>
               <span id="stepTag1" class="step-card-tag">AGUARDANDO</span>
             </div>
+            <div id="stepDesc1" class="step-card-desc"></div>
           </div>
 
           <!-- Etapa 2 -->
           <div id="stepCard2" class="didactic-step-card">
             <div class="step-card-header">
-              <span class="step-card-title">2. Religamento (79)</span>
+              <span id="stepTitle2" class="step-card-title">2. Religamento (79)</span>
               <span id="stepTag2" class="step-card-tag">AGUARDANDO</span>
             </div>
             <div id="recloseGridContainer" class="reclose-mini-grid"></div>
+            <div id="stepDesc2" class="step-card-desc" style="display: none;"></div>
           </div>
 
           <!-- Etapa 3 -->
           <div id="stepCard3" class="didactic-step-card">
             <div class="step-card-header">
-              <span class="step-card-title">3. Isolamento</span>
+              <span id="stepTitle3" class="step-card-title">3. Isolamento</span>
               <span id="stepTag3" class="step-card-tag">AGUARDANDO</span>
             </div>
             <div id="stepDesc3" class="step-card-desc"></div>
@@ -2416,23 +2974,39 @@
           <!-- Etapa 4 -->
           <div id="stepCard4" class="didactic-step-card">
             <div class="step-card-header">
-              <span class="step-card-title">4. Recomposição (FLISR)</span>
+              <span id="stepTitle4" class="step-card-title">4. Recomposição (FLISR)</span>
               <span id="stepTag4" class="step-card-tag">AGUARDANDO</span>
             </div>
             <div id="stepDesc4" class="step-card-desc"></div>
           </div>
         </div>
 
-        <!-- ABA 2: DADOS TECNICOS DO TCC -->
-        <div id="tabPaneTech" class="tab-pane">
+        <!-- ABA 2: INFORMAÇÕES DA FALTA -->
+        <div id="tabPaneFault" class="tab-pane">
           <div class="tech-section">
-            <div class="tech-section-title">Curto-Circuito (Icc)</div>
+            <div class="tech-section-title">Localização e Tipo de Defeito</div>
             <div class="prop-row">
-              <span class="prop-name">Impedância Z1:</span>
+              <span class="prop-name">Tipo de Falta:</span>
+              <span id="txtFaultTypeDesc" class="prop-val">Trifásica (3F)</span>
+            </div>
+            <div class="prop-row">
+              <span class="prop-name">Trecho sob Falta:</span>
+              <span id="txtFaultLocDesc" class="prop-val">Trecho T1 (Alimentador 1)</span>
+            </div>
+            <div class="prop-row">
+              <span class="prop-name">Corrente de Curto (Icc):</span>
+              <span id="txtFaultCurrVal" class="prop-val">2.622 A</span>
+            </div>
+          </div>
+
+          <div class="tech-section">
+            <div class="tech-section-title">Impedância Thévenin no Ponto da Falta</div>
+            <div class="prop-row">
+              <span class="prop-name">Sequência Positiva (Z1):</span>
               <span id="txtTheveninZ1" class="prop-val">0.637 + j1.463 pu</span>
             </div>
             <div class="prop-row">
-              <span class="prop-name">Impedância Z0:</span>
+              <span class="prop-name">Sequência Zero (Z0):</span>
               <span id="txtTheveninZ0" class="prop-val">1.093 + j4.453 pu</span>
             </div>
 
@@ -2470,30 +3044,122 @@
           </div>
 
           <div class="tech-section">
-            <div class="tech-section-title">Ajustes da Proteção</div>
+            <div class="tech-section-title">Atuação e Ajustes da Proteção</div>
+            <div class="prop-row">
+              <span class="prop-name">Relé / Dispositivo:</span>
+              <span id="txtFaultRelayName" class="prop-val">SEL-751 (21I7)</span>
+            </div>
             <div class="prop-row">
               <span class="prop-name">Curva / Dial:</span>
               <span id="txtCurveDial" class="prop-val">IEC Muito Inversa (TD = 0.23)</span>
             </div>
             <div class="prop-row">
-              <span class="prop-name">Pickup (Ip):</span>
+              <span class="prop-name">Pickup (Ip) / Múltiplo:</span>
               <span id="txtCurrentPickup" class="prop-val">570 A (M = 4.60)</span>
             </div>
             <div class="prop-row">
               <span class="prop-name">Temporização (51):</span>
               <span id="txtTotalTripTime" class="prop-val">925,5 ms</span>
             </div>
+            <div class="prop-row">
+              <span class="prop-name">Ciclo Religamento (79):</span>
+              <span id="txtFaultRecloseCycle" class="prop-val">1I + 2T (Tempo morto: 10,0 s)</span>
+            </div>
+          </div>
+
+          <div class="tech-section tcc-curve-section">
+            <div class="tech-section-title">Curva Parametrizada do Relé (TCC)</div>
+            <div class="tcc-meta-row">
+              <span id="tccRelayBadge" class="tcc-badge">Relé SEL-751 (21I7)</span>
+              <span id="tccCurveBadge" class="tcc-badge">IEC Muito Inversa (TD = 0,23)</span>
+              <span id="tccElemBadge" class="tcc-badge">Proteção Fase (50/51)</span>
+            </div>
+            <div id="tccSvgContainer" class="tcc-svg-wrap"></div>
+            <div id="tccPointSummary" class="tcc-point-summary"></div>
+          </div>
+        </div>
+
+        <!-- ABA 3: INFORMAÇÕES DO TRECHO DA REDE -->
+        <div id="tabPaneSection" class="tab-pane">
+          <div class="tech-section">
+            <div class="tech-section-title">Identificação e Topologia</div>
+            <div class="prop-row">
+              <span class="prop-name">Identificador:</span>
+              <span id="txtSecId" class="prop-val">Trecho T1</span>
+            </div>
+            <div class="prop-row">
+              <span class="prop-name">Alimentador:</span>
+              <span id="txtSecFeeder" class="prop-val">Alimentador 1</span>
+            </div>
+            <div class="prop-row">
+              <span class="prop-name">Suprimento Normal:</span>
+              <span id="txtSecNormalSource" class="prop-val">SE Aquiraz (AQZ)</span>
+            </div>
+            <div class="prop-row">
+              <span class="prop-name">Socorro Interligado:</span>
+              <span id="txtSecSupportSource" class="prop-val">SE Eusébio (ESB)</span>
+            </div>
           </div>
 
           <div class="tech-section">
-            <div class="tech-section-title">Trecho e Condutor</div>
+            <div class="tech-section-title">Condutor e Carregamento</div>
             <div class="prop-row">
-              <span class="prop-name">Extensão / Cabo:</span>
-              <span id="txtCableSpec" class="prop-val">5.040 m | CAA 266,8 MCM</span>
+              <span class="prop-name">Extensão do Trecho:</span>
+              <span id="txtSecLength" class="prop-val">5.040 m</span>
             </div>
             <div class="prop-row">
-              <span class="prop-name">Carga / Limite:</span>
-              <span id="txtThermalMargin" class="prop-val">23 A / 475 A (OK)</span>
+              <span class="prop-name">Tipo de Condutor:</span>
+              <span id="txtSecCable" class="prop-val">CAA 266,8 MCM (Partridge)</span>
+            </div>
+            <div class="prop-row">
+              <span class="prop-name">Capacidade Térmica:</span>
+              <span id="txtSecAmp" class="prop-val">475 A</span>
+            </div>
+            <div class="prop-row">
+              <span class="prop-name">Corrente de Carga:</span>
+              <span id="txtSecLoad" class="prop-val">23 A (4,8% de ocupação)</span>
+            </div>
+            <div class="prop-row">
+              <span class="prop-name">Margem Operacional:</span>
+              <span id="txtSecMargin" class="prop-val">452 A livres (OK)</span>
+            </div>
+          </div>
+
+          <div class="tech-section geo-curve-section">
+            <div class="tech-section-title">Geometria e Arranjo dos Condutores</div>
+            <div id="geoPillsContainer" class="tcc-meta-row">
+              <span id="geoStructBadge" class="tcc-badge">Padrão Coelce N1 (Cruzeta 2,40 m)</span>
+              <span id="geoDmgBadge" class="tcc-badge">DMG = 1,09 m</span>
+            </div>
+            <div id="geoSvgContainer" class="tcc-svg-wrap"></div>
+            <div id="geoDetailsSummary" class="tcc-point-summary"></div>
+          </div>
+
+          <div class="tech-section">
+            <div class="tech-section-title">Impedâncias Próprias do Trecho</div>
+            <div class="prop-row">
+              <span class="prop-name">Sequência Positiva (z1):</span>
+              <span id="txtSecZ1" class="prop-val">0.6230 + j1.0190 pu</span>
+            </div>
+            <div class="prop-row">
+              <span class="prop-name">Sequência Zero (z0):</span>
+              <span id="txtSecZ0" class="prop-val">1.0931 + j4.1073 pu</span>
+            </div>
+          </div>
+
+          <div class="tech-section">
+            <div class="tech-section-title">Manobra e Automação (FLISR)</div>
+            <div class="prop-row">
+              <span class="prop-name">Disjuntor de Saída:</span>
+              <span id="txtSecBreaker" class="prop-val">21I7 (AQZ)</span>
+            </div>
+            <div class="prop-row">
+              <span class="prop-name">Chaves de Isolamento:</span>
+              <span id="txtSecIsolateSwitches" class="prop-val">21I7, RS1</span>
+            </div>
+            <div class="prop-row">
+              <span class="prop-name">Chave de Socorro (Tie):</span>
+              <span id="txtSecTieSwitch" class="prop-val">RL1 (Normalmente Aberta)</span>
             </div>
           </div>
         </div>
@@ -2522,6 +3188,165 @@
           Próximo Tópico &rarr;
         </button>
       </footer>
+    </div>
+  </section>
+
+  <!-- 5. WORKSPACE DE CONFIGURACOES (EXIBIDO SOMENTE NA ABA CONFIGURACOES) -->
+  <section id="configWorkspace" class="config-workspace">
+    <div class="config-container">
+      <header class="config-header">
+        <span class="config-header-tag">Ajustes &amp; Parâmetros</span>
+        <h2 class="config-header-title">Configurações da Simulação</h2>
+        <p class="config-header-desc">
+          Personalize as temporizações da recomposição automática (Self-Healing / FLISR), as camadas visuais do diagrama unifilar e consulte as constantes elétricas da SE Aquiraz 69/13,8 kV.
+        </p>
+      </header>
+
+      <!-- CARD 1: TEMPORIZACAO E DELAY ENTRE ETAPAS FLISR -->
+      <div class="config-card">
+        <div class="config-card-header">
+          <div class="config-card-title-wrap">
+            <h3 class="config-card-title">Temporização entre Etapas da Simulação</h3>
+            <p class="config-card-subtitle">
+              Pausa programada entre o Bloqueio da proteção (Lockout), o Isolamento das chaves e a Recomposição automática da rede.
+            </p>
+          </div>
+        </div>
+
+        <div class="config-delay-control-block">
+          <label class="config-toggle-row" for="chkEnableStepDelay">
+            <div class="config-toggle-info">
+              <span class="config-toggle-label">Ativar delay entre etapas da simulação</span>
+              <span class="config-toggle-hint">Permite visualizar detalhadamente cada transição do FLISR sem que as manobras ocorram instantaneamente.</span>
+            </div>
+            <label class="switch-ui">
+              <input type="checkbox" id="chkEnableStepDelay" checked onchange="toggleStepDelayCheckbox(this.checked)" />
+              <span class="switch-slider"></span>
+            </label>
+          </label>
+
+          <div id="delaySliderWrap" class="delay-slider-wrap">
+            <div class="delay-slider-header">
+              <span class="delay-slider-label">Intervalo de tempo entre cada etapa:</span>
+              <span id="lblStepDelayVal" class="delay-slider-val">1,0 s</span>
+            </div>
+            <input
+              type="range"
+              id="rngStepDelay"
+              class="delay-range-input"
+              min="0"
+              max="2"
+              step="0.5"
+              value="1.0"
+              oninput="updateStepDelayFromRange(parseFloat(this.value))"
+            />
+            <div class="delay-pills-row">
+              <button type="button" class="delay-pill-btn" data-val="0" onclick="updateStepDelayFromRange(0)">0 s (Sem delay)</button>
+              <button type="button" class="delay-pill-btn" data-val="0.5" onclick="updateStepDelayFromRange(0.5)">0,5 s</button>
+              <button type="button" class="delay-pill-btn active" data-val="1" onclick="updateStepDelayFromRange(1.0)">1,0 s (Padrão)</button>
+              <button type="button" class="delay-pill-btn" data-val="1.5" onclick="updateStepDelayFromRange(1.5)">1,5 s</button>
+              <button type="button" class="delay-pill-btn" data-val="2" onclick="updateStepDelayFromRange(2.0)">2,0 s</button>
+            </div>
+            <div class="delay-info-note">
+              💡 <b>Acompanhamento Didático:</b> Com o delay ativo em <b id="txtDelayPreview">1,0 segundo</b>, a simulação pausará 1,0 s após a confirmação do Bloqueio (Lockout) para evidenciar a abertura das chaves seccionadoras (Isolamento), e mais 1,0 s antes do fechamento da chave normalmente aberta de socorro (Recomposição).
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- CARD 2: ELEMENTOS VISUAIS DO DIAGRAMA -->
+      <div class="config-card">
+        <div class="config-card-header">
+          <div class="config-card-title-wrap">
+            <h3 class="config-card-title">Camadas Visuais do Diagrama Elétrico</h3>
+            <p class="config-card-subtitle">
+              Opções de exibição de dados e malha de referência sobre o circuito unifilar.
+            </p>
+          </div>
+        </div>
+
+        <div class="config-options-grid">
+          <label class="config-option-card">
+            <input type="checkbox" id="chkShowLengthsConfig" checked onchange="toggleLengthsFromConfig(this.checked)" />
+            <div class="config-option-text">
+              <span class="config-option-title">Comprimentos dos Trechos em Metros</span>
+              <span class="config-option-desc">Exibe a extensão métrica real de cada um dos 16 trechos (ex.: 5.040 m, 1.190 m) no circuito unifilar.</span>
+            </div>
+          </label>
+
+          <label class="config-option-card">
+            <input type="checkbox" id="chkShowGridConfig" checked onchange="toggleGridFromConfig(this.checked)" />
+            <div class="config-option-text">
+              <span class="config-option-title">Grade Pontilhada de Fundo</span>
+              <span class="config-option-desc">Exibe a malha de pontos cartesianos no fundo da área de desenho do diagrama.</span>
+            </div>
+          </label>
+        </div>
+      </div>
+
+      <!-- CARD 3: BASES E CONSTANTES DA SUBESTAÇÃO -->
+      <div class="config-card">
+        <div class="config-card-header">
+          <div class="config-card-title-wrap">
+            <h3 class="config-card-title">Bases e Parâmetros da SE Aquiraz (Rodrigues, 2015)</h3>
+            <p class="config-card-subtitle">
+              Valores nominais e grandezas base adotados no estudo de proteção e curto-circuito.
+            </p>
+          </div>
+        </div>
+
+        <table class="config-params-table">
+          <thead>
+            <tr>
+              <th>Parâmetro do Sistema</th>
+              <th>Valor Adotado</th>
+              <th>Descrição / Norma</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Tensão Base (V_base)</td>
+              <td class="val-col">13,8 kV</td>
+              <td>Tensão nominal dos barramentos e alimentadores de média tensão</td>
+            </tr>
+            <tr>
+              <td>Potência Base (S_base)</td>
+              <td class="val-col">100 MVA</td>
+              <td>Potência trifásica base do sistema para cálculo por unidade (pu)</td>
+            </tr>
+            <tr>
+              <td>Impedância Base (Z_base)</td>
+              <td class="val-col">1,9044 &Omega;</td>
+              <td>Z_base = V_base² / S_base</td>
+            </tr>
+            <tr>
+              <td>Corrente Base (I_base)</td>
+              <td class="val-col">4.183,7 A</td>
+              <td>I_base = S_base / (&radic;3 &times; V_base)</td>
+            </tr>
+            <tr>
+              <td>Frequência do Sistema (f)</td>
+              <td class="val-col">60 Hz</td>
+              <td>Frequência industrial de operação da rede de distribuição</td>
+            </tr>
+            <tr>
+              <td>Relés de Proteção</td>
+              <td class="val-col">SEL-751 (Schweitzer)</td>
+              <td>Funções 50/51/79 com curva IEC Muito Inversa (MI)</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- BOTOES DE ACAO INFERIORES -->
+      <div class="config-actions-bar">
+        <button type="button" class="tool-btn" onclick="resetConfigDefaults()" title="Restaurar todas as opções para os padrões originais">
+          Restaurar Padrões
+        </button>
+        <button type="button" class="tool-btn" style="background-color: var(--border-focus); color: #fff; font-weight: 600;" onclick="switchRibbonTab('tcc')" title="Salvar e voltar ao diagrama da simulação">
+          Salvar &amp; Voltar ao Diagrama &rarr;
+        </button>
+      </div>
     </div>
   </section>
 
@@ -2785,6 +3610,8 @@
     let simAnimationId = null;
     let simState = 'idle'; // 'idle' | 'running' | 'paused' | 'completed'
     let simPrePlayEquipmentSnapshot = null;
+    let simVisualPauseUntil = 0;
+    let simPauseRemainingMs = 0;
 
     /* ==========================================================================
        3. SOLVER TOPOLOGICO DE ESTADO ELETRICO DOS TRECHOS
@@ -3542,35 +4369,156 @@
 
       const mainWs = document.getElementById('mainWorkspace');
       const tutWs = document.getElementById('tutorialWorkspace');
+      const configWs = document.getElementById('configWorkspace');
+
       if (tabName === 'tutorial') {
         if (mainWs) mainWs.style.display = 'none';
+        if (configWs) configWs.style.display = 'none';
         if (tutWs) {
           tutWs.style.display = 'flex';
           renderTutorialTopic(currentTutorialId);
         }
-      } else {
-        if (mainWs) mainWs.style.display = 'flex';
+      } else if (tabName === 'config') {
+        if (mainWs) mainWs.style.display = 'none';
         if (tutWs) tutWs.style.display = 'none';
+        if (configWs) {
+          configWs.style.display = 'flex';
+          syncConfigUI();
+        }
+      } else {
+        if (configWs) configWs.style.display = 'none';
+        if (tutWs) tutWs.style.display = 'none';
+        if (mainWs) {
+          mainWs.style.display = 'flex';
+          if (typeof scheduleDiagramAdaptation === 'function') {
+            scheduleDiagramAdaptation();
+          }
+        }
       }
     }
 
-    function switchPanelTab(tabName) {
-      const btnSteps = document.getElementById('tabBtnSteps');
-      const btnTech = document.getElementById('tabBtnTech');
-      const paneSteps = document.getElementById('tabPaneSteps');
-      const paneTech = document.getElementById('tabPaneTech');
+    /* ==========================================================================
+       GERENCIAMENTO DE CONFIGURACOES E DELAY ENTRE ETAPAS
+       ========================================================================== */
+    let simStepDelayEnabled = true;
+    let simStepDelaySeconds = 1.0;
 
-      if (tabName === 'steps') {
-        btnSteps.classList.add('active');
-        btnTech.classList.remove('active');
-        paneSteps.classList.add('active');
-        paneTech.classList.remove('active');
-      } else {
-        btnSteps.classList.remove('active');
-        btnTech.classList.add('active');
-        paneSteps.classList.remove('active');
-        paneTech.classList.add('active');
+    try {
+      const savedDelayEnabled = localStorage.getItem('simStepDelayEnabled');
+      if (savedDelayEnabled !== null) {
+        simStepDelayEnabled = savedDelayEnabled === 'true';
       }
+      const savedDelaySeconds = localStorage.getItem('simStepDelaySeconds');
+      if (savedDelaySeconds !== null) {
+        simStepDelaySeconds = parseFloat(savedDelaySeconds) || 1.0;
+      }
+    } catch (e) {}
+
+    function toggleStepDelayCheckbox(checked) {
+      simStepDelayEnabled = checked;
+      setSimulationStepDelay(simStepDelaySeconds, simStepDelayEnabled);
+    }
+
+    function updateStepDelayFromRange(val) {
+      setSimulationStepDelay(val, simStepDelayEnabled);
+    }
+
+    function setSimulationStepDelay(val, enabled) {
+      if (typeof val === 'number') {
+        val = Math.max(0, Math.min(2.0, Math.round(val * 2) / 2));
+        simStepDelaySeconds = val;
+      }
+      if (typeof enabled === 'boolean') {
+        simStepDelayEnabled = enabled;
+      }
+      try {
+        localStorage.setItem('simStepDelayEnabled', String(simStepDelayEnabled));
+        localStorage.setItem('simStepDelaySeconds', String(simStepDelaySeconds));
+      } catch (e) {}
+
+      syncConfigUI();
+    }
+
+    function syncConfigUI() {
+      const chk = document.getElementById('chkEnableStepDelay');
+      const rng = document.getElementById('rngStepDelay');
+      const valBadge = document.getElementById('lblStepDelayVal');
+      const previewText = document.getElementById('txtDelayPreview');
+      const sliderWrap = document.getElementById('delaySliderWrap');
+
+      if (chk) chk.checked = simStepDelayEnabled;
+      if (rng) rng.value = simStepDelaySeconds;
+
+      const formattedVal = simStepDelaySeconds.toFixed(1).replace('.', ',');
+
+      if (valBadge) {
+        valBadge.textContent = simStepDelayEnabled ? `${formattedVal} s` : 'Desativado (0 s)';
+      }
+      if (previewText) {
+        if (!simStepDelayEnabled || simStepDelaySeconds === 0) {
+          previewText.textContent = 'nenhuma pausa (imediato)';
+        } else {
+          previewText.textContent = `${formattedVal} segundo${simStepDelaySeconds === 1 ? '' : 's'}`;
+        }
+      }
+      if (sliderWrap) {
+        sliderWrap.classList.toggle('disabled', !simStepDelayEnabled);
+      }
+
+      document.querySelectorAll('.delay-pill-btn').forEach((btn) => {
+        const btnVal = parseFloat(btn.getAttribute('data-val'));
+        btn.classList.toggle('active', simStepDelayEnabled && Math.abs(btnVal - simStepDelaySeconds) < 0.05);
+      });
+
+      const chkLengths = document.getElementById('chkShowLengths');
+      const chkLengthsConfig = document.getElementById('chkShowLengthsConfig');
+      if (chkLengths && chkLengthsConfig) {
+        chkLengthsConfig.checked = chkLengths.checked;
+      }
+
+      const chkGrid = document.getElementById('chkShowGrid');
+      const chkGridConfig = document.getElementById('chkShowGridConfig');
+      if (chkGrid && chkGridConfig) {
+        chkGridConfig.checked = chkGrid.checked;
+      }
+    }
+
+    function toggleLengthsFromConfig(checked) {
+      const chk = document.getElementById('chkShowLengths');
+      if (chk) {
+        chk.checked = checked;
+        chk.dispatchEvent(new Event('change'));
+      }
+    }
+
+    function toggleGridFromConfig(checked) {
+      const chk = document.getElementById('chkShowGrid');
+      if (chk) {
+        chk.checked = checked;
+        chk.dispatchEvent(new Event('change'));
+      }
+    }
+
+    function resetConfigDefaults() {
+      setSimulationStepDelay(1.0, true);
+      toggleLengthsFromConfig(true);
+      toggleGridFromConfig(true);
+      syncConfigUI();
+    }
+
+    function switchPanelTab(tabName) {
+      if (tabName === 'tech') tabName = 'fault';
+      const tabs = [
+        { id: 'steps', btn: document.getElementById('tabBtnSteps'), pane: document.getElementById('tabPaneSteps') },
+        { id: 'fault', btn: document.getElementById('tabBtnFault'), pane: document.getElementById('tabPaneFault') },
+        { id: 'section', btn: document.getElementById('tabBtnSection'), pane: document.getElementById('tabPaneSection') }
+      ];
+
+      tabs.forEach((t) => {
+        const isActive = t.id === tabName;
+        if (t.btn) t.btn.classList.toggle('active', isActive);
+        if (t.pane) t.pane.classList.toggle('active', isActive);
+      });
     }
 
     function getActiveFaultCurrentInfo(segKey) {
@@ -3667,6 +4615,11 @@
         }
       });
 
+      const numShots = relay.shots ? relay.shots.length : 4;
+      const hasReclose = numShots > 1;
+
+      updateDidacticCardsLayout(currentFaultSegment);
+
       const shot1 = calculateRelayShotTime(seg.upstreamRelay, activeCurrent, isGround, relay.shots[0] || 'I');
       const shotT = calculateRelayShotTime(seg.upstreamRelay, activeCurrent, isGround, 'T');
 
@@ -3674,31 +4627,839 @@
         ? `${activeCurrent.toFixed(1).replace('.', ',')} A`
         : `${Math.round(activeCurrent).toLocaleString('pt-BR')} A`;
 
-      // KPIs Superiores da Aba 1
+      // Helper seguro para atribuição de texto
+      const setField = (id, text) => {
+        const el = document.getElementById(id);
+        if (el) el.textContent = text;
+      };
+
+      // KPIs Superiores da Aba 1 (Passo a Passo)
       const kpiLabelEl = document.getElementById('kpiCurrentLabel');
       if (kpiLabelEl) kpiLabelEl.textContent = `Icc (${selectedFaultType})`;
-      document.getElementById('kpiCurrent').textContent = formattedCurrent;
-      document.getElementById('kpiRelay').textContent = `${seg.upstreamRelay} (${relay.cycle})`;
-      document.getElementById('kpiTime').textContent = `${Math.round(shot1.totalTimeMs)} ms / ${relay.deadTime} s`;
+      setField('kpiCurrent', formattedCurrent);
+      setField('kpiRelay', hasReclose ? `${seg.upstreamRelay} (${relay.cycle})` : `${seg.upstreamRelay} (1I - Sem Relig.)`);
 
-      // Textos da Aba 2 (Dados Técnicos TCC)
-      document.getElementById('txtTheveninZ1').textContent = `${sc.r1.toFixed(3)} + j${sc.x1.toFixed(3)} pu`;
-      document.getElementById('txtTheveninZ0').textContent = `${sc.r0.toFixed(3)} + j${sc.x0.toFixed(3)} pu`;
+      const kpiTimeLabel = document.getElementById('kpiTimeLabel');
+      if (kpiTimeLabel) {
+        kpiTimeLabel.textContent = hasReclose ? '1ª Abertura / Morto' : 'Abertura / Disparo';
+      }
+      setField('kpiTime', hasReclose
+        ? `${Math.round(shot1.totalTimeMs)} ms / ${relay.deadTime} s`
+        : `${Math.round(shot1.totalTimeMs)} ms / Bloqueio`);
 
-      document.getElementById('calcI3F').textContent = `${Math.round(sc.i3f).toLocaleString('pt-BR')} A`;
-      document.getElementById('tccI3F').textContent = `${Math.round(seg.bench.i3f).toLocaleString('pt-BR')} A`;
-      document.getElementById('calcI2F').textContent = `${Math.round(sc.i2f).toLocaleString('pt-BR')} A`;
-      document.getElementById('tccI2F').textContent = `${Math.round(seg.bench.i2f).toLocaleString('pt-BR')} A`;
-      document.getElementById('calcIFT').textContent = `${Math.round(sc.ift).toLocaleString('pt-BR')} A`;
-      document.getElementById('tccIFT').textContent = `${Math.round(seg.bench.ift).toLocaleString('pt-BR')} A`;
-      document.getElementById('calcIFTm').textContent = `${sc.iftm.toFixed(1).replace('.', ',')} A`;
-      document.getElementById('tccIFTm').textContent = `${seg.bench.iftm.toFixed(1).replace('.', ',')} A`;
+      // Textos da Aba 2 (Informações da Falta)
+      const faultTypeNames = {
+        '3F': 'Trifásica (3F)',
+        '2F': 'Bifásica (2F)',
+        'FT': 'Fase-Terra Franca (FT)',
+        'FTm': 'Fase-Terra c/ Rf = 40 Ω (FTm)'
+      };
+      setField('txtFaultTypeDesc', faultTypeNames[selectedFaultType] || selectedFaultType);
+      setField('txtFaultLocDesc', `Trecho ${seg.id} (${seg.feeder})`);
+      setField('txtFaultCurrVal', formattedCurrent);
 
-      document.getElementById('txtCurveDial').textContent = `IEC Muito Inversa (TD = ${isGround ? relay.ground.dial : relay.phase.dial})`;
-      document.getElementById('txtCurrentPickup').textContent = `${shotT.pickup} A (M = ${shotT.multiple.toFixed(2)})`;
-      document.getElementById('txtTotalTripTime').textContent = `${shotT.totalTimeMs.toFixed(1).replace('.', ',')} ms`;
-      document.getElementById('txtCableSpec').textContent = `${seg.length.toLocaleString('pt-BR')} m | ${seg.cable}`;
-      document.getElementById('txtThermalMargin').textContent = `${seg.load} A / ${seg.amp} A (OK)`;
+      setField('txtTheveninZ1', `${sc.r1.toFixed(3)} + j${sc.x1.toFixed(3)} pu`);
+      setField('txtTheveninZ0', `${sc.r0.toFixed(3)} + j${sc.x0.toFixed(3)} pu`);
+
+      setField('calcI3F', `${Math.round(sc.i3f).toLocaleString('pt-BR')} A`);
+      setField('tccI3F', `${Math.round(seg.bench.i3f).toLocaleString('pt-BR')} A`);
+      setField('calcI2F', `${Math.round(sc.i2f).toLocaleString('pt-BR')} A`);
+      setField('tccI2F', `${Math.round(seg.bench.i2f).toLocaleString('pt-BR')} A`);
+      setField('calcIFT', `${Math.round(sc.ift).toLocaleString('pt-BR')} A`);
+      setField('tccIFT', `${Math.round(seg.bench.ift).toLocaleString('pt-BR')} A`);
+      setField('calcIFTm', `${sc.iftm.toFixed(1).replace('.', ',')} A`);
+      setField('tccIFTm', `${seg.bench.iftm.toFixed(1).replace('.', ',')} A`);
+
+      const relayTypeDesc = seg.upstreamRelay.startsWith('21I')
+        ? `Relé de Subestação SEL-751 (${seg.upstreamRelay})`
+        : `Religador Automático de Linha (${seg.upstreamRelay})`;
+      setField('txtFaultRelayName', relayTypeDesc);
+      setField('txtCurveDial', `IEC Muito Inversa (TD = ${isGround ? relay.ground.dial : relay.phase.dial})`);
+      setField('txtCurrentPickup', `${shot1.pickup} A (M = ${shot1.multiple.toFixed(2)})`);
+      setField('txtTotalTripTime', hasReclose
+        ? `${shotT.totalTimeMs.toFixed(1).replace('.', ',')} ms`
+        : `${shot1.totalTimeMs.toFixed(1).replace('.', ',')} ms (Disparo 50/51)`);
+      setField('txtFaultRecloseCycle', hasReclose
+        ? `${relay.cycle} (Tempo morto: ${relay.deadTime.toFixed(1).replace('.', ',')} s)`
+        : `1I - Sem Religamento (Disparo único 1I direto para Bloqueio)`);
+
+      // Textos da Aba 3 (Trecho da Rede)
+      const normalSrcObj = SOURCES[seg.normalSource];
+      const supportSrcObj = SOURCES[seg.supportSource];
+      const normalSrcName = normalSrcObj ? normalSrcObj.name : (seg.normalSource || 'SE Aquiraz (AQZ)');
+      const supportSrcName = supportSrcObj ? supportSrcObj.name : (seg.supportSource ? `SE ${seg.supportSource}` : 'N/A');
+
+      const loadPct = ((seg.load / seg.amp) * 100).toFixed(1).replace('.', ',');
+      const marginAmps = Math.max(0, seg.amp - seg.load);
+
+      setField('txtSecId', `Trecho ${seg.id}`);
+      setField('txtSecFeeder', seg.feeder);
+      setField('txtSecNormalSource', normalSrcName);
+      setField('txtSecSupportSource', supportSrcName);
+
+      setField('txtSecLength', `${seg.length.toLocaleString('pt-BR')} m`);
+      setField('txtSecCable', seg.cable);
+      setField('txtSecAmp', `${seg.amp} A`);
+      setField('txtSecLoad', `${seg.load} A (${loadPct}% de ocupação)`);
+      setField('txtSecMargin', `${marginAmps} A livres (OK)`);
+
+      setField('txtSecZ1', `${seg.z1[0].toFixed(4)} + j${seg.z1[1].toFixed(4)} pu`);
+      setField('txtSecZ0', `${seg.z0[0].toFixed(4)} + j${seg.z0[1].toFixed(4)} pu`);
+
+      setField('txtSecBreaker', `${seg.feederBreaker} (${seg.normalSource || 'AQZ'})`);
+      setField('txtSecIsolateSwitches', seg.isolateSwitches.join(', '));
+      setField('txtSecTieSwitch', seg.tieSwitch ? `${seg.tieSwitch} (Normalmente Aberta)` : 'Recomposição a montante (Sem Tie)');
+
+      renderRelayTccCurve(currentFaultSegment, activeCurrent, isGround, selectedFaultType);
+      renderSegmentGeometry(currentFaultSegment);
+    }
+
+    function renderRelayTccCurve(segKey, activeCurrent, isGround, faultType) {
+      const container = document.getElementById('tccSvgContainer');
+      const summaryEl = document.getElementById('tccPointSummary');
+      if (!container || !summaryEl) return;
+
+      const seg = SEGMENTS_DATA[segKey];
+      if (!seg) return;
+
+      const relayId = seg.upstreamRelay;
+      const relay = RELAYS_DATA[relayId] || RELAYS_DATA['21I7'];
+      const elem = isGround ? relay.ground : relay.phase;
+      const ip = elem.pickup;
+      const td = elem.dial;
+      const inst = elem.inst;
+      const instDelay = elem.instDelay || 0.05;
+      const hasInst = relay.shots && relay.shots[0] === 'I' && inst > 0;
+
+      // Atualiza Badges Superiores
+      const relayBadge = document.getElementById('tccRelayBadge');
+      const curveBadge = document.getElementById('tccCurveBadge');
+      const elemBadge = document.getElementById('tccElemBadge');
+      if (relayBadge) relayBadge.textContent = `${seg.upstreamRelay.startsWith('21I') ? 'Relé SEL-751' : 'Religador'} (${relayId})`;
+      if (curveBadge) curveBadge.textContent = `IEC Muito Inversa (TD = ${td.toFixed(2).replace('.', ',')})`;
+      if (elemBadge) elemBadge.textContent = isGround ? 'Proteção Neutro (50N/51N)' : 'Proteção Fase (50/51)';
+
+      const shot1 = calculateRelayShotTime(relayId, activeCurrent, isGround, relay.shots[0] || 'I');
+
+      // Escala Log-Log
+      const pLeft = 44;
+      const pRight = 346;
+      const pTop = 16;
+      const pBottom = 176;
+
+      const xMin = isGround ? 10.0 : 100.0;
+      const xMax = 10000.0;
+      const yMin = 0.04;
+      const yMax = 10.0;
+
+      const toSvgX = (iVal) => {
+        const c = Math.max(xMin, Math.min(xMax, iVal));
+        return pLeft + (Math.log10(c) - Math.log10(xMin)) / (Math.log10(xMax) - Math.log10(xMin)) * (pRight - pLeft);
+      };
+
+      const toSvgY = (tVal) => {
+        const c = Math.max(yMin, Math.min(yMax, tVal));
+        return pBottom - (Math.log10(c) - Math.log10(yMin)) / (Math.log10(yMax) - Math.log10(yMin)) * (pBottom - pTop);
+      };
+
+      // Ticks dos Eixos
+      const xTicks = isGround
+        ? [10, 20, 50, 100, 200, 500, 1000, 2000, 5000, 10000]
+        : [100, 200, 300, 500, 700, 1000, 2000, 3000, 5000, 7000, 10000];
+      const xLabels = isGround
+        ? { 10: '10', 50: '50', 100: '100', 500: '500', 1000: '1k', 5000: '5k', 10000: '10k' }
+        : { 100: '100', 200: '200', 500: '500', 1000: '1k', 2000: '2k', 5000: '5k', 10000: '10k' };
+
+      const yTicks = [0.04, 0.05, 0.07, 0.1, 0.2, 0.3, 0.5, 0.7, 1.0, 2.0, 3.0, 5.0, 7.0, 10.0];
+      const yLabels = { 0.05: '0.05', 0.1: '0.1', 0.2: '0.2', 0.5: '0.5', 1.0: '1', 2.0: '2', 5.0: '5', 10.0: '10' };
+
+      // Grade e Rótulos dos Eixos
+      let gridSvg = '';
+      xTicks.forEach((t) => {
+        const x = toSvgX(t);
+        gridSvg += `<line x1="${x.toFixed(1)}" y1="${pTop}" x2="${x.toFixed(1)}" y2="${pBottom}" stroke="var(--border-subtle)" stroke-width="0.75" stroke-dasharray="2,2"/>`;
+        if (xLabels[t]) {
+          gridSvg += `<text x="${x.toFixed(1)}" y="${(pBottom + 12).toFixed(1)}" fill="var(--text-muted)" font-size="8px" text-anchor="middle" font-weight="400">${xLabels[t]}</text>`;
+        }
+      });
+
+      yTicks.forEach((t) => {
+        const y = toSvgY(t);
+        gridSvg += `<line x1="${pLeft}" y1="${y.toFixed(1)}" x2="${pRight}" y2="${y.toFixed(1)}" stroke="var(--border-subtle)" stroke-width="0.75" stroke-dasharray="2,2"/>`;
+        if (yLabels[t]) {
+          gridSvg += `<text x="${(pLeft - 4).toFixed(1)}" y="${(y + 2.5).toFixed(1)}" fill="var(--text-muted)" font-size="8px" text-anchor="end" font-weight="400">${yLabels[t]}</text>`;
+        }
+      });
+
+      // Cálculo dos Pontos da Curva Parametrizada
+      const mStart = 1.0 + (13.5 * td) / (yMax - 0.063);
+      const iStart = Math.max(xMin, mStart * ip);
+      const cutoffInst = (hasInst && inst < xMax) ? inst : xMax;
+
+      const steps = 36;
+      const pts51 = [];
+      const logStart = Math.log10(iStart);
+      const logCutoff = Math.log10(cutoffInst);
+      for (let s = 0; s <= steps; s++) {
+        const curI = Math.pow(10, logStart + (logCutoff - logStart) * (s / steps));
+        const mult = Math.min(30.0, Math.max(1.01, curI / ip));
+        const tSec = td * (13.5 / (mult - 1.0)) + 0.063;
+        pts51.push(`${toSvgX(curI).toFixed(1)},${toSvgY(tSec).toFixed(1)}`);
+      }
+
+      let dCurve = `M ${pts51.join(' L ')}`;
+      let dDashed51 = '';
+
+      if (hasInst && inst < xMax) {
+        const t50 = instDelay + 0.063;
+        const xInst = toSvgX(inst);
+        const y50 = toSvgY(t50);
+        const xMaxSvg = toSvgX(xMax);
+        dCurve += ` L ${xInst.toFixed(1)},${y50.toFixed(1)} L ${xMaxSvg.toFixed(1)},${y50.toFixed(1)}`;
+
+        // Continuação tracejada da curva 51 temporizada além do pickup instantâneo
+        const ptsDash = [`${xInst.toFixed(1)},${toSvgY(td * (13.5 / (Math.min(30.0, inst / ip) - 1.0)) + 0.063).toFixed(1)}`];
+        const logEnd = Math.log10(xMax);
+        for (let s = 1; s <= 18; s++) {
+          const curI = Math.pow(10, logCutoff + (logEnd - logCutoff) * (s / 18));
+          const mult = Math.min(30.0, Math.max(1.01, curI / ip));
+          const tSec = td * (13.5 / (mult - 1.0)) + 0.063;
+          ptsDash.push(`${toSvgX(curI).toFixed(1)},${toSvgY(tSec).toFixed(1)}`);
+        }
+        dDashed51 = `M ${ptsDash.join(' L ')}`;
+      }
+
+      // Linhas Verticais de Limiar (Ip e Instantâneo)
+      let thresholdsSvg = '';
+      if (ip >= xMin && ip <= xMax) {
+        const xIp = toSvgX(ip);
+        thresholdsSvg += `
+          <line x1="${xIp.toFixed(1)}" y1="${pTop}" x2="${xIp.toFixed(1)}" y2="${pBottom}" stroke="#d97706" stroke-width="1" stroke-dasharray="3,2" opacity="0.85"/>
+          <text x="${xIp.toFixed(1)}" y="${(pTop - 4).toFixed(1)}" fill="#d97706" font-size="7.5px" text-anchor="middle" font-weight="400">Ip (${ip}A)</text>
+        `;
+      }
+
+      if (hasInst && inst >= xMin && inst <= xMax) {
+        const xInst = toSvgX(inst);
+        thresholdsSvg += `
+          <line x1="${xInst.toFixed(1)}" y1="${pTop}" x2="${xInst.toFixed(1)}" y2="${toSvgY(instDelay + 0.063).toFixed(1)}" stroke="#8b5cf6" stroke-width="1" stroke-dasharray="3,2" opacity="0.85"/>
+          <text x="${xInst.toFixed(1)}" y="${(pTop - 4).toFixed(1)}" fill="#8b5cf6" font-size="7.5px" text-anchor="middle" font-weight="400">50 (${Math.round(inst)}A)</text>
+        `;
+      }
+
+      // Ponto de Atuação da Falta (Corrente e Tempo)
+      const tTripSec = shot1.totalTimeMs / 1000;
+      const xOp = toSvgX(activeCurrent);
+      const yOp = toSvgY(tTripSec);
+
+      const formattedCurrent = faultType === 'FTm'
+        ? `${activeCurrent.toFixed(1).replace('.', ',')} A`
+        : `${Math.round(activeCurrent).toLocaleString('pt-BR')} A`;
+
+      // Posicionamento Dinâmico do Balão de Rótulo (Callout)
+      const calloutW = 96;
+      const calloutH = 26;
+      let calloutX = xOp + 10;
+      if (calloutX + calloutW > pRight) {
+        calloutX = xOp - calloutW - 10;
+      }
+      let calloutY = yOp - 30;
+      if (calloutY < pTop) {
+        calloutY = yOp + 10;
+      }
+
+      const badgeX = Math.max(pLeft + 1, Math.min(pRight - 44, xOp - 22));
+      const badgeY = Math.max(pTop + 1, Math.min(pBottom - 13, yOp - 6.5));
+
+      const svgHtml = `
+        <svg viewBox="0 0 360 215" xmlns="http://www.w3.org/2000/svg" style="width: 100%; height: auto; font-family: inherit;">
+          <!-- Grade de Fundo e Ticks -->
+          ${gridSvg}
+
+          <!-- Eixos Cartesianos Principais -->
+          <line x1="${pLeft}" y1="${pTop}" x2="${pLeft}" y2="${pBottom}" stroke="var(--border-medium)" stroke-width="1.2"/>
+          <line x1="${pLeft}" y1="${pBottom}" x2="${pRight}" y2="${pBottom}" stroke="var(--border-medium)" stroke-width="1.2"/>
+
+          <!-- Títulos dos Eixos -->
+          <text x="195" y="206" fill="var(--text-secondary)" font-size="9px" text-anchor="middle" font-weight="400">Corrente de Falta (A)</text>
+          <text x="11" y="96" fill="var(--text-secondary)" font-size="9px" text-anchor="middle" font-weight="400" transform="rotate(-90 11 96)">Tempo (s)</text>
+
+          <!-- Marcadores de Limiar (Ip e Iinst) -->
+          ${thresholdsSvg}
+
+          <!-- Continuação Tracejada 51 Temporizada -->
+          ${dDashed51 ? `<path d="${dDashed51}" fill="none" stroke="var(--border-focus)" stroke-width="1.2" stroke-dasharray="3,3" opacity="0.5"/>` : ''}
+
+          <!-- Curva Parametrizada de Atuação -->
+          <path d="${dCurve}" fill="none" stroke="var(--border-focus)" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"/>
+
+          <!-- Linhas de Projeção (Drop-Lines) para os Eixos -->
+          <line x1="${xOp.toFixed(1)}" y1="${yOp.toFixed(1)}" x2="${xOp.toFixed(1)}" y2="${pBottom}" stroke="#ef4444" stroke-width="1.2" stroke-dasharray="3,2"/>
+          <line x1="${xOp.toFixed(1)}" y1="${yOp.toFixed(1)}" x2="${pLeft}" y2="${yOp.toFixed(1)}" stroke="#ef4444" stroke-width="1.2" stroke-dasharray="3,2"/>
+
+          <!-- Badges de Projeção nos Eixos com os Valores Exatos -->
+          <rect x="${badgeX.toFixed(1)}" y="${(pBottom + 1).toFixed(1)}" width="44" height="12" rx="2" fill="#ef4444" opacity="0.9"/>
+          <text x="${(badgeX + 22).toFixed(1)}" y="${(pBottom + 10).toFixed(1)}" text-anchor="middle" fill="#ffffff" font-size="7.5px" font-weight="400">${formattedCurrent}</text>
+
+          <rect x="6" y="${badgeY.toFixed(1)}" width="36" height="12" rx="2" fill="#ef4444" opacity="0.9"/>
+          <text x="24" y="${(badgeY + 9).toFixed(1)}" text-anchor="middle" fill="#ffffff" font-size="7.5px" font-weight="400">${Math.round(shot1.totalTimeMs)}ms</text>
+
+          <!-- Ponto de Atuação Destacado na Curva com Pulso -->
+          <circle cx="${xOp.toFixed(1)}" cy="${yOp.toFixed(1)}" r="7.5" fill="rgba(239, 68, 68, 0.25)" stroke="#ef4444" stroke-width="1.2">
+            <animate attributeName="r" values="6.5;9.5;6.5" dur="2s" repeatCount="indefinite"/>
+            <animate attributeName="opacity" values="0.85;0.35;0.85" dur="2s" repeatCount="indefinite"/>
+          </circle>
+          <circle cx="${xOp.toFixed(1)}" cy="${yOp.toFixed(1)}" r="3.5" fill="#dc2626" stroke="#ffffff" stroke-width="1.5"/>
+
+          <!-- Balão com os Dados da Operação -->
+          <rect x="${calloutX.toFixed(1)}" y="${calloutY.toFixed(1)}" width="${calloutW}" height="${calloutH}" rx="4" fill="var(--bg-card)" stroke="#ef4444" stroke-width="1"/>
+          <text x="${(calloutX + calloutW / 2).toFixed(1)}" y="${(calloutY + 10.5).toFixed(1)}" text-anchor="middle" fill="#ef4444" font-size="8px" font-weight="400">Atuação: ${shot1.shortCode} (${Math.round(shot1.totalTimeMs)} ms)</text>
+          <text x="${(calloutX + calloutW / 2).toFixed(1)}" y="${(calloutY + 20.5).toFixed(1)}" text-anchor="middle" fill="var(--text-primary)" font-size="8px" font-weight="400">Icc = ${formattedCurrent}</text>
+        </svg>
+      `;
+
+      container.innerHTML = svgHtml;
+
+      summaryEl.innerHTML = `
+        <div class="tcc-summary-item">
+          <span class="tcc-summary-label">Elemento Atuante:</span>
+          <span class="tcc-summary-val">${shot1.element}</span>
+        </div>
+        <div class="tcc-summary-item">
+          <span class="tcc-summary-label">Corrente de Falta (Icc):</span>
+          <span class="tcc-summary-val">${formattedCurrent} (M = ${shot1.multiple.toFixed(2)} × Ip)</span>
+        </div>
+        <div class="tcc-summary-item">
+          <span class="tcc-summary-label">Tempo Total de Abertura:</span>
+          <span class="tcc-summary-val">${shot1.totalTimeMs.toFixed(1).replace('.', ',')} ms (${shot1.curveTimeMs.toFixed(1).replace('.', ',')} ms relé + 63 ms disjuntor)</span>
+        </div>
+      `;
+    }
+
+    let activeGeoStructureType = 'n1';
+
+    function switchGeoStructure(segKey, type) {
+      renderSegmentGeometry(segKey, type);
+    }
+
+    function renderSegmentGeometry(segKey, forcedType = null) {
+      const container = document.getElementById('geoSvgContainer');
+      const pillsContainer = document.getElementById('geoPillsContainer');
+      const summaryEl = document.getElementById('geoDetailsSummary');
+      if (!container || !summaryEl || !pillsContainer) return;
+
+      const seg = SEGMENTS_DATA[segKey];
+      if (!seg) return;
+
+      const cableLower = (seg.cable || '').toLowerCase();
+      const hasSpacer = cableLower.includes('spacer') || segKey === 'T4' || segKey === 'T11' || segKey === 'T16';
+      const hasBare = cableLower.includes('caa') || cableLower.includes('cobre') || segKey === 'T4' || segKey === 'T11' || segKey === 'T16' || !hasSpacer;
+      const isMixed = hasSpacer && hasBare;
+
+      if (forcedType) {
+        activeGeoStructureType = forcedType;
+      } else if (hasSpacer && !hasBare) {
+        activeGeoStructureType = 'spacer';
+      } else if (!hasSpacer) {
+        activeGeoStructureType = 'n1';
+      } else {
+        activeGeoStructureType = (segKey === 'T11') ? 'spacer' : 'n1';
+      }
+
+      // Badges e Botões de Alternância
+      if (isMixed) {
+        pillsContainer.innerHTML = `
+          <button type="button" class="geo-tab-btn ${activeGeoStructureType === 'n1' ? 'active' : ''}" onclick="switchGeoStructure('${segKey}', 'n1')">Cruzeta N1 (Cabos Nus)</button>
+          <button type="button" class="geo-tab-btn ${activeGeoStructureType === 'spacer' ? 'active' : ''}" onclick="switchGeoStructure('${segKey}', 'spacer')">Rede Compacta (Spacer)</button>
+          <span class="tcc-badge">Trecho Misto</span>
+        `;
+      } else if (activeGeoStructureType === 'spacer') {
+        pillsContainer.innerHTML = `
+          <span class="tcc-badge">Rede Compacta (Spacer Cable)</span>
+          <span class="tcc-badge">DMG = 29,15 cm</span>
+          <span class="tcc-badge">Cabo Protegido 240 mm²</span>
+        `;
+      } else {
+        pillsContainer.innerHTML = `
+          <span class="tcc-badge">Padrão Coelce N1 (Cruzeta 2,40 m)</span>
+          <span class="tcc-badge">DMG = 1,09 m</span>
+          <span class="tcc-badge">Rede Aérea Rural</span>
+        `;
+      }
+
+      // Renderiza SVG e Detalhes Técnicos
+      if (activeGeoStructureType === 'spacer') {
+        container.innerHTML = getSpacerCableSvg(seg);
+        summaryEl.innerHTML = `
+          <div class="tcc-summary-item">
+            <span class="tcc-summary-label">Estrutura de Apoio:</span>
+            <span class="tcc-summary-val">Espaçador Losangular 15 kV (Vicel / PLP / Coelce)</span>
+          </div>
+          <div class="tcc-summary-item">
+            <span class="tcc-summary-label">Espaçamento Entre Fases:</span>
+            <span class="tcc-summary-val">D = 305 mm (30,5 cm) | E = F = 285 mm (28,5 cm)</span>
+          </div>
+          <div class="tcc-summary-item">
+            <span class="tcc-summary-label">Distância Média Geométrica:</span>
+            <span class="tcc-summary-val">DMG = 29,15 cm (0,2915 m)</span>
+          </div>
+          ${isMixed ? `<div class="tcc-summary-item"><span class="tcc-summary-label">Composição do Trecho:</span><span class="tcc-summary-val">Trecho misto c/ cabos nus e protegidos</span></div>` : ''}
+        `;
+      } else {
+        container.innerHTML = getCruzetaN1Svg(seg);
+        summaryEl.innerHTML = `
+          <div class="tcc-summary-item">
+            <span class="tcc-summary-label">Estrutura de Apoio:</span>
+            <span class="tcc-summary-val">Cruzeta Normal N1 de 2,40 m (Poste Concreto DT)</span>
+          </div>
+          <div class="tcc-summary-item">
+            <span class="tcc-summary-label">Espaçamento Entre Fases:</span>
+            <span class="tcc-summary-val">Dab = 1,20 m | Dbc = 0,60 m | Dac = 1,80 m</span>
+          </div>
+          <div class="tcc-summary-item">
+            <span class="tcc-summary-label">Distância Média Geométrica:</span>
+            <span class="tcc-summary-val">DMG = 1,0903 m (1,09 m)</span>
+          </div>
+          ${isMixed ? `<div class="tcc-summary-item"><span class="tcc-summary-label">Composição do Trecho:</span><span class="tcc-summary-val">Trecho misto c/ cabos nus e protegidos</span></div>` : ''}
+        `;
+      }
+    }
+
+    function getCruzetaN1Svg(seg) {
+      return `
+        <svg viewBox="0 0 360 205" xmlns="http://www.w3.org/2000/svg" style="width: 100%; height: auto; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;">
+          <defs>
+            <marker id="cadArrowN1" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse">
+              <path d="M 0 2 L 9 5 L 0 8 z" fill="#1e293b"/>
+            </marker>
+          </defs>
+
+          <!-- Fundo 100% Branco Estilo Folha de Desenho CAD -->
+          <rect width="100%" height="100%" fill="#ffffff"/>
+
+          <!-- Moldura Técnica de Prancha CAD -->
+          <rect x="5" y="5" width="350" height="195" fill="none" stroke="#94a3b8" stroke-width="1.2"/>
+          <rect x="7.5" y="7.5" width="345" height="190" fill="none" stroke="#cbd5e1" stroke-width="0.6"/>
+
+          <!-- Linha de Nível do Solo com Hachuras -->
+          <line x1="15" y1="195" x2="345" y2="195" stroke="#475569" stroke-width="1.2"/>
+          <line x1="22" y1="195" x2="18" y2="200" stroke="#64748b" stroke-width="0.8"/>
+          <line x1="32" y1="195" x2="28" y2="200" stroke="#64748b" stroke-width="0.8"/>
+          <line x1="42" y1="195" x2="38" y2="200" stroke="#64748b" stroke-width="0.8"/>
+          <line x1="52" y1="195" x2="48" y2="200" stroke="#64748b" stroke-width="0.8"/>
+          <line x1="62" y1="195" x2="58" y2="200" stroke="#64748b" stroke-width="0.8"/>
+          <text x="340" y="191" text-anchor="end" fill="#64748b" font-size="7px" font-weight="400">NÍVEL DO SOLO (H = 9 a 11 m)</text>
+
+          <!-- ======================================================================
+               POSTE DE CONCRETO ARMADO DUPLO T (TEXTURA REALÍSTICA VETORIAL CAD)
+               ====================================================================== -->
+          <!-- Topo do Poste (Estende-se acima da cruzeta) -->
+          <polygon points="153,65 155,62 165,62 167,65 167,80 153,80" fill="#d1d5db" stroke="#334155" stroke-width="1.2"/>
+          <polygon points="153,65 155,62 165,62 167,65" fill="#e5e7eb"/>
+          <!-- Furo Passante no Topo do Poste Acima da Cruzeta -->
+          <circle cx="160" cy="71" r="1.8" fill="#ffffff" stroke="#334155" stroke-width="0.8"/>
+
+          <!-- Fuste Inferior do Poste de Concreto com Perfil Duplo T -->
+          <polygon points="153,98 167,98 170,195 150,195" fill="#d1d5db" stroke="#334155" stroke-width="1.2"/>
+          <!-- Rebaixo Central Estrutural (Alma do Poste DT) -->
+          <polygon points="155,100 165,100 167,193 153,193" fill="#b0b7c3" stroke="#64748b" stroke-width="0.6"/>
+
+          <!-- Juntas de Concretagem das Fôrmas Metálicas -->
+          <line x1="152" y1="124" x2="168" y2="124" stroke="#94a3b8" stroke-width="0.8"/>
+          <line x1="152" y1="124.6" x2="168" y2="124.6" stroke="#f1f5f9" stroke-width="0.5"/>
+          <line x1="151.5" y1="145" x2="168.5" y2="145" stroke="#94a3b8" stroke-width="0.8"/>
+          <line x1="151.5" y1="145.6" x2="168.5" y2="145.6" stroke="#f1f5f9" stroke-width="0.5"/>
+          <line x1="151" y1="168" x2="169" y2="168" stroke="#94a3b8" stroke-width="0.8"/>
+          <line x1="151" y1="168.6" x2="169" y2="168.6" stroke="#f1f5f9" stroke-width="0.5"/>
+
+          <!-- Textura Vetorial de Porosidade e Agregados Minerais do Concreto -->
+          <circle cx="156" cy="112" r="0.6" fill="#64748b"/>
+          <circle cx="163" cy="115" r="0.5" fill="#ffffff"/>
+          <circle cx="157" cy="127" r="0.7" fill="#64748b"/>
+          <circle cx="163" cy="136" r="0.6" fill="#cbd5e1"/>
+          <circle cx="157" cy="153" r="0.6" fill="#64748b"/>
+          <circle cx="164" cy="159" r="0.5" fill="#ffffff"/>
+          <circle cx="156" cy="171" r="0.7" fill="#64748b"/>
+          <circle cx="163" cy="179" r="0.5" fill="#cbd5e1"/>
+          <circle cx="158" cy="191" r="0.6" fill="#64748b"/>
+          <circle cx="160" cy="75" r="0.5" fill="#64748b"/>
+
+          <!-- Furos Circulares Passantes Padronizados no Eixo Central do Poste (x = 160) -->
+          <circle cx="160" cy="118" r="1.8" fill="#ffffff" stroke="#334155" stroke-width="0.8"/>
+          <circle cx="160" cy="132" r="1.8" fill="#ffffff" stroke="#334155" stroke-width="0.8"/>
+          <circle cx="160" cy="146" r="1.8" fill="#ffffff" stroke="#334155" stroke-width="0.8"/>
+          <circle cx="160" cy="160" r="1.8" fill="#ffffff" stroke="#334155" stroke-width="0.8"/>
+          <circle cx="160" cy="174" r="1.8" fill="#ffffff" stroke="#334155" stroke-width="0.8"/>
+          <circle cx="160" cy="188" r="1.8" fill="#ffffff" stroke="#334155" stroke-width="0.8"/>
+
+          <!-- Símbolo de Ruptura / Interrupção Técnica CAD no Poste -->
+          <path d="M 158 181 L 162 184 L 158 187 L 162 190" fill="none" stroke="#334155" stroke-width="1"/>
+
+          <!-- Arruela Losangular / Quadrada Curva 2 (Abaixo da Cruzeta no Poste) -->
+          <polygon points="160,100 165,105 160,110 155,105" fill="#cbd5e1" stroke="#0f172a" stroke-width="1"/>
+          <polygon points="160,101.5 163.5,105 160,108.5 156.5,105" fill="#94a3b8" stroke="#0f172a" stroke-width="0.6"/>
+          <circle cx="160" cy="105" r="2" fill="#475569" stroke="#0f172a" stroke-width="0.8"/>
+
+          <!-- ======================================================================
+               CRUZETA NORMAL N1 DE CONCRETO ARMADO (2,40 m COM TEXTURA VETORIAL)
+               ====================================================================== -->
+          <!-- Corpo da Cruzeta com Textura de Concreto Armado e Perfil Afunilado -->
+          <polygon points="45,80 275,80 275,93 160,98 45,93" fill="#d5dae2" stroke="#1e293b" stroke-width="1.3" stroke-linejoin="round"/>
+          <!-- Friso e Chanfro Superior de Concreto -->
+          <line x1="46" y1="81" x2="274" y2="81" stroke="#f8fafc" stroke-width="0.8"/>
+          <line x1="48" y1="83" x2="272" y2="83" stroke="#cbd5e1" stroke-width="0.6"/>
+          <line x1="46" y1="92.5" x2="160" y2="97.5" stroke="#94a3b8" stroke-width="0.8"/>
+          <line x1="160" y1="97.5" x2="274" y2="92.5" stroke="#94a3b8" stroke-width="0.8"/>
+
+          <!-- Textura Vetorial de Porosidade na Cruzeta -->
+          <circle cx="88" cy="85" r="0.5" fill="#64748b"/>
+          <circle cx="98" cy="88" r="0.6" fill="#cbd5e1"/>
+          <circle cx="138" cy="86" r="0.5" fill="#64748b"/>
+          <circle cx="146" cy="90" r="0.5" fill="#ffffff"/>
+          <circle cx="178" cy="89" r="0.6" fill="#64748b"/>
+          <circle cx="228" cy="86" r="0.5" fill="#cbd5e1"/>
+          <circle cx="252" cy="88" r="0.6" fill="#64748b"/>
+
+          <!-- Furações Padronizadas e Reforços na Cruzeta (Conforme Imagem Técnica) -->
+          <circle cx="52" cy="86.5" r="1.6" fill="#ffffff" stroke="#334155" stroke-width="0.7"/>
+          <circle cx="72" cy="86.5" r="1.6" fill="#ffffff" stroke="#334155" stroke-width="0.7"/>
+
+          <!-- Zona de Fixação / Chapa de Reforço Esquerda (Linhas Pontilhadas) -->
+          <line x1="113" y1="80" x2="113" y2="95.5" stroke="#94a3b8" stroke-width="0.8" stroke-dasharray="2,1.5"/>
+          <circle cx="118" cy="88" r="1.8" fill="#ffffff" stroke="#334155" stroke-width="0.8"/>
+          <line x1="123" y1="80" x2="123" y2="96" stroke="#94a3b8" stroke-width="0.8" stroke-dasharray="2,1.5"/>
+
+          <!-- Arruela Losangular / Quadrada Curva 1 (No Centro da Cruzeta / Parafuso Principal) -->
+          <polygon points="160,82 165,87 160,92 155,87" fill="#cbd5e1" stroke="#0f172a" stroke-width="1"/>
+          <polygon points="160,83.5 163.5,87 160,90.5 156.5,87" fill="#94a3b8" stroke="#0f172a" stroke-width="0.6"/>
+          <circle cx="160" cy="87" r="2.2" fill="#475569" stroke="#0f172a" stroke-width="0.8"/>
+
+          <!-- Furo intermediário direito -->
+          <circle cx="196" cy="87.5" r="1.6" fill="#ffffff" stroke="#334155" stroke-width="0.7"/>
+
+          <!-- Zona de Fixação / Chapa de Reforço Direita (Linhas Pontilhadas) -->
+          <line x1="208" y1="80" x2="208" y2="95.5" stroke="#94a3b8" stroke-width="0.8" stroke-dasharray="2,1.5"/>
+          <circle cx="213" cy="87.5" r="1.8" fill="#ffffff" stroke="#334155" stroke-width="0.8"/>
+          <line x1="218" y1="80" x2="218" y2="95" stroke="#94a3b8" stroke-width="0.8" stroke-dasharray="2,1.5"/>
+
+          <!-- Furo extremo direito -->
+          <circle cx="260" cy="86.5" r="1.6" fill="#ffffff" stroke="#334155" stroke-width="0.7"/>
+
+          <!-- ======================================================================
+               ISOLADORES DE PINO 15 kV EM PORCELANA VITRIFICADA MARROM (REALÍSTICOS)
+               ====================================================================== -->
+
+          <!-- ISOLADOR 1 / FASE A (Extremo Esquerdo, x = 60) -->
+          <rect x="58.5" y="80" width="3" height="19" fill="#94a3b8" stroke="#334155" stroke-width="0.7"/>
+          <polygon points="58.5,99 60,102 61.5,99" fill="#94a3b8" stroke="#334155" stroke-width="0.6"/>
+          <rect x="57" y="93.5" width="6" height="3" fill="#64748b" stroke="#1e293b" stroke-width="0.7"/>
+          <!-- Corpo de Porcelana Marrom com Saias Convectivas e Brilho Cerâmico -->
+          <path d="M 52 80 L 68 80 L 66 74 L 54 74 Z" fill="#6b2f11" stroke="#291508" stroke-width="0.9"/>
+          <path d="M 55 79 L 65 79 L 64 75 L 56 75 Z" fill="#854d0e"/>
+          <path d="M 53 74 L 67 74 L 65 68 L 55 68 Z" fill="#78350f" stroke="#291508" stroke-width="0.9"/>
+          <line x1="56" y1="70" x2="64" y2="70" stroke="#b45309" stroke-width="0.8"/>
+          <!-- Saia Superior Cônica Ampla Marrom -->
+          <path d="M 50 68 L 70 68 L 65 62 L 55 62 Z" fill="#6b2f11" stroke="#291508" stroke-width="0.9"/>
+          <path d="M 53 66 L 67 66 L 64 63 L 56 63 Z" fill="#9a3412"/>
+          <!-- Cabeça e Garganta de Amarração -->
+          <path d="M 57 62 C 57 58 63 58 63 62 Z" fill="#78350f" stroke="#291508" stroke-width="0.9"/>
+          <!-- Laço de Amarração Preformado -->
+          <path d="M 54 60 Q 60 63 66 60" fill="none" stroke="#94a3b8" stroke-width="1.2"/>
+
+          <!-- ISOLADOR 2 / FASE B (Intermediário Direito, x = 180) -->
+          <rect x="178.5" y="80" width="3" height="20" fill="#94a3b8" stroke="#334155" stroke-width="0.7"/>
+          <polygon points="178.5,100 180,103 181.5,100" fill="#94a3b8" stroke="#334155" stroke-width="0.6"/>
+          <rect x="177" y="94.5" width="6" height="3" fill="#64748b" stroke="#1e293b" stroke-width="0.7"/>
+          <!-- Corpo de Porcelana Marrom com Saias Convectivas e Brilho Cerâmico -->
+          <path d="M 172 80 L 188 80 L 186 74 L 174 74 Z" fill="#6b2f11" stroke="#291508" stroke-width="0.9"/>
+          <path d="M 175 79 L 185 79 L 184 75 L 176 75 Z" fill="#854d0e"/>
+          <path d="M 173 74 L 187 74 L 185 68 L 175 68 Z" fill="#78350f" stroke="#291508" stroke-width="0.9"/>
+          <line x1="176" y1="70" x2="184" y2="70" stroke="#b45309" stroke-width="0.8"/>
+          <!-- Saia Superior Cônica Ampla Marrom -->
+          <path d="M 170 68 L 190 68 L 185 62 L 175 62 Z" fill="#6b2f11" stroke="#291508" stroke-width="0.9"/>
+          <path d="M 173 66 L 187 66 L 184 63 L 176 63 Z" fill="#9a3412"/>
+          <!-- Cabeça e Garganta de Amarração -->
+          <path d="M 177 62 C 177 58 183 58 183 62 Z" fill="#78350f" stroke="#291508" stroke-width="0.9"/>
+          <!-- Laço de Amarração Preformado -->
+          <path d="M 174 60 Q 180 63 186 60" fill="none" stroke="#94a3b8" stroke-width="1.2"/>
+
+          <!-- ISOLADOR 3 / FASE C (Extremo Direito, x = 240) -->
+          <rect x="238.5" y="80" width="3" height="19" fill="#94a3b8" stroke="#334155" stroke-width="0.7"/>
+          <polygon points="238.5,99 240,102 241.5,99" fill="#94a3b8" stroke="#334155" stroke-width="0.6"/>
+          <rect x="237" y="93.5" width="6" height="3" fill="#64748b" stroke="#1e293b" stroke-width="0.7"/>
+          <!-- Corpo de Porcelana Marrom com Saias Convectivas e Brilho Cerâmico -->
+          <path d="M 232 80 L 248 80 L 246 74 L 234 74 Z" fill="#6b2f11" stroke="#291508" stroke-width="0.9"/>
+          <path d="M 235 79 L 245 79 L 244 75 L 236 75 Z" fill="#854d0e"/>
+          <path d="M 233 74 L 247 74 L 245 68 L 235 68 Z" fill="#78350f" stroke="#291508" stroke-width="0.9"/>
+          <line x1="236" y1="70" x2="244" y2="70" stroke="#b45309" stroke-width="0.8"/>
+          <!-- Saia Superior Cônica Ampla Marrom -->
+          <path d="M 230 68 L 250 68 L 245 62 L 235 62 Z" fill="#6b2f11" stroke="#291508" stroke-width="0.9"/>
+          <path d="M 233 66 L 247 66 L 244 63 L 236 63 Z" fill="#9a3412"/>
+          <!-- Cabeça e Garganta de Amarração -->
+          <path d="M 237 62 C 237 58 243 58 243 62 Z" fill="#78350f" stroke="#291508" stroke-width="0.9"/>
+          <!-- Laço de Amarração Preformado -->
+          <path d="M 234 60 Q 240 63 246 60" fill="none" stroke="#94a3b8" stroke-width="1.2"/>
+
+          <!-- ======================================================================
+               CONDUTORES DE FASE NUS COM IDENTIFICAÇÃO E NÚCLEO DE ALUMÍNIO
+               ====================================================================== -->
+          <!-- Condutor Fase A (x = 60, y = 56) -->
+          <circle cx="60" cy="56" r="7" fill="#dc2626" stroke="#7f1d1d" stroke-width="1.4"/>
+          <circle cx="60" cy="56" r="4.5" fill="#cbd5e1" stroke="#475569" stroke-width="0.8"/>
+          <text x="60" y="58.5" text-anchor="middle" fill="#ffffff" font-size="7px" font-weight="600">A</text>
+
+          <!-- Condutor Fase B (x = 180, y = 56) -->
+          <circle cx="180" cy="56" r="7" fill="#2563eb" stroke="#1e3a8a" stroke-width="1.4"/>
+          <circle cx="180" cy="56" r="4.5" fill="#cbd5e1" stroke="#475569" stroke-width="0.8"/>
+          <text x="180" y="58.5" text-anchor="middle" fill="#ffffff" font-size="7px" font-weight="600">B</text>
+
+          <!-- Condutor Fase C (x = 240, y = 56) -->
+          <circle cx="240" cy="56" r="7" fill="#16a34a" stroke="#14532d" stroke-width="1.4"/>
+          <circle cx="240" cy="56" r="4.5" fill="#cbd5e1" stroke="#475569" stroke-width="0.8"/>
+          <text x="240" y="58.5" text-anchor="middle" fill="#ffffff" font-size="7px" font-weight="600">C</text>
+
+          <!-- ======================================================================
+               LINHAS DE CHAMADA E COTAS CAD DE ALTA PRECISÃO
+               ====================================================================== -->
+          <line x1="60" y1="48" x2="60" y2="16" stroke="#64748b" stroke-width="0.7" stroke-dasharray="2,2"/>
+          <line x1="180" y1="48" x2="180" y2="33" stroke="#64748b" stroke-width="0.7" stroke-dasharray="2,2"/>
+          <line x1="240" y1="48" x2="240" y2="16" stroke="#64748b" stroke-width="0.7" stroke-dasharray="2,2"/>
+
+          <!-- Cota Dab = 1,20 m -->
+          <line x1="63" y1="38" x2="177" y2="38" stroke="#1e293b" stroke-width="1" marker-start="url(#cadArrowN1)" marker-end="url(#cadArrowN1)"/>
+          <rect x="100" y="31" width="46" height="14" fill="#ffffff" stroke="#94a3b8" stroke-width="0.6"/>
+          <text x="123" y="41" text-anchor="middle" fill="#0f172a" font-size="7.5px" font-weight="500">1,20 m</text>
+
+          <!-- Cota Dbc = 0,60 m -->
+          <line x1="183" y1="38" x2="237" y2="38" stroke="#1e293b" stroke-width="1" marker-start="url(#cadArrowN1)" marker-end="url(#cadArrowN1)"/>
+          <rect x="194" y="31" width="36" height="14" fill="#ffffff" stroke="#94a3b8" stroke-width="0.6"/>
+          <text x="212" y="41" text-anchor="middle" fill="#0f172a" font-size="7.5px" font-weight="500">0,60 m</text>
+
+          <!-- Cota Dac = 1,80 m (Extremos) -->
+          <line x1="63" y1="19" x2="237" y2="19" stroke="#1e293b" stroke-width="1" marker-start="url(#cadArrowN1)" marker-end="url(#cadArrowN1)"/>
+          <rect x="125" y="12" width="58" height="14" fill="#ffffff" stroke="#94a3b8" stroke-width="0.6"/>
+          <text x="154" y="22" text-anchor="middle" fill="#0f172a" font-size="7.5px" font-weight="500">Dac = 1,80 m</text>
+
+          <!-- Carimbo Técnico CAD (Selo no Canto Inferior Direito) -->
+          <rect x="210" y="168" width="140" height="28" fill="#f8fafc" stroke="#475569" stroke-width="0.9"/>
+          <line x1="210" y1="178" x2="350" y2="178" stroke="#cbd5e1" stroke-width="0.6"/>
+          <line x1="210" y1="187" x2="350" y2="187" stroke="#cbd5e1" stroke-width="0.6"/>
+          <text x="280" y="175" text-anchor="middle" fill="#1e293b" font-size="6.2px" font-weight="500">ESTRUTURA NORMAL N1 (CABOS NUS)</text>
+          <text x="280" y="184" text-anchor="middle" fill="#334155" font-size="5.8px" font-weight="400">CRUZETA DE CONCRETO 2,40 m</text>
+          <text x="280" y="193" text-anchor="middle" fill="#0284c7" font-size="6.5px" font-weight="600">DMG = 1,0903 m (1,09 m)</text>
+        </svg>
+      `;
+    }
+
+    function getSpacerCableSvg(seg) {
+      return `
+        <svg viewBox="0 0 360 205" xmlns="http://www.w3.org/2000/svg" style="width: 100%; height: auto; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;">
+          <defs>
+            <marker id="cadArrowSp" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse">
+              <path d="M 0 2 L 9 5 L 0 8 z" fill="#1e293b"/>
+            </marker>
+          </defs>
+
+          <!-- Fundo 100% Branco Estilo Folha CAD -->
+          <rect width="100%" height="100%" fill="#ffffff"/>
+
+          <!-- Moldura Técnica de Prancha CAD -->
+          <rect x="5" y="5" width="350" height="195" fill="none" stroke="#94a3b8" stroke-width="1.2"/>
+          <rect x="7.5" y="7.5" width="345" height="190" fill="none" stroke="#cbd5e1" stroke-width="0.6"/>
+
+          <!-- Linha de Nível do Solo com Hachuras -->
+          <line x1="12" y1="195" x2="348" y2="195" stroke="#475569" stroke-width="1.2"/>
+          <line x1="18" y1="195" x2="14" y2="200" stroke="#64748b" stroke-width="0.8"/>
+          <line x1="28" y1="195" x2="24" y2="200" stroke="#64748b" stroke-width="0.8"/>
+          <line x1="38" y1="195" x2="34" y2="200" stroke="#64748b" stroke-width="0.8"/>
+          <line x1="48" y1="195" x2="44" y2="200" stroke="#64748b" stroke-width="0.8"/>
+          <line x1="58" y1="195" x2="54" y2="200" stroke="#64748b" stroke-width="0.8"/>
+          <text x="342" y="191" text-anchor="end" fill="#64748b" font-size="7px" font-weight="400">NÍVEL DO SOLO (H = 9 a 11 m)</text>
+
+          <!-- ======================================================================
+               POSTE DE CONCRETO ARMADO DUPLO T (LATERAL ESQUERDA)
+               ====================================================================== -->
+          <!-- Corpo do Poste DT Lateral com Textura de Concreto -->
+          <polygon points="28,16 32,12 50,12 54,16 54,195 28,195" fill="#d1d5db" stroke="#334155" stroke-width="1.2"/>
+          <!-- Alma Central Rebaixada do Poste DT -->
+          <polygon points="31,18 34,15 48,15 51,18 51,193 31,193" fill="#b0b7c3" stroke="#64748b" stroke-width="0.6"/>
+
+          <!-- Juntas de Concretagem das Fôrmas Metálicas -->
+          <line x1="28" y1="48" x2="54" y2="48" stroke="#94a3b8" stroke-width="0.8"/>
+          <line x1="28" y1="48.6" x2="54" y2="48.6" stroke="#f1f5f9" stroke-width="0.5"/>
+          <line x1="28" y1="85" x2="54" y2="85" stroke="#94a3b8" stroke-width="0.8"/>
+          <line x1="28" y1="85.6" x2="54" y2="85.6" stroke="#f1f5f9" stroke-width="0.5"/>
+          <line x1="28" y1="125" x2="54" y2="125" stroke="#94a3b8" stroke-width="0.8"/>
+          <line x1="28" y1="125.6" x2="54" y2="125.6" stroke="#f1f5f9" stroke-width="0.5"/>
+          <line x1="28" y1="165" x2="54" y2="165" stroke="#94a3b8" stroke-width="0.8"/>
+          <line x1="28" y1="165.6" x2="54" y2="165.6" stroke="#f1f5f9" stroke-width="0.5"/>
+
+          <!-- Textura Vetorial de Agregados e Porosidade do Concreto -->
+          <circle cx="36" cy="28" r="0.6" fill="#64748b"/>
+          <circle cx="46" cy="42" r="0.5" fill="#ffffff"/>
+          <circle cx="35" cy="65" r="0.6" fill="#64748b"/>
+          <circle cx="47" cy="78" r="0.5" fill="#cbd5e1"/>
+          <circle cx="36" cy="102" r="0.6" fill="#64748b"/>
+          <circle cx="46" cy="118" r="0.5" fill="#ffffff"/>
+          <circle cx="35" cy="142" r="0.6" fill="#64748b"/>
+          <circle cx="47" cy="155" r="0.5" fill="#cbd5e1"/>
+          <circle cx="36" cy="178" r="0.6" fill="#64748b"/>
+          <circle cx="45" cy="188" r="0.5" fill="#ffffff"/>
+
+          <!-- Furos Circulares Passantes Padronizados no Eixo Central do Poste (x = 41) -->
+          <circle cx="41" cy="22" r="1.8" fill="#ffffff" stroke="#334155" stroke-width="0.8"/>
+          <circle cx="41" cy="54" r="1.8" fill="#ffffff" stroke="#334155" stroke-width="0.8"/>
+          <circle cx="41" cy="94" r="1.8" fill="#ffffff" stroke="#334155" stroke-width="0.8"/>
+          <circle cx="41" cy="114" r="1.8" fill="#ffffff" stroke="#334155" stroke-width="0.8"/>
+          <circle cx="41" cy="134" r="1.8" fill="#ffffff" stroke="#334155" stroke-width="0.8"/>
+          <circle cx="41" cy="154" r="1.8" fill="#ffffff" stroke="#334155" stroke-width="0.8"/>
+          <circle cx="41" cy="174" r="1.8" fill="#ffffff" stroke="#334155" stroke-width="0.8"/>
+
+          <!-- PARAFUSOS PASSANTES DE FIXAÇÃO DO BRAÇO (Cavilhas com Porca e Arruela Curva) -->
+          <!-- Parafuso Superior (y = 36) -->
+          <rect x="18" y="34.5" width="10" height="3" fill="#94a3b8" stroke="#1e293b" stroke-width="0.7"/>
+          <polygon points="18,34.5 15,36 18,37.5" fill="#94a3b8" stroke="#1e293b" stroke-width="0.7"/>
+          <rect x="21" y="32.5" width="3.5" height="7" rx="0.5" fill="#64748b" stroke="#0f172a" stroke-width="0.8"/>
+          <rect x="24.5" y="31" width="3.5" height="10" rx="0.5" fill="#475569" stroke="#0f172a" stroke-width="0.8"/>
+          <line x1="28" y1="36" x2="54" y2="36" stroke="#1e293b" stroke-width="1.8" stroke-dasharray="2,1"/>
+
+          <!-- Parafuso Inferior (y = 74) -->
+          <rect x="18" y="72.5" width="10" height="3" fill="#94a3b8" stroke="#1e293b" stroke-width="0.7"/>
+          <polygon points="18,72.5 15,74 18,75.5" fill="#94a3b8" stroke="#1e293b" stroke-width="0.7"/>
+          <rect x="21" y="70.5" width="3.5" height="7" rx="0.5" fill="#64748b" stroke="#0f172a" stroke-width="0.8"/>
+          <rect x="24.5" y="69" width="3.5" height="10" rx="0.5" fill="#475569" stroke="#0f172a" stroke-width="0.8"/>
+          <line x1="28" y1="74" x2="54" y2="74" stroke="#1e293b" stroke-width="1.8" stroke-dasharray="2,1"/>
+
+          <!-- ======================================================================
+               BRAÇO SUPORTE TIPO C (Idêntico ao Desenho de Engenharia Fornecido)
+               ====================================================================== -->
+          <!-- Chapa de Base / Encosto Apoiada na Face do Poste -->
+          <rect x="54" y="26" width="6" height="56" rx="1" fill="#475569" stroke="#0f172a" stroke-width="1.2"/>
+          <!-- Porcas e Arruelas de Fixação Dianteiras -->
+          <rect x="56" y="33" width="4" height="6" rx="0.5" fill="#cbd5e1" stroke="#0f172a" stroke-width="0.8"/>
+          <rect x="56" y="71" width="4" height="6" rx="0.5" fill="#cbd5e1" stroke="#0f172a" stroke-width="0.8"/>
+
+          <!-- Corpo do Braço Tipo C: Flange Superior Horizontal, Nervuras e Arco Inferior Suave -->
+          <path d="M 60 30 L 155 30 L 155 33 L 186 33 L 186 38 L 155 38 L 155 40 C 120 44, 90 58, 60 80 L 60 72 C 85 53, 115 39, 145 37 L 60 37 Z" fill="#64748b" stroke="#0f172a" stroke-width="1.3" stroke-linejoin="round"/>
+
+          <!-- Nervuras Internas Estruturais (Treliça conforme imagem enviada) -->
+          <path d="M 92 37 L 92 53 L 97 51 L 97 37 Z" fill="#475569" stroke="#0f172a" stroke-width="0.9"/>
+          <path d="M 97 48 L 126 37 L 132 37 L 97 52 Z" fill="#475569" stroke="#0f172a" stroke-width="0.9"/>
+          <!-- Aberturas Vazadas Internas do Perfil Tipo C (Fundo Branco CAD) -->
+          <polygon points="65,37 87,37 87,55 65,70" fill="#ffffff" stroke="#0f172a" stroke-width="0.8"/>
+          <polygon points="97,37 122,37 97,46" fill="#ffffff" stroke="#0f172a" stroke-width="0.8"/>
+          <path d="M 103 52 C 118 46, 132 41, 144 38 L 130 38 Z" fill="#ffffff" stroke="#0f172a" stroke-width="0.8"/>
+
+          <!-- Grampo de Suspensão com Sela / Estribo Articulado para o Cabo Mensageiro -->
+          <rect x="180" y="26" width="11" height="15" rx="1.5" fill="#475569" stroke="#0f172a" stroke-width="1"/>
+          <circle cx="185.5" cy="29.5" r="1.8" fill="#cbd5e1" stroke="#0f172a" stroke-width="0.8"/>
+
+          <!-- Eixos de Simetria Técnicos CAD (Traço-Ponto) -->
+          <line x1="188" y1="18" x2="188" y2="182" stroke="#94a3b8" stroke-width="0.6" stroke-dasharray="6,2,1,2"/>
+          <line x1="120" y1="91" x2="256" y2="91" stroke="#94a3b8" stroke-width="0.6" stroke-dasharray="6,2,1,2"/>
+
+          <!-- ======================================================================
+               ESPAÇADOR LOSANGULAR (POLIMÉRICO MARROM ANTI-TRILHAMENTO 15 kV)
+               ====================================================================== -->
+          <!-- Gancho Superior com Trava de Retenção Envolvendo o Cabo Mensageiro -->
+          <path d="M 185 54 L 185 40 C 185 34 191 32 196 34 C 199 36 198 40 193 40 C 190 40 189 38 189 36" fill="none" stroke="#291508" stroke-width="2.5" stroke-linecap="round"/>
+          <path d="M 183 54 L 183 36 C 183 29 190 25 197 27 C 203 29 205 36 201 41 C 198 44 193 42 191 40 L 191 54 Z" fill="#78350f" stroke="#291508" stroke-width="1.2"/>
+          <polygon points="197,24 199,27 201,24 203,27 200,22" fill="#5c2c16" stroke="#291508" stroke-width="0.7"/>
+
+          <!-- Aletas Verticais de Isolamento no Pescoço Superior -->
+          <line x1="181" y1="46" x2="181" y2="56" stroke="#92400e" stroke-width="1.4"/>
+          <line x1="195" y1="46" x2="195" y2="56" stroke="#92400e" stroke-width="1.4"/>
+
+          <!-- Cabo Mensageiro de Aço (Preso no Berço do Gancho a y = 36) -->
+          <circle cx="188" cy="36" r="5" fill="#334155" stroke="#0f172a" stroke-width="1.2"/>
+          <circle cx="188" cy="36" r="2.5" fill="#94a3b8" stroke="#475569" stroke-width="0.6"/>
+          <text x="188" y="38" text-anchor="middle" fill="#ffffff" font-size="5.5px" font-weight="600">M</text>
+
+          <!-- Corpo Losangular Principal do Espaçador Polimérico Marrom -->
+          <path d="M 188 54 L 219 91 L 188 128 L 157 91 Z" fill="#78350f" stroke="#291508" stroke-width="2" stroke-linejoin="round"/>
+          <!-- Abertura Central Losangular (Vazada em Fundo Branco CAD) -->
+          <polygon points="188,70 202,91 188,112 174,91" fill="#ffffff" stroke="#291508" stroke-width="1.2" stroke-linejoin="round"/>
+
+          <!-- Aletas / Saias de Isolação Verticais Marrons (Conforme Imagem Técnica) -->
+          <!-- Aletas Superior Esquerda -->
+          <line x1="166" y1="69" x2="166" y2="87" stroke="#b45309" stroke-width="1.6" stroke-linecap="round"/>
+          <line x1="175" y1="61" x2="175" y2="79" stroke="#b45309" stroke-width="1.6" stroke-linecap="round"/>
+          <!-- Aletas Superior Direita -->
+          <line x1="210" y1="69" x2="210" y2="87" stroke="#b45309" stroke-width="1.6" stroke-linecap="round"/>
+          <line x1="201" y1="61" x2="201" y2="79" stroke="#b45309" stroke-width="1.6" stroke-linecap="round"/>
+          <!-- Aletas Inferior Esquerda -->
+          <line x1="166" y1="95" x2="166" y2="113" stroke="#b45309" stroke-width="1.6" stroke-linecap="round"/>
+          <line x1="175" y1="103" x2="175" y2="121" stroke="#b45309" stroke-width="1.6" stroke-linecap="round"/>
+          <!-- Aletas Inferior Direita -->
+          <line x1="210" y1="95" x2="210" y2="113" stroke="#b45309" stroke-width="1.6" stroke-linecap="round"/>
+          <line x1="201" y1="103" x2="201" y2="121" stroke="#b45309" stroke-width="1.6" stroke-linecap="round"/>
+
+          <!-- Berço Lateral Esquerdo para Condutor Fase A (x = 145, y = 91) -->
+          <path d="M 157 91 L 151 91 C 151 97 139 97 139 91 C 139 85 147 83 151 86" fill="none" stroke="#291508" stroke-width="2.5" stroke-linecap="round"/>
+          <path d="M 137 86 L 134 83 L 138 80 L 141 83 Z" fill="#5c2c16" stroke="#291508" stroke-width="0.8"/>
+
+          <!-- Berço Lateral Direito para Condutor Fase B (x = 231, y = 91) -->
+          <path d="M 219 91 L 225 91 C 225 97 237 97 237 91 C 237 85 229 83 225 86" fill="none" stroke="#291508" stroke-width="2.5" stroke-linecap="round"/>
+          <path d="M 239 86 L 242 83 L 238 80 L 235 83 Z" fill="#5c2c16" stroke="#291508" stroke-width="0.8"/>
+
+          <!-- Haste e Berço Inferior para Condutor Fase C (x = 188, y = 158) -->
+          <path d="M 186 128 L 186 148 L 190 148 L 190 128 Z" fill="#78350f" stroke="#291508" stroke-width="1.2"/>
+          <!-- Olhal Lateral Esquerdo de Articulação da Presilha (Conforme Imagem Técnica) -->
+          <circle cx="180" cy="144" r="2.5" fill="#cbd5e1" stroke="#1e293b" stroke-width="1"/>
+          <circle cx="180" cy="144" r="0.9" fill="#0f172a"/>
+          <!-- Berço Inferior com Trava e Dentes de Fechamento -->
+          <path d="M 190 148 C 190 156 180 158 180 164 C 180 169 196 169 196 162 L 192 156" fill="none" stroke="#291508" stroke-width="2.5" stroke-linecap="round"/>
+          <polygon points="185,170 188,166 191,170 193,167 188,174" fill="#5c2c16" stroke="#291508" stroke-width="0.8"/>
+
+          <!-- CONDUTORES DE FASE PROTEGIDOS (XLPE 15 kV com Núcleo Compacto de Alumínio) -->
+          <!-- Fase A (Esquerda, x = 145, y = 91) -->
+          <circle cx="145" cy="91" r="8" fill="#dc2626" stroke="#7f1d1d" stroke-width="1.5"/>
+          <circle cx="145" cy="91" r="5" fill="#cbd5e1" stroke="#334155" stroke-width="0.8"/>
+          <text x="145" y="93.5" text-anchor="middle" fill="#ffffff" font-size="7px" font-weight="600">A</text>
+
+          <!-- Fase B (Direita, x = 231, y = 91) -->
+          <circle cx="231" cy="91" r="8" fill="#2563eb" stroke="#1e3a8a" stroke-width="1.5"/>
+          <circle cx="231" cy="91" r="5" fill="#cbd5e1" stroke="#334155" stroke-width="0.8"/>
+          <text x="231" y="93.5" text-anchor="middle" fill="#ffffff" font-size="7px" font-weight="600">B</text>
+
+          <!-- Fase C (Inferior, x = 188, y = 158) -->
+          <circle cx="188" cy="158" r="8" fill="#16a34a" stroke="#14532d" stroke-width="1.5"/>
+          <circle cx="188" cy="158" r="5" fill="#cbd5e1" stroke="#334155" stroke-width="0.8"/>
+          <text x="188" y="160.5" text-anchor="middle" fill="#ffffff" font-size="7px" font-weight="600">C</text>
+
+          <!-- ======================================================================
+               COTAS TÉCNICAS CAD NORMATIZADAS
+               ====================================================================== -->
+          <!-- Cota Horizontal D (entre Fase A e B) = 305 mm (30,5 cm) -->
+          <line x1="145" y1="83" x2="145" y2="16" stroke="#64748b" stroke-width="0.7" stroke-dasharray="2,2"/>
+          <line x1="231" y1="83" x2="231" y2="16" stroke="#64748b" stroke-width="0.7" stroke-dasharray="2,2"/>
+          <line x1="148" y1="18" x2="228" y2="18" stroke="#1e293b" stroke-width="1" marker-start="url(#cadArrowSp)" marker-end="url(#cadArrowSp)"/>
+          <rect x="160" y="11" width="56" height="14" fill="#ffffff" stroke="#94a3b8" stroke-width="0.6"/>
+          <text x="188" y="21" text-anchor="middle" fill="#0f172a" font-size="7.5px" font-weight="500">D = 305 mm</text>
+
+          <!-- Cota Diagonal E (entre Fase A e Fase C) = 285 mm (28,5 cm) -->
+          <line x1="139" y1="97" x2="103" y2="131" stroke="#64748b" stroke-width="0.7" stroke-dasharray="2,2"/>
+          <line x1="182" y1="164" x2="146" y2="198" stroke="#64748b" stroke-width="0.7" stroke-dasharray="2,2"/>
+          <line x1="106" y1="128" x2="148" y2="195" stroke="#1e293b" stroke-width="1" marker-start="url(#cadArrowSp)" marker-end="url(#cadArrowSp)"/>
+          <rect x="95" y="154" width="54" height="14" fill="#ffffff" stroke="#94a3b8" stroke-width="0.6"/>
+          <text x="122" y="164" text-anchor="middle" fill="#0f172a" font-size="7px" font-weight="500">E = 285 mm</text>
+
+          <!-- Cota Diagonal F (entre Fase B e Fase C) = 285 mm (28,5 cm) -->
+          <line x1="237" y1="97" x2="258" y2="114" stroke="#64748b" stroke-width="0.7" stroke-dasharray="2,2"/>
+          <line x1="194" y1="164" x2="215" y2="181" stroke="#64748b" stroke-width="0.7" stroke-dasharray="2,2"/>
+          <line x1="255" y1="116" x2="218" y2="175" stroke="#1e293b" stroke-width="1" marker-start="url(#cadArrowSp)" marker-end="url(#cadArrowSp)"/>
+          <rect x="220" y="138" width="52" height="14" fill="#ffffff" stroke="#94a3b8" stroke-width="0.6"/>
+          <text x="246" y="148" text-anchor="middle" fill="#0f172a" font-size="7px" font-weight="500">F = 285 mm</text>
+
+          <!-- Carimbo Técnico CAD (Selo no Canto Inferior Direito) -->
+          <rect x="210" y="168" width="140" height="28" fill="#f8fafc" stroke="#475569" stroke-width="0.9"/>
+          <line x1="210" y1="178" x2="350" y2="178" stroke="#cbd5e1" stroke-width="0.6"/>
+          <line x1="210" y1="187" x2="350" y2="187" stroke="#cbd5e1" stroke-width="0.6"/>
+          <text x="280" y="175" text-anchor="middle" fill="#1e293b" font-size="6.2px" font-weight="500">ESTRUTURA TANGENTE (BRAÇO TIPO C)</text>
+          <text x="280" y="184" text-anchor="middle" fill="#334155" font-size="5.8px" font-weight="400">REDE COMPACTA 15 kV (SPACER CABLE)</text>
+          <text x="280" y="193" text-anchor="middle" fill="#0284c7" font-size="6.5px" font-weight="600">DMG = 29,15 cm (0,2915 m)</text>
+        </svg>
+      `;
     }
 
     function selectFaultType(type) {
@@ -3720,6 +5481,8 @@
         clearInterval(activeIntervalTimer);
         activeIntervalTimer = null;
       }
+      simVisualPauseUntil = 0;
+      simPauseRemainingMs = 0;
     }
 
     function setStepCardState(stepNum, state, tagText, descText) {
@@ -3746,21 +5509,71 @@
     /* ==========================================================================
        6. SEQUENCIA EM TEMPO REAL PARAMETRIZADO (ANSI 79 + FLISR) & REPRODUCAO
        ========================================================================== */
+    function updateDidacticCardsLayout(segKey) {
+      const card1Title = document.getElementById('stepTitle1');
+      const card2Title = document.getElementById('stepTitle2');
+      const card3Title = document.getElementById('stepTitle3');
+      const card4Title = document.getElementById('stepTitle4');
+      const card2 = document.getElementById('stepCard2');
+
+      const seg = SEGMENTS_DATA[segKey];
+      const relay = (seg && RELAYS_DATA[seg.upstreamRelay]) ? RELAYS_DATA[seg.upstreamRelay] : RELAYS_DATA['21I7'];
+      const numShots = relay.shots ? relay.shots.length : 4;
+      const hasReclose = numShots > 1;
+
+      if (!hasReclose) {
+        // Disparo único 1I sem religamento automático (ex: RS3 nos trechos T3/T4, RS7 nos trechos T15/T16)
+        if (card2) card2.style.display = 'none';
+        if (card1Title) card1Title.textContent = '1. Detecção e Abertura (50/51)';
+        if (card3Title) card3Title.textContent = '2. Isolamento da Falta';
+        if (card4Title) card4Title.textContent = '3. Recomposição (FLISR)';
+      } else {
+        // Ciclos com religamento automático (1I+2T, 3I ou 2I)
+        if (card2) card2.style.display = '';
+        if (card1Title) card1Title.textContent = '1. Detecção da Falta (50/51)';
+        if (card2Title) card2Title.textContent = '2. Ciclo de Religamento (79)';
+        if (card3Title) card3Title.textContent = '3. Isolamento da Falta';
+        if (card4Title) card4Title.textContent = '4. Recomposição (FLISR)';
+      }
+    }
+
+    function setTimelineConnectorState(state) {
+      const conn = document.getElementById('timelineConn1to2');
+      if (!conn) return;
+      if (state === 'deadtime') {
+        conn.setAttribute('class', 'timeline-connector-track conn-deadtime');
+      } else if (state === 'done') {
+        conn.setAttribute('class', 'timeline-connector-track conn-done');
+      } else if (state === 'active') {
+        conn.setAttribute('class', 'timeline-connector-track conn-active');
+      } else {
+        conn.setAttribute('class', 'timeline-connector-track');
+      }
+    }
+
     function createTimelinePointElement(pDef) {
       const pill = document.createElement('div');
       pill.id = `timelinePoint${pDef.num}`;
-      pill.className = 'reclose-pill';
-      pill.innerHTML = `
+      pill.className = pDef.disabled ? 'reclose-pill pill-disabled' : 'reclose-pill';
+
+      const trackHtml = `
         <div class="timeline-track-wrap">
           <div class="timeline-line timeline-line-left" style="visibility:${pDef.leftVis};"></div>
           <div class="timeline-node">${pDef.num}</div>
           <div class="timeline-line timeline-line-right" style="visibility:${pDef.rightVis};"></div>
         </div>
-        <div class="timeline-step-badge">
-          <div class="timeline-step-title">${pDef.title}</div>
-          <div id="pointSub${pDef.num}" class="timeline-step-time">${pDef.sub}</div>
+      `;
+      const textHtml = `
+        <div class="timeline-step-badge" title="${pDef.title}">
+          <div class="timeline-step-title" title="${pDef.title}">${pDef.title}</div>
+          <div id="pointSub${pDef.num}" class="timeline-step-time" title="${pDef.sub}">${pDef.sub}</div>
         </div>
       `;
+
+      pill.innerHTML = pDef.textPos === 'top'
+        ? textHtml + trackHtml
+        : trackHtml + textHtml;
+
       return pill;
     }
 
@@ -3775,65 +5588,225 @@
       const deadSec = relay.deadTime || 10.0;
       const numShots = shotsDetails ? shotsDetails.length : 4;
 
-      // 8 marcos sequenciais da proteção ANSI 79 divididos em 2 linhas de 4 pontos (1 a 8)
+      if (numShots <= 1) {
+        // Disparo único sem ciclo de religamento (RS3, RS7)
+        return;
+      }
+
+      if (numShots === 2) {
+        // Ciclo 2I (ex: RS6 no trecho T14): 4 pontos em 1 linha contínua única
+        const pointsDef = [
+          {
+            num: 1,
+            title: '1ª Abertura',
+            sub: `Curva (${shotsDetails?.[0]?.shortCode || 'I'})`,
+            disabled: false,
+            leftVis: 'hidden',
+            rightVis: 'visible',
+            textPos: 'top'
+          },
+          {
+            num: 2,
+            title: '1º Tempo Morto',
+            sub: `${deadSec} s (79OI)`,
+            disabled: false,
+            leftVis: 'visible',
+            rightVis: 'visible',
+            textPos: 'top'
+          },
+          {
+            num: 3,
+            title: '2ª Abertura',
+            sub: `Curva (${shotsDetails?.[1]?.shortCode || 'I'})`,
+            disabled: false,
+            leftVis: 'visible',
+            rightVis: 'visible',
+            textPos: 'top'
+          },
+          {
+            num: 4,
+            title: 'Bloqueio',
+            sub: 'Lockout (79)',
+            disabled: false,
+            leftVis: 'visible',
+            rightVis: 'hidden',
+            textPos: 'top'
+          }
+        ];
+
+        const row = document.createElement('div');
+        row.className = 'timeline-row';
+        row.style.padding = '4px 0';
+        pointsDef.forEach((p) => row.appendChild(createTimelinePointElement(p)));
+        container.appendChild(row);
+        return;
+      }
+
+      if (numShots === 3) {
+        // Ciclo 3I (ex: RS1, RS2, RS4, RS5): 6 pontos em 2 linhas de 3 pontos
+        const pointsDef = [
+          // Linha 1: Pontos 1 a 3 (texto acima do número)
+          {
+            num: 1,
+            title: '1ª Abertura',
+            sub: `Curva (${shotsDetails?.[0]?.shortCode || 'I'})`,
+            disabled: false,
+            leftVis: 'hidden',
+            rightVis: 'visible',
+            textPos: 'top'
+          },
+          {
+            num: 2,
+            title: '1º Tempo Morto',
+            sub: `${deadSec} s (79OI)`,
+            disabled: false,
+            leftVis: 'visible',
+            rightVis: 'visible',
+            textPos: 'top'
+          },
+          {
+            num: 3,
+            title: '2ª Abertura',
+            sub: `Curva (${shotsDetails?.[1]?.shortCode || 'I'})`,
+            disabled: false,
+            leftVis: 'visible',
+            rightVis: 'hidden',
+            textPos: 'top'
+          },
+          // Linha 2: Pontos 4 a 6 (texto abaixo do número)
+          {
+            num: 4,
+            title: '2º Tempo Morto',
+            sub: `${deadSec} s (79OI)`,
+            disabled: false,
+            leftVis: 'hidden',
+            rightVis: 'visible',
+            textPos: 'bottom'
+          },
+          {
+            num: 5,
+            title: '3ª Abertura',
+            sub: `Curva (${shotsDetails?.[2]?.shortCode || 'I'})`,
+            disabled: false,
+            leftVis: 'visible',
+            rightVis: 'visible',
+            textPos: 'bottom'
+          },
+          {
+            num: 6,
+            title: 'Bloqueio',
+            sub: 'Lockout (79)',
+            disabled: false,
+            leftVis: 'visible',
+            rightVis: 'hidden',
+            textPos: 'bottom'
+          }
+        ];
+
+        // Linha 1 (Pontos 1 a 3)
+        const row1 = document.createElement('div');
+        row1.className = 'timeline-row';
+        for (let i = 0; i < 3; i++) {
+          row1.appendChild(createTimelinePointElement(pointsDef[i]));
+        }
+        container.appendChild(row1);
+
+        // Conector ligando o Ponto 3 (coluna 3 de 3, x=83.33%) ao Ponto 4 (coluna 1 de 3, x=16.67%)
+        const connWrap = document.createElement('div');
+        connWrap.className = 'timeline-connector-wrap';
+        connWrap.innerHTML = `
+          <svg class="timeline-connector-svg" viewBox="0 0 100 14" preserveAspectRatio="none">
+            <path id="timelineConn1to2" class="timeline-connector-track" d="M 83.33 0 V 3 Q 83.33 7 78.33 7 H 21.67 Q 16.67 7 16.67 11 V 14" vector-effect="non-scaling-stroke"></path>
+          </svg>
+        `;
+        container.appendChild(connWrap);
+        setTimelineConnectorState('idle');
+
+        // Linha 2 (Pontos 4 a 6)
+        const row2 = document.createElement('div');
+        row2.className = 'timeline-row';
+        for (let i = 3; i < 6; i++) {
+          row2.appendChild(createTimelinePointElement(pointsDef[i]));
+        }
+        container.appendChild(row2);
+        return;
+      }
+
+      // Ciclo 1I+2T (padrão 4 disparos, ex: relés da SE 21I7, 21I6, 21I5, 21I4): 8 pontos em 2 linhas de 4
       const pointsDef = [
-        // Linha 1: Pontos 1 a 4
+        // Linha 1: Pontos 1 a 4 (texto acima do número)
         {
           num: 1,
           title: '1ª Abertura',
           sub: `Curva (${shotsDetails?.[0]?.shortCode || 'I'})`,
+          disabled: false,
           leftVis: 'hidden',
-          rightVis: 'visible'
+          rightVis: 'visible',
+          textPos: 'top'
         },
         {
           num: 2,
-          title: '1º T. Morto',
+          title: '1º Tempo Morto',
           sub: `${deadSec} s (79OI)`,
+          disabled: false,
           leftVis: 'visible',
-          rightVis: 'visible'
+          rightVis: 'visible',
+          textPos: 'top'
         },
         {
           num: 3,
           title: '2ª Abertura',
-          sub: numShots >= 2 ? `Curva (${shotsDetails?.[1]?.shortCode || 'I'})` : '-',
+          sub: `Curva (${shotsDetails?.[1]?.shortCode || 'I'})`,
+          disabled: false,
           leftVis: 'visible',
-          rightVis: 'visible'
+          rightVis: 'visible',
+          textPos: 'top'
         },
         {
           num: 4,
-          title: '2º T. Morto',
-          sub: numShots >= 3 ? `${deadSec} s (79OI)` : '-',
+          title: '2º Tempo Morto',
+          sub: `${deadSec} s (79OI)`,
+          disabled: false,
           leftVis: 'visible',
-          rightVis: 'hidden'
+          rightVis: 'hidden',
+          textPos: 'top'
         },
-        // Linha 2: Pontos 5 a 8
+        // Linha 2: Pontos 5 a 8 (texto abaixo do número)
         {
           num: 5,
           title: '3ª Abertura',
-          sub: numShots >= 3 ? `Curva (${shotsDetails?.[2]?.shortCode || 'T'})` : '-',
+          sub: `Curva (${shotsDetails?.[2]?.shortCode || 'T'})`,
+          disabled: false,
           leftVis: 'hidden',
-          rightVis: 'visible'
+          rightVis: 'visible',
+          textPos: 'bottom'
         },
         {
           num: 6,
-          title: '3º T. Morto',
-          sub: numShots >= 4 ? `${deadSec} s (79OI)` : '-',
+          title: '3º Tempo Morto',
+          sub: `${deadSec} s (79OI)`,
+          disabled: false,
           leftVis: 'visible',
-          rightVis: 'visible'
+          rightVis: 'visible',
+          textPos: 'bottom'
         },
         {
           num: 7,
           title: '4ª Abertura',
-          sub: numShots >= 4 ? `Curva (${shotsDetails?.[3]?.shortCode || 'T'})` : '-',
+          sub: `Curva (${shotsDetails?.[3]?.shortCode || 'T'})`,
+          disabled: false,
           leftVis: 'visible',
-          rightVis: 'visible'
+          rightVis: 'visible',
+          textPos: 'bottom'
         },
         {
           num: 8,
           title: 'Bloqueio',
           sub: 'Lockout (79)',
+          disabled: false,
           leftVis: 'visible',
-          rightVis: 'hidden'
+          rightVis: 'hidden',
+          textPos: 'bottom'
         }
       ];
 
@@ -3845,15 +5818,16 @@
       }
       container.appendChild(row1);
 
-      // Conector ligando o final da Linha 1 (Ponto 4, X=87.5%) ao início da Linha 2 (Ponto 5, X=12.5%)
+      // Conector ligando o Ponto 4 (x=87.5%) ao Ponto 5 (x=12.5%)
       const connWrap = document.createElement('div');
       connWrap.className = 'timeline-connector-wrap';
       connWrap.innerHTML = `
-        <svg class="timeline-connector-svg" viewBox="0 0 100 16" preserveAspectRatio="none">
-          <path id="timelineConn1to2" class="timeline-connector-track" d="M 87.5 0 V 4 Q 87.5 8 82.5 8 H 17.5 Q 12.5 8 12.5 12 V 16" vector-effect="non-scaling-stroke"></path>
+        <svg class="timeline-connector-svg" viewBox="0 0 100 14" preserveAspectRatio="none">
+          <path id="timelineConn1to2" class="timeline-connector-track" d="M 87.5 0 V 3 Q 87.5 7 82.5 7 H 17.5 Q 12.5 7 12.5 11 V 14" vector-effect="non-scaling-stroke"></path>
         </svg>
       `;
       container.appendChild(connWrap);
+      setTimelineConnectorState('idle');
 
       // Linha 2 (Pontos 5 a 8)
       const row2 = document.createElement('div');
@@ -3871,6 +5845,11 @@
       const seg = sc.seg;
       const relay = RELAYS_DATA[seg.upstreamRelay] || RELAYS_DATA['21I7'];
       const shotsModes = relay.shots || ['I', 'I', 'T', 'T'];
+      const numShots = shotsModes.length;
+      const hasReclose = numShots > 1;
+
+      updateDidacticCardsLayout(segKey);
+
       const shotsDetails = shotsModes.map((mode) =>
         calculateRelayShotTime(seg.upstreamRelay, activeCurrent, isGround, mode)
       );
@@ -3878,30 +5857,54 @@
       buildReclosePills(segKey, shotsDetails);
 
       const firstShot = shotsDetails[0];
-      setStepCardState(
-        1,
-        'idle',
-        `PRONTO (${Math.round(firstShot.totalTimeMs)} ms)`
-      );
-      setStepCardState(
-        2,
-        'idle',
-        `CICLO ${relay.cycle}`
-      );
-      setStepCardState(
-        3,
-        'idle',
-        'AGUARDANDO',
-        `Chaves: <b>${seg.isolateSwitches.join(', ')}</b>`
-      );
-      setStepCardState(
-        4,
-        'idle',
-        'AGUARDANDO',
-        seg.tieSwitch
-          ? `Socorro: <b>${seg.tieSwitch}</b> (SE ${seg.supportSource})`
-          : `Alimentador recomposto`
-      );
+      if (!hasReclose) {
+        setStepCardState(
+          1,
+          'idle',
+          `PRONTO (${Math.round(firstShot.totalTimeMs)} ms)`,
+          `Disparo instantâneo 1I sem religamento. Disjuntor/religador <b>${seg.upstreamRelay}</b> atuará direto para bloqueio e isolamento.`
+        );
+        setStepCardState(
+          3,
+          'idle',
+          'AGUARDANDO',
+          `Chaves: <b>${seg.isolateSwitches.join(', ')}</b>`
+        );
+        setStepCardState(
+          4,
+          'idle',
+          'AGUARDANDO',
+          seg.tieSwitch
+            ? `Socorro: <b>${seg.tieSwitch}</b> (SE ${seg.supportSource})`
+            : `Alimentador recomposto`
+        );
+      } else {
+        setStepCardState(
+          1,
+          'idle',
+          `PRONTO (${Math.round(firstShot.totalTimeMs)} ms)`,
+          `Elemento de sobrecorrente do relé <b>${seg.upstreamRelay}</b> pronto para detecção.`
+        );
+        setStepCardState(
+          2,
+          'idle',
+          `CICLO ${relay.cycle}`
+        );
+        setStepCardState(
+          3,
+          'idle',
+          'AGUARDANDO',
+          `Chaves: <b>${seg.isolateSwitches.join(', ')}</b>`
+        );
+        setStepCardState(
+          4,
+          'idle',
+          'AGUARDANDO',
+          seg.tieSwitch
+            ? `Socorro: <b>${seg.tieSwitch}</b> (SE ${seg.supportSource})`
+            : `Alimentador recomposto`
+        );
+      }
 
       const statusEl = document.getElementById('txtRealtimeStatus');
       if (statusEl) {
@@ -3920,6 +5923,9 @@
       const seg = sc.seg;
       const relay = RELAYS_DATA[seg.upstreamRelay] || RELAYS_DATA['21I7'];
       const shotsModes = relay.shots || ['I', 'I', 'T', 'T'];
+      const numShots = shotsModes.length;
+      const hasReclose = numShots > 1;
+      const lockoutPointIdx = numShots * 2;
       const deadTimeMs = (relay.deadTime || 10.0) * 1000;
 
       const shotsDetails = shotsModes.map((mode) =>
@@ -3948,16 +5954,20 @@
                 const prev = document.getElementById(`timelinePoint${p}`);
                 if (prev) prev.className = 'reclose-pill done';
               }
-              if (shotNum >= 3) {
-                const conn = document.getElementById('timelineConn1to2');
-                if (conn) conn.className = 'timeline-connector-track conn-done';
+              const deadSub = document.getElementById(`pointSub${deadPointIdx}`);
+              if (deadSub) {
+                deadSub.textContent = `${relay.deadTime.toFixed(1).replace('.', ',')} s`;
+              }
+              if (shotNum >= 3 && numShots >= 3) {
+                setTimelineConnectorState('done');
               }
 
               const pill = document.getElementById(`timelinePoint${nextTripPointIdx}`);
               if (pill) pill.className = 'reclose-pill active';
 
               setStepCardState(2, 'active', `${shotNum}ª ABERTURA`);
-              document.getElementById('txtRealtimeStatus').textContent = `${shotNum}ª Abertura em ${shot.totalTimeMs.toFixed(0)} ms...`;
+              const statusEl = document.getElementById('txtRealtimeStatus');
+              if (statusEl) statusEl.textContent = `${shotNum}ª Abertura em ${shot.totalTimeMs.toFixed(0)} ms...`;
               setStatusIndicator('fault', `${shotNum}ª Abertura (${shot.shortCode}): Religador em contagem para extinção de defeito`);
               renderAll();
             }
@@ -3975,48 +5985,65 @@
           deadTimeMs,
           upstreamRelay: seg.upstreamRelay,
           relayDeadTime: relay.deadTime,
+          pauseAfter: isLastShot,
           run: () => {
             setSwitchState(seg.upstreamRelay, 'open');
             if (idx === 0) {
               setStepCardState(
                 1,
                 'done',
-                `ATUOU (${shot.totalTimeMs.toFixed(0)} ms)`
+                hasReclose ? `ATUOU (${shot.totalTimeMs.toFixed(0)} ms)` : `ABERTO (${shot.totalTimeMs.toFixed(0)} ms)`,
+                hasReclose
+                  ? `Relé <b>${seg.upstreamRelay}</b> abriu em ${shot.totalTimeMs.toFixed(0)} ms (${shot.shortCode}).`
+                  : `Disjuntor/religador <b>${seg.upstreamRelay}</b> abriu em ${shot.totalTimeMs.toFixed(0)} ms (${shot.shortCode}). Sem religamento.`
               );
             }
 
-            const tripPointIdx = (shotNum - 1) * 2 + 1;
-            const deadPointIdx = (shotNum - 1) * 2 + 2;
+            if (hasReclose) {
+              const tripPointIdx = (shotNum - 1) * 2 + 1;
+              const deadPointIdx = (shotNum - 1) * 2 + 2;
 
-            const tripPill = document.getElementById(`timelinePoint${tripPointIdx}`);
-            if (tripPill) tripPill.className = 'reclose-pill done';
+              const tripPill = document.getElementById(`timelinePoint${tripPointIdx}`);
+              if (tripPill) tripPill.className = 'reclose-pill done';
 
-            if (!isLastShot) {
-              const deadPill = document.getElementById(`timelinePoint${deadPointIdx}`);
-              if (deadPill) deadPill.className = 'reclose-pill deadtime';
-
-              if (deadPointIdx >= 4) {
-                const conn = document.getElementById('timelineConn1to2');
-                if (conn) conn.className = 'timeline-connector-track conn-deadtime';
+              const tripSub = document.getElementById(`pointSub${tripPointIdx}`);
+              if (tripSub) {
+                tripSub.textContent = `${shot.totalTimeMs.toFixed(0)} ms (${shot.shortCode})`;
               }
 
-              setStepCardState(2, 'active', `MORTO (${relay.deadTime} s)`);
-              setStatusIndicator('reclose', `79OI: Tempo morto (${relay.deadTime}s) aguardando o ${shotNum}º religamento`);
+              if (!isLastShot) {
+                const deadPill = document.getElementById(`timelinePoint${deadPointIdx}`);
+                if (deadPill) deadPill.className = 'reclose-pill deadtime';
+
+                if (deadPointIdx === 4 && numShots >= 3) {
+                  setTimelineConnectorState('deadtime');
+                }
+
+                setStepCardState(2, 'active', `${relay.deadTime.toFixed(1).replace('.', ',')} s`);
+                setStatusIndicator('reclose', `79OI: Tempo morto (${relay.deadTime}s) aguardando o ${shotNum}º religamento`);
+              } else {
+                const lockPill = document.getElementById(`timelinePoint${lockoutPointIdx}`);
+                if (lockPill) lockPill.className = 'reclose-pill lockout';
+
+                for (let k = 1; k <= tripPointIdx; k++) {
+                  const p = document.getElementById(`timelinePoint${k}`);
+                  if (p && !p.className.includes('done')) p.className = 'reclose-pill done';
+                }
+                if (numShots >= 3) {
+                  setTimelineConnectorState('done');
+                }
+
+                setStepCardState(2, 'done', 'LOCKOUT');
+                setStepCardState(3, 'active', 'ISOLANDO', `Chaves: <b>${seg.isolateSwitches.join(', ')}</b>`);
+                const statusEl = document.getElementById('txtRealtimeStatus');
+                if (statusEl) statusEl.textContent = 'Bloqueio (Lockout). Isolando trecho...';
+                setStatusIndicator('lockout', 'Bloqueio (Lockout): Falta permanente confirmada após tentativas de religamento');
+              }
             } else {
-              const lockPill = document.getElementById('timelinePoint8');
-              if (lockPill) lockPill.className = 'reclose-pill lockout';
-
-              for (let k = 1; k < 8; k++) {
-                const p = document.getElementById(`timelinePoint${k}`);
-                if (p && !p.className.includes('done')) p.className = 'reclose-pill done';
-              }
-              const conn = document.getElementById('timelineConn1to2');
-              if (conn) conn.className = 'timeline-connector-track conn-done';
-
-              setStepCardState(2, 'done', 'LOCKOUT');
               setStepCardState(3, 'active', 'ISOLANDO', `Chaves: <b>${seg.isolateSwitches.join(', ')}</b>`);
-              document.getElementById('txtRealtimeStatus').textContent = 'Bloqueio (Lockout). Isolando trecho...';
-              setStatusIndicator('lockout', 'Bloqueio (Lockout): Falta permanente confirmada após tentativas de religamento');
+              const statusEl = document.getElementById('txtRealtimeStatus');
+              if (statusEl) statusEl.textContent = 'Abertura confirmada. Isolando trecho...';
+              setStatusIndicator('lockout', 'Proteção 50/51: Abertura direta sem religamento. Isolando trecho em falta');
             }
             renderAll();
           }
@@ -4031,6 +6058,7 @@
       events.push({
         timeMs: t,
         type: 'isolate',
+        pauseAfter: true,
         run: () => {
           seg.isolateSwitches.forEach((sw) => setSwitchState(sw, 'open'));
           setStepCardState(
@@ -4040,7 +6068,8 @@
             `Chaves: <b>${seg.isolateSwitches.join(', ')}</b>`
           );
           setStepCardState(4, 'active', 'RECOMPONDO', seg.tieSwitch ? `Socorro: <b>${seg.tieSwitch}</b> (SE ${seg.supportSource})` : `Alimentador recomposto`);
-          document.getElementById('txtRealtimeStatus').textContent = 'Trecho isolado. Executando Self-Healing...';
+          const statusEl = document.getElementById('txtRealtimeStatus');
+          if (statusEl) statusEl.textContent = 'Trecho isolado. Executando Self-Healing...';
           setStatusIndicator('flisr', 'FLISR: Comandando isolamento do trecho em falta');
           renderAll();
         }
@@ -4061,13 +6090,12 @@
     }
 
     function updateLiveSimCountdown(currentTimeMs) {
-      const statusEl = document.getElementById('txtRealtimeStatus');
-      if (!statusEl) return;
-
       if (simNextEventIndex >= simTimelineEvents.length) return;
 
       const nextEv = simTimelineEvents[simNextEventIndex];
       if (!nextEv) return;
+
+      const statusEl = document.getElementById('txtRealtimeStatus');
 
       if (nextEv.type === 'reclose') {
         const prevEv = simTimelineEvents[simNextEventIndex - 1];
@@ -4075,36 +6103,64 @@
         const remainMs = Math.max(0, nextEv.timeMs - currentTimeMs);
         const remainSec = (remainMs / 1000).toFixed(1).replace('.', ',');
         const totalSec = ((nextEv.timeMs - prevTime) / 1000).toFixed(1).replace('.', ',');
-        statusEl.textContent = `${nextEv.shotNum - 1}º Religamento: resta ${remainSec} s (de ${totalSec} s)`;
+        if (statusEl) {
+          statusEl.textContent = `${nextEv.shotNum - 1}º Religamento: resta ${remainSec} s (de ${totalSec} s)`;
+        }
 
         const deadPointIdx = (nextEv.shotNum - 1) * 2;
         const deadSub = document.getElementById(`pointSub${deadPointIdx}`);
         if (deadSub) {
           deadSub.textContent = `${remainSec} s rest.`;
         }
+
+        const tag2 = document.getElementById('stepTag2');
+        if (tag2) {
+          tag2.textContent = `${remainSec} s`;
+        }
       } else if (nextEv.type === 'trip' && nextEv.shotNum === 1) {
         const remainMs = Math.max(0, nextEv.timeMs - currentTimeMs);
-        statusEl.textContent = `Atuação 1ª Abertura: resta ${remainMs.toFixed(0)} ms...`;
+        if (statusEl) {
+          statusEl.textContent = (simTimelineEvents.length > 3)
+            ? `Atuação 1ª Abertura: resta ${remainMs.toFixed(0)} ms...`
+            : `Atuação Abertura: resta ${remainMs.toFixed(0)} ms...`;
+        }
       }
     }
 
     function simTick() {
       if (simState !== 'running') return;
       const now = performance.now();
+
+      if (simVisualPauseUntil > 0) {
+        if (now < simVisualPauseUntil) {
+          simLastTickTime = now;
+          simAnimationId = requestAnimationFrame(simTick);
+          return;
+        }
+        simVisualPauseUntil = 0;
+        simLastTickTime = now;
+      }
+
       const delta = now - simLastTickTime;
       simLastTickTime = now;
       simCurrentTimeMs += delta * currentSimSpeed;
 
       while (simNextEventIndex < simTimelineEvents.length && simTimelineEvents[simNextEventIndex].timeMs <= simCurrentTimeMs) {
-        simTimelineEvents[simNextEventIndex].run();
+        const ev = simTimelineEvents[simNextEventIndex];
+        ev.run();
         simNextEventIndex++;
+
+        if (simStepDelayEnabled && simStepDelaySeconds > 0 && ev.pauseAfter) {
+          simVisualPauseUntil = performance.now() + (simStepDelaySeconds * 1000);
+          break;
+        }
       }
 
       updateLiveSimCountdown(simCurrentTimeMs);
 
       if (simNextEventIndex < simTimelineEvents.length && simState === 'running') {
         simAnimationId = requestAnimationFrame(simTick);
-      } else if (simNextEventIndex >= simTimelineEvents.length) {
+      } else if (simNextEventIndex >= simTimelineEvents.length && !simVisualPauseUntil) {
         simState = 'completed';
         updateSimulationButtonsUI();
       }
@@ -4117,6 +6173,10 @@
       if (simState === 'paused') {
         simState = 'running';
         simLastTickTime = performance.now();
+        if (simPauseRemainingMs > 0) {
+          simVisualPauseUntil = performance.now() + simPauseRemainingMs;
+          simPauseRemainingMs = 0;
+        }
         updateSimulationButtonsUI();
         const skipBtn = document.getElementById('btnSkipToEnd');
         if (skipBtn) skipBtn.disabled = false;
@@ -4129,6 +6189,8 @@
         simAnimationId = null;
       }
       clearSimulationTimers();
+      simVisualPauseUntil = 0;
+      simPauseRemainingMs = 0;
       simPrePlayEquipmentSnapshot = JSON.parse(JSON.stringify(initialEquipmentData));
       equipmentState = JSON.parse(JSON.stringify(initialEquipmentData));
       flisrCompleted = false;
@@ -4139,39 +6201,67 @@
       const seg = sc.seg;
       const relay = RELAYS_DATA[seg.upstreamRelay] || RELAYS_DATA['21I7'];
       const shotsModes = relay.shots || ['I', 'I', 'T', 'T'];
+      const numShots = shotsModes.length;
+      const hasReclose = numShots > 1;
       const shotsDetails = shotsModes.map((mode) =>
         calculateRelayShotTime(seg.upstreamRelay, activeCurrent, isGround, mode)
       );
 
+      updateDidacticCardsLayout(currentFaultSegment);
       buildReclosePills(currentFaultSegment, shotsDetails);
-      const pill1 = document.getElementById('timelinePoint1');
-      if (pill1) pill1.className = 'reclose-pill active';
 
       const firstShot = shotsDetails[0];
-      setStepCardState(
-        1,
-        'active',
-        `PICKUP (${Math.round(firstShot.totalTimeMs)} ms)`
-      );
-      setStepCardState(
-        2,
-        'active',
-        '1ª ABERTURA'
-      );
-      setStepCardState(
-        3,
-        'idle',
-        'AGUARDANDO',
-        `Chaves: <b>${seg.isolateSwitches.join(', ')}</b>`
-      );
-      setStepCardState(
-        4,
-        'idle',
-        'AGUARDANDO',
-        seg.tieSwitch
-          ? `Socorro: <b>${seg.tieSwitch}</b> (SE ${seg.supportSource})`
-          : `Alimentador recomposto`
-      );
+      if (!hasReclose) {
+        setStepCardState(
+          1,
+          'active',
+          `ATUANDO (${Math.round(firstShot.totalTimeMs)} ms)`,
+          `Detectada corrente de curto pelo relé <b>${seg.upstreamRelay}</b>. Iniciando abertura imediata.`
+        );
+        setStepCardState(
+          3,
+          'idle',
+          'AGUARDANDO',
+          `Chaves: <b>${seg.isolateSwitches.join(', ')}</b>`
+        );
+        setStepCardState(
+          4,
+          'idle',
+          'AGUARDANDO',
+          seg.tieSwitch
+            ? `Socorro: <b>${seg.tieSwitch}</b> (SE ${seg.supportSource})`
+            : `Alimentador recomposto`
+        );
+      } else {
+        const pill1 = document.getElementById('timelinePoint1');
+        if (pill1) pill1.className = 'reclose-pill active';
+
+        setStepCardState(
+          1,
+          'active',
+          `PICKUP (${Math.round(firstShot.totalTimeMs)} ms)`,
+          `Elemento 50/51 do relé <b>${seg.upstreamRelay}</b> sensibilizado pela corrente de defeito.`
+        );
+        setStepCardState(
+          2,
+          'active',
+          '1ª ABERTURA'
+        );
+        setStepCardState(
+          3,
+          'idle',
+          'AGUARDANDO',
+          `Chaves: <b>${seg.isolateSwitches.join(', ')}</b>`
+        );
+        setStepCardState(
+          4,
+          'idle',
+          'AGUARDANDO',
+          seg.tieSwitch
+            ? `Socorro: <b>${seg.tieSwitch}</b> (SE ${seg.supportSource})`
+            : `Alimentador recomposto`
+        );
+      }
 
       const skipBtn = document.getElementById('btnSkipToEnd');
       if (skipBtn) skipBtn.disabled = false;
@@ -4191,6 +6281,12 @@
     function pauseSimulation() {
       if (simState !== 'running') return;
       simState = 'paused';
+      if (simVisualPauseUntil > 0) {
+        simPauseRemainingMs = Math.max(0, simVisualPauseUntil - performance.now());
+      } else {
+        simPauseRemainingMs = 0;
+      }
+      simVisualPauseUntil = 0;
       if (simAnimationId) {
         cancelAnimationFrame(simAnimationId);
         simAnimationId = null;
@@ -4219,6 +6315,9 @@
       simState = 'idle';
       simCurrentTimeMs = 0;
       simNextEventIndex = 0;
+      simVisualPauseUntil = 0;
+      simPauseRemainingMs = 0;
+      setTimelineConnectorState('idle');
       flisrCompleted = false;
 
       if (simPrePlayEquipmentSnapshot) {
@@ -4336,19 +6435,40 @@
       const seg = sc.seg;
       const relay = RELAYS_DATA[seg.upstreamRelay] || RELAYS_DATA['21I7'];
       const shotsModes = relay.shots || ['I', 'I', 'T', 'T'];
+      const numShots = shotsModes.length;
+      const hasReclose = numShots > 1;
+      const lockoutPointIdx = numShots * 2;
+
+      updateDidacticCardsLayout(segKey);
+
       const shotsDetails = shotsModes.map((mode) =>
         calculateRelayShotTime(seg.upstreamRelay, activeCurrent, isGround, mode)
       );
 
       buildReclosePills(segKey, shotsDetails);
-      for (let k = 1; k < 8; k++) {
-        const p = document.getElementById(`timelinePoint${k}`);
-        if (p) p.className = 'reclose-pill done';
+
+      if (hasReclose) {
+        const totalCyclePoints = (shotsDetails.length - 1) * 2 + 1;
+        for (let k = 1; k <= totalCyclePoints; k++) {
+          const p = document.getElementById(`timelinePoint${k}`);
+          if (p) p.className = 'reclose-pill done';
+        }
+        shotsDetails.forEach((shot, sIdx) => {
+          const tripIdx = sIdx * 2 + 1;
+          const sub = document.getElementById(`pointSub${tripIdx}`);
+          if (sub) sub.textContent = `${shot.totalTimeMs.toFixed(0)} ms (${shot.shortCode})`;
+        });
+        for (let d = 1; d < shotsDetails.length; d++) {
+          const deadIdx = d * 2;
+          const deadSub = document.getElementById(`pointSub${deadIdx}`);
+          if (deadSub) deadSub.textContent = `${relay.deadTime.toFixed(1).replace('.', ',')} s`;
+        }
+        if (numShots >= 3) {
+          setTimelineConnectorState('done');
+        }
+        const lockPill = document.getElementById(`timelinePoint${lockoutPointIdx}`);
+        if (lockPill) lockPill.className = 'reclose-pill lockout';
       }
-      const conn = document.getElementById('timelineConn1to2');
-      if (conn) conn.className = 'timeline-connector-track conn-done';
-      const lockPill = document.getElementById('timelinePoint8');
-      if (lockPill) lockPill.className = 'reclose-pill lockout done';
 
       // Aplica estado final das chaves após isolamento e recomposição
       equipmentState = JSON.parse(JSON.stringify(initialEquipmentData));
@@ -4366,32 +6486,57 @@
       flisrCompleted = true;
 
       const firstShot = shotsDetails[0];
-      setStepCardState(
-        1,
-        'done',
-        `ATUOU (${firstShot.totalTimeMs.toFixed(0)} ms)`
-      );
-      setStepCardState(
-        2,
-        'done',
-        'LOCKOUT'
-      );
-      setStepCardState(
-        3,
-        'done',
-        'ISOLADO',
-        `Chaves: <b>${seg.isolateSwitches.join(', ')}</b>`
-      );
-      setStepCardState(
-        4,
-        'done',
-        'RESTAURADO',
-        seg.tieSwitch
-          ? `Socorro: <b>${seg.tieSwitch}</b> (SE ${seg.supportSource})`
-          : `Alimentador recomposto`
-      );
+      if (!hasReclose) {
+        setStepCardState(
+          1,
+          'done',
+          `ABERTO (${firstShot.totalTimeMs.toFixed(0)} ms)`,
+          `Disjuntor/religador <b>${seg.upstreamRelay}</b> abriu em ${firstShot.totalTimeMs.toFixed(0)} ms (${firstShot.shortCode}). Disparo único.`
+        );
+        setStepCardState(
+          3,
+          'done',
+          'ISOLADO',
+          `Chaves: <b>${seg.isolateSwitches.join(', ')}</b>`
+        );
+        setStepCardState(
+          4,
+          'done',
+          'RESTAURADO',
+          seg.tieSwitch
+            ? `Socorro: <b>${seg.tieSwitch}</b> (SE ${seg.supportSource})`
+            : `Alimentador recomposto`
+        );
+      } else {
+        setStepCardState(
+          1,
+          'done',
+          `ATUOU (${firstShot.totalTimeMs.toFixed(0)} ms)`,
+          `Disjuntor/religador <b>${seg.upstreamRelay}</b> atuou em ${firstShot.totalTimeMs.toFixed(0)} ms (${firstShot.shortCode}).`
+        );
+        setStepCardState(
+          2,
+          'done',
+          'LOCKOUT'
+        );
+        setStepCardState(
+          3,
+          'done',
+          'ISOLADO',
+          `Chaves: <b>${seg.isolateSwitches.join(', ')}</b>`
+        );
+        setStepCardState(
+          4,
+          'done',
+          'RESTAURADO',
+          seg.tieSwitch
+            ? `Socorro: <b>${seg.tieSwitch}</b> (SE ${seg.supportSource})`
+            : `Alimentador recomposto`
+        );
+      }
 
-      document.getElementById('txtRealtimeStatus').textContent = 'Self-Healing concluído com sucesso.';
+      const statusEl = document.getElementById('txtRealtimeStatus');
+      if (statusEl) statusEl.textContent = 'Self-Healing concluído com sucesso.';
       const skipBtn = document.getElementById('btnSkipToEnd');
       if (skipBtn) skipBtn.disabled = true;
 
@@ -5142,6 +7287,7 @@
       updateToolbarState();
       updateSimulationButtonsUI();
       updateDidacticPanel();
+      syncConfigUI();
 
       if (window.ResizeObserver) {
         const resizeObserver = new ResizeObserver(() => {
